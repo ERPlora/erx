@@ -1,0 +1,24 @@
+:host { display: block; font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; }
+.erx-section { }
+.erx-section--divider { border-bottom: 1px solid var(--erx-border-color, #e5e7eb); padding-bottom: 24px; margin-bottom: 24px; }
+.erx-section__header { display: flex; align-items: center; gap: 12px; margin-bottom: 16px; }
+.erx-section--collapsible .erx-section__header { cursor: pointer; padding: 8px; margin: -8px; margin-bottom: 8px; border-radius: 8px; transition: background 150ms ease; }
+.erx-section--collapsible .erx-section__header:hover { background: var(--erx-surface-secondary, #f9fafb); }
+.erx-section__header-content { display: flex; align-items: center; gap: 12px; flex: 1; }
+.erx-section__icon { font-size: 20px; }
+.erx-section__titles { }
+.erx-section__title { margin: 0; font-size: 16px; font-weight: 600; color: var(--erx-text, #111827); }
+.erx-section__subtitle { margin: 4px 0 0 0; font-size: 13px; color: var(--erx-text-secondary, #6b7280); }
+.erx-section__toggle { width: 28px; height: 28px; padding: 0; border: none; background: transparent; color: var(--erx-text-tertiary, #9ca3af); cursor: pointer; border-radius: 6px; transition: all 150ms ease; }
+.erx-section__toggle:hover { background: var(--erx-surface-secondary, #f9fafb); color: var(--erx-text, #111827); }
+.erx-section__toggle-icon { display: inline-block; font-size: 10px; transition: transform 200ms ease; }
+.erx-section--collapsed .erx-section__toggle-icon { transform: rotate(-90deg); }
+.erx-section__content { transition: all 200ms ease; }
+.erx-section__content--hidden { display: none; }
+.erx-section--padding-none .erx-section__content { padding: 0; }
+.erx-section--padding-sm .erx-section__content { padding: 8px 0; }
+.erx-section--padding-md .erx-section__content { padding: 16px 0; }
+.erx-section--padding-lg .erx-section__content { padding: 24px 0; }
+@media (prefers-color-scheme: dark) { :host { color-scheme: dark; } }
+:host-context(.dark) .erx-section__title, :host(.dark) .erx-section__title { color: var(--erx-text); }
+:host-context(.dark) .erx-section--divider, :host(.dark) .erx-section--divider { border-color: var(--erx-border-color); }

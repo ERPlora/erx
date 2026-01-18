@@ -1,0 +1,193 @@
+/**
+ * ERX StockIndicator Styles
+ */
+
+:host {
+  display: inline-block;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+}
+
+.erx-stock {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+}
+
+/* Dot variant */
+.erx-stock--dot .erx-stock__dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  flex-shrink: 0;
+}
+
+/* Badge variant */
+.erx-stock--badge {
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 4px;
+}
+
+.erx-stock__badge {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 24px;
+  height: 24px;
+  padding: 0 8px;
+  border-radius: 12px;
+  font-size: 12px;
+  font-weight: 600;
+}
+
+/* Bar variant */
+.erx-stock--bar {
+  flex-direction: column;
+  align-items: stretch;
+  gap: 4px;
+  width: 100%;
+}
+
+.erx-stock__bar-wrapper {
+  height: 4px;
+  background: var(--erx-surface-tertiary, #f3f4f6);
+  border-radius: 2px;
+  overflow: hidden;
+}
+
+.erx-stock__bar {
+  height: 100%;
+  border-radius: 2px;
+  transition: width 300ms ease;
+}
+
+/* Content */
+.erx-stock__content {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.erx-stock__label {
+  font-size: 13px;
+  font-weight: 500;
+}
+
+.erx-stock__quantity {
+  font-size: 12px;
+  color: var(--erx-text-secondary, #6b7280);
+}
+
+.erx-stock__unit {
+  font-weight: 400;
+}
+
+/* Size variants */
+.erx-stock--sm .erx-stock__dot {
+  width: 6px;
+  height: 6px;
+}
+
+.erx-stock--sm .erx-stock__label {
+  font-size: 11px;
+}
+
+.erx-stock--sm .erx-stock__quantity {
+  font-size: 10px;
+}
+
+.erx-stock--sm .erx-stock__badge {
+  min-width: 20px;
+  height: 20px;
+  font-size: 10px;
+}
+
+.erx-stock--lg .erx-stock__dot {
+  width: 12px;
+  height: 12px;
+}
+
+.erx-stock--lg .erx-stock__label {
+  font-size: 15px;
+}
+
+.erx-stock--lg .erx-stock__quantity {
+  font-size: 14px;
+}
+
+.erx-stock--lg .erx-stock__badge {
+  min-width: 32px;
+  height: 32px;
+  font-size: 14px;
+}
+
+.erx-stock--lg .erx-stock__bar-wrapper {
+  height: 6px;
+}
+
+/* Status colors */
+.erx-stock--in-stock .erx-stock__dot,
+.erx-stock--in-stock .erx-stock__bar {
+  background: var(--erx-color-success, #10b981);
+}
+
+.erx-stock--in-stock .erx-stock__badge {
+  background: rgba(16, 185, 129, 0.15);
+  color: var(--erx-color-success, #10b981);
+}
+
+.erx-stock--in-stock .erx-stock__label {
+  color: var(--erx-color-success, #10b981);
+}
+
+.erx-stock--low .erx-stock__dot,
+.erx-stock--low .erx-stock__bar {
+  background: var(--erx-color-warning, #f59e0b);
+}
+
+.erx-stock--low .erx-stock__badge {
+  background: rgba(245, 158, 11, 0.15);
+  color: var(--erx-color-warning, #f59e0b);
+}
+
+.erx-stock--low .erx-stock__label {
+  color: var(--erx-color-warning, #f59e0b);
+}
+
+.erx-stock--out .erx-stock__dot,
+.erx-stock--out .erx-stock__bar {
+  background: var(--erx-color-danger, #ef4444);
+}
+
+.erx-stock--out .erx-stock__badge {
+  background: rgba(239, 68, 68, 0.15);
+  color: var(--erx-color-danger, #ef4444);
+}
+
+.erx-stock--out .erx-stock__label {
+  color: var(--erx-color-danger, #ef4444);
+}
+
+.erx-stock--backorder .erx-stock__dot,
+.erx-stock--backorder .erx-stock__bar {
+  background: var(--erx-color-primary, #667eea);
+}
+
+.erx-stock--backorder .erx-stock__badge {
+  background: rgba(102, 126, 234, 0.15);
+  color: var(--erx-color-primary, #667eea);
+}
+
+.erx-stock--backorder .erx-stock__label {
+  color: var(--erx-color-primary, #667eea);
+}
+
+/* Dark mode */
+@media (prefers-color-scheme: dark) {
+  :host { color-scheme: dark; }
+}
+
+:host-context(.dark) .erx-stock__bar-wrapper,
+:host(.dark) .erx-stock__bar-wrapper {
+  background: var(--erx-surface-tertiary);
+}

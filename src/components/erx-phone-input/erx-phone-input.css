@@ -1,0 +1,26 @@
+:host { display: block; font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; }
+.erx-phone { display: flex; border: 1px solid var(--erx-border-color, #e5e7eb); border-radius: 8px; background: var(--erx-surface, #fff); overflow: hidden; }
+.erx-phone:focus-within { border-color: var(--erx-color-primary, #667eea); box-shadow: 0 0 0 3px rgba(102,126,234,0.1); }
+.erx-phone--disabled { opacity: 0.6; pointer-events: none; }
+.erx-phone__country { position: relative; flex-shrink: 0; }
+.erx-phone__country-btn { display: flex; align-items: center; gap: 6px; padding: 10px 12px; border: none; border-right: 1px solid var(--erx-border-color, #e5e7eb); background: var(--erx-surface-secondary, #f9fafb); font-size: 14px; cursor: pointer; }
+.erx-phone__country-btn:hover { background: var(--erx-border-color, #e5e7eb); }
+.erx-phone__flag { font-size: 18px; }
+.erx-phone__dial-code { color: var(--erx-text-secondary, #6b7280); }
+.erx-phone__caret { font-size: 10px; color: var(--erx-text-tertiary, #9ca3af); }
+.erx-phone__dropdown { position: absolute; top: 100%; left: 0; margin-top: 4px; width: 280px; max-height: 300px; background: var(--erx-surface, #fff); border: 1px solid var(--erx-border-color, #e5e7eb); border-radius: 8px; box-shadow: 0 8px 24px rgba(0,0,0,0.12); z-index: 1000; display: flex; flex-direction: column; }
+.erx-phone__search { padding: 10px 12px; border: none; border-bottom: 1px solid var(--erx-border-color, #e5e7eb); background: transparent; font-size: 14px; outline: none; }
+.erx-phone__list { overflow-y: auto; flex: 1; }
+.erx-phone__option { display: flex; align-items: center; gap: 12px; width: 100%; padding: 10px 12px; border: none; background: transparent; font-size: 14px; text-align: left; cursor: pointer; transition: background 150ms ease; }
+.erx-phone__option:hover { background: var(--erx-surface-secondary, #f9fafb); }
+.erx-phone__option--selected { background: rgba(102,126,234,0.1); }
+.erx-phone__option-flag { font-size: 18px; }
+.erx-phone__option-name { flex: 1; color: var(--erx-text, #111827); }
+.erx-phone__option-dial { color: var(--erx-text-tertiary, #9ca3af); }
+.erx-phone__input { flex: 1; padding: 10px 12px; border: none; background: transparent; font-size: 14px; color: var(--erx-text, #111827); outline: none; }
+.erx-phone__input::placeholder { color: var(--erx-text-tertiary, #9ca3af); }
+@media (prefers-color-scheme: dark) { :host { color-scheme: dark; } }
+:host-context(.dark) .erx-phone, :host(.dark) .erx-phone { background: var(--erx-surface); border-color: var(--erx-border-color); }
+:host-context(.dark) .erx-phone__country-btn, :host(.dark) .erx-phone__country-btn { background: var(--erx-surface-secondary); border-color: var(--erx-border-color); }
+:host-context(.dark) .erx-phone__dropdown, :host(.dark) .erx-phone__dropdown { background: var(--erx-surface); border-color: var(--erx-border-color); }
+:host-context(.dark) .erx-phone__input, :host(.dark) .erx-phone__input { color: var(--erx-text); }

@@ -1,0 +1,203 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>ERX - ERPlora eXtensions</title>
+  <script type="module" src="/build/erx.esm.js"></script>
+  <script nomodule src="/build/erx.js"></script>
+  <style>
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+      margin: 0;
+      padding: 20px;
+      background: #f3f4f6;
+      min-height: 100vh;
+    }
+
+    .dark body {
+      background: #111827;
+      color: #f9fafb;
+    }
+
+    h1 {
+      color: #667eea;
+      margin-bottom: 8px;
+    }
+
+    .subtitle {
+      color: #6b7280;
+      margin-bottom: 32px;
+    }
+
+    .theme-toggle {
+      position: fixed;
+      top: 20px;
+      right: 20px;
+      padding: 8px 16px;
+      border: none;
+      border-radius: 8px;
+      background: #667eea;
+      color: white;
+      cursor: pointer;
+    }
+
+    .demo-section {
+      margin-bottom: 48px;
+    }
+
+    .demo-section h2 {
+      color: #374151;
+      border-bottom: 2px solid #e5e7eb;
+      padding-bottom: 8px;
+      margin-bottom: 16px;
+    }
+
+    .dark .demo-section h2 {
+      color: #d1d5db;
+      border-color: #374151;
+    }
+
+    .demo-grid {
+      height: 400px;
+    }
+
+    .demo-split {
+      height: 300px;
+      border: 1px solid #e5e7eb;
+      border-radius: 8px;
+      overflow: hidden;
+    }
+
+    .dark .demo-split {
+      border-color: #374151;
+    }
+
+    .demo-pane {
+      padding: 16px;
+      background: white;
+      height: 100%;
+    }
+
+    .dark .demo-pane {
+      background: #1f2937;
+    }
+
+    .demo-pin {
+      max-width: 320px;
+      margin: 0 auto;
+    }
+  </style>
+</head>
+<body>
+  <button class="theme-toggle" onclick="toggleTheme()">Toggle Dark Mode</button>
+
+  <h1>ERX - ERPlora eXtensions</h1>
+  <p class="subtitle">Web Components for ERP Desktop/Web</p>
+
+  <!-- DataGrid Demo -->
+  <section class="demo-section">
+    <h2>DataGrid</h2>
+    <erx-data-grid
+      id="demoGrid"
+      class="demo-grid"
+      sortable
+      filterable
+      striped
+      hover
+      paginate
+      page-size="10"
+    ></erx-data-grid>
+  </section>
+
+  <!-- SplitPane Demo -->
+  <section class="demo-section">
+    <h2>SplitPane</h2>
+    <erx-split-pane class="demo-split" collapsible primary-size="30%">
+      <div slot="primary" class="demo-pane">
+        <h3>Primary Pane</h3>
+        <p>This is the primary pane. Drag the divider to resize.</p>
+        <p>Double-click to reset. Use collapse buttons to hide panes.</p>
+      </div>
+      <div slot="secondary" class="demo-pane">
+        <h3>Secondary Pane</h3>
+        <p>This is the secondary pane. It takes the remaining space.</p>
+      </div>
+    </erx-split-pane>
+  </section>
+
+  <!-- PinPad Demo -->
+  <section class="demo-section">
+    <h2>PinPad</h2>
+    <div class="demo-pin">
+      <erx-pin-pad
+        id="demoPinPad"
+        label="Enter PIN"
+        max-length="4"
+        masked
+        show-submit
+      ></erx-pin-pad>
+    </div>
+  </section>
+
+  <script>
+    // Theme toggle
+    function toggleTheme() {
+      document.documentElement.classList.toggle('dark');
+    }
+
+    // DataGrid setup
+    const grid = document.getElementById('demoGrid');
+    grid.columns = [
+      { field: 'id', header: 'ID', width: 60, sortable: true },
+      { field: 'name', header: 'Product Name', sortable: true, filterable: true, editable: true },
+      { field: 'category', header: 'Category', sortable: true, filterable: true },
+      { field: 'price', header: 'Price', type: 'currency', align: 'right', sortable: true },
+      { field: 'stock', header: 'Stock', type: 'number', align: 'center', sortable: true },
+      { field: 'active', header: 'Active', type: 'boolean', align: 'center', editable: true },
+    ];
+
+    grid.data = [
+      { id: 1, name: 'MacBook Pro 14"', category: 'Laptops', price: 1999.00, stock: 15, active: true },
+      { id: 2, name: 'iPhone 15 Pro', category: 'Phones', price: 1199.00, stock: 42, active: true },
+      { id: 3, name: 'iPad Air', category: 'Tablets', price: 599.00, stock: 28, active: true },
+      { id: 4, name: 'AirPods Pro', category: 'Audio', price: 249.00, stock: 103, active: true },
+      { id: 5, name: 'Apple Watch Ultra', category: 'Wearables', price: 799.00, stock: 8, active: true },
+      { id: 6, name: 'Magic Keyboard', category: 'Accessories', price: 299.00, stock: 45, active: true },
+      { id: 7, name: 'Studio Display', category: 'Monitors', price: 1599.00, stock: 5, active: false },
+      { id: 8, name: 'Mac Mini M2', category: 'Desktops', price: 599.00, stock: 22, active: true },
+      { id: 9, name: 'HomePod Mini', category: 'Audio', price: 99.00, stock: 67, active: true },
+      { id: 10, name: 'Apple TV 4K', category: 'Streaming', price: 129.00, stock: 33, active: true },
+      { id: 11, name: 'MagSafe Charger', category: 'Accessories', price: 39.00, stock: 156, active: true },
+      { id: 12, name: 'AirTag 4-Pack', category: 'Accessories', price: 99.00, stock: 89, active: true },
+    ];
+
+    grid.selectable = 'multiple';
+
+    grid.addEventListener('erxRowSelect', (e) => {
+      console.log('Selected rows:', e.detail.selectedRows);
+    });
+
+    grid.addEventListener('erxSort', (e) => {
+      console.log('Sort:', e.detail);
+    });
+
+    grid.addEventListener('erxCellEdit', (e) => {
+      console.log('Cell edit:', e.detail);
+    });
+
+    // PinPad setup
+    const pinPad = document.getElementById('demoPinPad');
+    pinPad.addEventListener('erxChange', (e) => {
+      console.log('PIN changed:', e.detail);
+    });
+    pinPad.addEventListener('erxSubmit', (e) => {
+      alert('PIN submitted: ' + e.detail.value);
+    });
+  </script>
+</body>
+</html>

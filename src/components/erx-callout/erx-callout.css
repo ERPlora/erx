@@ -1,0 +1,42 @@
+:host { display: block; font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; }
+.erx-callout { border-radius: 8px; overflow: hidden; border-left: 4px solid var(--erx-color-primary, #667eea); background: var(--erx-color-primary-light, #eef2ff); }
+.erx-callout__header { display: flex; align-items: center; gap: 10px; padding: 12px 16px; }
+.erx-callout--collapsible .erx-callout__header { cursor: pointer; transition: background 150ms ease; }
+.erx-callout--collapsible .erx-callout__header:hover { background: rgba(0,0,0,0.03); }
+.erx-callout__icon { font-size: 16px; flex-shrink: 0; }
+.erx-callout__title { flex: 1; font-size: 14px; font-weight: 600; color: var(--erx-color-primary-dark, #4338ca); }
+.erx-callout__toggle { font-size: 10px; color: var(--erx-text-tertiary, #9ca3af); transition: transform 200ms ease; }
+.erx-callout__content { padding: 0 16px 12px; font-size: 14px; color: var(--erx-text, #111827); line-height: 1.6; }
+/* Variants */
+.erx-callout--info { border-color: var(--erx-color-primary, #667eea); background: var(--erx-color-primary-light, #eef2ff); }
+.erx-callout--info .erx-callout__title { color: var(--erx-color-primary-dark, #4338ca); }
+.erx-callout--info .erx-callout__icon { color: var(--erx-color-primary, #667eea); }
+.erx-callout--success { border-color: var(--erx-color-success, #10b981); background: #ecfdf5; }
+.erx-callout--success .erx-callout__title { color: #065f46; }
+.erx-callout--success .erx-callout__icon { color: var(--erx-color-success, #10b981); }
+.erx-callout--warning { border-color: var(--erx-color-warning, #f59e0b); background: #fffbeb; }
+.erx-callout--warning .erx-callout__title { color: #92400e; }
+.erx-callout--warning .erx-callout__icon { color: var(--erx-color-warning, #f59e0b); }
+.erx-callout--error { border-color: var(--erx-color-danger, #ef4444); background: #fef2f2; }
+.erx-callout--error .erx-callout__title { color: #991b1b; }
+.erx-callout--error .erx-callout__icon { color: var(--erx-color-danger, #ef4444); }
+.erx-callout--tip { border-color: #8b5cf6; background: #f5f3ff; }
+.erx-callout--tip .erx-callout__title { color: #5b21b6; }
+.erx-callout--tip .erx-callout__icon { color: #8b5cf6; }
+.erx-callout--note { border-color: var(--erx-text-secondary, #6b7280); background: var(--erx-surface-secondary, #f9fafb); }
+.erx-callout--note .erx-callout__title { color: var(--erx-text, #111827); }
+.erx-callout--note .erx-callout__icon { color: var(--erx-text-secondary, #6b7280); }
+@media (prefers-color-scheme: dark) { :host { color-scheme: dark; } }
+:host-context(.dark) .erx-callout--info, :host(.dark) .erx-callout--info { background: rgba(102, 126, 234, 0.15); }
+:host-context(.dark) .erx-callout--info .erx-callout__title, :host(.dark) .erx-callout--info .erx-callout__title { color: #a5b4fc; }
+:host-context(.dark) .erx-callout--success, :host(.dark) .erx-callout--success { background: rgba(16, 185, 129, 0.15); }
+:host-context(.dark) .erx-callout--success .erx-callout__title, :host(.dark) .erx-callout--success .erx-callout__title { color: #6ee7b7; }
+:host-context(.dark) .erx-callout--warning, :host(.dark) .erx-callout--warning { background: rgba(245, 158, 11, 0.15); }
+:host-context(.dark) .erx-callout--warning .erx-callout__title, :host(.dark) .erx-callout--warning .erx-callout__title { color: #fcd34d; }
+:host-context(.dark) .erx-callout--error, :host(.dark) .erx-callout--error { background: rgba(239, 68, 68, 0.15); }
+:host-context(.dark) .erx-callout--error .erx-callout__title, :host(.dark) .erx-callout--error .erx-callout__title { color: #fca5a5; }
+:host-context(.dark) .erx-callout--tip, :host(.dark) .erx-callout--tip { background: rgba(139, 92, 246, 0.15); }
+:host-context(.dark) .erx-callout--tip .erx-callout__title, :host(.dark) .erx-callout--tip .erx-callout__title { color: #c4b5fd; }
+:host-context(.dark) .erx-callout--note, :host(.dark) .erx-callout--note { background: var(--erx-surface-secondary); }
+:host-context(.dark) .erx-callout--note .erx-callout__title, :host(.dark) .erx-callout--note .erx-callout__title { color: var(--erx-text); }
+:host-context(.dark) .erx-callout__content, :host(.dark) .erx-callout__content { color: var(--erx-text); }

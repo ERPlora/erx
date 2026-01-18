@@ -1,0 +1,190 @@
+/**
+ * ERX VirtualKeyboard Styles
+ */
+
+:host {
+  display: block;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+}
+
+.erx-keyboard {
+  background: var(--erx-surface-secondary, #d1d5db);
+  padding: 8px;
+  border-radius: var(--erx-border-radius-lg, 12px) var(--erx-border-radius-lg, 12px) 0 0;
+  user-select: none;
+}
+
+.erx-keyboard--disabled {
+  opacity: 0.6;
+  pointer-events: none;
+}
+
+/* Row */
+.erx-keyboard__row {
+  display: flex;
+  justify-content: center;
+  gap: 6px;
+  margin-bottom: 6px;
+}
+
+.erx-keyboard__row:last-child {
+  margin-bottom: 0;
+}
+
+/* Key */
+.erx-keyboard__key {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-width: calc(32px * var(--key-width, 1));
+  height: 44px;
+  padding: 0 8px;
+  border: none;
+  border-radius: var(--erx-border-radius, 8px);
+  background: var(--erx-surface, #ffffff);
+  color: var(--erx-text, #111827);
+  font-size: 18px;
+  font-weight: 500;
+  cursor: pointer;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+  transition: all 100ms ease;
+  -webkit-tap-highlight-color: transparent;
+}
+
+.erx-keyboard__key:hover {
+  background: var(--erx-surface-secondary, #f9fafb);
+}
+
+.erx-keyboard__key:active {
+  background: var(--erx-color-primary, #667eea);
+  color: white;
+  transform: scale(0.95);
+}
+
+.erx-keyboard__key:focus {
+  outline: none;
+}
+
+/* Special keys */
+.erx-keyboard__key--special {
+  background: var(--erx-surface-tertiary, #e5e7eb);
+  color: var(--erx-text-secondary, #6b7280);
+  font-size: 16px;
+}
+
+.erx-keyboard__key--special:hover {
+  background: var(--erx-surface-secondary, #d1d5db);
+}
+
+.erx-keyboard__key--active {
+  background: var(--erx-color-primary, #667eea);
+  color: white;
+}
+
+.erx-keyboard__key--active:hover {
+  background: var(--erx-color-primary-dark, #5a6fce);
+}
+
+/* Numeric layout */
+.erx-keyboard--numeric {
+  max-width: 200px;
+}
+
+.erx-keyboard--numeric .erx-keyboard__key {
+  flex: 1;
+  min-width: unset;
+  height: 52px;
+  font-size: 24px;
+}
+
+/* Phone layout */
+.erx-keyboard--phone {
+  max-width: 200px;
+}
+
+.erx-keyboard--phone .erx-keyboard__key {
+  flex: 1;
+  min-width: unset;
+  height: 48px;
+  font-size: 22px;
+}
+
+/* Theme: Dark */
+.erx-keyboard--dark {
+  background: #1f2937;
+}
+
+.erx-keyboard--dark .erx-keyboard__key {
+  background: #374151;
+  color: #f9fafb;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.3);
+}
+
+.erx-keyboard--dark .erx-keyboard__key:hover {
+  background: #4b5563;
+}
+
+.erx-keyboard--dark .erx-keyboard__key--special {
+  background: #1f2937;
+  color: #9ca3af;
+}
+
+.erx-keyboard--dark .erx-keyboard__key--special:hover {
+  background: #374151;
+}
+
+/* Auto theme (respects system) */
+@media (prefers-color-scheme: dark) {
+  .erx-keyboard--auto {
+    background: #1f2937;
+  }
+
+  .erx-keyboard--auto .erx-keyboard__key {
+    background: #374151;
+    color: #f9fafb;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.3);
+  }
+
+  .erx-keyboard--auto .erx-keyboard__key:hover {
+    background: #4b5563;
+  }
+
+  .erx-keyboard--auto .erx-keyboard__key--special {
+    background: #1f2937;
+    color: #9ca3af;
+  }
+}
+
+/* Touch optimizations */
+@media (hover: none) and (pointer: coarse) {
+  .erx-keyboard {
+    padding: 12px;
+  }
+
+  .erx-keyboard__row {
+    gap: 8px;
+    margin-bottom: 8px;
+  }
+
+  .erx-keyboard__key {
+    height: 48px;
+    font-size: 20px;
+  }
+
+  .erx-keyboard--numeric .erx-keyboard__key,
+  .erx-keyboard--phone .erx-keyboard__key {
+    height: 56px;
+    font-size: 26px;
+  }
+}
+
+/* Fixed bottom positioning */
+:host([position="bottom"]) .erx-keyboard {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  border-radius: var(--erx-border-radius-lg, 12px) var(--erx-border-radius-lg, 12px) 0 0;
+  z-index: 1000;
+  box-shadow: 0 -4px 20px rgba(0, 0, 0, 0.15);
+}

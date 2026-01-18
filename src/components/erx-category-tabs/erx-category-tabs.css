@@ -1,0 +1,346 @@
+/**
+ * ERX CategoryTabs Styles
+ */
+
+:host {
+  display: block;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+}
+
+/* Container */
+.erx-cat {
+  display: flex;
+  align-items: center;
+  position: relative;
+  background: var(--erx-surface, #ffffff);
+}
+
+.erx-cat--disabled {
+  opacity: 0.6;
+  pointer-events: none;
+}
+
+.erx-cat--centered .erx-cat__tabs {
+  justify-content: center;
+}
+
+/* Scroll container */
+.erx-cat__scroll {
+  flex: 1;
+  overflow: hidden;
+}
+
+.erx-cat__scroll--scrollable {
+  overflow-x: auto;
+  scroll-behavior: smooth;
+  -webkit-overflow-scrolling: touch;
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+}
+
+.erx-cat__scroll--scrollable::-webkit-scrollbar {
+  display: none;
+}
+
+/* Tabs container */
+.erx-cat__tabs {
+  display: flex;
+  gap: var(--erx-space-xs, 8px);
+  padding: var(--erx-space-xs, 8px);
+}
+
+/* Scroll buttons */
+.erx-cat__scroll-btn {
+  flex-shrink: 0;
+  width: 32px;
+  height: 32px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: none;
+  border-radius: var(--erx-border-radius, 8px);
+  background: var(--erx-surface-secondary, #f9fafb);
+  color: var(--erx-text-secondary, #6b7280);
+  cursor: pointer;
+  transition: all 150ms ease;
+  z-index: 1;
+}
+
+.erx-cat__scroll-btn svg {
+  width: 20px;
+  height: 20px;
+}
+
+.erx-cat__scroll-btn:hover:not(:disabled) {
+  background: var(--erx-surface-tertiary, #f3f4f6);
+  color: var(--erx-text, #111827);
+}
+
+.erx-cat__scroll-btn:disabled,
+.erx-cat__scroll-btn--hidden {
+  opacity: 0;
+  pointer-events: none;
+}
+
+.erx-cat__scroll-btn--left {
+  margin-right: 4px;
+}
+
+.erx-cat__scroll-btn--right {
+  margin-left: 4px;
+}
+
+/* Tab button base */
+.erx-cat__tab {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  flex-shrink: 0;
+  border: none;
+  background: transparent;
+  color: var(--erx-text-secondary, #6b7280);
+  font-size: 14px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 150ms ease;
+  white-space: nowrap;
+  -webkit-tap-highlight-color: transparent;
+}
+
+.erx-cat__tab:focus {
+  outline: none;
+}
+
+.erx-cat__tab:focus-visible {
+  box-shadow: 0 0 0 2px var(--erx-color-primary, #667eea);
+}
+
+.erx-cat__tab--disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+/* Icon */
+.erx-cat__icon {
+  font-size: 16px;
+  line-height: 1;
+}
+
+.erx-cat__icon--img {
+  width: 20px;
+  height: 20px;
+  object-fit: contain;
+  border-radius: 4px;
+}
+
+/* Label */
+.erx-cat__label {
+  line-height: 1.2;
+}
+
+/* Count badge */
+.erx-cat__count {
+  font-size: 11px;
+  font-weight: 600;
+  padding: 2px 6px;
+  border-radius: 10px;
+  background: var(--erx-surface-tertiary, #f3f4f6);
+  color: var(--erx-text-secondary, #6b7280);
+}
+
+/* ====================================
+   Variant: Pills (default)
+   ==================================== */
+.erx-cat--pills .erx-cat__tab {
+  padding: 8px 16px;
+  border-radius: 20px;
+  background: var(--erx-surface-secondary, #f9fafb);
+}
+
+.erx-cat--pills .erx-cat__tab:hover:not(:disabled) {
+  background: var(--erx-surface-tertiary, #f3f4f6);
+}
+
+.erx-cat--pills .erx-cat__tab--selected {
+  background: var(--cat-color, var(--erx-color-primary, #667eea));
+  color: white;
+}
+
+.erx-cat--pills .erx-cat__tab--selected .erx-cat__count {
+  background: rgba(255, 255, 255, 0.2);
+  color: white;
+}
+
+/* ====================================
+   Variant: Underline
+   ==================================== */
+.erx-cat--underline {
+  border-bottom: 1px solid var(--erx-border-color, #e5e7eb);
+}
+
+.erx-cat--underline .erx-cat__tabs {
+  gap: 0;
+  padding: 0;
+}
+
+.erx-cat--underline .erx-cat__tab {
+  padding: 12px 16px;
+  border-radius: 0;
+  position: relative;
+}
+
+.erx-cat--underline .erx-cat__tab::after {
+  content: '';
+  position: absolute;
+  bottom: -1px;
+  left: 0;
+  right: 0;
+  height: 2px;
+  background: transparent;
+  transition: background 150ms ease;
+}
+
+.erx-cat--underline .erx-cat__tab:hover:not(:disabled)::after {
+  background: var(--erx-border-color, #e5e7eb);
+}
+
+.erx-cat--underline .erx-cat__tab--selected {
+  color: var(--cat-color, var(--erx-color-primary, #667eea));
+}
+
+.erx-cat--underline .erx-cat__tab--selected::after {
+  background: var(--cat-color, var(--erx-color-primary, #667eea));
+}
+
+/* ====================================
+   Variant: Chips
+   ==================================== */
+.erx-cat--chips .erx-cat__tab {
+  padding: 6px 12px;
+  border: 1px solid var(--erx-border-color, #e5e7eb);
+  border-radius: var(--erx-border-radius, 8px);
+  background: var(--erx-surface, #ffffff);
+}
+
+.erx-cat--chips .erx-cat__tab:hover:not(:disabled) {
+  border-color: var(--erx-color-primary, #667eea);
+}
+
+.erx-cat--chips .erx-cat__tab--selected {
+  border-color: var(--cat-color, var(--erx-color-primary, #667eea));
+  background: var(--cat-color, var(--erx-color-primary, #667eea));
+  color: white;
+}
+
+/* ====================================
+   Size variants
+   ==================================== */
+
+/* Small */
+.erx-cat--sm .erx-cat__tab {
+  font-size: 12px;
+  padding: 6px 12px;
+}
+
+.erx-cat--sm .erx-cat__icon {
+  font-size: 14px;
+}
+
+.erx-cat--sm .erx-cat__icon--img {
+  width: 16px;
+  height: 16px;
+}
+
+.erx-cat--sm.erx-cat--underline .erx-cat__tab {
+  padding: 8px 12px;
+}
+
+/* Large */
+.erx-cat--lg .erx-cat__tab {
+  font-size: 16px;
+  padding: 12px 20px;
+}
+
+.erx-cat--lg .erx-cat__icon {
+  font-size: 20px;
+}
+
+.erx-cat--lg .erx-cat__icon--img {
+  width: 24px;
+  height: 24px;
+}
+
+.erx-cat--lg.erx-cat--underline .erx-cat__tab {
+  padding: 16px 20px;
+}
+
+/* ====================================
+   Dark mode
+   ==================================== */
+@media (prefers-color-scheme: dark) {
+  :host {
+    color-scheme: dark;
+  }
+}
+
+:host-context(.dark) .erx-cat,
+:host(.dark) .erx-cat {
+  background: var(--erx-surface);
+}
+
+:host-context(.dark) .erx-cat__tab,
+:host(.dark) .erx-cat__tab {
+  color: var(--erx-text-secondary);
+}
+
+:host-context(.dark) .erx-cat--pills .erx-cat__tab,
+:host(.dark) .erx-cat--pills .erx-cat__tab {
+  background: var(--erx-surface-secondary);
+}
+
+:host-context(.dark) .erx-cat--pills .erx-cat__tab:hover:not(:disabled),
+:host(.dark) .erx-cat--pills .erx-cat__tab:hover:not(:disabled) {
+  background: var(--erx-surface-tertiary);
+}
+
+:host-context(.dark) .erx-cat--chips .erx-cat__tab,
+:host(.dark) .erx-cat--chips .erx-cat__tab {
+  background: var(--erx-surface);
+  border-color: var(--erx-border-color);
+}
+
+:host-context(.dark) .erx-cat--underline,
+:host(.dark) .erx-cat--underline {
+  border-color: var(--erx-border-color);
+}
+
+:host-context(.dark) .erx-cat__scroll-btn,
+:host(.dark) .erx-cat__scroll-btn {
+  background: var(--erx-surface-secondary);
+  color: var(--erx-text-secondary);
+}
+
+:host-context(.dark) .erx-cat__count,
+:host(.dark) .erx-cat__count {
+  background: var(--erx-surface-tertiary);
+  color: var(--erx-text-secondary);
+}
+
+/* ====================================
+   Touch device optimizations
+   ==================================== */
+@media (hover: none) and (pointer: coarse) {
+  .erx-cat__scroll-btn {
+    width: 40px;
+    height: 40px;
+  }
+
+  .erx-cat--pills .erx-cat__tab,
+  .erx-cat--chips .erx-cat__tab {
+    padding: 10px 16px;
+  }
+
+  .erx-cat--underline .erx-cat__tab {
+    padding: 14px 16px;
+  }
+}

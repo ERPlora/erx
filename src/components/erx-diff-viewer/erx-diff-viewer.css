@@ -1,0 +1,29 @@
+:host { display: block; font-family: ui-monospace, SFMono-Regular, 'SF Mono', Menlo, monospace; font-size: 13px; }
+.erx-diff { background: var(--erx-surface, #fff); border: 1px solid var(--erx-border-color, #e5e7eb); border-radius: 8px; overflow: hidden; }
+.erx-diff--wrap .erx-diff__content { white-space: pre-wrap; word-break: break-all; }
+.erx-diff__split { display: flex; }
+.erx-diff__pane { flex: 1; min-width: 0; overflow: auto; }
+.erx-diff__pane--old { border-right: 1px solid var(--erx-border-color, #e5e7eb); }
+.erx-diff__pane-header { padding: 8px 12px; background: var(--erx-surface-secondary, #f9fafb); border-bottom: 1px solid var(--erx-border-color, #e5e7eb); font-weight: 600; font-size: 12px; color: var(--erx-text-secondary, #6b7280); }
+.erx-diff__unified-header { padding: 8px 12px; background: var(--erx-surface-secondary, #f9fafb); border-bottom: 1px solid var(--erx-border-color, #e5e7eb); display: flex; flex-direction: column; gap: 2px; }
+.erx-diff__file { font-size: 12px; }
+.erx-diff__file--old { color: var(--erx-color-danger, #ef4444); }
+.erx-diff__file--new { color: var(--erx-color-success, #10b981); }
+.erx-diff__lines { overflow: auto; }
+.erx-diff__line { display: flex; min-height: 22px; line-height: 22px; }
+.erx-diff__line--unchanged { background: transparent; }
+.erx-diff__line--added { background: rgba(16, 185, 129, 0.15); }
+.erx-diff__line--removed { background: rgba(239, 68, 68, 0.15); }
+.erx-diff__line--empty { background: var(--erx-surface-secondary, #f9fafb); }
+.erx-diff__ln { width: 40px; min-width: 40px; padding: 0 8px; text-align: right; color: var(--erx-text-tertiary, #9ca3af); background: var(--erx-surface-secondary, #f9fafb); border-right: 1px solid var(--erx-border-color, #e5e7eb); user-select: none; }
+.erx-diff__ln--old { width: 35px; min-width: 35px; }
+.erx-diff__ln--new { width: 35px; min-width: 35px; }
+.erx-diff__prefix { width: 20px; min-width: 20px; text-align: center; color: var(--erx-text-secondary, #6b7280); user-select: none; }
+.erx-diff__line--added .erx-diff__prefix { color: var(--erx-color-success, #10b981); }
+.erx-diff__line--removed .erx-diff__prefix { color: var(--erx-color-danger, #ef4444); }
+.erx-diff__content { flex: 1; padding: 0 12px; white-space: pre; color: var(--erx-text, #111827); }
+@media (prefers-color-scheme: dark) { :host { color-scheme: dark; } }
+:host-context(.dark) .erx-diff, :host(.dark) .erx-diff { background: var(--erx-surface); border-color: var(--erx-border-color); }
+:host-context(.dark) .erx-diff__line--added, :host(.dark) .erx-diff__line--added { background: rgba(16, 185, 129, 0.2); }
+:host-context(.dark) .erx-diff__line--removed, :host(.dark) .erx-diff__line--removed { background: rgba(239, 68, 68, 0.2); }
+:host-context(.dark) .erx-diff__content, :host(.dark) .erx-diff__content { color: var(--erx-text); }

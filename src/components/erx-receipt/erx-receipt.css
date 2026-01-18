@@ -1,0 +1,238 @@
+/**
+ * ERX Receipt Styles
+ */
+
+:host {
+  display: block;
+  font-family: 'Courier New', Courier, monospace;
+}
+
+.erx-receipt {
+  background: var(--erx-surface, #ffffff);
+  border: 1px solid var(--erx-border-color, #e5e7eb);
+  border-radius: var(--erx-border-radius, 8px);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  overflow: hidden;
+}
+
+.erx-receipt--80mm {
+  max-width: 302px; /* 80mm at 96dpi */
+}
+
+.erx-receipt--58mm {
+  max-width: 219px; /* 58mm at 96dpi */
+}
+
+/* Header */
+.erx-receipt__header {
+  text-align: center;
+  padding: 16px 12px;
+  border-bottom: 1px dashed var(--erx-border-color, #e5e7eb);
+}
+
+.erx-receipt__logo {
+  max-width: 120px;
+  max-height: 60px;
+  margin-bottom: 8px;
+}
+
+.erx-receipt__business-name {
+  margin: 0 0 4px;
+  font-size: 18px;
+  font-weight: 700;
+  color: var(--erx-text, #111827);
+}
+
+.erx-receipt__address,
+.erx-receipt__phone,
+.erx-receipt__tax-id {
+  margin: 2px 0;
+  font-size: 11px;
+  color: var(--erx-text-secondary, #6b7280);
+}
+
+/* Divider */
+.erx-receipt__divider {
+  border: none;
+  border-top: 1px dashed var(--erx-border-color, #e5e7eb);
+  margin: 0;
+}
+
+.erx-receipt__divider--double {
+  border-top-style: double;
+  border-top-width: 3px;
+}
+
+/* Info section */
+.erx-receipt__info {
+  padding: 12px;
+}
+
+.erx-receipt__row {
+  display: flex;
+  justify-content: space-between;
+  font-size: 12px;
+  color: var(--erx-text-secondary, #6b7280);
+  padding: 2px 0;
+}
+
+/* Items */
+.erx-receipt__items {
+  padding: 12px;
+}
+
+.erx-receipt__item {
+  margin-bottom: 8px;
+  padding-bottom: 8px;
+  border-bottom: 1px dotted var(--erx-border-color, #e5e7eb);
+}
+
+.erx-receipt__item:last-child {
+  border-bottom: none;
+  margin-bottom: 0;
+  padding-bottom: 0;
+}
+
+.erx-receipt__item-line {
+  display: flex;
+  justify-content: space-between;
+  font-size: 12px;
+  color: var(--erx-text, #111827);
+}
+
+.erx-receipt__item-name {
+  font-weight: 600;
+}
+
+.erx-receipt__item-line--details {
+  color: var(--erx-text-secondary, #6b7280);
+  margin-top: 2px;
+}
+
+.erx-receipt__item-line--discount {
+  color: var(--erx-color-success, #10b981);
+  font-size: 11px;
+}
+
+/* Totals */
+.erx-receipt__totals {
+  padding: 12px;
+}
+
+.erx-receipt__row--discount {
+  color: var(--erx-color-success, #10b981);
+}
+
+.erx-receipt__row--total {
+  font-size: 16px;
+  font-weight: 700;
+  color: var(--erx-text, #111827);
+  padding-top: 8px;
+  margin-top: 8px;
+  border-top: 1px solid var(--erx-border-color, #e5e7eb);
+}
+
+/* Payment */
+.erx-receipt__payment {
+  padding: 12px;
+  background: var(--erx-surface-secondary, #f9fafb);
+}
+
+/* Codes */
+.erx-receipt__codes {
+  padding: 12px;
+  text-align: center;
+}
+
+.erx-receipt__barcode-placeholder,
+.erx-receipt__qr-placeholder {
+  font-size: 12px;
+  color: var(--erx-text-tertiary, #9ca3af);
+  padding: 16px;
+  background: var(--erx-surface-secondary, #f9fafb);
+  border-radius: var(--erx-border-radius-sm, 4px);
+}
+
+.erx-receipt__barcode-placeholder {
+  font-family: 'Libre Barcode 39', monospace;
+  font-size: 36px;
+  letter-spacing: -2px;
+}
+
+/* Footer */
+.erx-receipt__footer {
+  text-align: center;
+  padding: 12px;
+  border-top: 1px dashed var(--erx-border-color, #e5e7eb);
+}
+
+.erx-receipt__footer p {
+  margin: 0;
+  font-size: 11px;
+  color: var(--erx-text-secondary, #6b7280);
+}
+
+/* Compact mode */
+.erx-receipt--compact .erx-receipt__header {
+  padding: 8px;
+}
+
+.erx-receipt--compact .erx-receipt__business-name {
+  font-size: 14px;
+}
+
+.erx-receipt--compact .erx-receipt__info,
+.erx-receipt--compact .erx-receipt__items,
+.erx-receipt--compact .erx-receipt__totals,
+.erx-receipt--compact .erx-receipt__payment,
+.erx-receipt--compact .erx-receipt__codes,
+.erx-receipt--compact .erx-receipt__footer {
+  padding: 8px;
+}
+
+.erx-receipt--compact .erx-receipt__row,
+.erx-receipt--compact .erx-receipt__item-line {
+  font-size: 11px;
+}
+
+/* Dark mode */
+@media (prefers-color-scheme: dark) {
+  :host { color-scheme: dark; }
+}
+
+:host-context(.dark) .erx-receipt,
+:host(.dark) .erx-receipt {
+  background: var(--erx-surface);
+  border-color: var(--erx-border-color);
+}
+
+:host-context(.dark) .erx-receipt__business-name,
+:host(.dark) .erx-receipt__business-name,
+:host-context(.dark) .erx-receipt__item-name,
+:host(.dark) .erx-receipt__item-name,
+:host-context(.dark) .erx-receipt__row--total,
+:host(.dark) .erx-receipt__row--total {
+  color: var(--erx-text);
+}
+
+:host-context(.dark) .erx-receipt__payment,
+:host(.dark) .erx-receipt__payment,
+:host-context(.dark) .erx-receipt__barcode-placeholder,
+:host(.dark) .erx-receipt__barcode-placeholder,
+:host-context(.dark) .erx-receipt__qr-placeholder,
+:host(.dark) .erx-receipt__qr-placeholder {
+  background: var(--erx-surface-secondary);
+}
+
+/* Print styles */
+@media print {
+  :host {
+    font-size: 10px;
+  }
+
+  .erx-receipt {
+    box-shadow: none;
+    border: none;
+    max-width: none;
+  }
+}

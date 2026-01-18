@@ -1,0 +1,25 @@
+:host { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; }
+.erx-sheet__container { position: fixed; inset: 0; z-index: 1000; }
+.erx-sheet__backdrop { position: absolute; inset: 0; background: rgba(0,0,0,0.5); animation: erx-sheet-fade-in 200ms ease; }
+@keyframes erx-sheet-fade-in { from { opacity: 0; } to { opacity: 1; } }
+.erx-sheet { position: absolute; background: var(--erx-surface, #fff); display: flex; flex-direction: column; transition: transform 200ms ease; }
+.erx-sheet--dragging { transition: none; }
+.erx-sheet--bottom { bottom: 0; left: 0; right: 0; border-radius: 16px 16px 0 0; animation: erx-sheet-slide-up 200ms ease; }
+@keyframes erx-sheet-slide-up { from { transform: translateY(100%); } to { transform: translateY(0); } }
+.erx-sheet--top { top: 0; left: 0; right: 0; border-radius: 0 0 16px 16px; animation: erx-sheet-slide-down 200ms ease; }
+@keyframes erx-sheet-slide-down { from { transform: translateY(-100%); } to { transform: translateY(0); } }
+.erx-sheet--left { left: 0; top: 0; bottom: 0; border-radius: 0 16px 16px 0; animation: erx-sheet-slide-right 200ms ease; }
+@keyframes erx-sheet-slide-right { from { transform: translateX(-100%); } to { transform: translateX(0); } }
+.erx-sheet--right { right: 0; top: 0; bottom: 0; border-radius: 16px 0 0 16px; animation: erx-sheet-slide-left 200ms ease; }
+@keyframes erx-sheet-slide-left { from { transform: translateX(100%); } to { transform: translateX(0); } }
+.erx-sheet__handle { display: flex; align-items: center; justify-content: center; padding: 12px; cursor: grab; }
+.erx-sheet__handle:active { cursor: grabbing; }
+.erx-sheet--left .erx-sheet__handle, .erx-sheet--right .erx-sheet__handle { width: 20px; height: 100%; position: absolute; top: 0; padding: 0; }
+.erx-sheet--left .erx-sheet__handle { right: 0; }
+.erx-sheet--right .erx-sheet__handle { left: 0; }
+.erx-sheet__handle-bar { width: 40px; height: 4px; background: var(--erx-text-tertiary, #9ca3af); border-radius: 2px; opacity: 0.5; }
+.erx-sheet__handle-bar--vertical { width: 4px; height: 40px; }
+.erx-sheet__content { flex: 1; overflow: auto; padding: 16px; }
+.erx-sheet--left .erx-sheet__content, .erx-sheet--right .erx-sheet__content { padding-top: 16px; }
+@media (prefers-color-scheme: dark) { :host { color-scheme: dark; } }
+:host-context(.dark) .erx-sheet, :host(.dark) .erx-sheet { background: var(--erx-surface); }

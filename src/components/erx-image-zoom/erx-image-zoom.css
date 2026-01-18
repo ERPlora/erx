@@ -1,0 +1,19 @@
+:host { display: inline-block; }
+.erx-iz { position: relative; display: inline-block; overflow: hidden; cursor: zoom-in; }
+.erx-iz--zoomed { cursor: zoom-out; }
+.erx-iz__img { display: block; max-width: 100%; height: auto; }
+.erx-iz--smooth .erx-iz__img { transition: opacity 150ms ease; }
+/* Overlay zoom */
+.erx-iz--overlay .erx-iz__overlay { position: absolute; inset: 0; background-repeat: no-repeat; opacity: 0; pointer-events: none; transition: opacity 150ms ease; }
+.erx-iz--overlay.erx-iz--zoomed .erx-iz__overlay { opacity: 1; }
+.erx-iz--overlay.erx-iz--zoomed .erx-iz__img { opacity: 0; }
+/* Lens zoom */
+.erx-iz--lens .erx-iz__lens { position: absolute; border-radius: 50%; border: 2px solid var(--erx-color-primary, #667eea); box-shadow: 0 4px 12px rgba(0,0,0,0.2); background-repeat: no-repeat; pointer-events: none; transform: translate(-50%, -50%); z-index: 10; }
+/* Side zoom */
+.erx-iz--side { display: flex; gap: 16px; }
+.erx-iz--side .erx-iz__side { width: 300px; height: 300px; flex-shrink: 0; background-repeat: no-repeat; border: 1px solid var(--erx-border-color, #e5e7eb); border-radius: 8px; display: none; }
+.erx-iz--side.erx-iz--zoomed .erx-iz__side { display: block; }
+/* Touch device optimization */
+@media (hover: none) {
+  .erx-iz { cursor: pointer; }
+}

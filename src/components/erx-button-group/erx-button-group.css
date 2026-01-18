@@ -1,0 +1,30 @@
+:host { display: inline-flex; font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; }
+.erx-bg { display: inline-flex; }
+.erx-bg--vertical { flex-direction: column; }
+.erx-bg--full-width { width: 100%; }
+.erx-bg--disabled { opacity: 0.5; pointer-events: none; }
+/* Horizontal connected buttons */
+.erx-bg:not(.erx-bg--vertical) ::slotted(button),
+.erx-bg:not(.erx-bg--vertical) ::slotted(ion-button),
+.erx-bg:not(.erx-bg--vertical) ::slotted(*) { border-radius: 0; margin: 0; }
+.erx-bg:not(.erx-bg--vertical) ::slotted(:first-child) { border-top-left-radius: 6px; border-bottom-left-radius: 6px; }
+.erx-bg:not(.erx-bg--vertical) ::slotted(:last-child) { border-top-right-radius: 6px; border-bottom-right-radius: 6px; }
+.erx-bg:not(.erx-bg--vertical) ::slotted(:not(:last-child)) { border-right: 1px solid rgba(0,0,0,0.1); }
+/* Vertical connected buttons */
+.erx-bg--vertical ::slotted(button),
+.erx-bg--vertical ::slotted(ion-button),
+.erx-bg--vertical ::slotted(*) { border-radius: 0; margin: 0; width: 100%; }
+.erx-bg--vertical ::slotted(:first-child) { border-top-left-radius: 6px; border-top-right-radius: 6px; }
+.erx-bg--vertical ::slotted(:last-child) { border-bottom-left-radius: 6px; border-bottom-right-radius: 6px; }
+.erx-bg--vertical ::slotted(:not(:last-child)) { border-bottom: 1px solid rgba(0,0,0,0.1); }
+/* Size variants */
+.erx-bg--sm ::slotted(button) { padding: 6px 12px; font-size: 12px; }
+.erx-bg--md ::slotted(button) { padding: 8px 16px; font-size: 14px; }
+.erx-bg--lg ::slotted(button) { padding: 12px 24px; font-size: 16px; }
+/* Style variants */
+.erx-bg--solid ::slotted(button) { background: var(--erx-color-primary, #667eea); color: #fff; border: none; }
+.erx-bg--solid ::slotted(button:hover) { background: var(--erx-color-primary-dark, #5a67d8); }
+.erx-bg--outline ::slotted(button) { background: transparent; color: var(--erx-color-primary, #667eea); border: 1px solid var(--erx-color-primary, #667eea); }
+.erx-bg--outline ::slotted(button:hover) { background: var(--erx-color-primary, #667eea); color: #fff; }
+.erx-bg--ghost ::slotted(button) { background: transparent; color: var(--erx-text, #111827); border: none; }
+.erx-bg--ghost ::slotted(button:hover) { background: var(--erx-surface-secondary, #f9fafb); }

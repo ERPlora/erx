@@ -1,0 +1,20 @@
+:host { display: block; font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; }
+.erx-carousel { position: relative; }
+.erx-carousel__viewport { overflow: hidden; border-radius: 12px; }
+.erx-carousel__track { display: flex; transition: transform 400ms ease; }
+.erx-carousel__slide { position: relative; flex-shrink: 0; }
+.erx-carousel__image { width: 100%; height: 100%; object-fit: cover; }
+.erx-carousel__content { position: absolute; bottom: 0; left: 0; right: 0; padding: 24px; background: linear-gradient(to top, rgba(0,0,0,0.7) 0%, transparent 100%); color: white; }
+.erx-carousel__title { margin: 0 0 8px 0; font-size: 24px; font-weight: 600; }
+.erx-carousel__desc { margin: 0; font-size: 14px; opacity: 0.9; }
+.erx-carousel__nav-btn { position: absolute; top: 50%; transform: translateY(-50%); width: 44px; height: 44px; border: none; background: rgba(255,255,255,0.9); color: var(--erx-text, #111827); font-size: 24px; cursor: pointer; border-radius: 50%; box-shadow: 0 2px 8px rgba(0,0,0,0.15); transition: all 150ms ease; z-index: 1; }
+.erx-carousel__nav-btn:hover:not(:disabled) { background: white; box-shadow: 0 4px 12px rgba(0,0,0,0.2); }
+.erx-carousel__nav-btn:disabled { opacity: 0.3; cursor: not-allowed; }
+.erx-carousel__nav-btn--prev { left: 16px; }
+.erx-carousel__nav-btn--next { right: 16px; }
+.erx-carousel__pagination { display: flex; justify-content: center; gap: 8px; margin-top: 16px; }
+.erx-carousel__dot { width: 10px; height: 10px; padding: 0; border: none; border-radius: 50%; background: var(--erx-border-color, #e5e7eb); cursor: pointer; transition: all 150ms ease; }
+.erx-carousel__dot:hover { background: var(--erx-text-tertiary, #9ca3af); }
+.erx-carousel__dot--active { background: var(--erx-color-primary, #667eea); transform: scale(1.2); }
+@media (prefers-color-scheme: dark) { :host { color-scheme: dark; } }
+:host-context(.dark) .erx-carousel__nav-btn, :host(.dark) .erx-carousel__nav-btn { background: rgba(0,0,0,0.8); color: white; }

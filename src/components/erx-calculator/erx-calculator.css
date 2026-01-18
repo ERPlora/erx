@@ -1,0 +1,227 @@
+/**
+ * ERX Calculator Styles
+ */
+
+:host {
+  display: block;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+}
+
+.erx-calc {
+  display: flex;
+  flex-direction: column;
+  background: var(--erx-surface, #ffffff);
+  border-radius: var(--erx-border-radius-lg, 12px);
+  border: 1px solid var(--erx-border-color, #e5e7eb);
+  overflow: hidden;
+  user-select: none;
+}
+
+.erx-calc:focus {
+  outline: none;
+}
+
+.erx-calc:focus-visible {
+  box-shadow: 0 0 0 2px var(--erx-color-primary, #667eea);
+}
+
+.erx-calc--disabled {
+  opacity: 0.6;
+  pointer-events: none;
+}
+
+/* Display */
+.erx-calc__display {
+  padding: var(--erx-space-md, 16px);
+  background: var(--erx-surface-secondary, #f9fafb);
+  text-align: right;
+  min-height: 80px;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+}
+
+.erx-calc__expression {
+  font-size: 14px;
+  color: var(--erx-text-secondary, #6b7280);
+  margin-bottom: 4px;
+}
+
+.erx-calc__value {
+  font-size: 32px;
+  font-weight: 600;
+  color: var(--erx-text, #111827);
+  font-variant-numeric: tabular-nums;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.erx-calc__currency {
+  font-size: 20px;
+  margin-right: 4px;
+  color: var(--erx-text-secondary, #6b7280);
+}
+
+/* Memory buttons */
+.erx-calc__memory {
+  display: flex;
+  border-bottom: 1px solid var(--erx-border-color, #e5e7eb);
+}
+
+.erx-calc__memory button {
+  flex: 1;
+  padding: 8px;
+  border: none;
+  border-right: 1px solid var(--erx-border-color, #e5e7eb);
+  background: transparent;
+  color: var(--erx-text-secondary, #6b7280);
+  font-size: 12px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 150ms ease;
+}
+
+.erx-calc__memory button:last-child {
+  border-right: none;
+}
+
+.erx-calc__memory button:hover {
+  background: var(--erx-surface-secondary, #f9fafb);
+}
+
+/* Keypad */
+.erx-calc__keypad {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 1px;
+  background: var(--erx-border-color, #e5e7eb);
+  padding: 1px;
+}
+
+/* Button */
+.erx-calc__btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 56px;
+  border: none;
+  background: var(--erx-surface, #ffffff);
+  color: var(--erx-text, #111827);
+  font-size: 20px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 100ms ease;
+  -webkit-tap-highlight-color: transparent;
+}
+
+.erx-calc__btn:hover {
+  background: var(--erx-surface-secondary, #f9fafb);
+}
+
+.erx-calc__btn:active {
+  background: var(--erx-surface-tertiary, #f3f4f6);
+}
+
+.erx-calc__btn:focus {
+  outline: none;
+}
+
+.erx-calc__btn:focus-visible {
+  box-shadow: inset 0 0 0 2px var(--erx-color-primary, #667eea);
+}
+
+/* Action buttons */
+.erx-calc__btn--action {
+  background: var(--erx-surface-secondary, #f9fafb);
+  color: var(--erx-text-secondary, #6b7280);
+  font-size: 18px;
+}
+
+.erx-calc__btn--action:hover {
+  background: var(--erx-surface-tertiary, #f3f4f6);
+}
+
+/* Operator buttons */
+.erx-calc__btn--operator {
+  background: var(--erx-color-primary, #667eea);
+  color: white;
+  font-size: 24px;
+}
+
+.erx-calc__btn--operator:hover {
+  background: var(--erx-color-primary-dark, #5a6fce);
+}
+
+.erx-calc__btn--operator:active {
+  background: #4f5fc0;
+}
+
+/* Equals button */
+.erx-calc__btn--equals {
+  background: var(--erx-color-success, #10b981);
+  color: white;
+  font-size: 24px;
+}
+
+.erx-calc__btn--equals:hover {
+  background: #0d9668;
+}
+
+.erx-calc__btn--equals:active {
+  background: #0a8055;
+}
+
+/* Dark mode */
+@media (prefers-color-scheme: dark) {
+  :host { color-scheme: dark; }
+}
+
+:host-context(.dark) .erx-calc,
+:host(.dark) .erx-calc {
+  background: var(--erx-surface);
+  border-color: var(--erx-border-color);
+}
+
+:host-context(.dark) .erx-calc__display,
+:host(.dark) .erx-calc__display {
+  background: var(--erx-surface-secondary);
+}
+
+:host-context(.dark) .erx-calc__value,
+:host(.dark) .erx-calc__value {
+  color: var(--erx-text);
+}
+
+:host-context(.dark) .erx-calc__keypad,
+:host(.dark) .erx-calc__keypad {
+  background: var(--erx-border-color);
+}
+
+:host-context(.dark) .erx-calc__btn,
+:host(.dark) .erx-calc__btn {
+  background: var(--erx-surface);
+  color: var(--erx-text);
+}
+
+:host-context(.dark) .erx-calc__btn:hover,
+:host(.dark) .erx-calc__btn:hover {
+  background: var(--erx-surface-secondary);
+}
+
+:host-context(.dark) .erx-calc__btn--action,
+:host(.dark) .erx-calc__btn--action {
+  background: var(--erx-surface-secondary);
+}
+
+/* Touch optimizations */
+@media (hover: none) and (pointer: coarse) {
+  .erx-calc__btn {
+    height: 64px;
+    font-size: 24px;
+  }
+
+  .erx-calc__btn--action {
+    font-size: 20px;
+  }
+}

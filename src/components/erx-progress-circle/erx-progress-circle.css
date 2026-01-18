@@ -1,0 +1,18 @@
+:host { display: inline-block; font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; }
+.erx-pc { position: relative; }
+.erx-pc__svg { display: block; }
+.erx-pc__track { opacity: 0.3; }
+.erx-pc__progress { transition: stroke-dashoffset 0.3s ease; }
+.erx-pc--indeterminate .erx-pc__progress { animation: erx-pc-spin 1.5s linear infinite; transform-origin: center; }
+@keyframes erx-pc-spin { 0% { transform: rotate(-90deg); } 100% { transform: rotate(270deg); } }
+.erx-pc__content { position: absolute; inset: 0; display: flex; flex-direction: column; align-items: center; justify-content: center; text-align: center; padding: 8px; }
+.erx-pc__value { font-size: 1.25em; font-weight: 600; color: var(--erx-text, #111827); line-height: 1; }
+.erx-pc__label { font-size: 0.75em; color: var(--erx-text-secondary, #6b7280); margin-top: 2px; }
+:host([size="sm"]) .erx-pc__value { font-size: 12px; }
+:host([size="sm"]) .erx-pc__label { font-size: 10px; }
+:host([size="lg"]) .erx-pc__value { font-size: 24px; }
+:host([size="lg"]) .erx-pc__label { font-size: 12px; }
+:host([size="xl"]) .erx-pc__value { font-size: 32px; }
+:host([size="xl"]) .erx-pc__label { font-size: 14px; }
+@media (prefers-color-scheme: dark) { :host { color-scheme: dark; } }
+:host-context(.dark) .erx-pc__value, :host(.dark) .erx-pc__value { color: var(--erx-text); }

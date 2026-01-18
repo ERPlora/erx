@@ -1,0 +1,41 @@
+:host { display: block; font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; }
+.erx-event { display: flex; background: var(--erx-surface, #fff); border: 1px solid var(--erx-border-color, #e5e7eb); border-radius: 8px; overflow: hidden; cursor: pointer; transition: all 150ms ease; }
+.erx-event:hover { box-shadow: 0 4px 12px rgba(0,0,0,0.1); transform: translateY(-1px); }
+.erx-event--cancelled { opacity: 0.6; }
+.erx-event__color-bar { width: 4px; background: var(--event-color); flex-shrink: 0; }
+.erx-event__content { flex: 1; padding: 12px; min-width: 0; }
+.erx-event__header { display: flex; align-items: flex-start; justify-content: space-between; gap: 8px; margin-bottom: 8px; }
+.erx-event__title { margin: 0; font-size: 14px; font-weight: 600; color: var(--erx-text, #111827); display: flex; align-items: center; gap: 6px; }
+.erx-event__recurring { font-size: 12px; color: var(--erx-text-tertiary, #9ca3af); }
+.erx-event__status { padding: 2px 8px; border-radius: 10px; font-size: 11px; font-weight: 500; flex-shrink: 0; }
+.erx-event__status--scheduled { background: rgba(59,130,246,0.1); color: #3b82f6; }
+.erx-event__status--ongoing { background: rgba(34,197,94,0.1); color: #22c55e; }
+.erx-event__status--completed { background: rgba(107,114,128,0.1); color: #6b7280; }
+.erx-event__status--cancelled { background: rgba(239,68,68,0.1); color: #ef4444; }
+.erx-event__time { font-size: 13px; color: var(--erx-text-secondary, #6b7280); margin-bottom: 4px; }
+.erx-event__duration { margin-left: 8px; font-size: 12px; color: var(--erx-text-tertiary, #9ca3af); }
+.erx-event__date { font-size: 12px; color: var(--erx-text-tertiary, #9ca3af); margin-bottom: 8px; }
+.erx-event__location { font-size: 13px; color: var(--erx-text-secondary, #6b7280); margin-bottom: 8px; }
+.erx-event__description { margin: 0 0 12px 0; font-size: 13px; color: var(--erx-text-secondary, #6b7280); display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden; }
+.erx-event__attendees { display: flex; margin-bottom: 12px; }
+.erx-event__attendee { width: 28px; height: 28px; border-radius: 50%; background: var(--erx-surface-secondary, #f9fafb); border: 2px solid var(--erx-surface, #fff); display: flex; align-items: center; justify-content: center; font-size: 11px; font-weight: 600; color: var(--erx-text-secondary, #6b7280); margin-left: -8px; overflow: hidden; }
+.erx-event__attendee:first-child { margin-left: 0; }
+.erx-event__attendee img { width: 100%; height: 100%; object-fit: cover; }
+.erx-event__attendee--accepted { border-color: var(--erx-color-success, #22c55e); }
+.erx-event__attendee--declined { border-color: var(--erx-color-danger, #ef4444); }
+.erx-event__attendee--tentative { border-color: var(--erx-color-warning, #f59e0b); }
+.erx-event__attendee--more { background: var(--erx-color-primary, #667eea); color: white; font-size: 10px; }
+.erx-event__footer { display: flex; align-items: center; justify-content: space-between; }
+.erx-event__indicators { display: flex; gap: 8px; font-size: 14px; }
+.erx-event__actions { display: flex; gap: 4px; opacity: 0; transition: opacity 150ms ease; }
+.erx-event:hover .erx-event__actions { opacity: 1; }
+.erx-event__action { width: 28px; height: 28px; border: none; background: var(--erx-surface-secondary, #f9fafb); border-radius: 6px; font-size: 12px; cursor: pointer; transition: background 150ms ease; }
+.erx-event__action:hover { background: var(--erx-border-color, #e5e7eb); }
+.erx-event--compact { border-radius: 4px; }
+.erx-event--compact .erx-event__content { padding: 8px; }
+.erx-event--compact .erx-event__header { margin-bottom: 4px; }
+.erx-event--compact .erx-event__title { font-size: 13px; }
+.erx-event--compact .erx-event__time { font-size: 11px; margin-bottom: 0; }
+@media (prefers-color-scheme: dark) { :host { color-scheme: dark; } }
+:host-context(.dark) .erx-event, :host(.dark) .erx-event { background: var(--erx-surface); border-color: var(--erx-border-color); }
+:host-context(.dark) .erx-event__title, :host(.dark) .erx-event__title { color: var(--erx-text); }

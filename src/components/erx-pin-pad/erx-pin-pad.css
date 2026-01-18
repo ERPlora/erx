@@ -1,0 +1,251 @@
+/**
+ * ERX PinPad Styles
+ */
+
+:host {
+  display: block;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+}
+
+/* Container */
+.erx-pin {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: var(--erx-space-md, 16px);
+  background: var(--erx-surface, #ffffff);
+  border-radius: var(--erx-border-radius-lg, 16px);
+  user-select: none;
+}
+
+.erx-pin:focus {
+  outline: none;
+}
+
+.erx-pin:focus-visible {
+  box-shadow: 0 0 0 2px var(--erx-color-primary, #667eea);
+}
+
+.erx-pin--disabled {
+  opacity: 0.6;
+  pointer-events: none;
+}
+
+/* Display area */
+.erx-pin__display {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+  margin-bottom: var(--erx-space-lg, 24px);
+}
+
+.erx-pin__label {
+  font-size: 14px;
+  color: var(--erx-text-secondary, #6b7280);
+  margin-bottom: var(--erx-space-sm, 8px);
+}
+
+.erx-pin__value {
+  font-size: 32px;
+  font-weight: 600;
+  letter-spacing: 8px;
+  color: var(--erx-text, #111827);
+  min-height: 44px;
+  display: flex;
+  align-items: center;
+}
+
+.erx-pin__value--empty {
+  color: var(--erx-text-tertiary, #9ca3af);
+}
+
+.erx-pin__value--masked {
+  font-size: 40px;
+  letter-spacing: 12px;
+}
+
+/* PIN dots indicator */
+.erx-pin__dots {
+  display: flex;
+  gap: var(--erx-space-sm, 8px);
+  margin-top: var(--erx-space-md, 16px);
+}
+
+.erx-pin__dot {
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  background: var(--erx-border-color, #e5e7eb);
+  transition: all 200ms ease;
+}
+
+.erx-pin__dot--filled {
+  background: var(--erx-color-primary, #667eea);
+  transform: scale(1.1);
+}
+
+/* Keypad grid */
+.erx-pin__keypad {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: var(--erx-space-sm, 8px);
+  width: 100%;
+  max-width: 280px;
+}
+
+/* Button */
+.erx-pin__btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: var(--erx-touch-target-lg, 52px);
+  border: none;
+  border-radius: var(--erx-border-radius, 8px);
+  background: var(--erx-surface-secondary, #f9fafb);
+  color: var(--erx-text, #111827);
+  font-size: 24px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 100ms ease;
+  -webkit-tap-highlight-color: transparent;
+}
+
+.erx-pin__btn:hover:not(:disabled) {
+  background: var(--erx-surface-tertiary, #f3f4f6);
+}
+
+.erx-pin__btn:active:not(:disabled),
+.erx-pin__btn--pressed {
+  background: var(--erx-color-primary, #667eea);
+  color: white;
+  transform: scale(0.95);
+}
+
+.erx-pin__btn:disabled {
+  opacity: 0;
+  cursor: default;
+}
+
+.erx-pin__btn:focus {
+  outline: none;
+}
+
+.erx-pin__btn:focus-visible {
+  box-shadow: 0 0 0 2px var(--erx-color-primary, #667eea);
+}
+
+/* Action buttons (clear, backspace, decimal) */
+.erx-pin__btn--action {
+  font-size: 18px;
+  color: var(--erx-text-secondary, #6b7280);
+}
+
+.erx-pin__btn--action:active:not(:disabled),
+.erx-pin__btn--action.erx-pin__btn--pressed {
+  background: var(--erx-color-danger, #ef4444);
+  color: white;
+}
+
+/* Primary button (enter) */
+.erx-pin__btn--primary {
+  background: var(--erx-color-primary, #667eea);
+  color: white;
+}
+
+.erx-pin__btn--primary:hover:not(:disabled) {
+  background: var(--erx-color-primary-dark, #5a6fce);
+}
+
+.erx-pin__btn--primary:active:not(:disabled),
+.erx-pin__btn--primary.erx-pin__btn--pressed {
+  background: var(--erx-color-primary-dark, #5a6fce);
+}
+
+/* Submit button (full width) */
+.erx-pin__submit {
+  width: 100%;
+  max-width: 280px;
+  height: var(--erx-touch-target, 44px);
+  margin-top: var(--erx-space-md, 16px);
+  border: none;
+  border-radius: var(--erx-border-radius, 8px);
+  background: var(--erx-color-primary, #667eea);
+  color: white;
+  font-size: 16px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 150ms ease;
+}
+
+.erx-pin__submit:hover:not(:disabled) {
+  background: var(--erx-color-primary-dark, #5a6fce);
+}
+
+.erx-pin__submit:active:not(:disabled) {
+  transform: scale(0.98);
+}
+
+.erx-pin__submit:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+.erx-pin__submit:focus {
+  outline: none;
+}
+
+.erx-pin__submit:focus-visible {
+  box-shadow: 0 0 0 2px white, 0 0 0 4px var(--erx-color-primary, #667eea);
+}
+
+/* Dark mode */
+@media (prefers-color-scheme: dark) {
+  :host {
+    color-scheme: dark;
+  }
+}
+
+:host-context(.dark) .erx-pin,
+:host(.dark) .erx-pin {
+  background: var(--erx-surface);
+}
+
+:host-context(.dark) .erx-pin__btn,
+:host(.dark) .erx-pin__btn {
+  background: var(--erx-surface-secondary);
+  color: var(--erx-text);
+}
+
+:host-context(.dark) .erx-pin__btn:hover:not(:disabled),
+:host(.dark) .erx-pin__btn:hover:not(:disabled) {
+  background: var(--erx-surface-tertiary);
+}
+
+:host-context(.dark) .erx-pin__value,
+:host(.dark) .erx-pin__value {
+  color: var(--erx-text);
+}
+
+:host-context(.dark) .erx-pin__dot,
+:host(.dark) .erx-pin__dot {
+  background: var(--erx-border-color);
+}
+
+/* Touch device optimizations */
+@media (hover: none) and (pointer: coarse) {
+  .erx-pin__btn {
+    height: 60px;
+    font-size: 28px;
+  }
+
+  .erx-pin__keypad {
+    gap: var(--erx-space-md, 16px);
+    max-width: 320px;
+  }
+
+  .erx-pin__submit {
+    height: 52px;
+    max-width: 320px;
+  }
+}

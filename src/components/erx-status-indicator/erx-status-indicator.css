@@ -1,0 +1,51 @@
+:host { display: inline-flex; font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; }
+.erx-si { display: inline-flex; align-items: center; gap: 6px; }
+/* Dot only */
+.erx-si--dot { }
+/* Badge variant */
+.erx-si--badge { padding: 4px 10px; background: var(--erx-surface-secondary, #f9fafb); border-radius: 4px; }
+/* Pill variant */
+.erx-si--pill { padding: 4px 12px; background: var(--erx-surface-secondary, #f9fafb); border-radius: 100px; }
+/* Status dot */
+.erx-si__dot { width: 8px; height: 8px; border-radius: 50%; background: var(--erx-text-tertiary, #9ca3af); flex-shrink: 0; }
+/* Pulse animation */
+.erx-si--pulse .erx-si__dot { animation: erx-si-pulse 2s ease-in-out infinite; }
+@keyframes erx-si-pulse { 0%, 100% { opacity: 1; transform: scale(1); } 50% { opacity: 0.6; transform: scale(1.1); } }
+/* Sizes */
+.erx-si--xs .erx-si__dot { width: 6px; height: 6px; }
+.erx-si--xs .erx-si__label { font-size: 10px; }
+.erx-si--sm .erx-si__dot { width: 8px; height: 8px; }
+.erx-si--sm .erx-si__label { font-size: 11px; }
+.erx-si--md .erx-si__dot { width: 10px; height: 10px; }
+.erx-si--md .erx-si__label { font-size: 12px; }
+.erx-si--lg .erx-si__dot { width: 12px; height: 12px; }
+.erx-si--lg .erx-si__label { font-size: 14px; }
+/* Label */
+.erx-si__label { font-weight: 500; color: var(--erx-text, #111827); white-space: nowrap; }
+/* Status colors */
+.erx-si--online .erx-si__dot { background: var(--erx-color-success, #10b981); }
+.erx-si--online .erx-si__label { color: var(--erx-color-success, #10b981); }
+.erx-si--offline .erx-si__dot { background: var(--erx-text-tertiary, #9ca3af); }
+.erx-si--offline .erx-si__label { color: var(--erx-text-tertiary, #9ca3af); }
+.erx-si--away .erx-si__dot { background: var(--erx-color-warning, #f59e0b); }
+.erx-si--away .erx-si__label { color: var(--erx-color-warning, #f59e0b); }
+.erx-si--busy .erx-si__dot { background: var(--erx-color-danger, #ef4444); }
+.erx-si--busy .erx-si__label { color: var(--erx-color-danger, #ef4444); }
+.erx-si--success .erx-si__dot { background: var(--erx-color-success, #10b981); }
+.erx-si--success .erx-si__label { color: var(--erx-color-success, #10b981); }
+.erx-si--warning .erx-si__dot { background: var(--erx-color-warning, #f59e0b); }
+.erx-si--warning .erx-si__label { color: var(--erx-color-warning, #f59e0b); }
+.erx-si--error .erx-si__dot { background: var(--erx-color-danger, #ef4444); }
+.erx-si--error .erx-si__label { color: var(--erx-color-danger, #ef4444); }
+.erx-si--neutral .erx-si__dot { background: var(--erx-text-tertiary, #9ca3af); }
+.erx-si--neutral .erx-si__label { color: var(--erx-text-secondary, #6b7280); }
+/* Badge/pill backgrounds by status */
+.erx-si--badge.erx-si--success, .erx-si--pill.erx-si--success { background: rgba(16, 185, 129, 0.1); }
+.erx-si--badge.erx-si--online, .erx-si--pill.erx-si--online { background: rgba(16, 185, 129, 0.1); }
+.erx-si--badge.erx-si--warning, .erx-si--pill.erx-si--warning { background: rgba(245, 158, 11, 0.1); }
+.erx-si--badge.erx-si--away, .erx-si--pill.erx-si--away { background: rgba(245, 158, 11, 0.1); }
+.erx-si--badge.erx-si--error, .erx-si--pill.erx-si--error { background: rgba(239, 68, 68, 0.1); }
+.erx-si--badge.erx-si--busy, .erx-si--pill.erx-si--busy { background: rgba(239, 68, 68, 0.1); }
+@media (prefers-color-scheme: dark) { :host { color-scheme: dark; } }
+:host-context(.dark) .erx-si--badge, :host(.dark) .erx-si--badge,
+:host-context(.dark) .erx-si--pill, :host(.dark) .erx-si--pill { background: var(--erx-surface-secondary); }

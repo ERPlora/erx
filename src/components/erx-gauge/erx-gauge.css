@@ -1,0 +1,16 @@
+:host { display: inline-block; font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; }
+.erx-gauge { position: relative; }
+.erx-gauge__svg { display: block; }
+.erx-gauge__track { opacity: 0.3; }
+.erx-gauge__needle { transition: transform 0.3s ease; }
+.erx-gauge__min-max { font-size: 12px; fill: var(--erx-text-tertiary, #9ca3af); }
+.erx-gauge__value-container { position: absolute; bottom: 0; left: 50%; transform: translateX(-50%); text-align: center; }
+.erx-gauge__value { display: block; font-size: 24px; font-weight: 700; color: var(--erx-text, #111827); line-height: 1; }
+.erx-gauge__unit { font-size: 14px; font-weight: 400; color: var(--erx-text-secondary, #6b7280); margin-left: 2px; }
+.erx-gauge__label { display: block; font-size: 12px; color: var(--erx-text-secondary, #6b7280); margin-top: 4px; }
+:host([size="sm"]) .erx-gauge__value { font-size: 18px; }
+:host([size="sm"]) .erx-gauge__unit { font-size: 11px; }
+:host([size="lg"]) .erx-gauge__value { font-size: 32px; }
+:host([size="lg"]) .erx-gauge__unit { font-size: 16px; }
+@media (prefers-color-scheme: dark) { :host { color-scheme: dark; } }
+:host-context(.dark) .erx-gauge__value, :host(.dark) .erx-gauge__value { color: var(--erx-text); }

@@ -1,0 +1,53 @@
+:host { display: block; font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; }
+.erx-sched { background: var(--erx-surface, #fff); border-radius: 12px; border: 1px solid var(--erx-border-color, #e5e7eb); overflow: hidden; }
+.erx-sched--disabled { opacity: 0.6; pointer-events: none; }
+.erx-sched__toolbar { display: flex; align-items: center; justify-content: space-between; padding: 12px 16px; border-bottom: 1px solid var(--erx-border-color, #e5e7eb); background: var(--erx-surface-secondary, #f9fafb); }
+.erx-sched__nav { display: flex; align-items: center; gap: 8px; }
+.erx-sched__nav-btn { width: 32px; height: 32px; border: 1px solid var(--erx-border-color, #e5e7eb); border-radius: 6px; background: var(--erx-surface, #fff); color: var(--erx-text, #111827); font-size: 14px; cursor: pointer; }
+.erx-sched__today-btn { height: 32px; padding: 0 12px; border: 1px solid var(--erx-border-color, #e5e7eb); border-radius: 6px; background: var(--erx-surface, #fff); color: var(--erx-text-secondary, #6b7280); font-size: 13px; font-weight: 500; cursor: pointer; }
+.erx-sched__title { font-size: 16px; font-weight: 600; color: var(--erx-text, #111827); }
+.erx-sched__view-switcher { display: flex; gap: 4px; }
+.erx-sched__view-btn { height: 32px; padding: 0 12px; border: 1px solid var(--erx-border-color, #e5e7eb); border-radius: 6px; background: var(--erx-surface, #fff); color: var(--erx-text-secondary, #6b7280); font-size: 12px; font-weight: 500; cursor: pointer; }
+.erx-sched__view-btn--active { background: var(--erx-color-primary, #667eea); border-color: var(--erx-color-primary, #667eea); color: white; }
+.erx-sched__timeline { display: flex; flex-direction: column; overflow: hidden; }
+.erx-sched__header { display: flex; border-bottom: 1px solid var(--erx-border-color, #e5e7eb); position: sticky; top: 0; background: var(--erx-surface, #fff); z-index: 10; }
+.erx-sched__resource-header { width: 180px; min-width: 180px; padding: 12px; font-size: 12px; font-weight: 600; text-transform: uppercase; color: var(--erx-text-secondary, #6b7280); border-right: 1px solid var(--erx-border-color, #e5e7eb); }
+.erx-sched__days-header { display: flex; flex: 1; }
+.erx-sched__day-header { flex: 1; padding: 12px 8px; text-align: center; font-size: 13px; font-weight: 500; color: var(--erx-text, #111827); border-right: 1px solid var(--erx-border-color, #e5e7eb); }
+.erx-sched__day-header:last-child { border-right: none; }
+.erx-sched__day-header--today { background: rgba(102,126,234,0.05); color: var(--erx-color-primary, #667eea); font-weight: 600; }
+.erx-sched__body { overflow-y: auto; max-height: 500px; }
+.erx-sched__row { display: flex; border-bottom: 1px solid var(--erx-border-color, #e5e7eb); }
+.erx-sched__row:last-child { border-bottom: none; }
+.erx-sched__resource-cell { width: 180px; min-width: 180px; padding: 8px 12px; border-right: 1px solid var(--erx-border-color, #e5e7eb); background: var(--erx-surface-secondary, #f9fafb); }
+.erx-sched__resource { display: flex; align-items: center; gap: 10px; }
+.erx-sched__resource-avatar { width: 36px; height: 36px; border-radius: 50%; overflow: hidden; display: flex; align-items: center; justify-content: center; font-size: 14px; font-weight: 600; color: white; flex-shrink: 0; }
+.erx-sched__resource-avatar img { width: 100%; height: 100%; object-fit: cover; }
+.erx-sched__resource-info { flex: 1; min-width: 0; }
+.erx-sched__resource-name { display: block; font-size: 13px; font-weight: 500; color: var(--erx-text, #111827); white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+.erx-sched__resource-title { display: block; font-size: 11px; color: var(--erx-text-tertiary, #9ca3af); }
+.erx-sched__days-cells { display: flex; flex: 1; }
+.erx-sched__day-cell { flex: 1; position: relative; border-right: 1px solid var(--erx-border-color, #e5e7eb); min-height: 60px; }
+.erx-sched__day-cell:last-child { border-right: none; }
+.erx-sched__day-cell--today { background: rgba(102,126,234,0.02); }
+.erx-sched__time-grid { position: absolute; top: 0; left: 0; right: 0; bottom: 0; }
+.erx-sched__time-slot { border-bottom: 1px solid var(--erx-border-color, #e5e7eb); cursor: pointer; }
+.erx-sched__time-slot:hover { background: var(--erx-surface-secondary, #f9fafb); }
+.erx-sched__time-slot:last-child { border-bottom: none; }
+.erx-sched__events { position: absolute; top: 0; left: 4px; right: 4px; pointer-events: none; }
+.erx-sched__event { position: absolute; left: 0; right: 0; padding: 4px 6px; border-radius: 4px; color: white; font-size: 11px; overflow: hidden; cursor: pointer; pointer-events: auto; box-shadow: 0 1px 3px rgba(0,0,0,0.1); }
+.erx-sched__event:hover { filter: brightness(1.1); }
+.erx-sched__event--tentative { opacity: 0.7; border: 2px dashed white; }
+.erx-sched__event--cancelled { opacity: 0.4; text-decoration: line-through; }
+.erx-sched__event-time { display: block; font-size: 10px; opacity: 0.9; }
+.erx-sched__event-title { display: block; font-weight: 500; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+.erx-sched__current-time { position: absolute; left: 0; right: 0; height: 2px; background: var(--erx-color-danger, #ef4444); z-index: 5; pointer-events: none; }
+.erx-sched__current-time::before { content: ''; position: absolute; left: -4px; top: -3px; width: 8px; height: 8px; border-radius: 50%; background: var(--erx-color-danger, #ef4444); }
+.erx-sched__time-labels { display: flex; position: absolute; top: 0; left: 0; right: 0; pointer-events: none; }
+.erx-sched__time-labels-grid { display: flex; flex-direction: column; position: absolute; left: 180px; }
+.erx-sched__time-label { font-size: 10px; color: var(--erx-text-tertiary, #9ca3af); padding-left: 4px; }
+.erx-sched__empty { padding: 48px; text-align: center; color: var(--erx-text-tertiary, #9ca3af); font-size: 14px; }
+@media (prefers-color-scheme: dark) { :host { color-scheme: dark; } }
+:host-context(.dark) .erx-sched, :host(.dark) .erx-sched { background: var(--erx-surface); border-color: var(--erx-border-color); }
+:host-context(.dark) .erx-sched__toolbar, :host(.dark) .erx-sched__toolbar, :host-context(.dark) .erx-sched__resource-cell, :host(.dark) .erx-sched__resource-cell { background: var(--erx-surface-secondary); }
+:host-context(.dark) .erx-sched__title, :host(.dark) .erx-sched__title, :host-context(.dark) .erx-sched__resource-name, :host(.dark) .erx-sched__resource-name { color: var(--erx-text); }

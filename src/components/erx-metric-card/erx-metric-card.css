@@ -1,0 +1,28 @@
+:host { display: block; font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; }
+.erx-metric { padding: 16px; background: var(--erx-surface, #fff); border-radius: 12px; border: 1px solid var(--erx-border-color, #e5e7eb); cursor: pointer; transition: all 200ms ease; }
+.erx-metric:hover { border-color: var(--erx-color-primary, #667eea); box-shadow: 0 4px 12px rgba(0,0,0,0.1); }
+.erx-metric--critical { border-left: 4px solid var(--erx-color-danger, #ef4444); }
+.erx-metric--warning { border-left: 4px solid var(--erx-color-warning, #f59e0b); }
+.erx-metric--good { border-left: 4px solid var(--erx-color-success, #10b981); }
+.erx-metric__header { display: flex; align-items: center; gap: 8px; margin-bottom: 12px; }
+.erx-metric__icon { font-size: 20px; padding: 6px; background: rgba(102,126,234,0.1); border-radius: 6px; }
+.erx-metric__label { font-size: 13px; font-weight: 500; color: var(--erx-text-secondary, #6b7280); }
+.erx-metric__body { display: flex; align-items: flex-end; justify-content: space-between; gap: 12px; }
+.erx-metric__value-section { flex: 1; }
+.erx-metric__value { display: block; font-size: 28px; font-weight: 700; color: var(--metric-color, var(--erx-text, #111827)); line-height: 1.2; }
+.erx-metric__change { display: inline-flex; align-items: center; gap: 2px; font-size: 12px; font-weight: 600; margin-top: 4px; }
+.erx-metric__change--up { color: var(--erx-color-success, #10b981); }
+.erx-metric__change--down { color: var(--erx-color-danger, #ef4444); }
+.erx-metric__change--stable { color: var(--erx-text-secondary, #6b7280); }
+.erx-metric__trend-icon { font-size: 10px; }
+.erx-metric__sparkline-wrapper { width: 80px; height: 32px; flex-shrink: 0; }
+.erx-metric__sparkline { width: 100%; height: 100%; }
+.erx-metric__target { margin-top: 12px; padding-top: 12px; border-top: 1px solid var(--erx-border-color, #e5e7eb); }
+.erx-metric__target-bar { height: 6px; background: var(--erx-surface-tertiary, #f3f4f6); border-radius: 3px; position: relative; overflow: visible; }
+.erx-metric__target-fill { height: 100%; background: var(--erx-color-primary, #667eea); border-radius: 3px; transition: width 500ms ease; }
+.erx-metric__target-marker { position: absolute; top: -2px; width: 2px; height: 10px; background: var(--erx-text, #111827); transform: translateX(-50%); }
+.erx-metric__target-label { display: block; font-size: 11px; color: var(--erx-text-tertiary, #9ca3af); margin-top: 4px; }
+.erx-metric__description { font-size: 12px; color: var(--erx-text-tertiary, #9ca3af); margin: 12px 0 0 0; }
+@media (prefers-color-scheme: dark) { :host { color-scheme: dark; } }
+:host-context(.dark) .erx-metric, :host(.dark) .erx-metric { background: var(--erx-surface); border-color: var(--erx-border-color); }
+:host-context(.dark) .erx-metric__value, :host(.dark) .erx-metric__value { color: var(--erx-text); }

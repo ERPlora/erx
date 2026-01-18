@@ -1,0 +1,37 @@
+:host { display: block; font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; }
+.erx-cal { background: var(--erx-surface, #fff); border-radius: 12px; border: 1px solid var(--erx-border-color, #e5e7eb); overflow: hidden; }
+.erx-cal--disabled { opacity: 0.6; pointer-events: none; }
+.erx-cal__header { display: flex; align-items: center; gap: 8px; padding: 12px 16px; border-bottom: 1px solid var(--erx-border-color, #e5e7eb); }
+.erx-cal__nav-btn { width: 32px; height: 32px; border: 1px solid var(--erx-border-color, #e5e7eb); border-radius: 6px; background: var(--erx-surface, #fff); color: var(--erx-text, #111827); font-size: 14px; cursor: pointer; transition: all 150ms ease; }
+.erx-cal__nav-btn:hover { background: var(--erx-surface-tertiary, #f3f4f6); }
+.erx-cal__title { flex: 1; text-align: center; }
+.erx-cal__month-year { font-size: 16px; font-weight: 600; color: var(--erx-text, #111827); }
+.erx-cal__today-btn { height: 32px; padding: 0 12px; border: 1px solid var(--erx-border-color, #e5e7eb); border-radius: 6px; background: var(--erx-surface, #fff); color: var(--erx-text-secondary, #6b7280); font-size: 13px; font-weight: 500; cursor: pointer; }
+.erx-cal__today-btn:hover { background: var(--erx-surface-tertiary, #f3f4f6); }
+.erx-cal__view-switcher { display: flex; gap: 4px; }
+.erx-cal__view-btn { height: 32px; padding: 0 12px; border: 1px solid var(--erx-border-color, #e5e7eb); border-radius: 6px; background: var(--erx-surface, #fff); color: var(--erx-text-secondary, #6b7280); font-size: 12px; font-weight: 500; cursor: pointer; }
+.erx-cal__view-btn--active { background: var(--erx-color-primary, #667eea); border-color: var(--erx-color-primary, #667eea); color: white; }
+.erx-cal__body { padding: 12px; }
+.erx-cal__weekdays { display: grid; grid-template-columns: repeat(7, 1fr); margin-bottom: 8px; }
+.erx-cal__weekday { text-align: center; font-size: 12px; font-weight: 600; color: var(--erx-text-secondary, #6b7280); padding: 8px 0; }
+.erx-cal__weeks { display: flex; flex-direction: column; gap: 4px; }
+.erx-cal__week { display: grid; grid-template-columns: repeat(7, 1fr); gap: 4px; }
+.erx-cal__day { min-height: 80px; padding: 4px; border-radius: 6px; cursor: pointer; transition: all 150ms ease; background: var(--erx-surface, #fff); border: 1px solid transparent; }
+.erx-cal__day:hover { background: var(--erx-surface-secondary, #f9fafb); }
+.erx-cal__day--other-month { opacity: 0.4; }
+.erx-cal__day--today { background: rgba(102,126,234,0.05); border-color: var(--erx-color-primary, #667eea); }
+.erx-cal__day--selected { background: rgba(102,126,234,0.1); border-color: var(--erx-color-primary, #667eea); }
+.erx-cal__day-number { display: flex; align-items: center; justify-content: center; width: 28px; height: 28px; font-size: 13px; font-weight: 500; color: var(--erx-text, #111827); border-radius: 50%; }
+.erx-cal__day--today .erx-cal__day-number { background: var(--erx-color-primary, #667eea); color: white; }
+.erx-cal__day-events { margin-top: 4px; display: flex; flex-direction: column; gap: 2px; }
+.erx-cal__event { padding: 2px 4px; border-radius: 3px; font-size: 10px; color: white; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; cursor: pointer; }
+.erx-cal__event:hover { filter: brightness(1.1); }
+.erx-cal__more { font-size: 10px; color: var(--erx-text-secondary, #6b7280); padding: 2px 4px; }
+.erx-cal__year { display: grid; grid-template-columns: repeat(4, 1fr); gap: 12px; padding: 16px; }
+.erx-cal__year-month { padding: 16px; border-radius: 8px; background: var(--erx-surface-secondary, #f9fafb); cursor: pointer; text-align: center; transition: all 150ms ease; }
+.erx-cal__year-month:hover { background: var(--erx-surface-tertiary, #f3f4f6); }
+.erx-cal__year-month-name { display: block; font-size: 14px; font-weight: 500; color: var(--erx-text, #111827); }
+.erx-cal__year-month-count { display: inline-block; margin-top: 4px; padding: 2px 8px; border-radius: 10px; background: var(--erx-color-primary, #667eea); color: white; font-size: 11px; font-weight: 600; }
+@media (prefers-color-scheme: dark) { :host { color-scheme: dark; } }
+:host-context(.dark) .erx-cal, :host(.dark) .erx-cal { background: var(--erx-surface); border-color: var(--erx-border-color); }
+:host-context(.dark) .erx-cal__month-year, :host(.dark) .erx-cal__month-year, :host-context(.dark) .erx-cal__day-number, :host(.dark) .erx-cal__day-number { color: var(--erx-text); }

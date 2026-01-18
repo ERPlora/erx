@@ -1,0 +1,191 @@
+/**
+ * ERX SplitPane Styles
+ */
+
+:host {
+  display: block;
+  width: 100%;
+  height: 100%;
+}
+
+/* Container */
+.erx-split {
+  display: flex;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+}
+
+.erx-split--horizontal {
+  flex-direction: row;
+}
+
+.erx-split--vertical {
+  flex-direction: column;
+}
+
+.erx-split--dragging {
+  cursor: col-resize;
+  user-select: none;
+}
+
+.erx-split--vertical.erx-split--dragging {
+  cursor: row-resize;
+}
+
+.erx-split--disabled .erx-split__gutter {
+  cursor: default;
+  pointer-events: none;
+}
+
+/* Panes */
+.erx-split__pane {
+  overflow: auto;
+  transition: width 200ms ease, height 200ms ease;
+}
+
+.erx-split--dragging .erx-split__pane {
+  transition: none;
+}
+
+.erx-split__pane--collapsed {
+  overflow: hidden;
+}
+
+.erx-split__pane--primary {
+  flex-shrink: 0;
+}
+
+.erx-split__pane--secondary {
+  flex: 1;
+  min-width: 0;
+  min-height: 0;
+}
+
+/* Gutter/Divider */
+.erx-split__gutter {
+  position: relative;
+  flex-shrink: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: var(--erx-surface-secondary, #f9fafb);
+  transition: background-color 150ms ease;
+}
+
+.erx-split--horizontal .erx-split__gutter {
+  cursor: col-resize;
+}
+
+.erx-split--vertical .erx-split__gutter {
+  cursor: row-resize;
+}
+
+.erx-split__gutter:hover,
+.erx-split__gutter--dragging {
+  background: var(--erx-surface-tertiary, #f3f4f6);
+}
+
+.erx-split__gutter:focus {
+  outline: none;
+  background: rgba(var(--erx-color-primary-rgb, 102, 126, 234), 0.1);
+}
+
+.erx-split__gutter:focus-visible {
+  box-shadow: inset 0 0 0 2px var(--erx-color-primary, #667eea);
+}
+
+/* Gutter line indicator */
+.erx-split__gutter-line {
+  position: absolute;
+  background: var(--erx-border-color, #e5e7eb);
+  border-radius: 2px;
+  transition: background-color 150ms ease;
+}
+
+.erx-split--horizontal .erx-split__gutter-line {
+  width: 4px;
+  height: 32px;
+}
+
+.erx-split--vertical .erx-split__gutter-line {
+  width: 32px;
+  height: 4px;
+}
+
+.erx-split__gutter:hover .erx-split__gutter-line,
+.erx-split__gutter--dragging .erx-split__gutter-line {
+  background: var(--erx-color-primary, #667eea);
+}
+
+/* Collapse buttons */
+.erx-split__collapse-buttons {
+  position: absolute;
+  display: flex;
+  gap: 2px;
+  z-index: 1;
+}
+
+.erx-split--horizontal .erx-split__collapse-buttons {
+  flex-direction: column;
+}
+
+.erx-split--vertical .erx-split__collapse-buttons {
+  flex-direction: row;
+}
+
+.erx-split__collapse-btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 20px;
+  height: 20px;
+  border: none;
+  border-radius: 4px;
+  background: var(--erx-surface, #ffffff);
+  color: var(--erx-text-secondary, #6b7280);
+  font-size: 12px;
+  cursor: pointer;
+  transition: all 150ms ease;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+}
+
+.erx-split__collapse-btn:hover {
+  background: var(--erx-color-primary, #667eea);
+  color: white;
+}
+
+.erx-split__collapse-btn:focus {
+  outline: none;
+  box-shadow: 0 0 0 2px rgba(var(--erx-color-primary-rgb, 102, 126, 234), 0.4);
+}
+
+/* Dark mode */
+@media (prefers-color-scheme: dark) {
+  :host {
+    color-scheme: dark;
+  }
+}
+
+:host-context(.dark) .erx-split__gutter,
+:host(.dark) .erx-split__gutter {
+  background: var(--erx-surface-secondary);
+}
+
+:host-context(.dark) .erx-split__gutter:hover,
+:host-context(.dark) .erx-split__gutter--dragging,
+:host(.dark) .erx-split__gutter:hover,
+:host(.dark) .erx-split__gutter--dragging {
+  background: var(--erx-surface-tertiary);
+}
+
+:host-context(.dark) .erx-split__gutter-line,
+:host(.dark) .erx-split__gutter-line {
+  background: var(--erx-border-color);
+}
+
+:host-context(.dark) .erx-split__collapse-btn,
+:host(.dark) .erx-split__collapse-btn {
+  background: var(--erx-surface-tertiary);
+  color: var(--erx-text-secondary);
+}

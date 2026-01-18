@@ -1,0 +1,24 @@
+:host { display: block; font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; }
+.erx-panel { background: var(--erx-surface, #fff); border-radius: 8px; overflow: hidden; }
+.erx-panel--bordered { border: 1px solid var(--erx-border-color, #e5e7eb); }
+.erx-panel--elevated { box-shadow: 0 1px 3px rgba(0,0,0,0.1), 0 1px 2px rgba(0,0,0,0.06); }
+.erx-panel--disabled { opacity: 0.6; pointer-events: none; }
+.erx-panel__header { display: flex; align-items: center; gap: 12px; padding: 16px; background: var(--erx-surface-secondary, #f9fafb); border-bottom: 1px solid var(--erx-border-color, #e5e7eb); }
+.erx-panel--collapsible .erx-panel__header { cursor: pointer; transition: background 150ms ease; }
+.erx-panel--collapsible .erx-panel__header:hover { background: var(--erx-border-color, #e5e7eb); }
+.erx-panel--collapsed .erx-panel__header { border-bottom: none; }
+.erx-panel__toggle { font-size: 10px; color: var(--erx-text-tertiary, #9ca3af); transition: transform 200ms ease; }
+.erx-panel__icon { font-size: 18px; }
+.erx-panel__titles { flex: 1; min-width: 0; }
+.erx-panel__title { margin: 0; font-size: 14px; font-weight: 600; color: var(--erx-text, #111827); }
+.erx-panel__subtitle { display: block; font-size: 12px; color: var(--erx-text-secondary, #6b7280); margin-top: 2px; }
+.erx-panel__header-actions { display: flex; gap: 8px; }
+.erx-panel__content { padding: 16px; }
+.erx-panel__footer { padding: 12px 16px; border-top: 1px solid var(--erx-border-color, #e5e7eb); background: var(--erx-surface-secondary, #f9fafb); }
+.erx-panel__footer:empty { display: none; }
+@media (prefers-color-scheme: dark) { :host { color-scheme: dark; } }
+:host-context(.dark) .erx-panel, :host(.dark) .erx-panel { background: var(--erx-surface); }
+:host-context(.dark) .erx-panel--bordered, :host(.dark) .erx-panel--bordered { border-color: var(--erx-border-color); }
+:host-context(.dark) .erx-panel__header, :host(.dark) .erx-panel__header { background: var(--erx-surface-secondary); border-color: var(--erx-border-color); }
+:host-context(.dark) .erx-panel__title, :host(.dark) .erx-panel__title { color: var(--erx-text); }
+:host-context(.dark) .erx-panel__footer, :host(.dark) .erx-panel__footer { background: var(--erx-surface-secondary); border-color: var(--erx-border-color); }

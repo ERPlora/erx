@@ -1,0 +1,307 @@
+/**
+ * ERX OrderTicket Styles
+ */
+
+:host {
+  display: block;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+}
+
+.erx-ticket {
+  background: var(--erx-surface, #ffffff);
+  border-radius: var(--erx-border-radius-lg, 12px);
+  border: 1px solid var(--erx-border-color, #e5e7eb);
+  overflow: hidden;
+  cursor: pointer;
+  transition: all 200ms ease;
+}
+
+.erx-ticket:hover {
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+.erx-ticket--rush {
+  border-color: var(--erx-color-danger, #ef4444);
+  border-width: 2px;
+}
+
+.erx-ticket--rush .erx-ticket__header {
+  background: rgba(239, 68, 68, 0.1);
+}
+
+/* Header */
+.erx-ticket__header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  padding: var(--erx-space-sm, 12px);
+  border-bottom: 1px solid var(--erx-border-color, #e5e7eb);
+}
+
+.erx-ticket__order-info {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.erx-ticket__number {
+  font-size: 18px;
+  font-weight: 700;
+  color: var(--erx-text, #111827);
+}
+
+.erx-ticket__time {
+  font-size: 12px;
+  color: var(--erx-text-secondary, #6b7280);
+}
+
+.erx-ticket__meta {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.erx-ticket__type {
+  font-size: 20px;
+}
+
+.erx-ticket__table {
+  font-size: 12px;
+  font-weight: 600;
+  padding: 2px 8px;
+  background: var(--erx-surface-secondary, #f9fafb);
+  border-radius: 4px;
+  color: var(--erx-text-secondary, #6b7280);
+}
+
+.erx-ticket__rush {
+  font-size: 10px;
+  font-weight: 700;
+  padding: 2px 6px;
+  background: var(--erx-color-danger, #ef4444);
+  color: white;
+  border-radius: 4px;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  animation: pulse 1s infinite;
+}
+
+@keyframes pulse {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.6; }
+}
+
+/* Customer */
+.erx-ticket__customer {
+  padding: 8px var(--erx-space-sm, 12px);
+  font-size: 14px;
+  font-weight: 500;
+  color: var(--erx-text, #111827);
+  background: var(--erx-surface-secondary, #f9fafb);
+}
+
+/* Items */
+.erx-ticket__items {
+  padding: var(--erx-space-sm, 12px);
+}
+
+.erx-ticket__item {
+  display: flex;
+  gap: 8px;
+  padding: 8px 0;
+  border-bottom: 1px dashed var(--erx-border-color, #e5e7eb);
+}
+
+.erx-ticket__item:last-child {
+  border-bottom: none;
+}
+
+.erx-ticket__item--ready {
+  opacity: 0.5;
+  text-decoration: line-through;
+}
+
+.erx-ticket__item-qty {
+  font-size: 16px;
+  font-weight: 700;
+  color: var(--erx-color-primary, #667eea);
+  min-width: 32px;
+}
+
+.erx-ticket__item-details {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.erx-ticket__item-name {
+  font-size: 15px;
+  font-weight: 600;
+  color: var(--erx-text, #111827);
+}
+
+.erx-ticket__item-variant {
+  font-size: 13px;
+  color: var(--erx-text-secondary, #6b7280);
+}
+
+.erx-ticket__item-notes {
+  font-size: 12px;
+  color: var(--erx-color-warning, #f59e0b);
+  font-style: italic;
+}
+
+.erx-ticket__item-price {
+  font-size: 14px;
+  font-weight: 500;
+  color: var(--erx-text, #111827);
+  align-self: center;
+}
+
+/* Notes */
+.erx-ticket__notes {
+  padding: 8px var(--erx-space-sm, 12px);
+  margin: 0 var(--erx-space-sm, 12px);
+  background: rgba(245, 158, 11, 0.1);
+  border-radius: var(--erx-border-radius, 8px);
+  font-size: 13px;
+  color: var(--erx-color-warning, #f59e0b);
+}
+
+/* Footer */
+.erx-ticket__footer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: var(--erx-space-sm, 12px);
+  border-top: 1px solid var(--erx-border-color, #e5e7eb);
+  background: var(--erx-surface-secondary, #f9fafb);
+}
+
+.erx-ticket__status {
+  font-size: 11px;
+  font-weight: 600;
+  padding: 4px 10px;
+  border-radius: 12px;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.erx-ticket__status--warning {
+  background: rgba(245, 158, 11, 0.15);
+  color: var(--erx-color-warning, #f59e0b);
+}
+
+.erx-ticket__status--primary {
+  background: rgba(102, 126, 234, 0.15);
+  color: var(--erx-color-primary, #667eea);
+}
+
+.erx-ticket__status--success {
+  background: rgba(16, 185, 129, 0.15);
+  color: var(--erx-color-success, #10b981);
+}
+
+.erx-ticket__status--medium {
+  background: var(--erx-surface-tertiary, #f3f4f6);
+  color: var(--erx-text-secondary, #6b7280);
+}
+
+.erx-ticket__status--danger {
+  background: rgba(239, 68, 68, 0.15);
+  color: var(--erx-color-danger, #ef4444);
+}
+
+.erx-ticket__total {
+  font-size: 16px;
+  font-weight: 700;
+  color: var(--erx-text, #111827);
+}
+
+/* Actions */
+.erx-ticket__actions {
+  padding: 0 var(--erx-space-sm, 12px) var(--erx-space-sm, 12px);
+  background: var(--erx-surface-secondary, #f9fafb);
+}
+
+.erx-ticket__action-btn {
+  width: 100%;
+  height: var(--erx-touch-target, 44px);
+  border: none;
+  border-radius: var(--erx-border-radius, 8px);
+  font-size: 14px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 150ms ease;
+}
+
+.erx-ticket__action-btn--primary {
+  background: var(--erx-color-primary, #667eea);
+  color: white;
+}
+
+.erx-ticket__action-btn--primary:hover {
+  background: var(--erx-color-primary-dark, #5a6fce);
+}
+
+.erx-ticket__action-btn--success {
+  background: var(--erx-color-success, #10b981);
+  color: white;
+}
+
+.erx-ticket__action-btn--success:hover {
+  background: #0d9668;
+}
+
+/* Compact mode */
+.erx-ticket--compact .erx-ticket__header {
+  padding: 8px;
+}
+
+.erx-ticket--compact .erx-ticket__number {
+  font-size: 16px;
+}
+
+.erx-ticket--compact .erx-ticket__items {
+  padding: 8px;
+}
+
+.erx-ticket--compact .erx-ticket__item {
+  padding: 6px 0;
+}
+
+.erx-ticket--compact .erx-ticket__item-name {
+  font-size: 14px;
+}
+
+/* Dark mode */
+@media (prefers-color-scheme: dark) {
+  :host { color-scheme: dark; }
+}
+
+:host-context(.dark) .erx-ticket,
+:host(.dark) .erx-ticket {
+  background: var(--erx-surface);
+  border-color: var(--erx-border-color);
+}
+
+:host-context(.dark) .erx-ticket__number,
+:host(.dark) .erx-ticket__number,
+:host-context(.dark) .erx-ticket__item-name,
+:host(.dark) .erx-ticket__item-name,
+:host-context(.dark) .erx-ticket__total,
+:host(.dark) .erx-ticket__total {
+  color: var(--erx-text);
+}
+
+:host-context(.dark) .erx-ticket__header,
+:host(.dark) .erx-ticket__header,
+:host-context(.dark) .erx-ticket__customer,
+:host(.dark) .erx-ticket__customer,
+:host-context(.dark) .erx-ticket__footer,
+:host(.dark) .erx-ticket__footer,
+:host-context(.dark) .erx-ticket__actions,
+:host(.dark) .erx-ticket__actions {
+  background: var(--erx-surface-secondary);
+}

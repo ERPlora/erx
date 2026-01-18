@@ -1,0 +1,173 @@
+:host {
+  display: block;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+}
+
+.erx-steps {
+  display: flex;
+}
+
+.erx-steps--vertical {
+  flex-direction: column;
+}
+
+.erx-steps--clickable .erx-steps__item {
+  cursor: pointer;
+}
+
+.erx-steps__item {
+  display: flex;
+  flex: 1;
+  position: relative;
+}
+
+.erx-steps--vertical .erx-steps__item {
+  flex: none;
+  padding: 16px 0;
+}
+
+.erx-steps--horizontal .erx-steps__item {
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+}
+
+.erx-steps--vertical .erx-steps__item {
+  flex-direction: row;
+  align-items: flex-start;
+  gap: 12px;
+}
+
+.erx-steps__indicator {
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  font-size: 14px;
+  font-weight: 600;
+  transition: all 200ms ease;
+}
+
+.erx-steps--sm .erx-steps__indicator {
+  width: 28px;
+  height: 28px;
+  font-size: 12px;
+}
+
+.erx-steps--lg .erx-steps__indicator {
+  width: 44px;
+  height: 44px;
+  font-size: 16px;
+}
+
+.erx-steps__item--pending .erx-steps__indicator {
+  background: var(--erx-surface, #fff);
+  border: 2px solid var(--erx-border-color, #e5e7eb);
+  color: var(--erx-text-tertiary, #9ca3af);
+}
+
+.erx-steps__item--current .erx-steps__indicator {
+  background: var(--erx-color-primary, #667eea);
+  border: 2px solid var(--erx-color-primary, #667eea);
+  color: white;
+  box-shadow: 0 0 0 4px rgba(102, 126, 234, 0.2);
+}
+
+.erx-steps__item--completed .erx-steps__indicator {
+  background: var(--erx-color-success, #10b981);
+  border: 2px solid var(--erx-color-success, #10b981);
+  color: white;
+}
+
+.erx-steps__item--error .erx-steps__indicator {
+  background: var(--erx-color-danger, #ef4444);
+  border: 2px solid var(--erx-color-danger, #ef4444);
+  color: white;
+}
+
+.erx-steps__icon {
+  font-size: 16px;
+}
+
+.erx-steps__status-icon {
+  font-size: 14px;
+}
+
+.erx-steps__content {
+  margin-top: 8px;
+}
+
+.erx-steps--vertical .erx-steps__content {
+  margin-top: 0;
+}
+
+.erx-steps__label {
+  display: block;
+  font-size: 14px;
+  font-weight: 500;
+  color: var(--erx-text, #111827);
+}
+
+.erx-steps__item--current .erx-steps__label {
+  color: var(--erx-color-primary, #667eea);
+}
+
+.erx-steps__description {
+  display: block;
+  font-size: 12px;
+  color: var(--erx-text-tertiary, #9ca3af);
+  margin-top: 2px;
+}
+
+.erx-steps__timestamp {
+  display: block;
+  font-size: 11px;
+  color: var(--erx-text-tertiary, #9ca3af);
+  margin-top: 4px;
+}
+
+.erx-steps__connector {
+  flex: 1;
+  height: 2px;
+  background: var(--erx-border-color, #e5e7eb);
+  margin: 0 8px;
+  align-self: center;
+}
+
+.erx-steps--vertical .erx-steps__connector {
+  position: absolute;
+  left: 17px;
+  top: 52px;
+  bottom: 0;
+  width: 2px;
+  height: auto;
+  margin: 0;
+}
+
+.erx-steps--sm .erx-steps--vertical .erx-steps__connector {
+  left: 13px;
+  top: 44px;
+}
+
+.erx-steps--lg .erx-steps--vertical .erx-steps__connector {
+  left: 21px;
+  top: 60px;
+}
+
+.erx-steps__connector--completed {
+  background: var(--erx-color-success, #10b981);
+}
+
+@media (prefers-color-scheme: dark) {
+  :host {
+    color-scheme: dark;
+  }
+}
+
+:host-context(.dark) .erx-steps__label,
+:host(.dark) .erx-steps__label {
+  color: var(--erx-text);
+}

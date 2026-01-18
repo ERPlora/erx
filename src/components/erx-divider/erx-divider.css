@@ -1,0 +1,12 @@
+:host { display: block; }
+.erx-divider { display: flex; align-items: center; }
+.erx-divider--horizontal { width: 100%; }
+.erx-divider--horizontal::before, .erx-divider--horizontal::after { content: ''; flex: 1; height: 1px; background: var(--erx-border-color, #e5e7eb); }
+.erx-divider--dashed::before, .erx-divider--dashed::after { background: transparent; border-top: 1px dashed var(--erx-border-color, #e5e7eb); }
+.erx-divider--vertical { height: 100%; width: 1px; background: var(--erx-border-color, #e5e7eb); }
+.erx-divider--vertical.erx-divider--dashed { background: transparent; border-left: 1px dashed var(--erx-border-color, #e5e7eb); }
+.erx-divider__text { padding: 0 16px; font-size: 14px; color: var(--erx-text-secondary, #6b7280); white-space: nowrap; }
+.erx-divider--text-left::before { flex: 0 0 24px; }
+.erx-divider--text-right::after { flex: 0 0 24px; }
+@media (prefers-color-scheme: dark) { :host { color-scheme: dark; } }
+:host-context(.dark) .erx-divider__text, :host(.dark) .erx-divider__text { color: var(--erx-text-secondary); }

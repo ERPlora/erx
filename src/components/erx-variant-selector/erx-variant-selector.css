@@ -1,0 +1,271 @@
+/**
+ * ERX VariantSelector Styles
+ */
+
+:host {
+  display: block;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+}
+
+.erx-variant {
+  display: flex;
+  flex-direction: column;
+  gap: var(--erx-space-md, 16px);
+}
+
+.erx-variant--disabled {
+  opacity: 0.6;
+  pointer-events: none;
+}
+
+/* Group */
+.erx-variant__group {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.erx-variant__label {
+  font-size: 14px;
+  font-weight: 600;
+  color: var(--erx-text, #111827);
+}
+
+.erx-variant__required {
+  color: var(--erx-color-danger, #ef4444);
+  margin-left: 2px;
+}
+
+/* Options container */
+.erx-variant__options {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.erx-variant__options--dropdown {
+  display: block;
+}
+
+/* Button option */
+.erx-variant__option--button {
+  display: inline-flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 2px;
+  padding: 10px 16px;
+  border: 2px solid var(--erx-border-color, #e5e7eb);
+  border-radius: var(--erx-border-radius, 8px);
+  background: var(--erx-surface, #ffffff);
+  cursor: pointer;
+  transition: all 150ms ease;
+}
+
+.erx-variant__option--button:hover:not(:disabled) {
+  border-color: var(--erx-color-primary, #667eea);
+}
+
+.erx-variant__option--button.erx-variant__option--selected {
+  border-color: var(--erx-color-primary, #667eea);
+  background: var(--erx-color-primary, #667eea);
+  color: white;
+}
+
+.erx-variant__option--button.erx-variant__option--unavailable {
+  opacity: 0.4;
+  text-decoration: line-through;
+  cursor: not-allowed;
+}
+
+.erx-variant__option-label {
+  font-size: 14px;
+  font-weight: 500;
+}
+
+.erx-variant__option-price {
+  font-size: 11px;
+  color: var(--erx-text-secondary, #6b7280);
+}
+
+.erx-variant__option--selected .erx-variant__option-price {
+  color: rgba(255, 255, 255, 0.8);
+}
+
+.erx-variant__option-stock {
+  font-size: 10px;
+  color: var(--erx-color-warning, #f59e0b);
+}
+
+.erx-variant__option--selected .erx-variant__option-stock {
+  color: rgba(255, 255, 255, 0.8);
+}
+
+/* Color option */
+.erx-variant__option--color {
+  position: relative;
+  width: 36px;
+  height: 36px;
+  padding: 0;
+  border: 2px solid var(--erx-border-color, #e5e7eb);
+  border-radius: 50%;
+  background: var(--erx-surface, #ffffff);
+  cursor: pointer;
+  transition: all 150ms ease;
+  overflow: hidden;
+}
+
+.erx-variant__option--color:hover:not(:disabled) {
+  border-color: var(--erx-text-secondary, #6b7280);
+  transform: scale(1.1);
+}
+
+.erx-variant__option--color.erx-variant__option--selected {
+  border-color: var(--erx-text, #111827);
+  box-shadow: 0 0 0 2px var(--erx-surface, #ffffff), 0 0 0 4px var(--erx-text, #111827);
+}
+
+.erx-variant__color-swatch {
+  display: block;
+  width: 100%;
+  height: 100%;
+  background: var(--variant-color, #cccccc);
+  border-radius: 50%;
+}
+
+.erx-variant__option--color.erx-variant__option--unavailable {
+  opacity: 0.5;
+}
+
+.erx-variant__color-slash {
+  position: absolute;
+  top: 50%;
+  left: -10%;
+  width: 120%;
+  height: 2px;
+  background: var(--erx-color-danger, #ef4444);
+  transform: rotate(-45deg);
+}
+
+/* Image option */
+.erx-variant__option--image {
+  width: 60px;
+  height: 60px;
+  padding: 0;
+  border: 2px solid var(--erx-border-color, #e5e7eb);
+  border-radius: var(--erx-border-radius, 8px);
+  background: var(--erx-surface, #ffffff);
+  cursor: pointer;
+  transition: all 150ms ease;
+  overflow: hidden;
+}
+
+.erx-variant__option--image:hover:not(:disabled) {
+  border-color: var(--erx-color-primary, #667eea);
+}
+
+.erx-variant__option--image.erx-variant__option--selected {
+  border-color: var(--erx-color-primary, #667eea);
+  box-shadow: 0 0 0 2px rgba(102, 126, 234, 0.3);
+}
+
+.erx-variant__option--image.erx-variant__option--unavailable {
+  opacity: 0.4;
+}
+
+.erx-variant__image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.erx-variant__image-placeholder {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 10px;
+  color: var(--erx-text-tertiary, #9ca3af);
+  background: var(--erx-surface-secondary, #f9fafb);
+}
+
+/* Dropdown */
+.erx-variant__select {
+  width: 100%;
+  height: var(--erx-touch-target, 44px);
+  padding: 0 12px;
+  border: 1px solid var(--erx-border-color, #e5e7eb);
+  border-radius: var(--erx-border-radius, 8px);
+  background: var(--erx-surface, #ffffff);
+  color: var(--erx-text, #111827);
+  font-size: 14px;
+  cursor: pointer;
+  appearance: none;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='%236b7280'%3E%3Cpath d='M7 10l5 5 5-5z'/%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: right 8px center;
+  background-size: 24px;
+}
+
+.erx-variant__select:focus {
+  outline: none;
+  border-color: var(--erx-color-primary, #667eea);
+}
+
+/* Size variants */
+.erx-variant--sm .erx-variant__option--button {
+  padding: 6px 12px;
+  font-size: 13px;
+}
+
+.erx-variant--sm .erx-variant__option--color {
+  width: 28px;
+  height: 28px;
+}
+
+.erx-variant--sm .erx-variant__option--image {
+  width: 48px;
+  height: 48px;
+}
+
+.erx-variant--lg .erx-variant__option--button {
+  padding: 14px 20px;
+  font-size: 16px;
+}
+
+.erx-variant--lg .erx-variant__option--color {
+  width: 44px;
+  height: 44px;
+}
+
+.erx-variant--lg .erx-variant__option--image {
+  width: 80px;
+  height: 80px;
+}
+
+/* Dark mode */
+@media (prefers-color-scheme: dark) {
+  :host { color-scheme: dark; }
+}
+
+:host-context(.dark) .erx-variant__label,
+:host(.dark) .erx-variant__label {
+  color: var(--erx-text);
+}
+
+:host-context(.dark) .erx-variant__option--button,
+:host(.dark) .erx-variant__option--button,
+:host-context(.dark) .erx-variant__option--color,
+:host(.dark) .erx-variant__option--color,
+:host-context(.dark) .erx-variant__option--image,
+:host(.dark) .erx-variant__option--image {
+  background: var(--erx-surface);
+  border-color: var(--erx-border-color);
+}
+
+:host-context(.dark) .erx-variant__select,
+:host(.dark) .erx-variant__select {
+  background-color: var(--erx-surface);
+  border-color: var(--erx-border-color);
+  color: var(--erx-text);
+}
