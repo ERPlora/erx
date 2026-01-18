@@ -215,8 +215,8 @@ export class ErxCommand {
                         class={{
                           'erx-cmd__item': true,
                           'erx-cmd__item--focused': flatIdx === this.focusedIndex,
-                          'erx-cmd__item--disabled': item.disabled,
-                          'erx-cmd__item--recent': item.recent,
+                          'erx-cmd__item--disabled': !!item.disabled,
+                          'erx-cmd__item--recent': !!item.recent,
                         }}
                         onClick={() => this.selectItem(item)}
                         onMouseEnter={() => this.focusedIndex = flatIdx}

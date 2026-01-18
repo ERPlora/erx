@@ -47,7 +47,7 @@ export class ErxAutocomplete {
   }
 
   @Method()
-  async focus(): Promise<void> {
+  async setFocus(): Promise<void> {
     this.inputRef?.focus();
   }
 

@@ -49,7 +49,6 @@ export class ErxSheet {
   @State() isDragging: boolean = false;
   @State() dragOffset: number = 0;
 
-  private sheetEl?: HTMLElement;
   private startY: number = 0;
   private startX: number = 0;
 
@@ -204,7 +203,6 @@ export class ErxSheet {
             [`erx-sheet--${this.position}`]: true,
             'erx-sheet--dragging': this.isDragging,
           }}
-          ref={el => this.sheetEl = el}
           style={this.getSheetStyle()}
           part="sheet"
         >

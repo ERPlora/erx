@@ -224,7 +224,7 @@ export class ErxJsonViewer {
             <span class="erx-json__root-name">{this.rootName}:</span>
           )}
           {this.data !== undefined
-            ? this.renderValue(this.data, undefined, '', 0)
+            ? this.renderValue(this.data, '', '', 0)
             : <span class="erx-json__empty">No data</span>}
         </div>
       </div>

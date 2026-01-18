@@ -1,4 +1,4 @@
-import { Component, Prop, Event, EventEmitter, State, h, Method } from '@stencil/core';
+import { Component, Prop, Event, EventEmitter, h, Method } from '@stencil/core';
 import { ErxSectionToggleEvent } from './erx-section.types';
 
 @Component({

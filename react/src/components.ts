@@ -7,20 +7,301 @@
 
 /* eslint-disable */
 
-import { type ErxCartClearEvent, type ErxCartCustomEvent, type ErxCartItem, type ErxCartItemChangeEvent, type ErxCartItemRemoveEvent, type ErxCartSummary, type ErxCategorySelectEvent, type ErxCategoryTabsCustomEvent, type ErxCellEditEvent, type ErxCellEditStartEvent, type ErxDataGridCustomEvent, type ErxFilterEvent, type ErxOrder, type ErxOrderTicketActionEvent, type ErxOrderTicketCustomEvent, type ErxPageChangeEvent, type ErxPaymentCompleteEvent, type ErxPaymentCustomEvent, type ErxPaymentSelectEvent, type ErxPinPadChangeEvent, type ErxPinPadCustomEvent, type ErxPinPadSubmitEvent, type ErxProductCardAddEvent, type ErxProductCardCustomEvent, type ErxProductCardSelectEvent, type ErxRowClickEvent, type ErxRowSelectEvent, type ErxSortEvent, type ErxSplitPaneCollapseEvent, type ErxSplitPaneCustomEvent, type ErxSplitPaneResizeEvent, type ErxVariantSelectEvent, type ErxVariantSelection, type ErxVariantSelectorCustomEvent } from "@erplora/erx";
+import { type AutocompleteSearchDetail, type AutocompleteSelectDetail, type BatchSelectDetail, type BatchStage, type BomSelectDetail, type CalendarEvent, type CalendarEventSelectDetail, type CalendarSelectDetail, type CalendarViewChangeDetail, type CalendarViewSelectDetail, type ComparisonSelectDetail, type CurrencyInputChangeDetail, type DashboardLayoutChangeDetail, type DashboardWidgetSelectDetail, type DateRangeChangeDetail, type ErxAttendanceListCustomEvent, type ErxAttendanceRecord, type ErxAutocompleteCustomEvent, type ErxBarcodeScanEvent, type ErxBarcodeScannerCustomEvent, type ErxBarcodeScannerErrorEvent, type ErxBatchTrackerCustomEvent, type ErxBomTreeCustomEvent, type ErxCalculatorCustomEvent, type ErxCalculatorResult, type ErxCalendarCustomEvent, type ErxCalendarViewsCustomEvent, type ErxCarouselCustomEvent, type ErxCarouselSlideEvent, type ErxCartClearEvent, type ErxCartCustomEvent, type ErxCartItem, type ErxCartItemChangeEvent, type ErxCartItemRemoveEvent, type ErxCartSummary, type ErxCategorySelectEvent, type ErxCategoryTabsCustomEvent, type ErxCellEditEvent, type ErxCellEditStartEvent, type ErxColorChangeEvent, type ErxColorPickerCustomEvent, type ErxCommandCustomEvent, type ErxCommandOpenEvent, type ErxCommandSearchEvent, type ErxCommandSelectEvent, type ErxComparisonCustomEvent, type ErxContextMenuCustomEvent, type ErxContextMenuOpenEvent, type ErxContextMenuSelectEvent, type ErxCurrencyInputCustomEvent, type ErxDashboardGridCustomEvent, type ErxDataGridCustomEvent, type ErxDateRangePickerCustomEvent, type ErxDrawerCustomEvent, type ErxDrawerOpenEvent, type ErxDropdownCustomEvent, type ErxDropdownOpenEvent, type ErxDropdownSelectEvent, type ErxEmployee, type ErxEmployeeCardCustomEvent, type ErxEventCardActionEvent, type ErxEventCardClickEvent, type ErxEventCardCustomEvent, type ErxFilterEvent, type ErxFormWizardCustomEvent, type ErxGalleryClickEvent, type ErxGanttCustomEvent, type ErxImageCropCompleteEvent, type ErxImageCropCustomEvent, type ErxImageCropEvent, type ErxImageGalleryCustomEvent, type ErxKanbanCustomEvent, type ErxKeyboardInputEvent, type ErxLeaveRequest, type ErxLeaveRequestActionEvent, type ErxLeaveRequestCustomEvent, type ErxLightboxCustomEvent, type ErxLightboxOpenEvent, type ErxLightboxSlideEvent, type ErxLightboxZoomEvent, type ErxLoadMoreCustomEvent, type ErxLoadMoreEvent, type ErxMachineStatusCustomEvent, type ErxMasterDetailCustomEvent, type ErxMetricCardCustomEvent, type ErxNotificationActionEvent, type ErxNotificationClickEvent, type ErxNotificationDismissEvent, type ErxNotificationsCustomEvent, type ErxNotificationsOpenEvent, type ErxOrder, type ErxOrderTicketActionEvent, type ErxOrderTicketCustomEvent, type ErxOrgChartCustomEvent, type ErxOrgChartSelectEvent, type ErxPageChangeEvent, type ErxPageSizeChangeEvent, type ErxPaginationChangeEvent, type ErxPaginationCustomEvent, type ErxPanelCustomEvent, type ErxPanelToggleEvent, type ErxPaymentCompleteEvent, type ErxPaymentCustomEvent, type ErxPaymentSelectEvent, type ErxPdfErrorEvent, type ErxPdfLoadEvent, type ErxPdfPageChangeEvent, type ErxPdfViewerCustomEvent, type ErxPhoneChangeEvent, type ErxPhoneInputCustomEvent, type ErxPinPadChangeEvent, type ErxPinPadCustomEvent, type ErxPinPadSubmitEvent, type ErxProductCardAddEvent, type ErxProductCardCustomEvent, type ErxProductCardSelectEvent, type ErxProductionLineCustomEvent, type ErxProgressStepsCustomEvent, type ErxQualityCheckCustomEvent, type ErxResizablePanelsCustomEvent, type ErxRichTextChangeEvent, type ErxRichTextCustomEvent, type ErxRowClickEvent, type ErxRowSelectEvent, type ErxSchedulerCustomEvent, type ErxSectionCustomEvent, type ErxSectionToggleEvent, type ErxSheetBreakpointEvent, type ErxSheetCustomEvent, type ErxSheetOpenEvent, type ErxShiftCalendarCustomEvent, type ErxShiftSelectEvent, type ErxSignaturePadCustomEvent, type ErxSortEvent, type ErxSplitButtonCustomEvent, type ErxSplitButtonOption, type ErxSplitPaneCollapseEvent, type ErxSplitPaneCustomEvent, type ErxSplitPaneResizeEvent, type ErxStatsCustomEvent, type ErxTableCustomEvent, type ErxTableRowClickEvent, type ErxTableSortEvent, type ErxTagInputCustomEvent, type ErxTimeClockCustomEvent, type ErxTimeClockEvent, type ErxTimelineCustomEvent, type ErxTreeCustomEvent, type ErxUploadCompleteEvent, type ErxUploadCustomEvent, type ErxUploadErrorEvent, type ErxUploadFile, type ErxUploadProgressEvent, type ErxUploadSelectEvent, type ErxVariantSelectEvent, type ErxVariantSelection, type ErxVariantSelectorCustomEvent, type ErxVirtualKeyboardCustomEvent, type ErxVirtualListCustomEvent, type ErxWorkOrderCustomEvent, type GanttSelectDetail, type GanttUpdateDetail, type GanttViewMode, type KanbanCardMoveDetail, type KanbanCardSelectDetail, type KanbanColumnCollapseDetail, type Machine, type MachineActionDetail, type MasterDetailResizeDetail, type MasterDetailSelectDetail, type Metric, type PanelCollapseDetail, type PanelResizeDetail, type ProductionLineSelectDetail, type ProgressStepSelectDetail, type QualityCheck, type QualityCheckCompleteDetail, type QualityCheckResultDetail, type SchedulerEventSelectDetail, type SchedulerEventUpdateDetail, type SchedulerSelectDetail, type SignatureChangeDetail, type Stat, type TagInputChangeDetail, type TimelineActionDetail, type TimelineSelectDetail, type TreeExpandDetail, type TreeSelectDetail, type VirtualListScrollDetail, type WizardCompleteDetail, type WizardStepChangeDetail, type WorkOrder, type WorkOrderActionDetail } from "@erplora/erx";
+import { ErxAttendanceList as ErxAttendanceListElement, defineCustomElement as defineErxAttendanceList } from "@erplora/erx/dist/components/erx-attendance-list.js";
+import { ErxAudioPlayer as ErxAudioPlayerElement, defineCustomElement as defineErxAudioPlayer } from "@erplora/erx/dist/components/erx-audio-player.js";
+import { ErxAutocomplete as ErxAutocompleteElement, defineCustomElement as defineErxAutocomplete } from "@erplora/erx/dist/components/erx-autocomplete.js";
+import { ErxBanner as ErxBannerElement, defineCustomElement as defineErxBanner } from "@erplora/erx/dist/components/erx-banner.js";
+import { ErxBarcodeScanner as ErxBarcodeScannerElement, defineCustomElement as defineErxBarcodeScanner } from "@erplora/erx/dist/components/erx-barcode-scanner.js";
+import { ErxBatchTracker as ErxBatchTrackerElement, defineCustomElement as defineErxBatchTracker } from "@erplora/erx/dist/components/erx-batch-tracker.js";
+import { ErxBomTree as ErxBomTreeElement, defineCustomElement as defineErxBomTree } from "@erplora/erx/dist/components/erx-bom-tree.js";
+import { ErxButtonGroup as ErxButtonGroupElement, defineCustomElement as defineErxButtonGroup } from "@erplora/erx/dist/components/erx-button-group.js";
+import { ErxCalculator as ErxCalculatorElement, defineCustomElement as defineErxCalculator } from "@erplora/erx/dist/components/erx-calculator.js";
+import { ErxCalendarViews as ErxCalendarViewsElement, defineCustomElement as defineErxCalendarViews } from "@erplora/erx/dist/components/erx-calendar-views.js";
+import { ErxCalendar as ErxCalendarElement, defineCustomElement as defineErxCalendar } from "@erplora/erx/dist/components/erx-calendar.js";
+import { ErxCallout as ErxCalloutElement, defineCustomElement as defineErxCallout } from "@erplora/erx/dist/components/erx-callout.js";
+import { ErxCarousel as ErxCarouselElement, defineCustomElement as defineErxCarousel } from "@erplora/erx/dist/components/erx-carousel.js";
 import { ErxCart as ErxCartElement, defineCustomElement as defineErxCart } from "@erplora/erx/dist/components/erx-cart.js";
 import { ErxCategoryTabs as ErxCategoryTabsElement, defineCustomElement as defineErxCategoryTabs } from "@erplora/erx/dist/components/erx-category-tabs.js";
+import { ErxChart as ErxChartElement, defineCustomElement as defineErxChart } from "@erplora/erx/dist/components/erx-chart.js";
+import { ErxCodeBlock as ErxCodeBlockElement, defineCustomElement as defineErxCodeBlock } from "@erplora/erx/dist/components/erx-code-block.js";
+import { ErxColorPicker as ErxColorPickerElement, defineCustomElement as defineErxColorPicker } from "@erplora/erx/dist/components/erx-color-picker.js";
+import { ErxCommand as ErxCommandElement, defineCustomElement as defineErxCommand } from "@erplora/erx/dist/components/erx-command.js";
+import { ErxComparison as ErxComparisonElement, defineCustomElement as defineErxComparison } from "@erplora/erx/dist/components/erx-comparison.js";
+import { ErxContextMenu as ErxContextMenuElement, defineCustomElement as defineErxContextMenu } from "@erplora/erx/dist/components/erx-context-menu.js";
+import { ErxCurrencyInput as ErxCurrencyInputElement, defineCustomElement as defineErxCurrencyInput } from "@erplora/erx/dist/components/erx-currency-input.js";
+import { ErxDashboardGrid as ErxDashboardGridElement, defineCustomElement as defineErxDashboardGrid } from "@erplora/erx/dist/components/erx-dashboard-grid.js";
 import { ErxDataGrid as ErxDataGridElement, defineCustomElement as defineErxDataGrid } from "@erplora/erx/dist/components/erx-data-grid.js";
+import { ErxDateRangePicker as ErxDateRangePickerElement, defineCustomElement as defineErxDateRangePicker } from "@erplora/erx/dist/components/erx-date-range-picker.js";
+import { ErxDiffViewer as ErxDiffViewerElement, defineCustomElement as defineErxDiffViewer } from "@erplora/erx/dist/components/erx-diff-viewer.js";
+import { ErxDivider as ErxDividerElement, defineCustomElement as defineErxDivider } from "@erplora/erx/dist/components/erx-divider.js";
+import { ErxDrawer as ErxDrawerElement, defineCustomElement as defineErxDrawer } from "@erplora/erx/dist/components/erx-drawer.js";
+import { ErxDropdown as ErxDropdownElement, defineCustomElement as defineErxDropdown } from "@erplora/erx/dist/components/erx-dropdown.js";
+import { ErxEmployeeCard as ErxEmployeeCardElement, defineCustomElement as defineErxEmployeeCard } from "@erplora/erx/dist/components/erx-employee-card.js";
+import { ErxEventCard as ErxEventCardElement, defineCustomElement as defineErxEventCard } from "@erplora/erx/dist/components/erx-event-card.js";
+import { ErxFormWizard as ErxFormWizardElement, defineCustomElement as defineErxFormWizard } from "@erplora/erx/dist/components/erx-form-wizard.js";
+import { ErxFullscreenModal as ErxFullscreenModalElement, defineCustomElement as defineErxFullscreenModal } from "@erplora/erx/dist/components/erx-fullscreen-modal.js";
+import { ErxGantt as ErxGanttElement, defineCustomElement as defineErxGantt } from "@erplora/erx/dist/components/erx-gantt.js";
+import { ErxGauge as ErxGaugeElement, defineCustomElement as defineErxGauge } from "@erplora/erx/dist/components/erx-gauge.js";
+import { ErxImageCrop as ErxImageCropElement, defineCustomElement as defineErxImageCrop } from "@erplora/erx/dist/components/erx-image-crop.js";
+import { ErxImageGallery as ErxImageGalleryElement, defineCustomElement as defineErxImageGallery } from "@erplora/erx/dist/components/erx-image-gallery.js";
+import { ErxImageZoom as ErxImageZoomElement, defineCustomElement as defineErxImageZoom } from "@erplora/erx/dist/components/erx-image-zoom.js";
+import { ErxJsonViewer as ErxJsonViewerElement, defineCustomElement as defineErxJsonViewer } from "@erplora/erx/dist/components/erx-json-viewer.js";
+import { ErxKanban as ErxKanbanElement, defineCustomElement as defineErxKanban } from "@erplora/erx/dist/components/erx-kanban.js";
+import { ErxLeaveRequest as ErxLeaveRequestElement, defineCustomElement as defineErxLeaveRequest } from "@erplora/erx/dist/components/erx-leave-request.js";
+import { ErxLightbox as ErxLightboxElement, defineCustomElement as defineErxLightbox } from "@erplora/erx/dist/components/erx-lightbox.js";
+import { ErxLoadMore as ErxLoadMoreElement, defineCustomElement as defineErxLoadMore } from "@erplora/erx/dist/components/erx-load-more.js";
+import { ErxMachineStatus as ErxMachineStatusElement, defineCustomElement as defineErxMachineStatus } from "@erplora/erx/dist/components/erx-machine-status.js";
+import { ErxMasonry as ErxMasonryElement, defineCustomElement as defineErxMasonry } from "@erplora/erx/dist/components/erx-masonry.js";
+import { ErxMasterDetail as ErxMasterDetailElement, defineCustomElement as defineErxMasterDetail } from "@erplora/erx/dist/components/erx-master-detail.js";
+import { ErxMegaMenu as ErxMegaMenuElement, defineCustomElement as defineErxMegaMenu } from "@erplora/erx/dist/components/erx-mega-menu.js";
+import { ErxMetricCard as ErxMetricCardElement, defineCustomElement as defineErxMetricCard } from "@erplora/erx/dist/components/erx-metric-card.js";
+import { ErxNotifications as ErxNotificationsElement, defineCustomElement as defineErxNotifications } from "@erplora/erx/dist/components/erx-notifications.js";
 import { ErxOrderTicket as ErxOrderTicketElement, defineCustomElement as defineErxOrderTicket } from "@erplora/erx/dist/components/erx-order-ticket.js";
+import { ErxOrgChart as ErxOrgChartElement, defineCustomElement as defineErxOrgChart } from "@erplora/erx/dist/components/erx-org-chart.js";
+import { ErxPagination as ErxPaginationElement, defineCustomElement as defineErxPagination } from "@erplora/erx/dist/components/erx-pagination.js";
+import { ErxPanel as ErxPanelElement, defineCustomElement as defineErxPanel } from "@erplora/erx/dist/components/erx-panel.js";
 import { ErxPayment as ErxPaymentElement, defineCustomElement as defineErxPayment } from "@erplora/erx/dist/components/erx-payment.js";
+import { ErxPdfViewer as ErxPdfViewerElement, defineCustomElement as defineErxPdfViewer } from "@erplora/erx/dist/components/erx-pdf-viewer.js";
+import { ErxPerformanceMeter as ErxPerformanceMeterElement, defineCustomElement as defineErxPerformanceMeter } from "@erplora/erx/dist/components/erx-performance-meter.js";
+import { ErxPhoneInput as ErxPhoneInputElement, defineCustomElement as defineErxPhoneInput } from "@erplora/erx/dist/components/erx-phone-input.js";
 import { ErxPinPad as ErxPinPadElement, defineCustomElement as defineErxPinPad } from "@erplora/erx/dist/components/erx-pin-pad.js";
 import { ErxProductCard as ErxProductCardElement, defineCustomElement as defineErxProductCard } from "@erplora/erx/dist/components/erx-product-card.js";
+import { ErxProductionLine as ErxProductionLineElement, defineCustomElement as defineErxProductionLine } from "@erplora/erx/dist/components/erx-production-line.js";
+import { ErxProgressCircle as ErxProgressCircleElement, defineCustomElement as defineErxProgressCircle } from "@erplora/erx/dist/components/erx-progress-circle.js";
+import { ErxProgressSteps as ErxProgressStepsElement, defineCustomElement as defineErxProgressSteps } from "@erplora/erx/dist/components/erx-progress-steps.js";
+import { ErxQrCode as ErxQrCodeElement, defineCustomElement as defineErxQrCode } from "@erplora/erx/dist/components/erx-qr-code.js";
+import { ErxQualityCheck as ErxQualityCheckElement, defineCustomElement as defineErxQualityCheck } from "@erplora/erx/dist/components/erx-quality-check.js";
 import { ErxReceipt as ErxReceiptElement, defineCustomElement as defineErxReceipt } from "@erplora/erx/dist/components/erx-receipt.js";
+import { ErxResizablePanels as ErxResizablePanelsElement, defineCustomElement as defineErxResizablePanels } from "@erplora/erx/dist/components/erx-resizable-panels.js";
+import { ErxRichText as ErxRichTextElement, defineCustomElement as defineErxRichText } from "@erplora/erx/dist/components/erx-rich-text.js";
+import { ErxScheduler as ErxSchedulerElement, defineCustomElement as defineErxScheduler } from "@erplora/erx/dist/components/erx-scheduler.js";
+import { ErxSection as ErxSectionElement, defineCustomElement as defineErxSection } from "@erplora/erx/dist/components/erx-section.js";
+import { ErxSheet as ErxSheetElement, defineCustomElement as defineErxSheet } from "@erplora/erx/dist/components/erx-sheet.js";
+import { ErxShell as ErxShellElement, defineCustomElement as defineErxShell } from "@erplora/erx/dist/components/erx-shell.js";
+import { ErxShiftCalendar as ErxShiftCalendarElement, defineCustomElement as defineErxShiftCalendar } from "@erplora/erx/dist/components/erx-shift-calendar.js";
+import { ErxSignaturePad as ErxSignaturePadElement, defineCustomElement as defineErxSignaturePad } from "@erplora/erx/dist/components/erx-signature-pad.js";
+import { ErxSnackbar as ErxSnackbarElement, defineCustomElement as defineErxSnackbar } from "@erplora/erx/dist/components/erx-snackbar.js";
+import { ErxSparkline as ErxSparklineElement, defineCustomElement as defineErxSparkline } from "@erplora/erx/dist/components/erx-sparkline.js";
+import { ErxSplitButton as ErxSplitButtonElement, defineCustomElement as defineErxSplitButton } from "@erplora/erx/dist/components/erx-split-button.js";
 import { ErxSplitPane as ErxSplitPaneElement, defineCustomElement as defineErxSplitPane } from "@erplora/erx/dist/components/erx-split-pane.js";
+import { ErxState as ErxStateElement, defineCustomElement as defineErxState } from "@erplora/erx/dist/components/erx-state.js";
+import { ErxStats as ErxStatsElement, defineCustomElement as defineErxStats } from "@erplora/erx/dist/components/erx-stats.js";
+import { ErxStatusIndicator as ErxStatusIndicatorElement, defineCustomElement as defineErxStatusIndicator } from "@erplora/erx/dist/components/erx-status-indicator.js";
+import { ErxStockIndicator as ErxStockIndicatorElement, defineCustomElement as defineErxStockIndicator } from "@erplora/erx/dist/components/erx-stock-indicator.js";
+import { ErxTable as ErxTableElement, defineCustomElement as defineErxTable } from "@erplora/erx/dist/components/erx-table.js";
+import { ErxTagInput as ErxTagInputElement, defineCustomElement as defineErxTagInput } from "@erplora/erx/dist/components/erx-tag-input.js";
+import { ErxTimeClock as ErxTimeClockElement, defineCustomElement as defineErxTimeClock } from "@erplora/erx/dist/components/erx-time-clock.js";
+import { ErxTimeline as ErxTimelineElement, defineCustomElement as defineErxTimeline } from "@erplora/erx/dist/components/erx-timeline.js";
+import { ErxTree as ErxTreeElement, defineCustomElement as defineErxTree } from "@erplora/erx/dist/components/erx-tree.js";
+import { ErxUpload as ErxUploadElement, defineCustomElement as defineErxUpload } from "@erplora/erx/dist/components/erx-upload.js";
 import { ErxVariantSelector as ErxVariantSelectorElement, defineCustomElement as defineErxVariantSelector } from "@erplora/erx/dist/components/erx-variant-selector.js";
+import { ErxVideoPlayer as ErxVideoPlayerElement, defineCustomElement as defineErxVideoPlayer } from "@erplora/erx/dist/components/erx-video-player.js";
+import { ErxVirtualKeyboard as ErxVirtualKeyboardElement, defineCustomElement as defineErxVirtualKeyboard } from "@erplora/erx/dist/components/erx-virtual-keyboard.js";
+import { ErxVirtualList as ErxVirtualListElement, defineCustomElement as defineErxVirtualList } from "@erplora/erx/dist/components/erx-virtual-list.js";
+import { ErxWorkOrder as ErxWorkOrderElement, defineCustomElement as defineErxWorkOrder } from "@erplora/erx/dist/components/erx-work-order.js";
 import type { EventName, StencilReactComponent } from '@stencil/react-output-target/runtime';
 import { createComponent } from '@stencil/react-output-target/runtime';
 import React from 'react';
+
+type ErxAttendanceListEvents = { onErxSelect: EventName<ErxAttendanceListCustomEvent<{ record: ErxAttendanceRecord }>> };
+
+export const ErxAttendanceList: StencilReactComponent<ErxAttendanceListElement, ErxAttendanceListEvents> = /*@__PURE__*/ createComponent<ErxAttendanceListElement, ErxAttendanceListEvents>({
+    tagName: 'erx-attendance-list',
+    elementClass: ErxAttendanceListElement,
+    // @ts-ignore - React type of Stencil Output Target may differ from the React version used in the Nuxt.js project, this can be ignored.
+    react: React,
+    events: { onErxSelect: 'erxSelect' } as ErxAttendanceListEvents,
+    defineCustomElement: defineErxAttendanceList
+});
+
+type ErxAudioPlayerEvents = {
+    onErxPlay: EventName<CustomEvent<void>>,
+    onErxPause: EventName<CustomEvent<void>>,
+    onErxTimeUpdate: EventName<CustomEvent<{ currentTime: number; duration: number }>>,
+    onErxEnded: EventName<CustomEvent<void>>
+};
+
+export const ErxAudioPlayer: StencilReactComponent<ErxAudioPlayerElement, ErxAudioPlayerEvents> = /*@__PURE__*/ createComponent<ErxAudioPlayerElement, ErxAudioPlayerEvents>({
+    tagName: 'erx-audio-player',
+    elementClass: ErxAudioPlayerElement,
+    // @ts-ignore - React type of Stencil Output Target may differ from the React version used in the Nuxt.js project, this can be ignored.
+    react: React,
+    events: {
+        onErxPlay: 'erxPlay',
+        onErxPause: 'erxPause',
+        onErxTimeUpdate: 'erxTimeUpdate',
+        onErxEnded: 'erxEnded'
+    } as ErxAudioPlayerEvents,
+    defineCustomElement: defineErxAudioPlayer
+});
+
+type ErxAutocompleteEvents = {
+    onErxSelect: EventName<ErxAutocompleteCustomEvent<AutocompleteSelectDetail>>,
+    onErxSearch: EventName<ErxAutocompleteCustomEvent<AutocompleteSearchDetail>>,
+    onErxClear: EventName<CustomEvent<void>>
+};
+
+export const ErxAutocomplete: StencilReactComponent<ErxAutocompleteElement, ErxAutocompleteEvents> = /*@__PURE__*/ createComponent<ErxAutocompleteElement, ErxAutocompleteEvents>({
+    tagName: 'erx-autocomplete',
+    elementClass: ErxAutocompleteElement,
+    // @ts-ignore - React type of Stencil Output Target may differ from the React version used in the Nuxt.js project, this can be ignored.
+    react: React,
+    events: {
+        onErxSelect: 'erxSelect',
+        onErxSearch: 'erxSearch',
+        onErxClear: 'erxClear'
+    } as ErxAutocompleteEvents,
+    defineCustomElement: defineErxAutocomplete
+});
+
+type ErxBannerEvents = {
+    onErxDismiss: EventName<CustomEvent<void>>,
+    onErxAction: EventName<CustomEvent<void>>
+};
+
+export const ErxBanner: StencilReactComponent<ErxBannerElement, ErxBannerEvents> = /*@__PURE__*/ createComponent<ErxBannerElement, ErxBannerEvents>({
+    tagName: 'erx-banner',
+    elementClass: ErxBannerElement,
+    // @ts-ignore - React type of Stencil Output Target may differ from the React version used in the Nuxt.js project, this can be ignored.
+    react: React,
+    events: {
+        onErxDismiss: 'erxDismiss',
+        onErxAction: 'erxAction'
+    } as ErxBannerEvents,
+    defineCustomElement: defineErxBanner
+});
+
+type ErxBarcodeScannerEvents = {
+    onErxScan: EventName<ErxBarcodeScannerCustomEvent<ErxBarcodeScanEvent>>,
+    onErxError: EventName<ErxBarcodeScannerCustomEvent<ErxBarcodeScannerErrorEvent>>
+};
+
+export const ErxBarcodeScanner: StencilReactComponent<ErxBarcodeScannerElement, ErxBarcodeScannerEvents> = /*@__PURE__*/ createComponent<ErxBarcodeScannerElement, ErxBarcodeScannerEvents>({
+    tagName: 'erx-barcode-scanner',
+    elementClass: ErxBarcodeScannerElement,
+    // @ts-ignore - React type of Stencil Output Target may differ from the React version used in the Nuxt.js project, this can be ignored.
+    react: React,
+    events: {
+        onErxScan: 'erxScan',
+        onErxError: 'erxError'
+    } as ErxBarcodeScannerEvents,
+    defineCustomElement: defineErxBarcodeScanner
+});
+
+type ErxBatchTrackerEvents = {
+    onErxSelect: EventName<ErxBatchTrackerCustomEvent<BatchSelectDetail>>,
+    onErxStageSelect: EventName<ErxBatchTrackerCustomEvent<BatchStage>>
+};
+
+export const ErxBatchTracker: StencilReactComponent<ErxBatchTrackerElement, ErxBatchTrackerEvents> = /*@__PURE__*/ createComponent<ErxBatchTrackerElement, ErxBatchTrackerEvents>({
+    tagName: 'erx-batch-tracker',
+    elementClass: ErxBatchTrackerElement,
+    // @ts-ignore - React type of Stencil Output Target may differ from the React version used in the Nuxt.js project, this can be ignored.
+    react: React,
+    events: {
+        onErxSelect: 'erxSelect',
+        onErxStageSelect: 'erxStageSelect'
+    } as ErxBatchTrackerEvents,
+    defineCustomElement: defineErxBatchTracker
+});
+
+type ErxBomTreeEvents = { onErxSelect: EventName<ErxBomTreeCustomEvent<BomSelectDetail>> };
+
+export const ErxBomTree: StencilReactComponent<ErxBomTreeElement, ErxBomTreeEvents> = /*@__PURE__*/ createComponent<ErxBomTreeElement, ErxBomTreeEvents>({
+    tagName: 'erx-bom-tree',
+    elementClass: ErxBomTreeElement,
+    // @ts-ignore - React type of Stencil Output Target may differ from the React version used in the Nuxt.js project, this can be ignored.
+    react: React,
+    events: { onErxSelect: 'erxSelect' } as ErxBomTreeEvents,
+    defineCustomElement: defineErxBomTree
+});
+
+type ErxButtonGroupEvents = NonNullable<unknown>;
+
+export const ErxButtonGroup: StencilReactComponent<ErxButtonGroupElement, ErxButtonGroupEvents> = /*@__PURE__*/ createComponent<ErxButtonGroupElement, ErxButtonGroupEvents>({
+    tagName: 'erx-button-group',
+    elementClass: ErxButtonGroupElement,
+    // @ts-ignore - React type of Stencil Output Target may differ from the React version used in the Nuxt.js project, this can be ignored.
+    react: React,
+    events: {} as ErxButtonGroupEvents,
+    defineCustomElement: defineErxButtonGroup
+});
+
+type ErxCalculatorEvents = {
+    onErxResult: EventName<ErxCalculatorCustomEvent<ErxCalculatorResult>>,
+    onErxInput: EventName<CustomEvent<{ display: string }>>
+};
+
+export const ErxCalculator: StencilReactComponent<ErxCalculatorElement, ErxCalculatorEvents> = /*@__PURE__*/ createComponent<ErxCalculatorElement, ErxCalculatorEvents>({
+    tagName: 'erx-calculator',
+    elementClass: ErxCalculatorElement,
+    // @ts-ignore - React type of Stencil Output Target may differ from the React version used in the Nuxt.js project, this can be ignored.
+    react: React,
+    events: {
+        onErxResult: 'erxResult',
+        onErxInput: 'erxInput'
+    } as ErxCalculatorEvents,
+    defineCustomElement: defineErxCalculator
+});
+
+type ErxCalendarEvents = {
+    onErxSelect: EventName<ErxCalendarCustomEvent<CalendarSelectDetail>>,
+    onErxEventSelect: EventName<ErxCalendarCustomEvent<CalendarEventSelectDetail>>,
+    onErxViewChange: EventName<ErxCalendarCustomEvent<CalendarViewChangeDetail>>
+};
+
+export const ErxCalendar: StencilReactComponent<ErxCalendarElement, ErxCalendarEvents> = /*@__PURE__*/ createComponent<ErxCalendarElement, ErxCalendarEvents>({
+    tagName: 'erx-calendar',
+    elementClass: ErxCalendarElement,
+    // @ts-ignore - React type of Stencil Output Target may differ from the React version used in the Nuxt.js project, this can be ignored.
+    react: React,
+    events: {
+        onErxSelect: 'erxSelect',
+        onErxEventSelect: 'erxEventSelect',
+        onErxViewChange: 'erxViewChange'
+    } as ErxCalendarEvents,
+    defineCustomElement: defineErxCalendar
+});
+
+type ErxCalendarViewsEvents = {
+    onErxSelect: EventName<ErxCalendarViewsCustomEvent<CalendarViewSelectDetail>>,
+    onErxEventSelect: EventName<ErxCalendarViewsCustomEvent<{ event: CalendarEvent }>>
+};
+
+export const ErxCalendarViews: StencilReactComponent<ErxCalendarViewsElement, ErxCalendarViewsEvents> = /*@__PURE__*/ createComponent<ErxCalendarViewsElement, ErxCalendarViewsEvents>({
+    tagName: 'erx-calendar-views',
+    elementClass: ErxCalendarViewsElement,
+    // @ts-ignore - React type of Stencil Output Target may differ from the React version used in the Nuxt.js project, this can be ignored.
+    react: React,
+    events: {
+        onErxSelect: 'erxSelect',
+        onErxEventSelect: 'erxEventSelect'
+    } as ErxCalendarViewsEvents,
+    defineCustomElement: defineErxCalendarViews
+});
+
+type ErxCalloutEvents = NonNullable<unknown>;
+
+export const ErxCallout: StencilReactComponent<ErxCalloutElement, ErxCalloutEvents> = /*@__PURE__*/ createComponent<ErxCalloutElement, ErxCalloutEvents>({
+    tagName: 'erx-callout',
+    elementClass: ErxCalloutElement,
+    // @ts-ignore - React type of Stencil Output Target may differ from the React version used in the Nuxt.js project, this can be ignored.
+    react: React,
+    events: {} as ErxCalloutEvents,
+    defineCustomElement: defineErxCallout
+});
+
+type ErxCarouselEvents = { onErxSlideChange: EventName<ErxCarouselCustomEvent<ErxCarouselSlideEvent>> };
+
+export const ErxCarousel: StencilReactComponent<ErxCarouselElement, ErxCarouselEvents> = /*@__PURE__*/ createComponent<ErxCarouselElement, ErxCarouselEvents>({
+    tagName: 'erx-carousel',
+    elementClass: ErxCarouselElement,
+    // @ts-ignore - React type of Stencil Output Target may differ from the React version used in the Nuxt.js project, this can be ignored.
+    react: React,
+    events: { onErxSlideChange: 'erxSlideChange' } as ErxCarouselEvents,
+    defineCustomElement: defineErxCarousel
+});
 
 type ErxCartEvents = {
     onErxItemChange: EventName<ErxCartCustomEvent<ErxCartItemChangeEvent>>,
@@ -54,6 +335,120 @@ export const ErxCategoryTabs: StencilReactComponent<ErxCategoryTabsElement, ErxC
     defineCustomElement: defineErxCategoryTabs
 });
 
+type ErxChartEvents = NonNullable<unknown>;
+
+export const ErxChart: StencilReactComponent<ErxChartElement, ErxChartEvents> = /*@__PURE__*/ createComponent<ErxChartElement, ErxChartEvents>({
+    tagName: 'erx-chart',
+    elementClass: ErxChartElement,
+    // @ts-ignore - React type of Stencil Output Target may differ from the React version used in the Nuxt.js project, this can be ignored.
+    react: React,
+    events: {} as ErxChartEvents,
+    defineCustomElement: defineErxChart
+});
+
+type ErxCodeBlockEvents = { onErxCopy: EventName<CustomEvent<{ code: string; success: boolean }>> };
+
+export const ErxCodeBlock: StencilReactComponent<ErxCodeBlockElement, ErxCodeBlockEvents> = /*@__PURE__*/ createComponent<ErxCodeBlockElement, ErxCodeBlockEvents>({
+    tagName: 'erx-code-block',
+    elementClass: ErxCodeBlockElement,
+    // @ts-ignore - React type of Stencil Output Target may differ from the React version used in the Nuxt.js project, this can be ignored.
+    react: React,
+    events: { onErxCopy: 'erxCopy' } as ErxCodeBlockEvents,
+    defineCustomElement: defineErxCodeBlock
+});
+
+type ErxColorPickerEvents = { onErxChange: EventName<ErxColorPickerCustomEvent<ErxColorChangeEvent>> };
+
+export const ErxColorPicker: StencilReactComponent<ErxColorPickerElement, ErxColorPickerEvents> = /*@__PURE__*/ createComponent<ErxColorPickerElement, ErxColorPickerEvents>({
+    tagName: 'erx-color-picker',
+    elementClass: ErxColorPickerElement,
+    // @ts-ignore - React type of Stencil Output Target may differ from the React version used in the Nuxt.js project, this can be ignored.
+    react: React,
+    events: { onErxChange: 'erxChange' } as ErxColorPickerEvents,
+    defineCustomElement: defineErxColorPicker
+});
+
+type ErxCommandEvents = {
+    onErxSelect: EventName<ErxCommandCustomEvent<ErxCommandSelectEvent>>,
+    onErxOpenChange: EventName<ErxCommandCustomEvent<ErxCommandOpenEvent>>,
+    onErxSearch: EventName<ErxCommandCustomEvent<ErxCommandSearchEvent>>
+};
+
+export const ErxCommand: StencilReactComponent<ErxCommandElement, ErxCommandEvents> = /*@__PURE__*/ createComponent<ErxCommandElement, ErxCommandEvents>({
+    tagName: 'erx-command',
+    elementClass: ErxCommandElement,
+    // @ts-ignore - React type of Stencil Output Target may differ from the React version used in the Nuxt.js project, this can be ignored.
+    react: React,
+    events: {
+        onErxSelect: 'erxSelect',
+        onErxOpenChange: 'erxOpenChange',
+        onErxSearch: 'erxSearch'
+    } as ErxCommandEvents,
+    defineCustomElement: defineErxCommand
+});
+
+type ErxComparisonEvents = { onErxSelect: EventName<ErxComparisonCustomEvent<ComparisonSelectDetail>> };
+
+export const ErxComparison: StencilReactComponent<ErxComparisonElement, ErxComparisonEvents> = /*@__PURE__*/ createComponent<ErxComparisonElement, ErxComparisonEvents>({
+    tagName: 'erx-comparison',
+    elementClass: ErxComparisonElement,
+    // @ts-ignore - React type of Stencil Output Target may differ from the React version used in the Nuxt.js project, this can be ignored.
+    react: React,
+    events: { onErxSelect: 'erxSelect' } as ErxComparisonEvents,
+    defineCustomElement: defineErxComparison
+});
+
+type ErxContextMenuEvents = {
+    onErxSelect: EventName<ErxContextMenuCustomEvent<ErxContextMenuSelectEvent>>,
+    onErxOpenChange: EventName<ErxContextMenuCustomEvent<ErxContextMenuOpenEvent>>
+};
+
+export const ErxContextMenu: StencilReactComponent<ErxContextMenuElement, ErxContextMenuEvents> = /*@__PURE__*/ createComponent<ErxContextMenuElement, ErxContextMenuEvents>({
+    tagName: 'erx-context-menu',
+    elementClass: ErxContextMenuElement,
+    // @ts-ignore - React type of Stencil Output Target may differ from the React version used in the Nuxt.js project, this can be ignored.
+    react: React,
+    events: {
+        onErxSelect: 'erxSelect',
+        onErxOpenChange: 'erxOpenChange'
+    } as ErxContextMenuEvents,
+    defineCustomElement: defineErxContextMenu
+});
+
+type ErxCurrencyInputEvents = {
+    onErxChange: EventName<ErxCurrencyInputCustomEvent<CurrencyInputChangeDetail>>,
+    onErxBlur: EventName<ErxCurrencyInputCustomEvent<CurrencyInputChangeDetail>>
+};
+
+export const ErxCurrencyInput: StencilReactComponent<ErxCurrencyInputElement, ErxCurrencyInputEvents> = /*@__PURE__*/ createComponent<ErxCurrencyInputElement, ErxCurrencyInputEvents>({
+    tagName: 'erx-currency-input',
+    elementClass: ErxCurrencyInputElement,
+    // @ts-ignore - React type of Stencil Output Target may differ from the React version used in the Nuxt.js project, this can be ignored.
+    react: React,
+    events: {
+        onErxChange: 'erxChange',
+        onErxBlur: 'erxBlur'
+    } as ErxCurrencyInputEvents,
+    defineCustomElement: defineErxCurrencyInput
+});
+
+type ErxDashboardGridEvents = {
+    onErxLayoutChange: EventName<ErxDashboardGridCustomEvent<DashboardLayoutChangeDetail>>,
+    onErxWidgetSelect: EventName<ErxDashboardGridCustomEvent<DashboardWidgetSelectDetail>>
+};
+
+export const ErxDashboardGrid: StencilReactComponent<ErxDashboardGridElement, ErxDashboardGridEvents> = /*@__PURE__*/ createComponent<ErxDashboardGridElement, ErxDashboardGridEvents>({
+    tagName: 'erx-dashboard-grid',
+    elementClass: ErxDashboardGridElement,
+    // @ts-ignore - React type of Stencil Output Target may differ from the React version used in the Nuxt.js project, this can be ignored.
+    react: React,
+    events: {
+        onErxLayoutChange: 'erxLayoutChange',
+        onErxWidgetSelect: 'erxWidgetSelect'
+    } as ErxDashboardGridEvents,
+    defineCustomElement: defineErxDashboardGrid
+});
+
 type ErxDataGridEvents = {
     onErxSort: EventName<ErxDataGridCustomEvent<ErxSortEvent>>,
     onErxFilter: EventName<ErxDataGridCustomEvent<ErxFilterEvent>>,
@@ -85,6 +480,373 @@ export const ErxDataGrid: StencilReactComponent<ErxDataGridElement, ErxDataGridE
     defineCustomElement: defineErxDataGrid
 });
 
+type ErxDateRangePickerEvents = { onErxChange: EventName<ErxDateRangePickerCustomEvent<DateRangeChangeDetail>> };
+
+export const ErxDateRangePicker: StencilReactComponent<ErxDateRangePickerElement, ErxDateRangePickerEvents> = /*@__PURE__*/ createComponent<ErxDateRangePickerElement, ErxDateRangePickerEvents>({
+    tagName: 'erx-date-range-picker',
+    elementClass: ErxDateRangePickerElement,
+    // @ts-ignore - React type of Stencil Output Target may differ from the React version used in the Nuxt.js project, this can be ignored.
+    react: React,
+    events: { onErxChange: 'erxChange' } as ErxDateRangePickerEvents,
+    defineCustomElement: defineErxDateRangePicker
+});
+
+type ErxDiffViewerEvents = NonNullable<unknown>;
+
+export const ErxDiffViewer: StencilReactComponent<ErxDiffViewerElement, ErxDiffViewerEvents> = /*@__PURE__*/ createComponent<ErxDiffViewerElement, ErxDiffViewerEvents>({
+    tagName: 'erx-diff-viewer',
+    elementClass: ErxDiffViewerElement,
+    // @ts-ignore - React type of Stencil Output Target may differ from the React version used in the Nuxt.js project, this can be ignored.
+    react: React,
+    events: {} as ErxDiffViewerEvents,
+    defineCustomElement: defineErxDiffViewer
+});
+
+type ErxDividerEvents = NonNullable<unknown>;
+
+export const ErxDivider: StencilReactComponent<ErxDividerElement, ErxDividerEvents> = /*@__PURE__*/ createComponent<ErxDividerElement, ErxDividerEvents>({
+    tagName: 'erx-divider',
+    elementClass: ErxDividerElement,
+    // @ts-ignore - React type of Stencil Output Target may differ from the React version used in the Nuxt.js project, this can be ignored.
+    react: React,
+    events: {} as ErxDividerEvents,
+    defineCustomElement: defineErxDivider
+});
+
+type ErxDrawerEvents = { onErxOpenChange: EventName<ErxDrawerCustomEvent<ErxDrawerOpenEvent>> };
+
+export const ErxDrawer: StencilReactComponent<ErxDrawerElement, ErxDrawerEvents> = /*@__PURE__*/ createComponent<ErxDrawerElement, ErxDrawerEvents>({
+    tagName: 'erx-drawer',
+    elementClass: ErxDrawerElement,
+    // @ts-ignore - React type of Stencil Output Target may differ from the React version used in the Nuxt.js project, this can be ignored.
+    react: React,
+    events: { onErxOpenChange: 'erxOpenChange' } as ErxDrawerEvents,
+    defineCustomElement: defineErxDrawer
+});
+
+type ErxDropdownEvents = {
+    onErxSelect: EventName<ErxDropdownCustomEvent<ErxDropdownSelectEvent>>,
+    onErxOpenChange: EventName<ErxDropdownCustomEvent<ErxDropdownOpenEvent>>
+};
+
+export const ErxDropdown: StencilReactComponent<ErxDropdownElement, ErxDropdownEvents> = /*@__PURE__*/ createComponent<ErxDropdownElement, ErxDropdownEvents>({
+    tagName: 'erx-dropdown',
+    elementClass: ErxDropdownElement,
+    // @ts-ignore - React type of Stencil Output Target may differ from the React version used in the Nuxt.js project, this can be ignored.
+    react: React,
+    events: {
+        onErxSelect: 'erxSelect',
+        onErxOpenChange: 'erxOpenChange'
+    } as ErxDropdownEvents,
+    defineCustomElement: defineErxDropdown
+});
+
+type ErxEmployeeCardEvents = {
+    onErxSelect: EventName<ErxEmployeeCardCustomEvent<{ employee: ErxEmployee }>>,
+    onErxAction: EventName<ErxEmployeeCardCustomEvent<{ employee: ErxEmployee; action: string }>>
+};
+
+export const ErxEmployeeCard: StencilReactComponent<ErxEmployeeCardElement, ErxEmployeeCardEvents> = /*@__PURE__*/ createComponent<ErxEmployeeCardElement, ErxEmployeeCardEvents>({
+    tagName: 'erx-employee-card',
+    elementClass: ErxEmployeeCardElement,
+    // @ts-ignore - React type of Stencil Output Target may differ from the React version used in the Nuxt.js project, this can be ignored.
+    react: React,
+    events: {
+        onErxSelect: 'erxSelect',
+        onErxAction: 'erxAction'
+    } as ErxEmployeeCardEvents,
+    defineCustomElement: defineErxEmployeeCard
+});
+
+type ErxEventCardEvents = {
+    onErxClick: EventName<ErxEventCardCustomEvent<ErxEventCardClickEvent>>,
+    onErxAction: EventName<ErxEventCardCustomEvent<ErxEventCardActionEvent>>
+};
+
+export const ErxEventCard: StencilReactComponent<ErxEventCardElement, ErxEventCardEvents> = /*@__PURE__*/ createComponent<ErxEventCardElement, ErxEventCardEvents>({
+    tagName: 'erx-event-card',
+    elementClass: ErxEventCardElement,
+    // @ts-ignore - React type of Stencil Output Target may differ from the React version used in the Nuxt.js project, this can be ignored.
+    react: React,
+    events: {
+        onErxClick: 'erxClick',
+        onErxAction: 'erxAction'
+    } as ErxEventCardEvents,
+    defineCustomElement: defineErxEventCard
+});
+
+type ErxFormWizardEvents = {
+    onErxStepChange: EventName<ErxFormWizardCustomEvent<WizardStepChangeDetail>>,
+    onErxComplete: EventName<ErxFormWizardCustomEvent<WizardCompleteDetail>>
+};
+
+export const ErxFormWizard: StencilReactComponent<ErxFormWizardElement, ErxFormWizardEvents> = /*@__PURE__*/ createComponent<ErxFormWizardElement, ErxFormWizardEvents>({
+    tagName: 'erx-form-wizard',
+    elementClass: ErxFormWizardElement,
+    // @ts-ignore - React type of Stencil Output Target may differ from the React version used in the Nuxt.js project, this can be ignored.
+    react: React,
+    events: {
+        onErxStepChange: 'erxStepChange',
+        onErxComplete: 'erxComplete'
+    } as ErxFormWizardEvents,
+    defineCustomElement: defineErxFormWizard
+});
+
+type ErxFullscreenModalEvents = {
+    onErxOpen: EventName<CustomEvent<void>>,
+    onErxClose: EventName<CustomEvent<void>>
+};
+
+export const ErxFullscreenModal: StencilReactComponent<ErxFullscreenModalElement, ErxFullscreenModalEvents> = /*@__PURE__*/ createComponent<ErxFullscreenModalElement, ErxFullscreenModalEvents>({
+    tagName: 'erx-fullscreen-modal',
+    elementClass: ErxFullscreenModalElement,
+    // @ts-ignore - React type of Stencil Output Target may differ from the React version used in the Nuxt.js project, this can be ignored.
+    react: React,
+    events: {
+        onErxOpen: 'erxOpen',
+        onErxClose: 'erxClose'
+    } as ErxFullscreenModalEvents,
+    defineCustomElement: defineErxFullscreenModal
+});
+
+type ErxGanttEvents = {
+    onErxSelect: EventName<ErxGanttCustomEvent<GanttSelectDetail>>,
+    onErxUpdate: EventName<ErxGanttCustomEvent<GanttUpdateDetail>>,
+    onErxViewChange: EventName<ErxGanttCustomEvent<{ viewMode: GanttViewMode; startDate: Date }>>
+};
+
+export const ErxGantt: StencilReactComponent<ErxGanttElement, ErxGanttEvents> = /*@__PURE__*/ createComponent<ErxGanttElement, ErxGanttEvents>({
+    tagName: 'erx-gantt',
+    elementClass: ErxGanttElement,
+    // @ts-ignore - React type of Stencil Output Target may differ from the React version used in the Nuxt.js project, this can be ignored.
+    react: React,
+    events: {
+        onErxSelect: 'erxSelect',
+        onErxUpdate: 'erxUpdate',
+        onErxViewChange: 'erxViewChange'
+    } as ErxGanttEvents,
+    defineCustomElement: defineErxGantt
+});
+
+type ErxGaugeEvents = NonNullable<unknown>;
+
+export const ErxGauge: StencilReactComponent<ErxGaugeElement, ErxGaugeEvents> = /*@__PURE__*/ createComponent<ErxGaugeElement, ErxGaugeEvents>({
+    tagName: 'erx-gauge',
+    elementClass: ErxGaugeElement,
+    // @ts-ignore - React type of Stencil Output Target may differ from the React version used in the Nuxt.js project, this can be ignored.
+    react: React,
+    events: {} as ErxGaugeEvents,
+    defineCustomElement: defineErxGauge
+});
+
+type ErxImageCropEvents = {
+    onErxCropChange: EventName<ErxImageCropCustomEvent<ErxImageCropEvent>>,
+    onErxCropComplete: EventName<ErxImageCropCustomEvent<ErxImageCropCompleteEvent>>
+};
+
+export const ErxImageCrop: StencilReactComponent<ErxImageCropElement, ErxImageCropEvents> = /*@__PURE__*/ createComponent<ErxImageCropElement, ErxImageCropEvents>({
+    tagName: 'erx-image-crop',
+    elementClass: ErxImageCropElement,
+    // @ts-ignore - React type of Stencil Output Target may differ from the React version used in the Nuxt.js project, this can be ignored.
+    react: React,
+    events: {
+        onErxCropChange: 'erxCropChange',
+        onErxCropComplete: 'erxCropComplete'
+    } as ErxImageCropEvents,
+    defineCustomElement: defineErxImageCrop
+});
+
+type ErxImageGalleryEvents = { onErxImageClick: EventName<ErxImageGalleryCustomEvent<ErxGalleryClickEvent>> };
+
+export const ErxImageGallery: StencilReactComponent<ErxImageGalleryElement, ErxImageGalleryEvents> = /*@__PURE__*/ createComponent<ErxImageGalleryElement, ErxImageGalleryEvents>({
+    tagName: 'erx-image-gallery',
+    elementClass: ErxImageGalleryElement,
+    // @ts-ignore - React type of Stencil Output Target may differ from the React version used in the Nuxt.js project, this can be ignored.
+    react: React,
+    events: { onErxImageClick: 'erxImageClick' } as ErxImageGalleryEvents,
+    defineCustomElement: defineErxImageGallery
+});
+
+type ErxImageZoomEvents = { onErxZoom: EventName<CustomEvent<{ zoomed: boolean; level: number }>> };
+
+export const ErxImageZoom: StencilReactComponent<ErxImageZoomElement, ErxImageZoomEvents> = /*@__PURE__*/ createComponent<ErxImageZoomElement, ErxImageZoomEvents>({
+    tagName: 'erx-image-zoom',
+    elementClass: ErxImageZoomElement,
+    // @ts-ignore - React type of Stencil Output Target may differ from the React version used in the Nuxt.js project, this can be ignored.
+    react: React,
+    events: { onErxZoom: 'erxZoom' } as ErxImageZoomEvents,
+    defineCustomElement: defineErxImageZoom
+});
+
+type ErxJsonViewerEvents = NonNullable<unknown>;
+
+export const ErxJsonViewer: StencilReactComponent<ErxJsonViewerElement, ErxJsonViewerEvents> = /*@__PURE__*/ createComponent<ErxJsonViewerElement, ErxJsonViewerEvents>({
+    tagName: 'erx-json-viewer',
+    elementClass: ErxJsonViewerElement,
+    // @ts-ignore - React type of Stencil Output Target may differ from the React version used in the Nuxt.js project, this can be ignored.
+    react: React,
+    events: {} as ErxJsonViewerEvents,
+    defineCustomElement: defineErxJsonViewer
+});
+
+type ErxKanbanEvents = {
+    onErxCardMove: EventName<ErxKanbanCustomEvent<KanbanCardMoveDetail>>,
+    onErxCardSelect: EventName<ErxKanbanCustomEvent<KanbanCardSelectDetail>>,
+    onErxColumnCollapse: EventName<ErxKanbanCustomEvent<KanbanColumnCollapseDetail>>
+};
+
+export const ErxKanban: StencilReactComponent<ErxKanbanElement, ErxKanbanEvents> = /*@__PURE__*/ createComponent<ErxKanbanElement, ErxKanbanEvents>({
+    tagName: 'erx-kanban',
+    elementClass: ErxKanbanElement,
+    // @ts-ignore - React type of Stencil Output Target may differ from the React version used in the Nuxt.js project, this can be ignored.
+    react: React,
+    events: {
+        onErxCardMove: 'erxCardMove',
+        onErxCardSelect: 'erxCardSelect',
+        onErxColumnCollapse: 'erxColumnCollapse'
+    } as ErxKanbanEvents,
+    defineCustomElement: defineErxKanban
+});
+
+type ErxLeaveRequestEvents = {
+    onErxAction: EventName<ErxLeaveRequestCustomEvent<ErxLeaveRequestActionEvent>>,
+    onErxSelect: EventName<ErxLeaveRequestCustomEvent<{ request: ErxLeaveRequest }>>
+};
+
+export const ErxLeaveRequest: StencilReactComponent<ErxLeaveRequestElement, ErxLeaveRequestEvents> = /*@__PURE__*/ createComponent<ErxLeaveRequestElement, ErxLeaveRequestEvents>({
+    tagName: 'erx-leave-request',
+    elementClass: ErxLeaveRequestElement,
+    // @ts-ignore - React type of Stencil Output Target may differ from the React version used in the Nuxt.js project, this can be ignored.
+    react: React,
+    events: {
+        onErxAction: 'erxAction',
+        onErxSelect: 'erxSelect'
+    } as ErxLeaveRequestEvents,
+    defineCustomElement: defineErxLeaveRequest
+});
+
+type ErxLightboxEvents = {
+    onErxOpenChange: EventName<ErxLightboxCustomEvent<ErxLightboxOpenEvent>>,
+    onErxSlideChange: EventName<ErxLightboxCustomEvent<ErxLightboxSlideEvent>>,
+    onErxZoomChange: EventName<ErxLightboxCustomEvent<ErxLightboxZoomEvent>>
+};
+
+export const ErxLightbox: StencilReactComponent<ErxLightboxElement, ErxLightboxEvents> = /*@__PURE__*/ createComponent<ErxLightboxElement, ErxLightboxEvents>({
+    tagName: 'erx-lightbox',
+    elementClass: ErxLightboxElement,
+    // @ts-ignore - React type of Stencil Output Target may differ from the React version used in the Nuxt.js project, this can be ignored.
+    react: React,
+    events: {
+        onErxOpenChange: 'erxOpenChange',
+        onErxSlideChange: 'erxSlideChange',
+        onErxZoomChange: 'erxZoomChange'
+    } as ErxLightboxEvents,
+    defineCustomElement: defineErxLightbox
+});
+
+type ErxLoadMoreEvents = { onErxLoadMore: EventName<ErxLoadMoreCustomEvent<ErxLoadMoreEvent>> };
+
+export const ErxLoadMore: StencilReactComponent<ErxLoadMoreElement, ErxLoadMoreEvents> = /*@__PURE__*/ createComponent<ErxLoadMoreElement, ErxLoadMoreEvents>({
+    tagName: 'erx-load-more',
+    elementClass: ErxLoadMoreElement,
+    // @ts-ignore - React type of Stencil Output Target may differ from the React version used in the Nuxt.js project, this can be ignored.
+    react: React,
+    events: { onErxLoadMore: 'erxLoadMore' } as ErxLoadMoreEvents,
+    defineCustomElement: defineErxLoadMore
+});
+
+type ErxMachineStatusEvents = {
+    onErxAction: EventName<ErxMachineStatusCustomEvent<MachineActionDetail>>,
+    onErxSelect: EventName<ErxMachineStatusCustomEvent<Machine>>
+};
+
+export const ErxMachineStatus: StencilReactComponent<ErxMachineStatusElement, ErxMachineStatusEvents> = /*@__PURE__*/ createComponent<ErxMachineStatusElement, ErxMachineStatusEvents>({
+    tagName: 'erx-machine-status',
+    elementClass: ErxMachineStatusElement,
+    // @ts-ignore - React type of Stencil Output Target may differ from the React version used in the Nuxt.js project, this can be ignored.
+    react: React,
+    events: {
+        onErxAction: 'erxAction',
+        onErxSelect: 'erxSelect'
+    } as ErxMachineStatusEvents,
+    defineCustomElement: defineErxMachineStatus
+});
+
+type ErxMasonryEvents = NonNullable<unknown>;
+
+export const ErxMasonry: StencilReactComponent<ErxMasonryElement, ErxMasonryEvents> = /*@__PURE__*/ createComponent<ErxMasonryElement, ErxMasonryEvents>({
+    tagName: 'erx-masonry',
+    elementClass: ErxMasonryElement,
+    // @ts-ignore - React type of Stencil Output Target may differ from the React version used in the Nuxt.js project, this can be ignored.
+    react: React,
+    events: {} as ErxMasonryEvents,
+    defineCustomElement: defineErxMasonry
+});
+
+type ErxMasterDetailEvents = {
+    onErxSelect: EventName<ErxMasterDetailCustomEvent<MasterDetailSelectDetail>>,
+    onErxResize: EventName<ErxMasterDetailCustomEvent<MasterDetailResizeDetail>>
+};
+
+export const ErxMasterDetail: StencilReactComponent<ErxMasterDetailElement, ErxMasterDetailEvents> = /*@__PURE__*/ createComponent<ErxMasterDetailElement, ErxMasterDetailEvents>({
+    tagName: 'erx-master-detail',
+    elementClass: ErxMasterDetailElement,
+    // @ts-ignore - React type of Stencil Output Target may differ from the React version used in the Nuxt.js project, this can be ignored.
+    react: React,
+    events: {
+        onErxSelect: 'erxSelect',
+        onErxResize: 'erxResize'
+    } as ErxMasterDetailEvents,
+    defineCustomElement: defineErxMasterDetail
+});
+
+type ErxMegaMenuEvents = { onErxSelect: EventName<CustomEvent<{ item: any }>> };
+
+export const ErxMegaMenu: StencilReactComponent<ErxMegaMenuElement, ErxMegaMenuEvents> = /*@__PURE__*/ createComponent<ErxMegaMenuElement, ErxMegaMenuEvents>({
+    tagName: 'erx-mega-menu',
+    elementClass: ErxMegaMenuElement,
+    // @ts-ignore - React type of Stencil Output Target may differ from the React version used in the Nuxt.js project, this can be ignored.
+    react: React,
+    events: { onErxSelect: 'erxSelect' } as ErxMegaMenuEvents,
+    defineCustomElement: defineErxMegaMenu
+});
+
+type ErxMetricCardEvents = { onErxSelect: EventName<ErxMetricCardCustomEvent<Metric>> };
+
+export const ErxMetricCard: StencilReactComponent<ErxMetricCardElement, ErxMetricCardEvents> = /*@__PURE__*/ createComponent<ErxMetricCardElement, ErxMetricCardEvents>({
+    tagName: 'erx-metric-card',
+    elementClass: ErxMetricCardElement,
+    // @ts-ignore - React type of Stencil Output Target may differ from the React version used in the Nuxt.js project, this can be ignored.
+    react: React,
+    events: { onErxSelect: 'erxSelect' } as ErxMetricCardEvents,
+    defineCustomElement: defineErxMetricCard
+});
+
+type ErxNotificationsEvents = {
+    onErxNotificationClick: EventName<ErxNotificationsCustomEvent<ErxNotificationClickEvent>>,
+    onErxNotificationAction: EventName<ErxNotificationsCustomEvent<ErxNotificationActionEvent>>,
+    onErxNotificationDismiss: EventName<ErxNotificationsCustomEvent<ErxNotificationDismissEvent>>,
+    onErxOpenChange: EventName<ErxNotificationsCustomEvent<ErxNotificationsOpenEvent>>,
+    onErxMarkAllRead: EventName<CustomEvent<void>>,
+    onErxClearAll: EventName<CustomEvent<void>>
+};
+
+export const ErxNotifications: StencilReactComponent<ErxNotificationsElement, ErxNotificationsEvents> = /*@__PURE__*/ createComponent<ErxNotificationsElement, ErxNotificationsEvents>({
+    tagName: 'erx-notifications',
+    elementClass: ErxNotificationsElement,
+    // @ts-ignore - React type of Stencil Output Target may differ from the React version used in the Nuxt.js project, this can be ignored.
+    react: React,
+    events: {
+        onErxNotificationClick: 'erxNotificationClick',
+        onErxNotificationAction: 'erxNotificationAction',
+        onErxNotificationDismiss: 'erxNotificationDismiss',
+        onErxOpenChange: 'erxOpenChange',
+        onErxMarkAllRead: 'erxMarkAllRead',
+        onErxClearAll: 'erxClearAll'
+    } as ErxNotificationsEvents,
+    defineCustomElement: defineErxNotifications
+});
+
 type ErxOrderTicketEvents = {
     onErxAction: EventName<ErxOrderTicketCustomEvent<ErxOrderTicketActionEvent>>,
     onErxSelect: EventName<ErxOrderTicketCustomEvent<{ order: ErxOrder }>>
@@ -102,6 +864,45 @@ export const ErxOrderTicket: StencilReactComponent<ErxOrderTicketElement, ErxOrd
     defineCustomElement: defineErxOrderTicket
 });
 
+type ErxOrgChartEvents = { onErxSelect: EventName<ErxOrgChartCustomEvent<ErxOrgChartSelectEvent>> };
+
+export const ErxOrgChart: StencilReactComponent<ErxOrgChartElement, ErxOrgChartEvents> = /*@__PURE__*/ createComponent<ErxOrgChartElement, ErxOrgChartEvents>({
+    tagName: 'erx-org-chart',
+    elementClass: ErxOrgChartElement,
+    // @ts-ignore - React type of Stencil Output Target may differ from the React version used in the Nuxt.js project, this can be ignored.
+    react: React,
+    events: { onErxSelect: 'erxSelect' } as ErxOrgChartEvents,
+    defineCustomElement: defineErxOrgChart
+});
+
+type ErxPaginationEvents = {
+    onErxPageChange: EventName<ErxPaginationCustomEvent<ErxPaginationChangeEvent>>,
+    onErxPageSizeChange: EventName<ErxPaginationCustomEvent<ErxPageSizeChangeEvent>>
+};
+
+export const ErxPagination: StencilReactComponent<ErxPaginationElement, ErxPaginationEvents> = /*@__PURE__*/ createComponent<ErxPaginationElement, ErxPaginationEvents>({
+    tagName: 'erx-pagination',
+    elementClass: ErxPaginationElement,
+    // @ts-ignore - React type of Stencil Output Target may differ from the React version used in the Nuxt.js project, this can be ignored.
+    react: React,
+    events: {
+        onErxPageChange: 'erxPageChange',
+        onErxPageSizeChange: 'erxPageSizeChange'
+    } as ErxPaginationEvents,
+    defineCustomElement: defineErxPagination
+});
+
+type ErxPanelEvents = { onErxToggle: EventName<ErxPanelCustomEvent<ErxPanelToggleEvent>> };
+
+export const ErxPanel: StencilReactComponent<ErxPanelElement, ErxPanelEvents> = /*@__PURE__*/ createComponent<ErxPanelElement, ErxPanelEvents>({
+    tagName: 'erx-panel',
+    elementClass: ErxPanelElement,
+    // @ts-ignore - React type of Stencil Output Target may differ from the React version used in the Nuxt.js project, this can be ignored.
+    react: React,
+    events: { onErxToggle: 'erxToggle' } as ErxPanelEvents,
+    defineCustomElement: defineErxPanel
+});
+
 type ErxPaymentEvents = {
     onErxSelect: EventName<ErxPaymentCustomEvent<ErxPaymentSelectEvent>>,
     onErxComplete: EventName<ErxPaymentCustomEvent<ErxPaymentCompleteEvent>>
@@ -117,6 +918,47 @@ export const ErxPayment: StencilReactComponent<ErxPaymentElement, ErxPaymentEven
         onErxComplete: 'erxComplete'
     } as ErxPaymentEvents,
     defineCustomElement: defineErxPayment
+});
+
+type ErxPdfViewerEvents = {
+    onErxPageChange: EventName<ErxPdfViewerCustomEvent<ErxPdfPageChangeEvent>>,
+    onErxLoad: EventName<ErxPdfViewerCustomEvent<ErxPdfLoadEvent>>,
+    onErxError: EventName<ErxPdfViewerCustomEvent<ErxPdfErrorEvent>>
+};
+
+export const ErxPdfViewer: StencilReactComponent<ErxPdfViewerElement, ErxPdfViewerEvents> = /*@__PURE__*/ createComponent<ErxPdfViewerElement, ErxPdfViewerEvents>({
+    tagName: 'erx-pdf-viewer',
+    elementClass: ErxPdfViewerElement,
+    // @ts-ignore - React type of Stencil Output Target may differ from the React version used in the Nuxt.js project, this can be ignored.
+    react: React,
+    events: {
+        onErxPageChange: 'erxPageChange',
+        onErxLoad: 'erxLoad',
+        onErxError: 'erxError'
+    } as ErxPdfViewerEvents,
+    defineCustomElement: defineErxPdfViewer
+});
+
+type ErxPerformanceMeterEvents = NonNullable<unknown>;
+
+export const ErxPerformanceMeter: StencilReactComponent<ErxPerformanceMeterElement, ErxPerformanceMeterEvents> = /*@__PURE__*/ createComponent<ErxPerformanceMeterElement, ErxPerformanceMeterEvents>({
+    tagName: 'erx-performance-meter',
+    elementClass: ErxPerformanceMeterElement,
+    // @ts-ignore - React type of Stencil Output Target may differ from the React version used in the Nuxt.js project, this can be ignored.
+    react: React,
+    events: {} as ErxPerformanceMeterEvents,
+    defineCustomElement: defineErxPerformanceMeter
+});
+
+type ErxPhoneInputEvents = { onErxChange: EventName<ErxPhoneInputCustomEvent<ErxPhoneChangeEvent>> };
+
+export const ErxPhoneInput: StencilReactComponent<ErxPhoneInputElement, ErxPhoneInputEvents> = /*@__PURE__*/ createComponent<ErxPhoneInputElement, ErxPhoneInputEvents>({
+    tagName: 'erx-phone-input',
+    elementClass: ErxPhoneInputElement,
+    // @ts-ignore - React type of Stencil Output Target may differ from the React version used in the Nuxt.js project, this can be ignored.
+    react: React,
+    events: { onErxChange: 'erxChange' } as ErxPhoneInputEvents,
+    defineCustomElement: defineErxPhoneInput
 });
 
 type ErxPinPadEvents = {
@@ -159,6 +1001,69 @@ export const ErxProductCard: StencilReactComponent<ErxProductCardElement, ErxPro
     defineCustomElement: defineErxProductCard
 });
 
+type ErxProductionLineEvents = { onErxSelect: EventName<ErxProductionLineCustomEvent<ProductionLineSelectDetail>> };
+
+export const ErxProductionLine: StencilReactComponent<ErxProductionLineElement, ErxProductionLineEvents> = /*@__PURE__*/ createComponent<ErxProductionLineElement, ErxProductionLineEvents>({
+    tagName: 'erx-production-line',
+    elementClass: ErxProductionLineElement,
+    // @ts-ignore - React type of Stencil Output Target may differ from the React version used in the Nuxt.js project, this can be ignored.
+    react: React,
+    events: { onErxSelect: 'erxSelect' } as ErxProductionLineEvents,
+    defineCustomElement: defineErxProductionLine
+});
+
+type ErxProgressCircleEvents = NonNullable<unknown>;
+
+export const ErxProgressCircle: StencilReactComponent<ErxProgressCircleElement, ErxProgressCircleEvents> = /*@__PURE__*/ createComponent<ErxProgressCircleElement, ErxProgressCircleEvents>({
+    tagName: 'erx-progress-circle',
+    elementClass: ErxProgressCircleElement,
+    // @ts-ignore - React type of Stencil Output Target may differ from the React version used in the Nuxt.js project, this can be ignored.
+    react: React,
+    events: {} as ErxProgressCircleEvents,
+    defineCustomElement: defineErxProgressCircle
+});
+
+type ErxProgressStepsEvents = { onErxSelect: EventName<ErxProgressStepsCustomEvent<ProgressStepSelectDetail>> };
+
+export const ErxProgressSteps: StencilReactComponent<ErxProgressStepsElement, ErxProgressStepsEvents> = /*@__PURE__*/ createComponent<ErxProgressStepsElement, ErxProgressStepsEvents>({
+    tagName: 'erx-progress-steps',
+    elementClass: ErxProgressStepsElement,
+    // @ts-ignore - React type of Stencil Output Target may differ from the React version used in the Nuxt.js project, this can be ignored.
+    react: React,
+    events: { onErxSelect: 'erxSelect' } as ErxProgressStepsEvents,
+    defineCustomElement: defineErxProgressSteps
+});
+
+type ErxQrCodeEvents = NonNullable<unknown>;
+
+export const ErxQrCode: StencilReactComponent<ErxQrCodeElement, ErxQrCodeEvents> = /*@__PURE__*/ createComponent<ErxQrCodeElement, ErxQrCodeEvents>({
+    tagName: 'erx-qr-code',
+    elementClass: ErxQrCodeElement,
+    // @ts-ignore - React type of Stencil Output Target may differ from the React version used in the Nuxt.js project, this can be ignored.
+    react: React,
+    events: {} as ErxQrCodeEvents,
+    defineCustomElement: defineErxQrCode
+});
+
+type ErxQualityCheckEvents = {
+    onErxResult: EventName<ErxQualityCheckCustomEvent<QualityCheckResultDetail>>,
+    onErxComplete: EventName<ErxQualityCheckCustomEvent<QualityCheckCompleteDetail>>,
+    onErxSelect: EventName<ErxQualityCheckCustomEvent<QualityCheck>>
+};
+
+export const ErxQualityCheck: StencilReactComponent<ErxQualityCheckElement, ErxQualityCheckEvents> = /*@__PURE__*/ createComponent<ErxQualityCheckElement, ErxQualityCheckEvents>({
+    tagName: 'erx-quality-check',
+    elementClass: ErxQualityCheckElement,
+    // @ts-ignore - React type of Stencil Output Target may differ from the React version used in the Nuxt.js project, this can be ignored.
+    react: React,
+    events: {
+        onErxResult: 'erxResult',
+        onErxComplete: 'erxComplete',
+        onErxSelect: 'erxSelect'
+    } as ErxQualityCheckEvents,
+    defineCustomElement: defineErxQualityCheck
+});
+
 type ErxReceiptEvents = NonNullable<unknown>;
 
 export const ErxReceipt: StencilReactComponent<ErxReceiptElement, ErxReceiptEvents> = /*@__PURE__*/ createComponent<ErxReceiptElement, ErxReceiptEvents>({
@@ -168,6 +1073,171 @@ export const ErxReceipt: StencilReactComponent<ErxReceiptElement, ErxReceiptEven
     react: React,
     events: {} as ErxReceiptEvents,
     defineCustomElement: defineErxReceipt
+});
+
+type ErxResizablePanelsEvents = {
+    onErxResize: EventName<ErxResizablePanelsCustomEvent<PanelResizeDetail>>,
+    onErxCollapse: EventName<ErxResizablePanelsCustomEvent<PanelCollapseDetail>>
+};
+
+export const ErxResizablePanels: StencilReactComponent<ErxResizablePanelsElement, ErxResizablePanelsEvents> = /*@__PURE__*/ createComponent<ErxResizablePanelsElement, ErxResizablePanelsEvents>({
+    tagName: 'erx-resizable-panels',
+    elementClass: ErxResizablePanelsElement,
+    // @ts-ignore - React type of Stencil Output Target may differ from the React version used in the Nuxt.js project, this can be ignored.
+    react: React,
+    events: {
+        onErxResize: 'erxResize',
+        onErxCollapse: 'erxCollapse'
+    } as ErxResizablePanelsEvents,
+    defineCustomElement: defineErxResizablePanels
+});
+
+type ErxRichTextEvents = { onErxChange: EventName<ErxRichTextCustomEvent<ErxRichTextChangeEvent>> };
+
+export const ErxRichText: StencilReactComponent<ErxRichTextElement, ErxRichTextEvents> = /*@__PURE__*/ createComponent<ErxRichTextElement, ErxRichTextEvents>({
+    tagName: 'erx-rich-text',
+    elementClass: ErxRichTextElement,
+    // @ts-ignore - React type of Stencil Output Target may differ from the React version used in the Nuxt.js project, this can be ignored.
+    react: React,
+    events: { onErxChange: 'erxChange' } as ErxRichTextEvents,
+    defineCustomElement: defineErxRichText
+});
+
+type ErxSchedulerEvents = {
+    onErxSelect: EventName<ErxSchedulerCustomEvent<SchedulerSelectDetail>>,
+    onErxEventSelect: EventName<ErxSchedulerCustomEvent<SchedulerEventSelectDetail>>,
+    onErxEventUpdate: EventName<ErxSchedulerCustomEvent<SchedulerEventUpdateDetail>>
+};
+
+export const ErxScheduler: StencilReactComponent<ErxSchedulerElement, ErxSchedulerEvents> = /*@__PURE__*/ createComponent<ErxSchedulerElement, ErxSchedulerEvents>({
+    tagName: 'erx-scheduler',
+    elementClass: ErxSchedulerElement,
+    // @ts-ignore - React type of Stencil Output Target may differ from the React version used in the Nuxt.js project, this can be ignored.
+    react: React,
+    events: {
+        onErxSelect: 'erxSelect',
+        onErxEventSelect: 'erxEventSelect',
+        onErxEventUpdate: 'erxEventUpdate'
+    } as ErxSchedulerEvents,
+    defineCustomElement: defineErxScheduler
+});
+
+type ErxSectionEvents = { onErxToggle: EventName<ErxSectionCustomEvent<ErxSectionToggleEvent>> };
+
+export const ErxSection: StencilReactComponent<ErxSectionElement, ErxSectionEvents> = /*@__PURE__*/ createComponent<ErxSectionElement, ErxSectionEvents>({
+    tagName: 'erx-section',
+    elementClass: ErxSectionElement,
+    // @ts-ignore - React type of Stencil Output Target may differ from the React version used in the Nuxt.js project, this can be ignored.
+    react: React,
+    events: { onErxToggle: 'erxToggle' } as ErxSectionEvents,
+    defineCustomElement: defineErxSection
+});
+
+type ErxSheetEvents = {
+    onErxOpenChange: EventName<ErxSheetCustomEvent<ErxSheetOpenEvent>>,
+    onErxBreakpointChange: EventName<ErxSheetCustomEvent<ErxSheetBreakpointEvent>>
+};
+
+export const ErxSheet: StencilReactComponent<ErxSheetElement, ErxSheetEvents> = /*@__PURE__*/ createComponent<ErxSheetElement, ErxSheetEvents>({
+    tagName: 'erx-sheet',
+    elementClass: ErxSheetElement,
+    // @ts-ignore - React type of Stencil Output Target may differ from the React version used in the Nuxt.js project, this can be ignored.
+    react: React,
+    events: {
+        onErxOpenChange: 'erxOpenChange',
+        onErxBreakpointChange: 'erxBreakpointChange'
+    } as ErxSheetEvents,
+    defineCustomElement: defineErxSheet
+});
+
+type ErxShellEvents = { onErxSidebarToggle: EventName<CustomEvent<{ collapsed: boolean }>> };
+
+export const ErxShell: StencilReactComponent<ErxShellElement, ErxShellEvents> = /*@__PURE__*/ createComponent<ErxShellElement, ErxShellEvents>({
+    tagName: 'erx-shell',
+    elementClass: ErxShellElement,
+    // @ts-ignore - React type of Stencil Output Target may differ from the React version used in the Nuxt.js project, this can be ignored.
+    react: React,
+    events: { onErxSidebarToggle: 'erxSidebarToggle' } as ErxShellEvents,
+    defineCustomElement: defineErxShell
+});
+
+type ErxShiftCalendarEvents = {
+    onErxSelect: EventName<ErxShiftCalendarCustomEvent<ErxShiftSelectEvent>>,
+    onErxDateChange: EventName<ErxShiftCalendarCustomEvent<{ date: Date }>>
+};
+
+export const ErxShiftCalendar: StencilReactComponent<ErxShiftCalendarElement, ErxShiftCalendarEvents> = /*@__PURE__*/ createComponent<ErxShiftCalendarElement, ErxShiftCalendarEvents>({
+    tagName: 'erx-shift-calendar',
+    elementClass: ErxShiftCalendarElement,
+    // @ts-ignore - React type of Stencil Output Target may differ from the React version used in the Nuxt.js project, this can be ignored.
+    react: React,
+    events: {
+        onErxSelect: 'erxSelect',
+        onErxDateChange: 'erxDateChange'
+    } as ErxShiftCalendarEvents,
+    defineCustomElement: defineErxShiftCalendar
+});
+
+type ErxSignaturePadEvents = {
+    onErxChange: EventName<ErxSignaturePadCustomEvent<SignatureChangeDetail>>,
+    onErxClear: EventName<CustomEvent<void>>
+};
+
+export const ErxSignaturePad: StencilReactComponent<ErxSignaturePadElement, ErxSignaturePadEvents> = /*@__PURE__*/ createComponent<ErxSignaturePadElement, ErxSignaturePadEvents>({
+    tagName: 'erx-signature-pad',
+    elementClass: ErxSignaturePadElement,
+    // @ts-ignore - React type of Stencil Output Target may differ from the React version used in the Nuxt.js project, this can be ignored.
+    react: React,
+    events: {
+        onErxChange: 'erxChange',
+        onErxClear: 'erxClear'
+    } as ErxSignaturePadEvents,
+    defineCustomElement: defineErxSignaturePad
+});
+
+type ErxSnackbarEvents = {
+    onErxClose: EventName<CustomEvent<void>>,
+    onErxAction: EventName<CustomEvent<void>>
+};
+
+export const ErxSnackbar: StencilReactComponent<ErxSnackbarElement, ErxSnackbarEvents> = /*@__PURE__*/ createComponent<ErxSnackbarElement, ErxSnackbarEvents>({
+    tagName: 'erx-snackbar',
+    elementClass: ErxSnackbarElement,
+    // @ts-ignore - React type of Stencil Output Target may differ from the React version used in the Nuxt.js project, this can be ignored.
+    react: React,
+    events: {
+        onErxClose: 'erxClose',
+        onErxAction: 'erxAction'
+    } as ErxSnackbarEvents,
+    defineCustomElement: defineErxSnackbar
+});
+
+type ErxSparklineEvents = NonNullable<unknown>;
+
+export const ErxSparkline: StencilReactComponent<ErxSparklineElement, ErxSparklineEvents> = /*@__PURE__*/ createComponent<ErxSparklineElement, ErxSparklineEvents>({
+    tagName: 'erx-sparkline',
+    elementClass: ErxSparklineElement,
+    // @ts-ignore - React type of Stencil Output Target may differ from the React version used in the Nuxt.js project, this can be ignored.
+    react: React,
+    events: {} as ErxSparklineEvents,
+    defineCustomElement: defineErxSparkline
+});
+
+type ErxSplitButtonEvents = {
+    onErxClick: EventName<CustomEvent<void>>,
+    onErxSelect: EventName<ErxSplitButtonCustomEvent<{ value: string; option: ErxSplitButtonOption }>>
+};
+
+export const ErxSplitButton: StencilReactComponent<ErxSplitButtonElement, ErxSplitButtonEvents> = /*@__PURE__*/ createComponent<ErxSplitButtonElement, ErxSplitButtonEvents>({
+    tagName: 'erx-split-button',
+    elementClass: ErxSplitButtonElement,
+    // @ts-ignore - React type of Stencil Output Target may differ from the React version used in the Nuxt.js project, this can be ignored.
+    react: React,
+    events: {
+        onErxClick: 'erxClick',
+        onErxSelect: 'erxSelect'
+    } as ErxSplitButtonEvents,
+    defineCustomElement: defineErxSplitButton
 });
 
 type ErxSplitPaneEvents = {
@@ -191,6 +1261,156 @@ export const ErxSplitPane: StencilReactComponent<ErxSplitPaneElement, ErxSplitPa
     defineCustomElement: defineErxSplitPane
 });
 
+type ErxStateEvents = { onErxAction: EventName<CustomEvent<{ action: 'primary' | 'secondary' }>> };
+
+export const ErxState: StencilReactComponent<ErxStateElement, ErxStateEvents> = /*@__PURE__*/ createComponent<ErxStateElement, ErxStateEvents>({
+    tagName: 'erx-state',
+    elementClass: ErxStateElement,
+    // @ts-ignore - React type of Stencil Output Target may differ from the React version used in the Nuxt.js project, this can be ignored.
+    react: React,
+    events: { onErxAction: 'erxAction' } as ErxStateEvents,
+    defineCustomElement: defineErxState
+});
+
+type ErxStatsEvents = { onErxSelect: EventName<ErxStatsCustomEvent<Stat>> };
+
+export const ErxStats: StencilReactComponent<ErxStatsElement, ErxStatsEvents> = /*@__PURE__*/ createComponent<ErxStatsElement, ErxStatsEvents>({
+    tagName: 'erx-stats',
+    elementClass: ErxStatsElement,
+    // @ts-ignore - React type of Stencil Output Target may differ from the React version used in the Nuxt.js project, this can be ignored.
+    react: React,
+    events: { onErxSelect: 'erxSelect' } as ErxStatsEvents,
+    defineCustomElement: defineErxStats
+});
+
+type ErxStatusIndicatorEvents = NonNullable<unknown>;
+
+export const ErxStatusIndicator: StencilReactComponent<ErxStatusIndicatorElement, ErxStatusIndicatorEvents> = /*@__PURE__*/ createComponent<ErxStatusIndicatorElement, ErxStatusIndicatorEvents>({
+    tagName: 'erx-status-indicator',
+    elementClass: ErxStatusIndicatorElement,
+    // @ts-ignore - React type of Stencil Output Target may differ from the React version used in the Nuxt.js project, this can be ignored.
+    react: React,
+    events: {} as ErxStatusIndicatorEvents,
+    defineCustomElement: defineErxStatusIndicator
+});
+
+type ErxStockIndicatorEvents = NonNullable<unknown>;
+
+export const ErxStockIndicator: StencilReactComponent<ErxStockIndicatorElement, ErxStockIndicatorEvents> = /*@__PURE__*/ createComponent<ErxStockIndicatorElement, ErxStockIndicatorEvents>({
+    tagName: 'erx-stock-indicator',
+    elementClass: ErxStockIndicatorElement,
+    // @ts-ignore - React type of Stencil Output Target may differ from the React version used in the Nuxt.js project, this can be ignored.
+    react: React,
+    events: {} as ErxStockIndicatorEvents,
+    defineCustomElement: defineErxStockIndicator
+});
+
+type ErxTableEvents = {
+    onErxSort: EventName<ErxTableCustomEvent<ErxTableSortEvent>>,
+    onErxRowClick: EventName<ErxTableCustomEvent<ErxTableRowClickEvent>>
+};
+
+export const ErxTable: StencilReactComponent<ErxTableElement, ErxTableEvents> = /*@__PURE__*/ createComponent<ErxTableElement, ErxTableEvents>({
+    tagName: 'erx-table',
+    elementClass: ErxTableElement,
+    // @ts-ignore - React type of Stencil Output Target may differ from the React version used in the Nuxt.js project, this can be ignored.
+    react: React,
+    events: {
+        onErxSort: 'erxSort',
+        onErxRowClick: 'erxRowClick'
+    } as ErxTableEvents,
+    defineCustomElement: defineErxTable
+});
+
+type ErxTagInputEvents = { onErxChange: EventName<ErxTagInputCustomEvent<TagInputChangeDetail>> };
+
+export const ErxTagInput: StencilReactComponent<ErxTagInputElement, ErxTagInputEvents> = /*@__PURE__*/ createComponent<ErxTagInputElement, ErxTagInputEvents>({
+    tagName: 'erx-tag-input',
+    elementClass: ErxTagInputElement,
+    // @ts-ignore - React type of Stencil Output Target may differ from the React version used in the Nuxt.js project, this can be ignored.
+    react: React,
+    events: { onErxChange: 'erxChange' } as ErxTagInputEvents,
+    defineCustomElement: defineErxTagInput
+});
+
+type ErxTimeClockEvents = {
+    onErxClockIn: EventName<ErxTimeClockCustomEvent<ErxTimeClockEvent>>,
+    onErxClockOut: EventName<ErxTimeClockCustomEvent<ErxTimeClockEvent>>,
+    onErxBreakStart: EventName<ErxTimeClockCustomEvent<ErxTimeClockEvent>>,
+    onErxBreakEnd: EventName<ErxTimeClockCustomEvent<ErxTimeClockEvent>>
+};
+
+export const ErxTimeClock: StencilReactComponent<ErxTimeClockElement, ErxTimeClockEvents> = /*@__PURE__*/ createComponent<ErxTimeClockElement, ErxTimeClockEvents>({
+    tagName: 'erx-time-clock',
+    elementClass: ErxTimeClockElement,
+    // @ts-ignore - React type of Stencil Output Target may differ from the React version used in the Nuxt.js project, this can be ignored.
+    react: React,
+    events: {
+        onErxClockIn: 'erxClockIn',
+        onErxClockOut: 'erxClockOut',
+        onErxBreakStart: 'erxBreakStart',
+        onErxBreakEnd: 'erxBreakEnd'
+    } as ErxTimeClockEvents,
+    defineCustomElement: defineErxTimeClock
+});
+
+type ErxTimelineEvents = {
+    onErxSelect: EventName<ErxTimelineCustomEvent<TimelineSelectDetail>>,
+    onErxAction: EventName<ErxTimelineCustomEvent<TimelineActionDetail>>
+};
+
+export const ErxTimeline: StencilReactComponent<ErxTimelineElement, ErxTimelineEvents> = /*@__PURE__*/ createComponent<ErxTimelineElement, ErxTimelineEvents>({
+    tagName: 'erx-timeline',
+    elementClass: ErxTimelineElement,
+    // @ts-ignore - React type of Stencil Output Target may differ from the React version used in the Nuxt.js project, this can be ignored.
+    react: React,
+    events: {
+        onErxSelect: 'erxSelect',
+        onErxAction: 'erxAction'
+    } as ErxTimelineEvents,
+    defineCustomElement: defineErxTimeline
+});
+
+type ErxTreeEvents = {
+    onErxSelect: EventName<ErxTreeCustomEvent<TreeSelectDetail>>,
+    onErxExpand: EventName<ErxTreeCustomEvent<TreeExpandDetail>>
+};
+
+export const ErxTree: StencilReactComponent<ErxTreeElement, ErxTreeEvents> = /*@__PURE__*/ createComponent<ErxTreeElement, ErxTreeEvents>({
+    tagName: 'erx-tree',
+    elementClass: ErxTreeElement,
+    // @ts-ignore - React type of Stencil Output Target may differ from the React version used in the Nuxt.js project, this can be ignored.
+    react: React,
+    events: {
+        onErxSelect: 'erxSelect',
+        onErxExpand: 'erxExpand'
+    } as ErxTreeEvents,
+    defineCustomElement: defineErxTree
+});
+
+type ErxUploadEvents = {
+    onErxSelect: EventName<ErxUploadCustomEvent<ErxUploadSelectEvent>>,
+    onErxProgress: EventName<ErxUploadCustomEvent<ErxUploadProgressEvent>>,
+    onErxComplete: EventName<ErxUploadCustomEvent<ErxUploadCompleteEvent>>,
+    onErxError: EventName<ErxUploadCustomEvent<ErxUploadErrorEvent>>,
+    onErxRemove: EventName<ErxUploadCustomEvent<{ file: ErxUploadFile }>>
+};
+
+export const ErxUpload: StencilReactComponent<ErxUploadElement, ErxUploadEvents> = /*@__PURE__*/ createComponent<ErxUploadElement, ErxUploadEvents>({
+    tagName: 'erx-upload',
+    elementClass: ErxUploadElement,
+    // @ts-ignore - React type of Stencil Output Target may differ from the React version used in the Nuxt.js project, this can be ignored.
+    react: React,
+    events: {
+        onErxSelect: 'erxSelect',
+        onErxProgress: 'erxProgress',
+        onErxComplete: 'erxComplete',
+        onErxError: 'erxError',
+        onErxRemove: 'erxRemove'
+    } as ErxUploadEvents,
+    defineCustomElement: defineErxUpload
+});
+
 type ErxVariantSelectorEvents = {
     onErxSelect: EventName<ErxVariantSelectorCustomEvent<ErxVariantSelectEvent>>,
     onErxComplete: EventName<ErxVariantSelectorCustomEvent<{ selection: ErxVariantSelection }>>
@@ -206,4 +1426,72 @@ export const ErxVariantSelector: StencilReactComponent<ErxVariantSelectorElement
         onErxComplete: 'erxComplete'
     } as ErxVariantSelectorEvents,
     defineCustomElement: defineErxVariantSelector
+});
+
+type ErxVideoPlayerEvents = {
+    onErxPlay: EventName<CustomEvent<void>>,
+    onErxPause: EventName<CustomEvent<void>>,
+    onErxTimeUpdate: EventName<CustomEvent<{ currentTime: number; duration: number }>>,
+    onErxEnded: EventName<CustomEvent<void>>
+};
+
+export const ErxVideoPlayer: StencilReactComponent<ErxVideoPlayerElement, ErxVideoPlayerEvents> = /*@__PURE__*/ createComponent<ErxVideoPlayerElement, ErxVideoPlayerEvents>({
+    tagName: 'erx-video-player',
+    elementClass: ErxVideoPlayerElement,
+    // @ts-ignore - React type of Stencil Output Target may differ from the React version used in the Nuxt.js project, this can be ignored.
+    react: React,
+    events: {
+        onErxPlay: 'erxPlay',
+        onErxPause: 'erxPause',
+        onErxTimeUpdate: 'erxTimeUpdate',
+        onErxEnded: 'erxEnded'
+    } as ErxVideoPlayerEvents,
+    defineCustomElement: defineErxVideoPlayer
+});
+
+type ErxVirtualKeyboardEvents = {
+    onErxInput: EventName<ErxVirtualKeyboardCustomEvent<ErxKeyboardInputEvent>>,
+    onErxEnter: EventName<CustomEvent<{ value: string }>>,
+    onErxClose: EventName<CustomEvent<void>>
+};
+
+export const ErxVirtualKeyboard: StencilReactComponent<ErxVirtualKeyboardElement, ErxVirtualKeyboardEvents> = /*@__PURE__*/ createComponent<ErxVirtualKeyboardElement, ErxVirtualKeyboardEvents>({
+    tagName: 'erx-virtual-keyboard',
+    elementClass: ErxVirtualKeyboardElement,
+    // @ts-ignore - React type of Stencil Output Target may differ from the React version used in the Nuxt.js project, this can be ignored.
+    react: React,
+    events: {
+        onErxInput: 'erxInput',
+        onErxEnter: 'erxEnter',
+        onErxClose: 'erxClose'
+    } as ErxVirtualKeyboardEvents,
+    defineCustomElement: defineErxVirtualKeyboard
+});
+
+type ErxVirtualListEvents = { onErxScroll: EventName<ErxVirtualListCustomEvent<VirtualListScrollDetail>> };
+
+export const ErxVirtualList: StencilReactComponent<ErxVirtualListElement, ErxVirtualListEvents> = /*@__PURE__*/ createComponent<ErxVirtualListElement, ErxVirtualListEvents>({
+    tagName: 'erx-virtual-list',
+    elementClass: ErxVirtualListElement,
+    // @ts-ignore - React type of Stencil Output Target may differ from the React version used in the Nuxt.js project, this can be ignored.
+    react: React,
+    events: { onErxScroll: 'erxScroll' } as ErxVirtualListEvents,
+    defineCustomElement: defineErxVirtualList
+});
+
+type ErxWorkOrderEvents = {
+    onErxAction: EventName<ErxWorkOrderCustomEvent<WorkOrderActionDetail>>,
+    onErxSelect: EventName<ErxWorkOrderCustomEvent<WorkOrder>>
+};
+
+export const ErxWorkOrder: StencilReactComponent<ErxWorkOrderElement, ErxWorkOrderEvents> = /*@__PURE__*/ createComponent<ErxWorkOrderElement, ErxWorkOrderEvents>({
+    tagName: 'erx-work-order',
+    elementClass: ErxWorkOrderElement,
+    // @ts-ignore - React type of Stencil Output Target may differ from the React version used in the Nuxt.js project, this can be ignored.
+    react: React,
+    events: {
+        onErxAction: 'erxAction',
+        onErxSelect: 'erxSelect'
+    } as ErxWorkOrderEvents,
+    defineCustomElement: defineErxWorkOrder
 });

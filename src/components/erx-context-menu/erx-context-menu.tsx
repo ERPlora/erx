@@ -30,7 +30,6 @@ export class ErxContextMenu {
   @State() submenuOpen: string | null = null;
 
   private targetElement: HTMLElement | null = null;
-  private menuEl?: HTMLElement;
 
   componentDidLoad() {
     // Find target element(s)
@@ -188,10 +187,10 @@ export class ErxContextMenu {
         <button
           class={{
             'erx-ctx__item': true,
-            'erx-ctx__item--disabled': item.disabled,
-            'erx-ctx__item--danger': item.danger,
+            'erx-ctx__item--disabled': !!item.disabled,
+            'erx-ctx__item--danger': !!item.danger,
             'erx-ctx__item--focused': index === this.focusedIndex,
-            'erx-ctx__item--has-children': hasChildren,
+            'erx-ctx__item--has-children': !!hasChildren,
           }}
           onClick={() => this.selectItem(item)}
           onMouseEnter={() => hasChildren && (this.submenuOpen = item.id)}
@@ -206,7 +205,7 @@ export class ErxContextMenu {
         </button>
         {hasChildren && this.submenuOpen === item.id && (
           <div class="erx-ctx__submenu" part="submenu">
-            {item.children.map((child, idx) => this.renderItem(child, idx))}
+            {item.children!.map((child, idx) => this.renderItem(child, idx))}
           </div>
         )}
       </div>
@@ -219,7 +218,6 @@ export class ErxContextMenu {
     return (
       <div
         class="erx-ctx"
-        ref={el => this.menuEl = el}
         style={{
           left: `${this.position.x}px`,
           top: `${this.position.y}px`,

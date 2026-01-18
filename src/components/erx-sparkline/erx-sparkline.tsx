@@ -32,7 +32,7 @@ export class ErxSparkline {
   @Prop() showLast: boolean = true;
 
   /** Animate on load */
-  @Prop() animate: boolean = true;
+  @Prop() shouldAnimate: boolean = true;
 
   /** Curve line (smooth) */
   @Prop() curved: boolean = true;
@@ -124,7 +124,7 @@ export class ErxSparkline {
             d={this.getAreaPath()}
             fill={this.fillColor || this.color}
             opacity="0.2"
-            class={this.animate ? 'erx-spark__area--animated' : ''}
+            class={this.shouldAnimate ? 'erx-spark__area--animated' : ''}
           />
         )}
         <path
@@ -134,7 +134,7 @@ export class ErxSparkline {
           stroke-width="2"
           stroke-linecap="round"
           stroke-linejoin="round"
-          class={this.animate ? 'erx-spark__line--animated' : ''}
+          class={this.shouldAnimate ? 'erx-spark__line--animated' : ''}
         />
         {this.showMinMax && (
           <g>
@@ -185,7 +185,7 @@ export class ErxSparkline {
               height={barHeight}
               fill={this.color}
               rx="1"
-              class={this.animate ? 'erx-spark__bar--animated' : ''}
+              class={this.shouldAnimate ? 'erx-spark__bar--animated' : ''}
               style={{ animationDelay: `${i * 30}ms` }}
             />
           );

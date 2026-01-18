@@ -1,5 +1,5 @@
 import { Component, Prop, State, Event, EventEmitter, h, Method } from '@stencil/core';
-import { WizardStep, WizardConfig, StepStatus, WizardStepChangeDetail, WizardCompleteDetail } from './erx-form-wizard.types';
+import { WizardConfig, StepStatus, WizardStepChangeDetail, WizardCompleteDetail } from './erx-form-wizard.types';
 
 @Component({
   tag: 'erx-form-wizard',

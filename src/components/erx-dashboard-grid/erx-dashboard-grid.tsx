@@ -27,8 +27,6 @@ export class ErxDashboardGrid {
   }
 
   private getWidgetStyle(widget: DashboardWidget): Record<string, string> {
-    const colWidth = `calc((100% - ${(this.config.columns - 1) * this.gap}px) / ${this.config.columns})`;
-
     return {
       gridColumn: `${widget.x + 1} / span ${widget.width}`,
       gridRow: `${widget.y + 1} / span ${widget.height}`,

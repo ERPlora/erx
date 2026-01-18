@@ -74,7 +74,7 @@ export class ErxComparison {
         <div class="erx-comp__table">
           <div class="erx-comp__header" part="header">
             <div class="erx-comp__feature-cell"></div>
-            {items.map((item, index) => (
+            {items.map((item) => (
               <div
                 class={{
                   'erx-comp__item-header': true,

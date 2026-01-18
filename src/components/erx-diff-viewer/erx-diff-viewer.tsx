@@ -48,7 +48,6 @@ export class ErxDiffViewer {
     const result: ErxDiffLine[] = [];
 
     // Simple line-by-line diff (LCS-based would be better but complex)
-    const maxLen = Math.max(oldLines.length, newLines.length);
     let oldIdx = 0;
     let newIdx = 0;
 

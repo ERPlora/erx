@@ -16,17 +16,6 @@ export class ErxMachineStatus {
   @Event() erxAction!: EventEmitter<MachineActionDetail>;
   @Event() erxSelect!: EventEmitter<Machine>;
 
-  private getStateIcon(): string {
-    const icons: Record<string, string> = {
-      'running': '▶️',
-      'idle': '⏸️',
-      'maintenance': '🔧',
-      'error': '⚠️',
-      'offline': '⭕',
-    };
-    return icons[this.machine.state] || '❓';
-  }
-
   private getStateLabel(): string {
     const labels: Record<string, string> = {
       'running': 'Running',

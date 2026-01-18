@@ -8,7 +8,8 @@ import { ErxMegaMenuItem } from './erx-mega-menu.types';
 })
 export class ErxMegaMenu {
   @Prop() items: ErxMegaMenuItem[] = [];
-  @Event() erxSelect!: EventEmitter<{ item: unknown }>;
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  @Event() erxSelect!: EventEmitter<{ item: any }>;
   @State() activeItem: string | null = null;
 
   render() {

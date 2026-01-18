@@ -20,9 +20,23 @@
   },
   "repository": {
     "type": "git",
-    "url": "git@github:ERPlora/erplora.git",
-    "directory": "erx"
+    "url": "https://github.com/ERPlora/erx.git"
   },
+  "homepage": "https://github.com/ERPlora/erx#readme",
+  "bugs": {
+    "url": "https://github.com/ERPlora/erx/issues"
+  },
+  "keywords": [
+    "web-components",
+    "stencil",
+    "components",
+    "ui",
+    "erp",
+    "pos",
+    "enterprise",
+    "ionic"
+  ],
+  "author": "ERPlora Team",
   "files": [
     "dist/",
     "loader/"
@@ -32,16 +46,26 @@
     "start": "stencil build --dev --watch --serve",
     "test": "stencil test --spec --e2e",
     "test:watch": "stencil test --spec --e2e --watchAll",
-    "generate": "stencil generate"
+    "generate": "stencil generate",
+    "release": "standard-version",
+    "release:minor": "standard-version --release-as minor",
+    "release:major": "standard-version --release-as major",
+    "release:patch": "standard-version --release-as patch",
+    "release:first": "standard-version --first-release",
+    "prepublishOnly": "npm run build"
   },
   "devDependencies": {
+    "@stencil-community/postcss": "^2.2.0",
     "@stencil/core": "^4.22.0",
     "@stencil/react-output-target": "^0.7.1",
-    "@stencil-community/postcss": "^2.2.0",
     "@types/node": "^22.10.0",
     "autoprefixer": "^10.4.20",
     "postcss": "^8.4.49",
+    "standard-version": "^9.5.0",
     "tailwindcss": "^3.4.0"
   },
-  "license": "MIT"
+  "license": "MIT",
+  "publishConfig": {
+    "access": "public"
+  }
 }

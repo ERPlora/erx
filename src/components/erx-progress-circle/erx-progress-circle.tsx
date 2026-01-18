@@ -35,7 +35,7 @@ export class ErxProgressCircle {
   @Prop() trackColor: string = 'var(--erx-border-color, #e5e7eb)';
 
   /** Animate on load */
-  @Prop() animate: boolean = true;
+  @Prop() shouldAnimate: boolean = true;
 
   /** Animation duration (ms) */
   @Prop() animationDuration: number = 1000;
@@ -49,16 +49,16 @@ export class ErxProgressCircle {
 
   @Watch('value')
   handleValueChange() {
-    if (this.animate && !this.indeterminate) {
-      this.animateProgress();
+    if (this.shouldAnimate && !this.indeterminate) {
+      this.runAnimation();
     } else {
       this.animatedValue = this.value;
     }
   }
 
   componentWillLoad() {
-    if (this.animate && !this.indeterminate) {
-      this.animateProgress();
+    if (this.shouldAnimate && !this.indeterminate) {
+      this.runAnimation();
     } else {
       this.animatedValue = this.value;
     }
@@ -70,7 +70,7 @@ export class ErxProgressCircle {
     }
   }
 
-  private animateProgress(): void {
+  private runAnimation(): void {
     const startValue = this.animatedValue;
     const endValue = this.value;
     const startTime = performance.now();

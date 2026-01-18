@@ -188,7 +188,9 @@ export class ErxVirtualKeyboard {
     const input = document.querySelector(this.target) as HTMLInputElement;
     if (input) {
       input.value = this.currentValue;
-      input.dispatchEvent(new Event('input', { bubbles: true }));
+      const inputEvent = document.createEvent('Event');
+      inputEvent.initEvent('input', true, true);
+      input.dispatchEvent(inputEvent);
     }
   }
 

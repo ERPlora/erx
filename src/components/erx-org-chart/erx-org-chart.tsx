@@ -1,4 +1,4 @@
-import { Component, Prop, Event, EventEmitter, State, h, Element } from '@stencil/core';
+import { Component, Prop, Event, EventEmitter, State, h } from '@stencil/core';
 import type { ErxOrgNode, ErxOrgChartSelectEvent } from './erx-org-chart.types';
 
 @Component({
@@ -7,8 +7,6 @@ import type { ErxOrgNode, ErxOrgChartSelectEvent } from './erx-org-chart.types';
   shadow: true,
 })
 export class ErxOrgChart {
-  @Element() el!: HTMLElement;
-
   @Prop() data?: ErxOrgNode;
   @Prop() direction: 'vertical' | 'horizontal' = 'vertical';
   @Prop() collapsible = true;
@@ -39,7 +37,7 @@ export class ErxOrgChart {
     return name.split(' ').map(n => n[0]).join('').toUpperCase().slice(0, 2);
   }
 
-  private renderNode(node: ErxOrgNode, path: (string | number)[] = []): HTMLElement {
+  private renderNode(node: ErxOrgNode, path: (string | number)[] = []): any {
     const currentPath = [...path, node.id];
     const isCollapsed = this.collapsedNodes.has(node.id);
     const hasChildren = node.children && node.children.length > 0;

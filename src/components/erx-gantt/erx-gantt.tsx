@@ -224,7 +224,6 @@ export class ErxGantt {
 
   render() {
     const columns = this.getColumns();
-    const today = new Date();
 
     return (
       <div
@@ -291,7 +290,7 @@ export class ErxGantt {
             <div
               class="erx-gantt__today-line"
               style={{
-                left: `calc(${((today.getTime() - columns[0].getTime()) / (columns[columns.length - 1].getTime() - columns[0].getTime())) * 100}% + 200px)`,
+                left: `calc(${((new Date().getTime() - columns[0].getTime()) / (columns[columns.length - 1].getTime() - columns[0].getTime())) * 100}% + 200px)`,
               }}
             ></div>
           )}

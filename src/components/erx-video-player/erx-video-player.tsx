@@ -211,7 +211,7 @@ export class ErxVideoPlayer {
           onPlay={this.handlePlay}
           onPause={this.handlePause}
           onTimeUpdate={this.handleTimeUpdate}
-          onLoadedMetadata={this.handleLoadedMetadata}
+          onLoadedMetaData={this.handleLoadedMetadata}
           onProgress={this.handleProgress}
           onEnded={this.handleEnded}
         >

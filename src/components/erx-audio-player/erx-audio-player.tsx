@@ -187,7 +187,7 @@ export class ErxAudioPlayer {
           onPlay={this.handlePlay}
           onPause={this.handlePause}
           onTimeUpdate={this.handleTimeUpdate}
-          onLoadedMetadata={this.handleLoadedMetadata}
+          onLoadedMetaData={this.handleLoadedMetadata}
           onEnded={this.handleEnded}
         />
 

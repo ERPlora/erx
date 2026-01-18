@@ -44,7 +44,7 @@ export class ErxGauge {
   @Prop() showMinMax: boolean = true;
 
   /** Animate on change */
-  @Prop() animate: boolean = true;
+  @Prop() shouldAnimate: boolean = true;
 
   @State() animatedValue: number = 0;
 
@@ -52,16 +52,16 @@ export class ErxGauge {
 
   @Watch('value')
   handleValueChange() {
-    if (this.animate) {
-      this.animateValue();
+    if (this.shouldAnimate) {
+      this.runAnimation();
     } else {
       this.animatedValue = this.value;
     }
   }
 
   componentWillLoad() {
-    if (this.animate) {
-      this.animateValue();
+    if (this.shouldAnimate) {
+      this.runAnimation();
     } else {
       this.animatedValue = this.value;
     }
@@ -73,7 +73,7 @@ export class ErxGauge {
     }
   }
 
-  private animateValue(): void {
+  private runAnimation(): void {
     const startValue = this.animatedValue;
     const endValue = this.value;
     const duration = 800;

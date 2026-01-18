@@ -122,7 +122,7 @@ export class ErxTable {
                 <th
                   class={{
                     'erx-table__th': true,
-                    'erx-table__th--sortable': col.sortable,
+                    'erx-table__th--sortable': !!col.sortable,
                     'erx-table__th--sorted': this.sortColumn === col.key,
                     [`erx-table__th--${col.align || 'left'}`]: true,
                   }}

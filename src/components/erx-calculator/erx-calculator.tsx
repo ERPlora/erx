@@ -219,14 +219,6 @@ export class ErxCalculator {
     this.emitInput();
   }
 
-  private handleSquareRoot() {
-    if (this.disabled) return;
-
-    const value = parseFloat(this.display);
-    this.display = this.formatResult(Math.sqrt(value));
-    this.emitInput();
-  }
-
   // Memory functions
   private memoryClear() {
     this.memory = 0;

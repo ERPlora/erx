@@ -69,7 +69,9 @@ export class ErxTree {
     if (node.disabled) return;
 
     if (this.config.expandOnClick && node.children?.length) {
-      this.toggleExpand(node, new Event('click'));
+      const clickEvent = document.createEvent('Event');
+      clickEvent.initEvent('click', true, true);
+      this.toggleExpand(node, clickEvent);
     }
 
     if (this.config.selectable !== false) {
@@ -107,7 +109,7 @@ export class ErxTree {
             'erx-tree__node': true,
             'erx-tree__node--selected': isSelected,
             'erx-tree__node--disabled': !!node.disabled,
-            'erx-tree__node--expandable': hasChildren,
+            'erx-tree__node--expandable': !!hasChildren,
           }}
           style={{ paddingLeft: `${level * 20 + 8}px` }}
           onClick={() => this.handleNodeClick(node)}

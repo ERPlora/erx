@@ -235,7 +235,7 @@ export class ErxNotifications {
                 <button
                   class={{
                     'erx-notif__action': true,
-                    'erx-notif__action--primary': action.primary,
+                    'erx-notif__action--primary': !!action.primary,
                   }}
                   onClick={e => this.handleAction(notification, action, e)}
                 >

@@ -58,7 +58,7 @@ export class ErxPhoneInput {
   /** Phone change event */
   @Event() erxChange!: EventEmitter<ErxPhoneChangeEvent>;
 
-  @State() selectedCountry: ErxCountry;
+  @State() selectedCountry!: ErxCountry;
   @State() dropdownOpen: boolean = false;
   @State() searchQuery: string = '';
 
@@ -70,11 +70,11 @@ export class ErxPhoneInput {
     let countries = COUNTRIES;
 
     if (this.allowedCountries?.length) {
-      countries = countries.filter(c => this.allowedCountries.includes(c.code));
+      countries = countries.filter(c => this.allowedCountries!.includes(c.code));
     }
 
     if (this.excludedCountries?.length) {
-      countries = countries.filter(c => !this.excludedCountries.includes(c.code));
+      countries = countries.filter(c => !this.excludedCountries!.includes(c.code));
     }
 
     if (this.searchQuery) {

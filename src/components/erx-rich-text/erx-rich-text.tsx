@@ -66,7 +66,7 @@ export class ErxRichText {
   }
 
   @Method()
-  async focus(): Promise<void> {
+  async setFocus(): Promise<void> {
     this.editorEl?.focus();
   }
 

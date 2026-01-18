@@ -40,7 +40,6 @@ export class ErxDropdown {
   @State() submenuOpen: string | null = null;
 
   private triggerEl?: HTMLElement;
-  private menuEl?: HTMLElement;
   private hoverTimeout?: number;
 
   @Watch('open')
@@ -174,10 +173,10 @@ export class ErxDropdown {
         <button
           class={{
             'erx-dropdown__item': true,
-            'erx-dropdown__item--disabled': item.disabled,
-            'erx-dropdown__item--danger': item.danger,
+            'erx-dropdown__item--disabled': !!item.disabled,
+            'erx-dropdown__item--danger': !!item.danger,
             'erx-dropdown__item--focused': index === this.focusedIndex,
-            'erx-dropdown__item--has-children': hasChildren,
+            'erx-dropdown__item--has-children': !!hasChildren,
           }}
           onClick={() => this.selectItem(item, path)}
           onMouseEnter={() => hasChildren && (this.submenuOpen = item.id)}
@@ -192,7 +191,7 @@ export class ErxDropdown {
         </button>
         {hasChildren && this.submenuOpen === item.id && (
           <div class="erx-dropdown__submenu" part="submenu">
-            {item.children.map((child, idx) => this.renderItem(child, idx, [...path, item]))}
+            {item.children!.map((child, idx) => this.renderItem(child, idx, [...path, item]))}
           </div>
         )}
       </div>
@@ -232,7 +231,6 @@ export class ErxDropdown {
         {this.open && (
           <div
             class={`erx-dropdown__menu ${placementClass}`}
-            ref={el => this.menuEl = el}
             onMouseEnter={this.handleMenuMouseEnter}
             onMouseLeave={this.handleTriggerMouseLeave}
             role="menu"

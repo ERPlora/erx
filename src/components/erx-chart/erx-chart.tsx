@@ -27,7 +27,6 @@ export class ErxChart {
     const colors = this.getDefaultColors();
     const maxValue = Math.max(...data.datasets.flatMap(d => d.data));
     const barWidth = 100 / (data.labels.length * data.datasets.length + data.labels.length);
-    const groupWidth = barWidth * data.datasets.length;
 
     return (
       <svg class="erx-chart__svg" viewBox={`0 0 100 100`} preserveAspectRatio="none">

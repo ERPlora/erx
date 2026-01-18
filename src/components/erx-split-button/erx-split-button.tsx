@@ -107,7 +107,7 @@ export class ErxSplitButton {
                   type="button"
                   class={{
                     'erx-sb__option': true,
-                    'erx-sb__option--disabled': option.disabled,
+                    'erx-sb__option--disabled': !!option.disabled,
                   }}
                   part="option"
                   role="menuitem"

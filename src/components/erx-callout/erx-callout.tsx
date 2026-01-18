@@ -1,4 +1,4 @@
-import { Component, Prop, State, h } from '@stencil/core';
+import { Component, Prop, h } from '@stencil/core';
 import { ErxCalloutVariant } from './erx-callout.types';
 
 @Component({

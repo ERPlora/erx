@@ -1,4 +1,4 @@
-import { Component, Prop, Event, EventEmitter, h, Element } from '@stencil/core';
+import { Component, Prop, Event, EventEmitter, h } from '@stencil/core';
 import type { ErxEmployee } from './erx-employee-card.types';
 
 @Component({
@@ -7,8 +7,6 @@ import type { ErxEmployee } from './erx-employee-card.types';
   shadow: true,
 })
 export class ErxEmployeeCard {
-  @Element() el!: HTMLElement;
-
   @Prop() employee!: ErxEmployee;
   @Prop() size: 'sm' | 'md' | 'lg' = 'md';
   @Prop() orientation: 'vertical' | 'horizontal' = 'vertical';

@@ -7,12 +7,15 @@
 import { HTMLStencilElement, JSXBase } from "@stencil/core/internal";
 import { ErxAttendanceRecord } from "./components/erx-attendance-list/erx-attendance-list.types";
 import { AutocompleteConfig, AutocompleteOption, AutocompleteSearchDetail, AutocompleteSelectDetail } from "./components/erx-autocomplete/erx-autocomplete.types";
+import { ErxBannerPosition, ErxBannerVariant } from "./components/erx-banner/erx-banner.types";
 import { ErxBarcodeFormat, ErxBarcodeScanEvent, ErxBarcodeScannerErrorEvent } from "./components/erx-barcode-scanner/erx-barcode-scanner.types";
 import { Batch, BatchSelectDetail, BatchStage } from "./components/erx-batch-tracker/erx-batch-tracker.types";
 import { Bom, BomSelectDetail } from "./components/erx-bom-tree/erx-bom-tree.types";
+import { ErxButtonGroupSize, ErxButtonGroupVariant } from "./components/erx-button-group/erx-button-group.types";
 import { ErxCalculatorResult } from "./components/erx-calculator/erx-calculator.types";
 import { CalendarConfig, CalendarEvent, CalendarEventSelectDetail, CalendarSelectDetail, CalendarView, CalendarViewChangeDetail } from "./components/erx-calendar/erx-calendar.types";
 import { CalendarViewSelectDetail } from "./components/erx-calendar-views/erx-calendar-views.types";
+import { ErxCalloutVariant } from "./components/erx-callout/erx-callout.types";
 import { ErxCarouselSlide, ErxCarouselSlideEvent } from "./components/erx-carousel/erx-carousel.types";
 import { ErxCartClearEvent, ErxCartItem, ErxCartItemChangeEvent, ErxCartItemRemoveEvent, ErxCartSummary } from "./components/erx-cart/erx-cart.types";
 import { ErxCategory, ErxCategorySelectEvent } from "./components/erx-category-tabs/erx-category-tabs.types";
@@ -25,6 +28,7 @@ import { CurrencyInputChangeDetail, CurrencyInputConfig } from "./components/erx
 import { DashboardGridConfig, DashboardLayoutChangeDetail, DashboardWidget, DashboardWidgetSelectDetail } from "./components/erx-dashboard-grid/erx-dashboard-grid.types";
 import { ErxCellEditEvent, ErxCellEditStartEvent, ErxColumn, ErxFilterEvent, ErxPageChangeEvent, ErxRowClickEvent, ErxRowSelectEvent, ErxSortEvent } from "./components/erx-data-grid/erx-data-grid.types";
 import { DateRange, DateRangeChangeDetail, DateRangePickerConfig } from "./components/erx-date-range-picker/erx-date-range-picker.types";
+import { ErxDiffViewMode } from "./components/erx-diff-viewer/erx-diff-viewer.types";
 import { ErxDividerOrientation, ErxDividerTextPosition } from "./components/erx-divider/erx-divider.types";
 import { ErxDrawerOpenEvent, ErxDrawerPosition, ErxDrawerSize } from "./components/erx-drawer/erx-drawer.types";
 import { ErxDropdownItem, ErxDropdownOpenEvent, ErxDropdownPlacement, ErxDropdownSelectEvent, ErxDropdownTrigger } from "./components/erx-dropdown/erx-dropdown.types";
@@ -35,6 +39,7 @@ import { GanttConfig, GanttSelectDetail, GanttTask, GanttUpdateDetail, GanttView
 import { ErxGaugeSegment, ErxGaugeSize } from "./components/erx-gauge/erx-gauge.types";
 import { ErxImageCropCompleteEvent, ErxImageCropEvent } from "./components/erx-image-crop/erx-image-crop.types";
 import { ErxGalleryClickEvent, ErxGalleryImage, ErxGalleryLayout } from "./components/erx-image-gallery/erx-image-gallery.types";
+import { ErxImageZoomPosition, ErxImageZoomTrigger } from "./components/erx-image-zoom/erx-image-zoom.types";
 import { KanbanCard, KanbanCardMoveDetail, KanbanCardSelectDetail, KanbanColumnCollapseDetail, KanbanConfig } from "./components/erx-kanban/erx-kanban.types";
 import { ErxLeaveRequest, ErxLeaveRequestActionEvent } from "./components/erx-leave-request/erx-leave-request.types";
 import { ErxLightboxImage, ErxLightboxOpenEvent, ErxLightboxSlideEvent, ErxLightboxZoomEvent } from "./components/erx-lightbox/erx-lightbox.types";
@@ -68,9 +73,13 @@ import { ErxSheetBreakpoint, ErxSheetBreakpointEvent, ErxSheetOpenEvent, ErxShee
 import { ErxShellSidebarPosition } from "./components/erx-shell/erx-shell.types";
 import { ErxShift, ErxShiftSelectEvent } from "./components/erx-shift-calendar/erx-shift-calendar.types";
 import { SignatureChangeDetail, SignatureConfig } from "./components/erx-signature-pad/erx-signature-pad.types";
+import { ErxSnackbarPosition, ErxSnackbarVariant } from "./components/erx-snackbar/erx-snackbar.types";
 import { ErxSparklineType } from "./components/erx-sparkline/erx-sparkline.types";
+import { ErxSplitButtonOption, ErxSplitButtonSize, ErxSplitButtonVariant } from "./components/erx-split-button/erx-split-button.types";
 import { ErxSplitPaneCollapseEvent, ErxSplitPaneResizeEvent } from "./components/erx-split-pane/erx-split-pane.types";
+import { ErxStateType } from "./components/erx-state/erx-state.types";
 import { Stat, StatsConfig } from "./components/erx-stats/erx-stats.types";
+import { ErxStatusIndicatorSize, ErxStatusIndicatorStatus, ErxStatusIndicatorVariant } from "./components/erx-status-indicator/erx-status-indicator.types";
 import { ErxStockLevel } from "./components/erx-stock-indicator/erx-stock-indicator.types";
 import { ErxTableColumn, ErxTableRowClickEvent, ErxTableSize, ErxTableSortEvent } from "./components/erx-table/erx-table.types";
 import { Tag, TagInputChangeDetail, TagInputConfig } from "./components/erx-tag-input/erx-tag-input.types";
@@ -79,17 +88,21 @@ import { TimelineActionDetail, TimelineConfig, TimelineItem, TimelineSelectDetai
 import { TreeConfig, TreeExpandDetail, TreeNode, TreeSelectDetail } from "./components/erx-tree/erx-tree.types";
 import { ErxUploadCompleteEvent, ErxUploadErrorEvent, ErxUploadFile, ErxUploadProgressEvent, ErxUploadSelectEvent } from "./components/erx-upload/erx-upload.types";
 import { ErxVariantGroup, ErxVariantSelectEvent, ErxVariantSelection } from "./components/erx-variant-selector/erx-variant-selector.types";
+import { ErxVideoSource } from "./components/erx-video-player/erx-video-player.types";
 import { ErxKeyboardInputEvent, ErxKeyboardLayout } from "./components/erx-virtual-keyboard/erx-virtual-keyboard.types";
 import { VirtualListConfig, VirtualListItem, VirtualListScrollDetail } from "./components/erx-virtual-list/erx-virtual-list.types";
 import { WorkOrder, WorkOrderActionDetail } from "./components/erx-work-order/erx-work-order.types";
 export { ErxAttendanceRecord } from "./components/erx-attendance-list/erx-attendance-list.types";
 export { AutocompleteConfig, AutocompleteOption, AutocompleteSearchDetail, AutocompleteSelectDetail } from "./components/erx-autocomplete/erx-autocomplete.types";
+export { ErxBannerPosition, ErxBannerVariant } from "./components/erx-banner/erx-banner.types";
 export { ErxBarcodeFormat, ErxBarcodeScanEvent, ErxBarcodeScannerErrorEvent } from "./components/erx-barcode-scanner/erx-barcode-scanner.types";
 export { Batch, BatchSelectDetail, BatchStage } from "./components/erx-batch-tracker/erx-batch-tracker.types";
 export { Bom, BomSelectDetail } from "./components/erx-bom-tree/erx-bom-tree.types";
+export { ErxButtonGroupSize, ErxButtonGroupVariant } from "./components/erx-button-group/erx-button-group.types";
 export { ErxCalculatorResult } from "./components/erx-calculator/erx-calculator.types";
 export { CalendarConfig, CalendarEvent, CalendarEventSelectDetail, CalendarSelectDetail, CalendarView, CalendarViewChangeDetail } from "./components/erx-calendar/erx-calendar.types";
 export { CalendarViewSelectDetail } from "./components/erx-calendar-views/erx-calendar-views.types";
+export { ErxCalloutVariant } from "./components/erx-callout/erx-callout.types";
 export { ErxCarouselSlide, ErxCarouselSlideEvent } from "./components/erx-carousel/erx-carousel.types";
 export { ErxCartClearEvent, ErxCartItem, ErxCartItemChangeEvent, ErxCartItemRemoveEvent, ErxCartSummary } from "./components/erx-cart/erx-cart.types";
 export { ErxCategory, ErxCategorySelectEvent } from "./components/erx-category-tabs/erx-category-tabs.types";
@@ -102,6 +115,7 @@ export { CurrencyInputChangeDetail, CurrencyInputConfig } from "./components/erx
 export { DashboardGridConfig, DashboardLayoutChangeDetail, DashboardWidget, DashboardWidgetSelectDetail } from "./components/erx-dashboard-grid/erx-dashboard-grid.types";
 export { ErxCellEditEvent, ErxCellEditStartEvent, ErxColumn, ErxFilterEvent, ErxPageChangeEvent, ErxRowClickEvent, ErxRowSelectEvent, ErxSortEvent } from "./components/erx-data-grid/erx-data-grid.types";
 export { DateRange, DateRangeChangeDetail, DateRangePickerConfig } from "./components/erx-date-range-picker/erx-date-range-picker.types";
+export { ErxDiffViewMode } from "./components/erx-diff-viewer/erx-diff-viewer.types";
 export { ErxDividerOrientation, ErxDividerTextPosition } from "./components/erx-divider/erx-divider.types";
 export { ErxDrawerOpenEvent, ErxDrawerPosition, ErxDrawerSize } from "./components/erx-drawer/erx-drawer.types";
 export { ErxDropdownItem, ErxDropdownOpenEvent, ErxDropdownPlacement, ErxDropdownSelectEvent, ErxDropdownTrigger } from "./components/erx-dropdown/erx-dropdown.types";
@@ -112,6 +126,7 @@ export { GanttConfig, GanttSelectDetail, GanttTask, GanttUpdateDetail, GanttView
 export { ErxGaugeSegment, ErxGaugeSize } from "./components/erx-gauge/erx-gauge.types";
 export { ErxImageCropCompleteEvent, ErxImageCropEvent } from "./components/erx-image-crop/erx-image-crop.types";
 export { ErxGalleryClickEvent, ErxGalleryImage, ErxGalleryLayout } from "./components/erx-image-gallery/erx-image-gallery.types";
+export { ErxImageZoomPosition, ErxImageZoomTrigger } from "./components/erx-image-zoom/erx-image-zoom.types";
 export { KanbanCard, KanbanCardMoveDetail, KanbanCardSelectDetail, KanbanColumnCollapseDetail, KanbanConfig } from "./components/erx-kanban/erx-kanban.types";
 export { ErxLeaveRequest, ErxLeaveRequestActionEvent } from "./components/erx-leave-request/erx-leave-request.types";
 export { ErxLightboxImage, ErxLightboxOpenEvent, ErxLightboxSlideEvent, ErxLightboxZoomEvent } from "./components/erx-lightbox/erx-lightbox.types";
@@ -145,9 +160,13 @@ export { ErxSheetBreakpoint, ErxSheetBreakpointEvent, ErxSheetOpenEvent, ErxShee
 export { ErxShellSidebarPosition } from "./components/erx-shell/erx-shell.types";
 export { ErxShift, ErxShiftSelectEvent } from "./components/erx-shift-calendar/erx-shift-calendar.types";
 export { SignatureChangeDetail, SignatureConfig } from "./components/erx-signature-pad/erx-signature-pad.types";
+export { ErxSnackbarPosition, ErxSnackbarVariant } from "./components/erx-snackbar/erx-snackbar.types";
 export { ErxSparklineType } from "./components/erx-sparkline/erx-sparkline.types";
+export { ErxSplitButtonOption, ErxSplitButtonSize, ErxSplitButtonVariant } from "./components/erx-split-button/erx-split-button.types";
 export { ErxSplitPaneCollapseEvent, ErxSplitPaneResizeEvent } from "./components/erx-split-pane/erx-split-pane.types";
+export { ErxStateType } from "./components/erx-state/erx-state.types";
 export { Stat, StatsConfig } from "./components/erx-stats/erx-stats.types";
+export { ErxStatusIndicatorSize, ErxStatusIndicatorStatus, ErxStatusIndicatorVariant } from "./components/erx-status-indicator/erx-status-indicator.types";
 export { ErxStockLevel } from "./components/erx-stock-indicator/erx-stock-indicator.types";
 export { ErxTableColumn, ErxTableRowClickEvent, ErxTableSize, ErxTableSortEvent } from "./components/erx-table/erx-table.types";
 export { Tag, TagInputChangeDetail, TagInputConfig } from "./components/erx-tag-input/erx-tag-input.types";
@@ -156,6 +175,7 @@ export { TimelineActionDetail, TimelineConfig, TimelineItem, TimelineSelectDetai
 export { TreeConfig, TreeExpandDetail, TreeNode, TreeSelectDetail } from "./components/erx-tree/erx-tree.types";
 export { ErxUploadCompleteEvent, ErxUploadErrorEvent, ErxUploadFile, ErxUploadProgressEvent, ErxUploadSelectEvent } from "./components/erx-upload/erx-upload.types";
 export { ErxVariantGroup, ErxVariantSelectEvent, ErxVariantSelection } from "./components/erx-variant-selector/erx-variant-selector.types";
+export { ErxVideoSource } from "./components/erx-video-player/erx-video-player.types";
 export { ErxKeyboardInputEvent, ErxKeyboardLayout } from "./components/erx-virtual-keyboard/erx-virtual-keyboard.types";
 export { VirtualListConfig, VirtualListItem, VirtualListScrollDetail } from "./components/erx-virtual-list/erx-virtual-list.types";
 export { WorkOrder, WorkOrderActionDetail } from "./components/erx-work-order/erx-work-order.types";
@@ -186,6 +206,76 @@ export namespace Components {
          */
         "showTime": boolean;
     }
+    interface ErxAudioPlayer {
+        /**
+          * Artist name
+         */
+        "artist"?: string;
+        /**
+          * Auto play
+          * @default false
+         */
+        "autoplay": boolean;
+        /**
+          * Compact mode
+          * @default false
+         */
+        "compact": boolean;
+        /**
+          * Cover art URL
+         */
+        "cover"?: string;
+        /**
+          * Loop audio
+          * @default false
+         */
+        "loop": boolean;
+        /**
+          * Muted by default
+          * @default false
+         */
+        "muted": boolean;
+        /**
+          * Pause audio
+         */
+        "pause": () => Promise<void>;
+        /**
+          * Play audio
+         */
+        "play": () => Promise<void>;
+        /**
+          * Preload strategy
+          * @default 'metadata'
+         */
+        "preload": 'none' | 'metadata' | 'auto';
+        /**
+          * Seek to time
+         */
+        "seek": (time: number) => Promise<void>;
+        /**
+          * Show playback speed control
+          * @default false
+         */
+        "showSpeed": boolean;
+        /**
+          * Show time display
+          * @default true
+         */
+        "showTime": boolean;
+        /**
+          * Show volume control
+          * @default true
+         */
+        "showVolume": boolean;
+        /**
+          * Audio source URL
+         */
+        "src": string;
+        /**
+          * Track title
+         */
+        "trackTitle"?: string;
+    }
     interface ErxAutocomplete {
         "clear": () => Promise<void>;
         /**
@@ -196,7 +286,6 @@ export namespace Components {
           * @default false
          */
         "disabled": boolean;
-        "focus": () => Promise<void>;
         "label"?: string;
         /**
           * @default false
@@ -210,7 +299,51 @@ export namespace Components {
           * @default 'Search...'
          */
         "placeholder": string;
+        "setFocus": () => Promise<void>;
         "value"?: string;
+    }
+    interface ErxBanner {
+        /**
+          * Action button text
+         */
+        "actionText"?: string;
+        /**
+          * Dismissible
+          * @default true
+         */
+        "dismissible": boolean;
+        /**
+          * Hide the banner
+         */
+        "hide": () => Promise<void>;
+        /**
+          * Icon to show
+         */
+        "icon"?: string;
+        /**
+          * Position
+          * @default 'inline'
+         */
+        "position": ErxBannerPosition;
+        /**
+          * Show the banner
+         */
+        "show": () => Promise<void>;
+        /**
+          * Sticky when scrolling
+          * @default false
+         */
+        "sticky": boolean;
+        /**
+          * Banner variant
+          * @default 'info'
+         */
+        "variant": ErxBannerVariant;
+        /**
+          * Whether the banner is visible
+          * @default true
+         */
+        "visible": boolean;
     }
     interface ErxBarcodeScanner {
         /**
@@ -304,6 +437,33 @@ export namespace Components {
           * @default false
          */
         "showStock": boolean;
+    }
+    interface ErxButtonGroup {
+        /**
+          * Disabled state
+          * @default false
+         */
+        "disabled": boolean;
+        /**
+          * Full width
+          * @default false
+         */
+        "fullWidth": boolean;
+        /**
+          * Button size
+          * @default 'md'
+         */
+        "size": ErxButtonGroupSize;
+        /**
+          * Button variant
+          * @default 'solid'
+         */
+        "variant": ErxButtonGroupVariant;
+        /**
+          * Vertical layout
+          * @default false
+         */
+        "vertical": boolean;
     }
     interface ErxCalculator {
         /**
@@ -402,6 +562,31 @@ export namespace Components {
           * @default 'week'
          */
         "view": CalendarView;
+    }
+    interface ErxCallout {
+        /**
+          * Title text
+         */
+        "calloutTitle"?: string;
+        /**
+          * Collapsed state
+          * @default false
+         */
+        "collapsed": boolean;
+        /**
+          * Collapsible
+          * @default false
+         */
+        "collapsible": boolean;
+        /**
+          * Icon to show
+         */
+        "icon"?: string;
+        /**
+          * Callout variant
+          * @default 'info'
+         */
+        "variant": ErxCalloutVariant;
     }
     interface ErxCarousel {
         /**
@@ -637,6 +822,53 @@ export namespace Components {
          */
         "height": number;
     }
+    interface ErxCodeBlock {
+        /**
+          * Code content
+          * @default ''
+         */
+        "code": string;
+        /**
+          * Copy code to clipboard
+         */
+        "copyCode": () => Promise<boolean>;
+        /**
+          * File name to display
+         */
+        "fileName"?: string;
+        /**
+          * Highlight specific lines (comma-separated or array)
+         */
+        "highlightLines"?: string | number[];
+        /**
+          * Programming language
+         */
+        "language"?: string;
+        /**
+          * Max height before scrolling
+         */
+        "maxHeight"?: string;
+        /**
+          * Show copy button
+          * @default true
+         */
+        "showCopy": boolean;
+        /**
+          * Show language badge
+          * @default true
+         */
+        "showLanguage": boolean;
+        /**
+          * Show line numbers
+          * @default true
+         */
+        "showLineNumbers": boolean;
+        /**
+          * Wrap long lines
+          * @default false
+         */
+        "wordWrap": boolean;
+    }
     interface ErxColorPicker {
         /**
           * Disabled state
@@ -755,7 +987,6 @@ export namespace Components {
           * @default false
          */
         "disabled": boolean;
-        "focus": () => Promise<void>;
         "label"?: string;
         /**
           * @default '0.00'
@@ -765,6 +996,7 @@ export namespace Components {
           * @default false
          */
         "readonly": boolean;
+        "setFocus": () => Promise<void>;
         "setValue": (value: number) => Promise<void>;
         "value"?: number;
     }
@@ -925,6 +1157,48 @@ export namespace Components {
         "placeholder": string;
         "range"?: DateRange;
         "setRange": (range: DateRange) => Promise<void>;
+    }
+    interface ErxDiffViewer {
+        /**
+          * View mode: split or unified
+          * @default 'split'
+         */
+        "mode": ErxDiffViewMode;
+        /**
+          * New/modified text
+          * @default ''
+         */
+        "newText": string;
+        /**
+          * New file name
+          * @default 'Modified'
+         */
+        "newTitle": string;
+        /**
+          * Old/original text
+          * @default ''
+         */
+        "oldText": string;
+        /**
+          * Old file name
+          * @default 'Original'
+         */
+        "oldTitle": string;
+        /**
+          * Show file headers
+          * @default true
+         */
+        "showHeaders": boolean;
+        /**
+          * Show line numbers
+          * @default true
+         */
+        "showLineNumbers": boolean;
+        /**
+          * Wrap long lines
+          * @default false
+         */
+        "wordWrap": boolean;
     }
     interface ErxDivider {
         /**
@@ -1092,6 +1366,49 @@ export namespace Components {
         "prev": () => Promise<boolean>;
         "reset": () => Promise<void>;
     }
+    interface ErxFullscreenModal {
+        /**
+          * Animation type
+          * @default 'fade'
+         */
+        "animation": 'fade' | 'slide-up' | 'zoom';
+        /**
+          * Custom background color
+         */
+        "background"?: string;
+        /**
+          * Close the modal
+         */
+        "close": () => Promise<void>;
+        /**
+          * Close on escape key
+          * @default true
+         */
+        "escapeClose": boolean;
+        /**
+          * Modal title
+         */
+        "modalTitle"?: string;
+        /**
+          * Whether the modal is open
+          * @default false
+         */
+        "open": boolean;
+        /**
+          * Open the modal
+         */
+        "show": () => Promise<void>;
+        /**
+          * Show close button
+          * @default true
+         */
+        "showClose": boolean;
+        /**
+          * Show header bar
+          * @default true
+         */
+        "showHeader": boolean;
+    }
     interface ErxGantt {
         /**
           * @default { viewMode: 'week' }
@@ -1107,11 +1424,6 @@ export namespace Components {
         "tasks": GanttTask[];
     }
     interface ErxGauge {
-        /**
-          * Animate on change
-          * @default true
-         */
-        "animate": boolean;
         /**
           * End angle (degrees)
           * @default 135
@@ -1136,6 +1448,11 @@ export namespace Components {
           * @default []
          */
         "segments": ErxGaugeSegment[];
+        /**
+          * Animate on change
+          * @default true
+         */
+        "shouldAnimate": boolean;
         /**
           * Show min/max labels
           * @default true
@@ -1260,6 +1577,46 @@ export namespace Components {
           * @default true
          */
         "lightbox": boolean;
+    }
+    interface ErxImageZoom {
+        /**
+          * Alt text
+          * @default ''
+         */
+        "alt": string;
+        /**
+          * Lens size in pixels (for lens mode)
+          * @default 150
+         */
+        "lensSize": number;
+        /**
+          * Zoom position/style
+          * @default 'overlay'
+         */
+        "position": ErxImageZoomPosition;
+        /**
+          * Enable smooth transitions
+          * @default true
+         */
+        "smooth": boolean;
+        /**
+          * Image source URL
+         */
+        "src": string;
+        /**
+          * Zoom trigger mode
+          * @default 'hover'
+         */
+        "trigger": ErxImageZoomTrigger;
+        /**
+          * Zoom level multiplier
+          * @default 2
+         */
+        "zoomLevel": number;
+        /**
+          * High-resolution image for zoom (defaults to src)
+         */
+        "zoomSrc"?: string;
     }
     interface ErxJsonViewer {
         "collapseAll": () => Promise<void>;
@@ -2068,11 +2425,6 @@ export namespace Components {
     }
     interface ErxProgressCircle {
         /**
-          * Animate on load
-          * @default true
-         */
-        "animate": boolean;
-        /**
           * Animation duration (ms)
           * @default 1000
          */
@@ -2100,6 +2452,11 @@ export namespace Components {
           * @default 100
          */
         "max": number;
+        /**
+          * Animate on load
+          * @default true
+         */
+        "shouldAnimate": boolean;
         /**
           * Show percentage text
           * @default true
@@ -2248,7 +2605,6 @@ export namespace Components {
           * @default false
          */
         "disabled": boolean;
-        "focus": () => Promise<void>;
         "getContent": () => Promise<{ html: string; text: string; }>;
         /**
           * Max height
@@ -2271,6 +2627,7 @@ export namespace Components {
          */
         "readOnly": boolean;
         "setContent": (html: string) => Promise<void>;
+        "setFocus": () => Promise<void>;
         /**
           * Enabled tools
           * @default [     'bold', 'italic', 'underline', 'strike',     'heading1', 'heading2',     'bulletList', 'orderedList',     'blockquote', 'code', 'link',     'divider', 'undo', 'redo', 'clear',   ]
@@ -2466,12 +2823,55 @@ export namespace Components {
         "label"?: string;
         "toDataURL": (format?: "png" | "jpeg" | "svg") => Promise<string>;
     }
-    interface ErxSparkline {
+    interface ErxSnackbar {
         /**
-          * Animate on load
-          * @default true
+          * Action button text
          */
-        "animate": boolean;
+        "actionText"?: string;
+        /**
+          * Duration in ms (0 = persistent)
+          * @default 4000
+         */
+        "duration": number;
+        /**
+          * Hide the snackbar
+         */
+        "hide": () => Promise<void>;
+        /**
+          * Icon to display
+         */
+        "icon"?: string;
+        /**
+          * Message text
+          * @default ''
+         */
+        "message": string;
+        /**
+          * Whether the snackbar is visible
+          * @default false
+         */
+        "open": boolean;
+        /**
+          * Position on screen
+          * @default 'bottom'
+         */
+        "position": ErxSnackbarPosition;
+        /**
+          * Show the snackbar
+         */
+        "show": (message?: string) => Promise<void>;
+        /**
+          * Show close button
+          * @default false
+         */
+        "showClose": boolean;
+        /**
+          * Snackbar variant
+          * @default 'default'
+         */
+        "variant": ErxSnackbarVariant;
+    }
+    interface ErxSparkline {
         /**
           * Line/bar color
           * @default 'var(--erx-color-primary, #667eea)'
@@ -2497,6 +2897,11 @@ export namespace Components {
          */
         "height": number;
         /**
+          * Animate on load
+          * @default true
+         */
+        "shouldAnimate": boolean;
+        /**
           * Show last value dot
           * @default true
          */
@@ -2516,6 +2921,38 @@ export namespace Components {
           * @default 100
          */
         "width": number;
+    }
+    interface ErxSplitButton {
+        /**
+          * Disabled state
+          * @default false
+         */
+        "disabled": boolean;
+        /**
+          * Primary button label
+          * @default 'Action'
+         */
+        "label": string;
+        /**
+          * Loading state
+          * @default false
+         */
+        "loading": boolean;
+        /**
+          * Dropdown options
+          * @default []
+         */
+        "options": ErxSplitButtonOption[];
+        /**
+          * Button size
+          * @default 'md'
+         */
+        "size": ErxSplitButtonSize;
+        /**
+          * Button variant
+          * @default 'primary'
+         */
+        "variant": ErxSplitButtonVariant;
     }
     interface ErxSplitPane {
         /**
@@ -2587,6 +3024,38 @@ export namespace Components {
          */
         "setSize": (size: number | string) => Promise<void>;
     }
+    interface ErxState {
+        /**
+          * Primary action button text
+         */
+        "actionText"?: string;
+        /**
+          * Compact mode
+          * @default false
+         */
+        "compact": boolean;
+        /**
+          * Description text
+         */
+        "description"?: string;
+        /**
+          * Custom icon (emoji or text)
+         */
+        "icon"?: string;
+        /**
+          * Secondary action button text
+         */
+        "secondaryActionText"?: string;
+        /**
+          * Title text
+         */
+        "stateTitle"?: string;
+        /**
+          * State type
+          * @default 'empty'
+         */
+        "type": ErxStateType;
+    }
     interface ErxStats {
         /**
           * @default {}
@@ -2600,6 +3069,32 @@ export namespace Components {
           * @default []
          */
         "stats": Stat[];
+    }
+    interface ErxStatusIndicator {
+        /**
+          * Label text
+         */
+        "label"?: string;
+        /**
+          * Pulse animation
+          * @default false
+         */
+        "pulse": boolean;
+        /**
+          * Size
+          * @default 'md'
+         */
+        "size": ErxStatusIndicatorSize;
+        /**
+          * Status type
+          * @default 'neutral'
+         */
+        "status": ErxStatusIndicatorStatus;
+        /**
+          * Display variant
+          * @default 'dot'
+         */
+        "variant": ErxStatusIndicatorVariant;
     }
     interface ErxStockIndicator {
         /**
@@ -2863,6 +3358,72 @@ export namespace Components {
          */
         "value": ErxVariantSelection;
     }
+    interface ErxVideoPlayer {
+        /**
+          * Auto play
+          * @default false
+         */
+        "autoplay": boolean;
+        /**
+          * Show controls
+          * @default true
+         */
+        "controls": boolean;
+        /**
+          * Enable fullscreen
+          * @default true
+         */
+        "fullscreen": boolean;
+        /**
+          * Loop video
+          * @default false
+         */
+        "loop": boolean;
+        /**
+          * Muted by default
+          * @default false
+         */
+        "muted": boolean;
+        /**
+          * Pause video
+         */
+        "pause": () => Promise<void>;
+        /**
+          * Enable picture-in-picture
+          * @default true
+         */
+        "pip": boolean;
+        /**
+          * Play video
+         */
+        "play": () => Promise<void>;
+        /**
+          * Poster image
+         */
+        "poster"?: string;
+        /**
+          * Preload strategy
+          * @default 'metadata'
+         */
+        "preload": 'none' | 'metadata' | 'auto';
+        /**
+          * Seek to time
+         */
+        "seek": (time: number) => Promise<void>;
+        /**
+          * Multiple sources for quality selection
+          * @default []
+         */
+        "sources": ErxVideoSource[];
+        /**
+          * Video source URL or array of sources
+         */
+        "src"?: string;
+        /**
+          * Toggle fullscreen
+         */
+        "toggleFullscreen": () => Promise<void>;
+    }
     interface ErxVirtualKeyboard {
         /**
           * Clear input
@@ -2951,9 +3512,17 @@ export interface ErxAttendanceListCustomEvent<T> extends CustomEvent<T> {
     detail: T;
     target: HTMLErxAttendanceListElement;
 }
+export interface ErxAudioPlayerCustomEvent<T> extends CustomEvent<T> {
+    detail: T;
+    target: HTMLErxAudioPlayerElement;
+}
 export interface ErxAutocompleteCustomEvent<T> extends CustomEvent<T> {
     detail: T;
     target: HTMLErxAutocompleteElement;
+}
+export interface ErxBannerCustomEvent<T> extends CustomEvent<T> {
+    detail: T;
+    target: HTMLErxBannerElement;
 }
 export interface ErxBarcodeScannerCustomEvent<T> extends CustomEvent<T> {
     detail: T;
@@ -2990,6 +3559,10 @@ export interface ErxCartCustomEvent<T> extends CustomEvent<T> {
 export interface ErxCategoryTabsCustomEvent<T> extends CustomEvent<T> {
     detail: T;
     target: HTMLErxCategoryTabsElement;
+}
+export interface ErxCodeBlockCustomEvent<T> extends CustomEvent<T> {
+    detail: T;
+    target: HTMLErxCodeBlockElement;
 }
 export interface ErxColorPickerCustomEvent<T> extends CustomEvent<T> {
     detail: T;
@@ -3043,6 +3616,10 @@ export interface ErxFormWizardCustomEvent<T> extends CustomEvent<T> {
     detail: T;
     target: HTMLErxFormWizardElement;
 }
+export interface ErxFullscreenModalCustomEvent<T> extends CustomEvent<T> {
+    detail: T;
+    target: HTMLErxFullscreenModalElement;
+}
 export interface ErxGanttCustomEvent<T> extends CustomEvent<T> {
     detail: T;
     target: HTMLErxGanttElement;
@@ -3054,6 +3631,10 @@ export interface ErxImageCropCustomEvent<T> extends CustomEvent<T> {
 export interface ErxImageGalleryCustomEvent<T> extends CustomEvent<T> {
     detail: T;
     target: HTMLErxImageGalleryElement;
+}
+export interface ErxImageZoomCustomEvent<T> extends CustomEvent<T> {
+    detail: T;
+    target: HTMLErxImageZoomElement;
 }
 export interface ErxKanbanCustomEvent<T> extends CustomEvent<T> {
     detail: T;
@@ -3171,9 +3752,21 @@ export interface ErxSignaturePadCustomEvent<T> extends CustomEvent<T> {
     detail: T;
     target: HTMLErxSignaturePadElement;
 }
+export interface ErxSnackbarCustomEvent<T> extends CustomEvent<T> {
+    detail: T;
+    target: HTMLErxSnackbarElement;
+}
+export interface ErxSplitButtonCustomEvent<T> extends CustomEvent<T> {
+    detail: T;
+    target: HTMLErxSplitButtonElement;
+}
 export interface ErxSplitPaneCustomEvent<T> extends CustomEvent<T> {
     detail: T;
     target: HTMLErxSplitPaneElement;
+}
+export interface ErxStateCustomEvent<T> extends CustomEvent<T> {
+    detail: T;
+    target: HTMLErxStateElement;
 }
 export interface ErxStatsCustomEvent<T> extends CustomEvent<T> {
     detail: T;
@@ -3207,6 +3800,10 @@ export interface ErxVariantSelectorCustomEvent<T> extends CustomEvent<T> {
     detail: T;
     target: HTMLErxVariantSelectorElement;
 }
+export interface ErxVideoPlayerCustomEvent<T> extends CustomEvent<T> {
+    detail: T;
+    target: HTMLErxVideoPlayerElement;
+}
 export interface ErxVirtualKeyboardCustomEvent<T> extends CustomEvent<T> {
     detail: T;
     target: HTMLErxVirtualKeyboardElement;
@@ -3237,13 +3834,32 @@ declare global {
         prototype: HTMLErxAttendanceListElement;
         new (): HTMLErxAttendanceListElement;
     };
+    interface HTMLErxAudioPlayerElementEventMap {
+        "erxPlay": void;
+        "erxPause": void;
+        "erxTimeUpdate": { currentTime: number; duration: number };
+        "erxEnded": void;
+    }
+    interface HTMLErxAudioPlayerElement extends Components.ErxAudioPlayer, HTMLStencilElement {
+        addEventListener<K extends keyof HTMLErxAudioPlayerElementEventMap>(type: K, listener: (this: HTMLErxAudioPlayerElement, ev: ErxAudioPlayerCustomEvent<HTMLErxAudioPlayerElementEventMap[K]>) => any, options?: boolean | AddEventListenerOptions): void;
+        addEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
+        addEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
+        addEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | AddEventListenerOptions): void;
+        removeEventListener<K extends keyof HTMLErxAudioPlayerElementEventMap>(type: K, listener: (this: HTMLErxAudioPlayerElement, ev: ErxAudioPlayerCustomEvent<HTMLErxAudioPlayerElementEventMap[K]>) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | EventListenerOptions): void;
+    }
+    var HTMLErxAudioPlayerElement: {
+        prototype: HTMLErxAudioPlayerElement;
+        new (): HTMLErxAudioPlayerElement;
+    };
     interface HTMLErxAutocompleteElementEventMap {
         "erxSelect": AutocompleteSelectDetail;
         "erxSearch": AutocompleteSearchDetail;
         "erxClear": void;
     }
-    interface HTMLErxAutocompleteElement extends Omit<Components.ErxAutocomplete, "focus">, HTMLStencilElement {
-        "focus": () => Promise<void>;
+    interface HTMLErxAutocompleteElement extends Components.ErxAutocomplete, HTMLStencilElement {
         addEventListener<K extends keyof HTMLErxAutocompleteElementEventMap>(type: K, listener: (this: HTMLErxAutocompleteElement, ev: ErxAutocompleteCustomEvent<HTMLErxAutocompleteElementEventMap[K]>) => any, options?: boolean | AddEventListenerOptions): void;
         addEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
         addEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
@@ -3256,6 +3872,24 @@ declare global {
     var HTMLErxAutocompleteElement: {
         prototype: HTMLErxAutocompleteElement;
         new (): HTMLErxAutocompleteElement;
+    };
+    interface HTMLErxBannerElementEventMap {
+        "erxDismiss": void;
+        "erxAction": void;
+    }
+    interface HTMLErxBannerElement extends Components.ErxBanner, HTMLStencilElement {
+        addEventListener<K extends keyof HTMLErxBannerElementEventMap>(type: K, listener: (this: HTMLErxBannerElement, ev: ErxBannerCustomEvent<HTMLErxBannerElementEventMap[K]>) => any, options?: boolean | AddEventListenerOptions): void;
+        addEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
+        addEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
+        addEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | AddEventListenerOptions): void;
+        removeEventListener<K extends keyof HTMLErxBannerElementEventMap>(type: K, listener: (this: HTMLErxBannerElement, ev: ErxBannerCustomEvent<HTMLErxBannerElementEventMap[K]>) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | EventListenerOptions): void;
+    }
+    var HTMLErxBannerElement: {
+        prototype: HTMLErxBannerElement;
+        new (): HTMLErxBannerElement;
     };
     interface HTMLErxBarcodeScannerElementEventMap {
         "erxScan": ErxBarcodeScanEvent;
@@ -3309,6 +3943,12 @@ declare global {
     var HTMLErxBomTreeElement: {
         prototype: HTMLErxBomTreeElement;
         new (): HTMLErxBomTreeElement;
+    };
+    interface HTMLErxButtonGroupElement extends Components.ErxButtonGroup, HTMLStencilElement {
+    }
+    var HTMLErxButtonGroupElement: {
+        prototype: HTMLErxButtonGroupElement;
+        new (): HTMLErxButtonGroupElement;
     };
     interface HTMLErxCalculatorElementEventMap {
         "erxResult": ErxCalculatorResult;
@@ -3364,6 +4004,12 @@ declare global {
     var HTMLErxCalendarViewsElement: {
         prototype: HTMLErxCalendarViewsElement;
         new (): HTMLErxCalendarViewsElement;
+    };
+    interface HTMLErxCalloutElement extends Components.ErxCallout, HTMLStencilElement {
+    }
+    var HTMLErxCalloutElement: {
+        prototype: HTMLErxCalloutElement;
+        new (): HTMLErxCalloutElement;
     };
     interface HTMLErxCarouselElementEventMap {
         "erxSlideChange": ErxCarouselSlideEvent;
@@ -3424,6 +4070,23 @@ declare global {
     var HTMLErxChartElement: {
         prototype: HTMLErxChartElement;
         new (): HTMLErxChartElement;
+    };
+    interface HTMLErxCodeBlockElementEventMap {
+        "erxCopy": { code: string; success: boolean };
+    }
+    interface HTMLErxCodeBlockElement extends Components.ErxCodeBlock, HTMLStencilElement {
+        addEventListener<K extends keyof HTMLErxCodeBlockElementEventMap>(type: K, listener: (this: HTMLErxCodeBlockElement, ev: ErxCodeBlockCustomEvent<HTMLErxCodeBlockElementEventMap[K]>) => any, options?: boolean | AddEventListenerOptions): void;
+        addEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
+        addEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
+        addEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | AddEventListenerOptions): void;
+        removeEventListener<K extends keyof HTMLErxCodeBlockElementEventMap>(type: K, listener: (this: HTMLErxCodeBlockElement, ev: ErxCodeBlockCustomEvent<HTMLErxCodeBlockElementEventMap[K]>) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | EventListenerOptions): void;
+    }
+    var HTMLErxCodeBlockElement: {
+        prototype: HTMLErxCodeBlockElement;
+        new (): HTMLErxCodeBlockElement;
     };
     interface HTMLErxColorPickerElementEventMap {
         "erxChange": ErxColorChangeEvent;
@@ -3500,8 +4163,7 @@ declare global {
         "erxChange": CurrencyInputChangeDetail;
         "erxBlur": CurrencyInputChangeDetail;
     }
-    interface HTMLErxCurrencyInputElement extends Omit<Components.ErxCurrencyInput, "focus">, HTMLStencilElement {
-        "focus": () => Promise<void>;
+    interface HTMLErxCurrencyInputElement extends Components.ErxCurrencyInput, HTMLStencilElement {
         addEventListener<K extends keyof HTMLErxCurrencyInputElementEventMap>(type: K, listener: (this: HTMLErxCurrencyInputElement, ev: ErxCurrencyInputCustomEvent<HTMLErxCurrencyInputElementEventMap[K]>) => any, options?: boolean | AddEventListenerOptions): void;
         addEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
         addEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
@@ -3574,6 +4236,12 @@ declare global {
     var HTMLErxDateRangePickerElement: {
         prototype: HTMLErxDateRangePickerElement;
         new (): HTMLErxDateRangePickerElement;
+    };
+    interface HTMLErxDiffViewerElement extends Components.ErxDiffViewer, HTMLStencilElement {
+    }
+    var HTMLErxDiffViewerElement: {
+        prototype: HTMLErxDiffViewerElement;
+        new (): HTMLErxDiffViewerElement;
     };
     interface HTMLErxDividerElement extends Components.ErxDivider, HTMLStencilElement {
     }
@@ -3670,6 +4338,24 @@ declare global {
         prototype: HTMLErxFormWizardElement;
         new (): HTMLErxFormWizardElement;
     };
+    interface HTMLErxFullscreenModalElementEventMap {
+        "erxOpen": void;
+        "erxClose": void;
+    }
+    interface HTMLErxFullscreenModalElement extends Components.ErxFullscreenModal, HTMLStencilElement {
+        addEventListener<K extends keyof HTMLErxFullscreenModalElementEventMap>(type: K, listener: (this: HTMLErxFullscreenModalElement, ev: ErxFullscreenModalCustomEvent<HTMLErxFullscreenModalElementEventMap[K]>) => any, options?: boolean | AddEventListenerOptions): void;
+        addEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
+        addEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
+        addEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | AddEventListenerOptions): void;
+        removeEventListener<K extends keyof HTMLErxFullscreenModalElementEventMap>(type: K, listener: (this: HTMLErxFullscreenModalElement, ev: ErxFullscreenModalCustomEvent<HTMLErxFullscreenModalElementEventMap[K]>) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | EventListenerOptions): void;
+    }
+    var HTMLErxFullscreenModalElement: {
+        prototype: HTMLErxFullscreenModalElement;
+        new (): HTMLErxFullscreenModalElement;
+    };
     interface HTMLErxGanttElementEventMap {
         "erxSelect": GanttSelectDetail;
         "erxUpdate": GanttUpdateDetail;
@@ -3729,6 +4415,23 @@ declare global {
     var HTMLErxImageGalleryElement: {
         prototype: HTMLErxImageGalleryElement;
         new (): HTMLErxImageGalleryElement;
+    };
+    interface HTMLErxImageZoomElementEventMap {
+        "erxZoom": { zoomed: boolean; level: number };
+    }
+    interface HTMLErxImageZoomElement extends Components.ErxImageZoom, HTMLStencilElement {
+        addEventListener<K extends keyof HTMLErxImageZoomElementEventMap>(type: K, listener: (this: HTMLErxImageZoomElement, ev: ErxImageZoomCustomEvent<HTMLErxImageZoomElementEventMap[K]>) => any, options?: boolean | AddEventListenerOptions): void;
+        addEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
+        addEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
+        addEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | AddEventListenerOptions): void;
+        removeEventListener<K extends keyof HTMLErxImageZoomElementEventMap>(type: K, listener: (this: HTMLErxImageZoomElement, ev: ErxImageZoomCustomEvent<HTMLErxImageZoomElementEventMap[K]>) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | EventListenerOptions): void;
+    }
+    var HTMLErxImageZoomElement: {
+        prototype: HTMLErxImageZoomElement;
+        new (): HTMLErxImageZoomElement;
     };
     interface HTMLErxJsonViewerElement extends Components.ErxJsonViewer, HTMLStencilElement {
     }
@@ -3852,7 +4555,7 @@ declare global {
         new (): HTMLErxMasterDetailElement;
     };
     interface HTMLErxMegaMenuElementEventMap {
-        "erxSelect": { item: unknown };
+        "erxSelect": { item: any };
     }
     interface HTMLErxMegaMenuElement extends Components.ErxMegaMenu, HTMLStencilElement {
         addEventListener<K extends keyof HTMLErxMegaMenuElementEventMap>(type: K, listener: (this: HTMLErxMegaMenuElement, ev: ErxMegaMenuCustomEvent<HTMLErxMegaMenuElementEventMap[K]>) => any, options?: boolean | AddEventListenerOptions): void;
@@ -4172,8 +4875,7 @@ declare global {
     interface HTMLErxRichTextElementEventMap {
         "erxChange": ErxRichTextChangeEvent;
     }
-    interface HTMLErxRichTextElement extends Omit<Components.ErxRichText, "focus">, HTMLStencilElement {
-        "focus": () => Promise<void>;
+    interface HTMLErxRichTextElement extends Components.ErxRichText, HTMLStencilElement {
         addEventListener<K extends keyof HTMLErxRichTextElementEventMap>(type: K, listener: (this: HTMLErxRichTextElement, ev: ErxRichTextCustomEvent<HTMLErxRichTextElementEventMap[K]>) => any, options?: boolean | AddEventListenerOptions): void;
         addEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
         addEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
@@ -4294,11 +4996,47 @@ declare global {
         prototype: HTMLErxSignaturePadElement;
         new (): HTMLErxSignaturePadElement;
     };
+    interface HTMLErxSnackbarElementEventMap {
+        "erxClose": void;
+        "erxAction": void;
+    }
+    interface HTMLErxSnackbarElement extends Components.ErxSnackbar, HTMLStencilElement {
+        addEventListener<K extends keyof HTMLErxSnackbarElementEventMap>(type: K, listener: (this: HTMLErxSnackbarElement, ev: ErxSnackbarCustomEvent<HTMLErxSnackbarElementEventMap[K]>) => any, options?: boolean | AddEventListenerOptions): void;
+        addEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
+        addEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
+        addEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | AddEventListenerOptions): void;
+        removeEventListener<K extends keyof HTMLErxSnackbarElementEventMap>(type: K, listener: (this: HTMLErxSnackbarElement, ev: ErxSnackbarCustomEvent<HTMLErxSnackbarElementEventMap[K]>) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | EventListenerOptions): void;
+    }
+    var HTMLErxSnackbarElement: {
+        prototype: HTMLErxSnackbarElement;
+        new (): HTMLErxSnackbarElement;
+    };
     interface HTMLErxSparklineElement extends Components.ErxSparkline, HTMLStencilElement {
     }
     var HTMLErxSparklineElement: {
         prototype: HTMLErxSparklineElement;
         new (): HTMLErxSparklineElement;
+    };
+    interface HTMLErxSplitButtonElementEventMap {
+        "erxClick": void;
+        "erxSelect": { value: string; option: ErxSplitButtonOption };
+    }
+    interface HTMLErxSplitButtonElement extends Components.ErxSplitButton, HTMLStencilElement {
+        addEventListener<K extends keyof HTMLErxSplitButtonElementEventMap>(type: K, listener: (this: HTMLErxSplitButtonElement, ev: ErxSplitButtonCustomEvent<HTMLErxSplitButtonElementEventMap[K]>) => any, options?: boolean | AddEventListenerOptions): void;
+        addEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
+        addEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
+        addEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | AddEventListenerOptions): void;
+        removeEventListener<K extends keyof HTMLErxSplitButtonElementEventMap>(type: K, listener: (this: HTMLErxSplitButtonElement, ev: ErxSplitButtonCustomEvent<HTMLErxSplitButtonElementEventMap[K]>) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | EventListenerOptions): void;
+    }
+    var HTMLErxSplitButtonElement: {
+        prototype: HTMLErxSplitButtonElement;
+        new (): HTMLErxSplitButtonElement;
     };
     interface HTMLErxSplitPaneElementEventMap {
         "erxResize": ErxSplitPaneResizeEvent;
@@ -4320,6 +5058,23 @@ declare global {
         prototype: HTMLErxSplitPaneElement;
         new (): HTMLErxSplitPaneElement;
     };
+    interface HTMLErxStateElementEventMap {
+        "erxAction": { action: 'primary' | 'secondary' };
+    }
+    interface HTMLErxStateElement extends Components.ErxState, HTMLStencilElement {
+        addEventListener<K extends keyof HTMLErxStateElementEventMap>(type: K, listener: (this: HTMLErxStateElement, ev: ErxStateCustomEvent<HTMLErxStateElementEventMap[K]>) => any, options?: boolean | AddEventListenerOptions): void;
+        addEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
+        addEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
+        addEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | AddEventListenerOptions): void;
+        removeEventListener<K extends keyof HTMLErxStateElementEventMap>(type: K, listener: (this: HTMLErxStateElement, ev: ErxStateCustomEvent<HTMLErxStateElementEventMap[K]>) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | EventListenerOptions): void;
+    }
+    var HTMLErxStateElement: {
+        prototype: HTMLErxStateElement;
+        new (): HTMLErxStateElement;
+    };
     interface HTMLErxStatsElementEventMap {
         "erxSelect": Stat;
     }
@@ -4336,6 +5091,12 @@ declare global {
     var HTMLErxStatsElement: {
         prototype: HTMLErxStatsElement;
         new (): HTMLErxStatsElement;
+    };
+    interface HTMLErxStatusIndicatorElement extends Components.ErxStatusIndicator, HTMLStencilElement {
+    }
+    var HTMLErxStatusIndicatorElement: {
+        prototype: HTMLErxStatusIndicatorElement;
+        new (): HTMLErxStatusIndicatorElement;
     };
     interface HTMLErxStockIndicatorElement extends Components.ErxStockIndicator, HTMLStencilElement {
     }
@@ -4473,6 +5234,26 @@ declare global {
         prototype: HTMLErxVariantSelectorElement;
         new (): HTMLErxVariantSelectorElement;
     };
+    interface HTMLErxVideoPlayerElementEventMap {
+        "erxPlay": void;
+        "erxPause": void;
+        "erxTimeUpdate": { currentTime: number; duration: number };
+        "erxEnded": void;
+    }
+    interface HTMLErxVideoPlayerElement extends Components.ErxVideoPlayer, HTMLStencilElement {
+        addEventListener<K extends keyof HTMLErxVideoPlayerElementEventMap>(type: K, listener: (this: HTMLErxVideoPlayerElement, ev: ErxVideoPlayerCustomEvent<HTMLErxVideoPlayerElementEventMap[K]>) => any, options?: boolean | AddEventListenerOptions): void;
+        addEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
+        addEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
+        addEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | AddEventListenerOptions): void;
+        removeEventListener<K extends keyof HTMLErxVideoPlayerElementEventMap>(type: K, listener: (this: HTMLErxVideoPlayerElement, ev: ErxVideoPlayerCustomEvent<HTMLErxVideoPlayerElementEventMap[K]>) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | EventListenerOptions): void;
+    }
+    var HTMLErxVideoPlayerElement: {
+        prototype: HTMLErxVideoPlayerElement;
+        new (): HTMLErxVideoPlayerElement;
+    };
     interface HTMLErxVirtualKeyboardElementEventMap {
         "erxInput": ErxKeyboardInputEvent;
         "erxEnter": { value: string };
@@ -4529,17 +5310,22 @@ declare global {
     };
     interface HTMLElementTagNameMap {
         "erx-attendance-list": HTMLErxAttendanceListElement;
+        "erx-audio-player": HTMLErxAudioPlayerElement;
         "erx-autocomplete": HTMLErxAutocompleteElement;
+        "erx-banner": HTMLErxBannerElement;
         "erx-barcode-scanner": HTMLErxBarcodeScannerElement;
         "erx-batch-tracker": HTMLErxBatchTrackerElement;
         "erx-bom-tree": HTMLErxBomTreeElement;
+        "erx-button-group": HTMLErxButtonGroupElement;
         "erx-calculator": HTMLErxCalculatorElement;
         "erx-calendar": HTMLErxCalendarElement;
         "erx-calendar-views": HTMLErxCalendarViewsElement;
+        "erx-callout": HTMLErxCalloutElement;
         "erx-carousel": HTMLErxCarouselElement;
         "erx-cart": HTMLErxCartElement;
         "erx-category-tabs": HTMLErxCategoryTabsElement;
         "erx-chart": HTMLErxChartElement;
+        "erx-code-block": HTMLErxCodeBlockElement;
         "erx-color-picker": HTMLErxColorPickerElement;
         "erx-command": HTMLErxCommandElement;
         "erx-comparison": HTMLErxComparisonElement;
@@ -4548,16 +5334,19 @@ declare global {
         "erx-dashboard-grid": HTMLErxDashboardGridElement;
         "erx-data-grid": HTMLErxDataGridElement;
         "erx-date-range-picker": HTMLErxDateRangePickerElement;
+        "erx-diff-viewer": HTMLErxDiffViewerElement;
         "erx-divider": HTMLErxDividerElement;
         "erx-drawer": HTMLErxDrawerElement;
         "erx-dropdown": HTMLErxDropdownElement;
         "erx-employee-card": HTMLErxEmployeeCardElement;
         "erx-event-card": HTMLErxEventCardElement;
         "erx-form-wizard": HTMLErxFormWizardElement;
+        "erx-fullscreen-modal": HTMLErxFullscreenModalElement;
         "erx-gantt": HTMLErxGanttElement;
         "erx-gauge": HTMLErxGaugeElement;
         "erx-image-crop": HTMLErxImageCropElement;
         "erx-image-gallery": HTMLErxImageGalleryElement;
+        "erx-image-zoom": HTMLErxImageZoomElement;
         "erx-json-viewer": HTMLErxJsonViewerElement;
         "erx-kanban": HTMLErxKanbanElement;
         "erx-leave-request": HTMLErxLeaveRequestElement;
@@ -4593,9 +5382,13 @@ declare global {
         "erx-shell": HTMLErxShellElement;
         "erx-shift-calendar": HTMLErxShiftCalendarElement;
         "erx-signature-pad": HTMLErxSignaturePadElement;
+        "erx-snackbar": HTMLErxSnackbarElement;
         "erx-sparkline": HTMLErxSparklineElement;
+        "erx-split-button": HTMLErxSplitButtonElement;
         "erx-split-pane": HTMLErxSplitPaneElement;
+        "erx-state": HTMLErxStateElement;
         "erx-stats": HTMLErxStatsElement;
+        "erx-status-indicator": HTMLErxStatusIndicatorElement;
         "erx-stock-indicator": HTMLErxStockIndicatorElement;
         "erx-table": HTMLErxTableElement;
         "erx-tag-input": HTMLErxTagInputElement;
@@ -4604,6 +5397,7 @@ declare global {
         "erx-tree": HTMLErxTreeElement;
         "erx-upload": HTMLErxUploadElement;
         "erx-variant-selector": HTMLErxVariantSelectorElement;
+        "erx-video-player": HTMLErxVideoPlayerElement;
         "erx-virtual-keyboard": HTMLErxVirtualKeyboardElement;
         "erx-virtual-list": HTMLErxVirtualListElement;
         "erx-work-order": HTMLErxWorkOrderElement;
@@ -4637,6 +5431,80 @@ declare namespace LocalJSX {
          */
         "showTime"?: boolean;
     }
+    interface ErxAudioPlayer {
+        /**
+          * Artist name
+         */
+        "artist"?: string;
+        /**
+          * Auto play
+          * @default false
+         */
+        "autoplay"?: boolean;
+        /**
+          * Compact mode
+          * @default false
+         */
+        "compact"?: boolean;
+        /**
+          * Cover art URL
+         */
+        "cover"?: string;
+        /**
+          * Loop audio
+          * @default false
+         */
+        "loop"?: boolean;
+        /**
+          * Muted by default
+          * @default false
+         */
+        "muted"?: boolean;
+        /**
+          * Emitted on ended
+         */
+        "onErxEnded"?: (event: ErxAudioPlayerCustomEvent<void>) => void;
+        /**
+          * Emitted on pause
+         */
+        "onErxPause"?: (event: ErxAudioPlayerCustomEvent<void>) => void;
+        /**
+          * Emitted on play
+         */
+        "onErxPlay"?: (event: ErxAudioPlayerCustomEvent<void>) => void;
+        /**
+          * Emitted on time update
+         */
+        "onErxTimeUpdate"?: (event: ErxAudioPlayerCustomEvent<{ currentTime: number; duration: number }>) => void;
+        /**
+          * Preload strategy
+          * @default 'metadata'
+         */
+        "preload"?: 'none' | 'metadata' | 'auto';
+        /**
+          * Show playback speed control
+          * @default false
+         */
+        "showSpeed"?: boolean;
+        /**
+          * Show time display
+          * @default true
+         */
+        "showTime"?: boolean;
+        /**
+          * Show volume control
+          * @default true
+         */
+        "showVolume"?: boolean;
+        /**
+          * Audio source URL
+         */
+        "src": string;
+        /**
+          * Track title
+         */
+        "trackTitle"?: string;
+    }
     interface ErxAutocomplete {
         /**
           * @default {}
@@ -4663,6 +5531,49 @@ declare namespace LocalJSX {
          */
         "placeholder"?: string;
         "value"?: string;
+    }
+    interface ErxBanner {
+        /**
+          * Action button text
+         */
+        "actionText"?: string;
+        /**
+          * Dismissible
+          * @default true
+         */
+        "dismissible"?: boolean;
+        /**
+          * Icon to show
+         */
+        "icon"?: string;
+        /**
+          * Emitted when action button is clicked
+         */
+        "onErxAction"?: (event: ErxBannerCustomEvent<void>) => void;
+        /**
+          * Emitted when banner is dismissed
+         */
+        "onErxDismiss"?: (event: ErxBannerCustomEvent<void>) => void;
+        /**
+          * Position
+          * @default 'inline'
+         */
+        "position"?: ErxBannerPosition;
+        /**
+          * Sticky when scrolling
+          * @default false
+         */
+        "sticky"?: boolean;
+        /**
+          * Banner variant
+          * @default 'info'
+         */
+        "variant"?: ErxBannerVariant;
+        /**
+          * Whether the banner is visible
+          * @default true
+         */
+        "visible"?: boolean;
     }
     interface ErxBarcodeScanner {
         /**
@@ -4765,6 +5676,33 @@ declare namespace LocalJSX {
          */
         "showStock"?: boolean;
     }
+    interface ErxButtonGroup {
+        /**
+          * Disabled state
+          * @default false
+         */
+        "disabled"?: boolean;
+        /**
+          * Full width
+          * @default false
+         */
+        "fullWidth"?: boolean;
+        /**
+          * Button size
+          * @default 'md'
+         */
+        "size"?: ErxButtonGroupSize;
+        /**
+          * Button variant
+          * @default 'solid'
+         */
+        "variant"?: ErxButtonGroupVariant;
+        /**
+          * Vertical layout
+          * @default false
+         */
+        "vertical"?: boolean;
+    }
     interface ErxCalculator {
         /**
           * Currency symbol (for display)
@@ -4861,6 +5799,31 @@ declare namespace LocalJSX {
           * @default 'week'
          */
         "view"?: CalendarView;
+    }
+    interface ErxCallout {
+        /**
+          * Title text
+         */
+        "calloutTitle"?: string;
+        /**
+          * Collapsed state
+          * @default false
+         */
+        "collapsed"?: boolean;
+        /**
+          * Collapsible
+          * @default false
+         */
+        "collapsible"?: boolean;
+        /**
+          * Icon to show
+         */
+        "icon"?: string;
+        /**
+          * Callout variant
+          * @default 'info'
+         */
+        "variant"?: ErxCalloutVariant;
     }
     interface ErxCarousel {
         /**
@@ -5086,6 +6049,53 @@ declare namespace LocalJSX {
           * @default 300
          */
         "height"?: number;
+    }
+    interface ErxCodeBlock {
+        /**
+          * Code content
+          * @default ''
+         */
+        "code"?: string;
+        /**
+          * File name to display
+         */
+        "fileName"?: string;
+        /**
+          * Highlight specific lines (comma-separated or array)
+         */
+        "highlightLines"?: string | number[];
+        /**
+          * Programming language
+         */
+        "language"?: string;
+        /**
+          * Max height before scrolling
+         */
+        "maxHeight"?: string;
+        /**
+          * Emitted when code is copied
+         */
+        "onErxCopy"?: (event: ErxCodeBlockCustomEvent<{ code: string; success: boolean }>) => void;
+        /**
+          * Show copy button
+          * @default true
+         */
+        "showCopy"?: boolean;
+        /**
+          * Show language badge
+          * @default true
+         */
+        "showLanguage"?: boolean;
+        /**
+          * Show line numbers
+          * @default true
+         */
+        "showLineNumbers"?: boolean;
+        /**
+          * Wrap long lines
+          * @default false
+         */
+        "wordWrap"?: boolean;
     }
     interface ErxColorPicker {
         /**
@@ -5411,6 +6421,48 @@ declare namespace LocalJSX {
         "placeholder"?: string;
         "range"?: DateRange;
     }
+    interface ErxDiffViewer {
+        /**
+          * View mode: split or unified
+          * @default 'split'
+         */
+        "mode"?: ErxDiffViewMode;
+        /**
+          * New/modified text
+          * @default ''
+         */
+        "newText"?: string;
+        /**
+          * New file name
+          * @default 'Modified'
+         */
+        "newTitle"?: string;
+        /**
+          * Old/original text
+          * @default ''
+         */
+        "oldText"?: string;
+        /**
+          * Old file name
+          * @default 'Original'
+         */
+        "oldTitle"?: string;
+        /**
+          * Show file headers
+          * @default true
+         */
+        "showHeaders"?: boolean;
+        /**
+          * Show line numbers
+          * @default true
+         */
+        "showLineNumbers"?: boolean;
+        /**
+          * Wrap long lines
+          * @default false
+         */
+        "wordWrap"?: boolean;
+    }
     interface ErxDivider {
         /**
           * Dashed style
@@ -5592,6 +6644,49 @@ declare namespace LocalJSX {
         "onErxComplete"?: (event: ErxFormWizardCustomEvent<WizardCompleteDetail>) => void;
         "onErxStepChange"?: (event: ErxFormWizardCustomEvent<WizardStepChangeDetail>) => void;
     }
+    interface ErxFullscreenModal {
+        /**
+          * Animation type
+          * @default 'fade'
+         */
+        "animation"?: 'fade' | 'slide-up' | 'zoom';
+        /**
+          * Custom background color
+         */
+        "background"?: string;
+        /**
+          * Close on escape key
+          * @default true
+         */
+        "escapeClose"?: boolean;
+        /**
+          * Modal title
+         */
+        "modalTitle"?: string;
+        /**
+          * Emitted when modal closes
+         */
+        "onErxClose"?: (event: ErxFullscreenModalCustomEvent<void>) => void;
+        /**
+          * Emitted when modal opens
+         */
+        "onErxOpen"?: (event: ErxFullscreenModalCustomEvent<void>) => void;
+        /**
+          * Whether the modal is open
+          * @default false
+         */
+        "open"?: boolean;
+        /**
+          * Show close button
+          * @default true
+         */
+        "showClose"?: boolean;
+        /**
+          * Show header bar
+          * @default true
+         */
+        "showHeader"?: boolean;
+    }
     interface ErxGantt {
         /**
           * @default { viewMode: 'week' }
@@ -5610,11 +6705,6 @@ declare namespace LocalJSX {
         "tasks"?: GanttTask[];
     }
     interface ErxGauge {
-        /**
-          * Animate on change
-          * @default true
-         */
-        "animate"?: boolean;
         /**
           * End angle (degrees)
           * @default 135
@@ -5639,6 +6729,11 @@ declare namespace LocalJSX {
           * @default []
          */
         "segments"?: ErxGaugeSegment[];
+        /**
+          * Animate on change
+          * @default true
+         */
+        "shouldAnimate"?: boolean;
         /**
           * Show min/max labels
           * @default true
@@ -5771,6 +6866,50 @@ declare namespace LocalJSX {
           * Image click event
          */
         "onErxImageClick"?: (event: ErxImageGalleryCustomEvent<ErxGalleryClickEvent>) => void;
+    }
+    interface ErxImageZoom {
+        /**
+          * Alt text
+          * @default ''
+         */
+        "alt"?: string;
+        /**
+          * Lens size in pixels (for lens mode)
+          * @default 150
+         */
+        "lensSize"?: number;
+        /**
+          * Emitted when zoom state changes
+         */
+        "onErxZoom"?: (event: ErxImageZoomCustomEvent<{ zoomed: boolean; level: number }>) => void;
+        /**
+          * Zoom position/style
+          * @default 'overlay'
+         */
+        "position"?: ErxImageZoomPosition;
+        /**
+          * Enable smooth transitions
+          * @default true
+         */
+        "smooth"?: boolean;
+        /**
+          * Image source URL
+         */
+        "src": string;
+        /**
+          * Zoom trigger mode
+          * @default 'hover'
+         */
+        "trigger"?: ErxImageZoomTrigger;
+        /**
+          * Zoom level multiplier
+          * @default 2
+         */
+        "zoomLevel"?: number;
+        /**
+          * High-resolution image for zoom (defaults to src)
+         */
+        "zoomSrc"?: string;
     }
     interface ErxJsonViewer {
         /**
@@ -6025,7 +7164,7 @@ declare namespace LocalJSX {
           * @default []
          */
         "items"?: ErxMegaMenuItem[];
-        "onErxSelect"?: (event: ErxMegaMenuCustomEvent<{ item: unknown }>) => void;
+        "onErxSelect"?: (event: ErxMegaMenuCustomEvent<{ item: any }>) => void;
     }
     interface ErxMetricCard {
         /**
@@ -6651,11 +7790,6 @@ declare namespace LocalJSX {
     }
     interface ErxProgressCircle {
         /**
-          * Animate on load
-          * @default true
-         */
-        "animate"?: boolean;
-        /**
           * Animation duration (ms)
           * @default 1000
          */
@@ -6683,6 +7817,11 @@ declare namespace LocalJSX {
           * @default 100
          */
         "max"?: number;
+        /**
+          * Animate on load
+          * @default true
+         */
+        "shouldAnimate"?: boolean;
         /**
           * Show percentage text
           * @default true
@@ -7057,12 +8196,55 @@ declare namespace LocalJSX {
         "onErxChange"?: (event: ErxSignaturePadCustomEvent<SignatureChangeDetail>) => void;
         "onErxClear"?: (event: ErxSignaturePadCustomEvent<void>) => void;
     }
-    interface ErxSparkline {
+    interface ErxSnackbar {
         /**
-          * Animate on load
-          * @default true
+          * Action button text
          */
-        "animate"?: boolean;
+        "actionText"?: string;
+        /**
+          * Duration in ms (0 = persistent)
+          * @default 4000
+         */
+        "duration"?: number;
+        /**
+          * Icon to display
+         */
+        "icon"?: string;
+        /**
+          * Message text
+          * @default ''
+         */
+        "message"?: string;
+        /**
+          * Emitted when action button clicked
+         */
+        "onErxAction"?: (event: ErxSnackbarCustomEvent<void>) => void;
+        /**
+          * Emitted when snackbar closes
+         */
+        "onErxClose"?: (event: ErxSnackbarCustomEvent<void>) => void;
+        /**
+          * Whether the snackbar is visible
+          * @default false
+         */
+        "open"?: boolean;
+        /**
+          * Position on screen
+          * @default 'bottom'
+         */
+        "position"?: ErxSnackbarPosition;
+        /**
+          * Show close button
+          * @default false
+         */
+        "showClose"?: boolean;
+        /**
+          * Snackbar variant
+          * @default 'default'
+         */
+        "variant"?: ErxSnackbarVariant;
+    }
+    interface ErxSparkline {
         /**
           * Line/bar color
           * @default 'var(--erx-color-primary, #667eea)'
@@ -7088,6 +8270,11 @@ declare namespace LocalJSX {
          */
         "height"?: number;
         /**
+          * Animate on load
+          * @default true
+         */
+        "shouldAnimate"?: boolean;
+        /**
           * Show last value dot
           * @default true
          */
@@ -7107,6 +8294,46 @@ declare namespace LocalJSX {
           * @default 100
          */
         "width"?: number;
+    }
+    interface ErxSplitButton {
+        /**
+          * Disabled state
+          * @default false
+         */
+        "disabled"?: boolean;
+        /**
+          * Primary button label
+          * @default 'Action'
+         */
+        "label"?: string;
+        /**
+          * Loading state
+          * @default false
+         */
+        "loading"?: boolean;
+        /**
+          * Emitted when primary button clicked
+         */
+        "onErxClick"?: (event: ErxSplitButtonCustomEvent<void>) => void;
+        /**
+          * Emitted when dropdown option selected
+         */
+        "onErxSelect"?: (event: ErxSplitButtonCustomEvent<{ value: string; option: ErxSplitButtonOption }>) => void;
+        /**
+          * Dropdown options
+          * @default []
+         */
+        "options"?: ErxSplitButtonOption[];
+        /**
+          * Button size
+          * @default 'md'
+         */
+        "size"?: ErxSplitButtonSize;
+        /**
+          * Button variant
+          * @default 'primary'
+         */
+        "variant"?: ErxSplitButtonVariant;
     }
     interface ErxSplitPane {
         /**
@@ -7174,6 +8401,42 @@ declare namespace LocalJSX {
          */
         "secondaryMinSize"?: number;
     }
+    interface ErxState {
+        /**
+          * Primary action button text
+         */
+        "actionText"?: string;
+        /**
+          * Compact mode
+          * @default false
+         */
+        "compact"?: boolean;
+        /**
+          * Description text
+         */
+        "description"?: string;
+        /**
+          * Custom icon (emoji or text)
+         */
+        "icon"?: string;
+        /**
+          * Emitted when action button clicked
+         */
+        "onErxAction"?: (event: ErxStateCustomEvent<{ action: 'primary' | 'secondary' }>) => void;
+        /**
+          * Secondary action button text
+         */
+        "secondaryActionText"?: string;
+        /**
+          * Title text
+         */
+        "stateTitle"?: string;
+        /**
+          * State type
+          * @default 'empty'
+         */
+        "type"?: ErxStateType;
+    }
     interface ErxStats {
         /**
           * @default {}
@@ -7188,6 +8451,32 @@ declare namespace LocalJSX {
           * @default []
          */
         "stats"?: Stat[];
+    }
+    interface ErxStatusIndicator {
+        /**
+          * Label text
+         */
+        "label"?: string;
+        /**
+          * Pulse animation
+          * @default false
+         */
+        "pulse"?: boolean;
+        /**
+          * Size
+          * @default 'md'
+         */
+        "size"?: ErxStatusIndicatorSize;
+        /**
+          * Status type
+          * @default 'neutral'
+         */
+        "status"?: ErxStatusIndicatorStatus;
+        /**
+          * Display variant
+          * @default 'dot'
+         */
+        "variant"?: ErxStatusIndicatorVariant;
     }
     interface ErxStockIndicator {
         /**
@@ -7475,6 +8764,72 @@ declare namespace LocalJSX {
          */
         "value"?: ErxVariantSelection;
     }
+    interface ErxVideoPlayer {
+        /**
+          * Auto play
+          * @default false
+         */
+        "autoplay"?: boolean;
+        /**
+          * Show controls
+          * @default true
+         */
+        "controls"?: boolean;
+        /**
+          * Enable fullscreen
+          * @default true
+         */
+        "fullscreen"?: boolean;
+        /**
+          * Loop video
+          * @default false
+         */
+        "loop"?: boolean;
+        /**
+          * Muted by default
+          * @default false
+         */
+        "muted"?: boolean;
+        /**
+          * Emitted on ended
+         */
+        "onErxEnded"?: (event: ErxVideoPlayerCustomEvent<void>) => void;
+        /**
+          * Emitted on pause
+         */
+        "onErxPause"?: (event: ErxVideoPlayerCustomEvent<void>) => void;
+        /**
+          * Emitted on play
+         */
+        "onErxPlay"?: (event: ErxVideoPlayerCustomEvent<void>) => void;
+        /**
+          * Emitted on time update
+         */
+        "onErxTimeUpdate"?: (event: ErxVideoPlayerCustomEvent<{ currentTime: number; duration: number }>) => void;
+        /**
+          * Enable picture-in-picture
+          * @default true
+         */
+        "pip"?: boolean;
+        /**
+          * Poster image
+         */
+        "poster"?: string;
+        /**
+          * Preload strategy
+          * @default 'metadata'
+         */
+        "preload"?: 'none' | 'metadata' | 'auto';
+        /**
+          * Multiple sources for quality selection
+          * @default []
+         */
+        "sources"?: ErxVideoSource[];
+        /**
+          * Video source URL or array of sources
+         */
+        "src"?: string;
+    }
     interface ErxVirtualKeyboard {
         /**
           * Disable keyboard
@@ -7557,17 +8912,22 @@ declare namespace LocalJSX {
     }
     interface IntrinsicElements {
         "erx-attendance-list": ErxAttendanceList;
+        "erx-audio-player": ErxAudioPlayer;
         "erx-autocomplete": ErxAutocomplete;
+        "erx-banner": ErxBanner;
         "erx-barcode-scanner": ErxBarcodeScanner;
         "erx-batch-tracker": ErxBatchTracker;
         "erx-bom-tree": ErxBomTree;
+        "erx-button-group": ErxButtonGroup;
         "erx-calculator": ErxCalculator;
         "erx-calendar": ErxCalendar;
         "erx-calendar-views": ErxCalendarViews;
+        "erx-callout": ErxCallout;
         "erx-carousel": ErxCarousel;
         "erx-cart": ErxCart;
         "erx-category-tabs": ErxCategoryTabs;
         "erx-chart": ErxChart;
+        "erx-code-block": ErxCodeBlock;
         "erx-color-picker": ErxColorPicker;
         "erx-command": ErxCommand;
         "erx-comparison": ErxComparison;
@@ -7576,16 +8936,19 @@ declare namespace LocalJSX {
         "erx-dashboard-grid": ErxDashboardGrid;
         "erx-data-grid": ErxDataGrid;
         "erx-date-range-picker": ErxDateRangePicker;
+        "erx-diff-viewer": ErxDiffViewer;
         "erx-divider": ErxDivider;
         "erx-drawer": ErxDrawer;
         "erx-dropdown": ErxDropdown;
         "erx-employee-card": ErxEmployeeCard;
         "erx-event-card": ErxEventCard;
         "erx-form-wizard": ErxFormWizard;
+        "erx-fullscreen-modal": ErxFullscreenModal;
         "erx-gantt": ErxGantt;
         "erx-gauge": ErxGauge;
         "erx-image-crop": ErxImageCrop;
         "erx-image-gallery": ErxImageGallery;
+        "erx-image-zoom": ErxImageZoom;
         "erx-json-viewer": ErxJsonViewer;
         "erx-kanban": ErxKanban;
         "erx-leave-request": ErxLeaveRequest;
@@ -7621,9 +8984,13 @@ declare namespace LocalJSX {
         "erx-shell": ErxShell;
         "erx-shift-calendar": ErxShiftCalendar;
         "erx-signature-pad": ErxSignaturePad;
+        "erx-snackbar": ErxSnackbar;
         "erx-sparkline": ErxSparkline;
+        "erx-split-button": ErxSplitButton;
         "erx-split-pane": ErxSplitPane;
+        "erx-state": ErxState;
         "erx-stats": ErxStats;
+        "erx-status-indicator": ErxStatusIndicator;
         "erx-stock-indicator": ErxStockIndicator;
         "erx-table": ErxTable;
         "erx-tag-input": ErxTagInput;
@@ -7632,6 +8999,7 @@ declare namespace LocalJSX {
         "erx-tree": ErxTree;
         "erx-upload": ErxUpload;
         "erx-variant-selector": ErxVariantSelector;
+        "erx-video-player": ErxVideoPlayer;
         "erx-virtual-keyboard": ErxVirtualKeyboard;
         "erx-virtual-list": ErxVirtualList;
         "erx-work-order": ErxWorkOrder;
@@ -7642,17 +9010,22 @@ declare module "@stencil/core" {
     export namespace JSX {
         interface IntrinsicElements {
             "erx-attendance-list": LocalJSX.ErxAttendanceList & JSXBase.HTMLAttributes<HTMLErxAttendanceListElement>;
+            "erx-audio-player": LocalJSX.ErxAudioPlayer & JSXBase.HTMLAttributes<HTMLErxAudioPlayerElement>;
             "erx-autocomplete": LocalJSX.ErxAutocomplete & JSXBase.HTMLAttributes<HTMLErxAutocompleteElement>;
+            "erx-banner": LocalJSX.ErxBanner & JSXBase.HTMLAttributes<HTMLErxBannerElement>;
             "erx-barcode-scanner": LocalJSX.ErxBarcodeScanner & JSXBase.HTMLAttributes<HTMLErxBarcodeScannerElement>;
             "erx-batch-tracker": LocalJSX.ErxBatchTracker & JSXBase.HTMLAttributes<HTMLErxBatchTrackerElement>;
             "erx-bom-tree": LocalJSX.ErxBomTree & JSXBase.HTMLAttributes<HTMLErxBomTreeElement>;
+            "erx-button-group": LocalJSX.ErxButtonGroup & JSXBase.HTMLAttributes<HTMLErxButtonGroupElement>;
             "erx-calculator": LocalJSX.ErxCalculator & JSXBase.HTMLAttributes<HTMLErxCalculatorElement>;
             "erx-calendar": LocalJSX.ErxCalendar & JSXBase.HTMLAttributes<HTMLErxCalendarElement>;
             "erx-calendar-views": LocalJSX.ErxCalendarViews & JSXBase.HTMLAttributes<HTMLErxCalendarViewsElement>;
+            "erx-callout": LocalJSX.ErxCallout & JSXBase.HTMLAttributes<HTMLErxCalloutElement>;
             "erx-carousel": LocalJSX.ErxCarousel & JSXBase.HTMLAttributes<HTMLErxCarouselElement>;
             "erx-cart": LocalJSX.ErxCart & JSXBase.HTMLAttributes<HTMLErxCartElement>;
             "erx-category-tabs": LocalJSX.ErxCategoryTabs & JSXBase.HTMLAttributes<HTMLErxCategoryTabsElement>;
             "erx-chart": LocalJSX.ErxChart & JSXBase.HTMLAttributes<HTMLErxChartElement>;
+            "erx-code-block": LocalJSX.ErxCodeBlock & JSXBase.HTMLAttributes<HTMLErxCodeBlockElement>;
             "erx-color-picker": LocalJSX.ErxColorPicker & JSXBase.HTMLAttributes<HTMLErxColorPickerElement>;
             "erx-command": LocalJSX.ErxCommand & JSXBase.HTMLAttributes<HTMLErxCommandElement>;
             "erx-comparison": LocalJSX.ErxComparison & JSXBase.HTMLAttributes<HTMLErxComparisonElement>;
@@ -7661,16 +9034,19 @@ declare module "@stencil/core" {
             "erx-dashboard-grid": LocalJSX.ErxDashboardGrid & JSXBase.HTMLAttributes<HTMLErxDashboardGridElement>;
             "erx-data-grid": LocalJSX.ErxDataGrid & JSXBase.HTMLAttributes<HTMLErxDataGridElement>;
             "erx-date-range-picker": LocalJSX.ErxDateRangePicker & JSXBase.HTMLAttributes<HTMLErxDateRangePickerElement>;
+            "erx-diff-viewer": LocalJSX.ErxDiffViewer & JSXBase.HTMLAttributes<HTMLErxDiffViewerElement>;
             "erx-divider": LocalJSX.ErxDivider & JSXBase.HTMLAttributes<HTMLErxDividerElement>;
             "erx-drawer": LocalJSX.ErxDrawer & JSXBase.HTMLAttributes<HTMLErxDrawerElement>;
             "erx-dropdown": LocalJSX.ErxDropdown & JSXBase.HTMLAttributes<HTMLErxDropdownElement>;
             "erx-employee-card": LocalJSX.ErxEmployeeCard & JSXBase.HTMLAttributes<HTMLErxEmployeeCardElement>;
             "erx-event-card": LocalJSX.ErxEventCard & JSXBase.HTMLAttributes<HTMLErxEventCardElement>;
             "erx-form-wizard": LocalJSX.ErxFormWizard & JSXBase.HTMLAttributes<HTMLErxFormWizardElement>;
+            "erx-fullscreen-modal": LocalJSX.ErxFullscreenModal & JSXBase.HTMLAttributes<HTMLErxFullscreenModalElement>;
             "erx-gantt": LocalJSX.ErxGantt & JSXBase.HTMLAttributes<HTMLErxGanttElement>;
             "erx-gauge": LocalJSX.ErxGauge & JSXBase.HTMLAttributes<HTMLErxGaugeElement>;
             "erx-image-crop": LocalJSX.ErxImageCrop & JSXBase.HTMLAttributes<HTMLErxImageCropElement>;
             "erx-image-gallery": LocalJSX.ErxImageGallery & JSXBase.HTMLAttributes<HTMLErxImageGalleryElement>;
+            "erx-image-zoom": LocalJSX.ErxImageZoom & JSXBase.HTMLAttributes<HTMLErxImageZoomElement>;
             "erx-json-viewer": LocalJSX.ErxJsonViewer & JSXBase.HTMLAttributes<HTMLErxJsonViewerElement>;
             "erx-kanban": LocalJSX.ErxKanban & JSXBase.HTMLAttributes<HTMLErxKanbanElement>;
             "erx-leave-request": LocalJSX.ErxLeaveRequest & JSXBase.HTMLAttributes<HTMLErxLeaveRequestElement>;
@@ -7706,9 +9082,13 @@ declare module "@stencil/core" {
             "erx-shell": LocalJSX.ErxShell & JSXBase.HTMLAttributes<HTMLErxShellElement>;
             "erx-shift-calendar": LocalJSX.ErxShiftCalendar & JSXBase.HTMLAttributes<HTMLErxShiftCalendarElement>;
             "erx-signature-pad": LocalJSX.ErxSignaturePad & JSXBase.HTMLAttributes<HTMLErxSignaturePadElement>;
+            "erx-snackbar": LocalJSX.ErxSnackbar & JSXBase.HTMLAttributes<HTMLErxSnackbarElement>;
             "erx-sparkline": LocalJSX.ErxSparkline & JSXBase.HTMLAttributes<HTMLErxSparklineElement>;
+            "erx-split-button": LocalJSX.ErxSplitButton & JSXBase.HTMLAttributes<HTMLErxSplitButtonElement>;
             "erx-split-pane": LocalJSX.ErxSplitPane & JSXBase.HTMLAttributes<HTMLErxSplitPaneElement>;
+            "erx-state": LocalJSX.ErxState & JSXBase.HTMLAttributes<HTMLErxStateElement>;
             "erx-stats": LocalJSX.ErxStats & JSXBase.HTMLAttributes<HTMLErxStatsElement>;
+            "erx-status-indicator": LocalJSX.ErxStatusIndicator & JSXBase.HTMLAttributes<HTMLErxStatusIndicatorElement>;
             "erx-stock-indicator": LocalJSX.ErxStockIndicator & JSXBase.HTMLAttributes<HTMLErxStockIndicatorElement>;
             "erx-table": LocalJSX.ErxTable & JSXBase.HTMLAttributes<HTMLErxTableElement>;
             "erx-tag-input": LocalJSX.ErxTagInput & JSXBase.HTMLAttributes<HTMLErxTagInputElement>;
@@ -7717,6 +9097,7 @@ declare module "@stencil/core" {
             "erx-tree": LocalJSX.ErxTree & JSXBase.HTMLAttributes<HTMLErxTreeElement>;
             "erx-upload": LocalJSX.ErxUpload & JSXBase.HTMLAttributes<HTMLErxUploadElement>;
             "erx-variant-selector": LocalJSX.ErxVariantSelector & JSXBase.HTMLAttributes<HTMLErxVariantSelectorElement>;
+            "erx-video-player": LocalJSX.ErxVideoPlayer & JSXBase.HTMLAttributes<HTMLErxVideoPlayerElement>;
             "erx-virtual-keyboard": LocalJSX.ErxVirtualKeyboard & JSXBase.HTMLAttributes<HTMLErxVirtualKeyboardElement>;
             "erx-virtual-list": LocalJSX.ErxVirtualList & JSXBase.HTMLAttributes<HTMLErxVirtualListElement>;
             "erx-work-order": LocalJSX.ErxWorkOrder & JSXBase.HTMLAttributes<HTMLErxWorkOrderElement>;
