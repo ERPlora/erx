@@ -2547,6 +2547,43 @@ export namespace Components {
          */
         "showNotes": boolean;
     }
+    interface ErxQuantityBadge {
+        /**
+          * Badge color variant
+          * @default 'primary'
+         */
+        "color": 'primary' | 'secondary' | 'success' | 'warning' | 'danger';
+        /**
+          * Maximum value to display before showing "+" (e.g., "9+")
+          * @default 99
+         */
+        "max": number;
+        /**
+          * Position of the badge
+          * @default 'top-right'
+         */
+        "position": 'top-right' | 'top-left' | 'bottom-right' | 'bottom-left';
+        /**
+          * Pulse animation
+          * @default false
+         */
+        "pulse": boolean;
+        /**
+          * Show badge even when value is 0
+          * @default false
+         */
+        "showZero": boolean;
+        /**
+          * Badge size
+          * @default 'md'
+         */
+        "size": 'sm' | 'md' | 'lg';
+        /**
+          * Quantity value to display
+          * @default 0
+         */
+        "value": number;
+    }
     interface ErxReceipt {
         /**
           * Compact mode (less spacing)
@@ -4844,6 +4881,12 @@ declare global {
         prototype: HTMLErxQualityCheckElement;
         new (): HTMLErxQualityCheckElement;
     };
+    interface HTMLErxQuantityBadgeElement extends Components.ErxQuantityBadge, HTMLStencilElement {
+    }
+    var HTMLErxQuantityBadgeElement: {
+        prototype: HTMLErxQuantityBadgeElement;
+        new (): HTMLErxQuantityBadgeElement;
+    };
     interface HTMLErxReceiptElement extends Omit<Components.ErxReceipt, "getHTML">, HTMLStencilElement {
         /**
           * Get receipt as HTML string
@@ -5373,6 +5416,7 @@ declare global {
         "erx-progress-steps": HTMLErxProgressStepsElement;
         "erx-qr-code": HTMLErxQrCodeElement;
         "erx-quality-check": HTMLErxQualityCheckElement;
+        "erx-quantity-badge": HTMLErxQuantityBadgeElement;
         "erx-receipt": HTMLErxReceiptElement;
         "erx-resizable-panels": HTMLErxResizablePanelsElement;
         "erx-rich-text": HTMLErxRichTextElement;
@@ -7914,6 +7958,43 @@ declare namespace LocalJSX {
          */
         "showNotes"?: boolean;
     }
+    interface ErxQuantityBadge {
+        /**
+          * Badge color variant
+          * @default 'primary'
+         */
+        "color"?: 'primary' | 'secondary' | 'success' | 'warning' | 'danger';
+        /**
+          * Maximum value to display before showing "+" (e.g., "9+")
+          * @default 99
+         */
+        "max"?: number;
+        /**
+          * Position of the badge
+          * @default 'top-right'
+         */
+        "position"?: 'top-right' | 'top-left' | 'bottom-right' | 'bottom-left';
+        /**
+          * Pulse animation
+          * @default false
+         */
+        "pulse"?: boolean;
+        /**
+          * Show badge even when value is 0
+          * @default false
+         */
+        "showZero"?: boolean;
+        /**
+          * Badge size
+          * @default 'md'
+         */
+        "size"?: 'sm' | 'md' | 'lg';
+        /**
+          * Quantity value to display
+          * @default 0
+         */
+        "value"?: number;
+    }
     interface ErxReceipt {
         /**
           * Compact mode (less spacing)
@@ -8975,6 +9056,7 @@ declare namespace LocalJSX {
         "erx-progress-steps": ErxProgressSteps;
         "erx-qr-code": ErxQrCode;
         "erx-quality-check": ErxQualityCheck;
+        "erx-quantity-badge": ErxQuantityBadge;
         "erx-receipt": ErxReceipt;
         "erx-resizable-panels": ErxResizablePanels;
         "erx-rich-text": ErxRichText;
@@ -9073,6 +9155,7 @@ declare module "@stencil/core" {
             "erx-progress-steps": LocalJSX.ErxProgressSteps & JSXBase.HTMLAttributes<HTMLErxProgressStepsElement>;
             "erx-qr-code": LocalJSX.ErxQrCode & JSXBase.HTMLAttributes<HTMLErxQrCodeElement>;
             "erx-quality-check": LocalJSX.ErxQualityCheck & JSXBase.HTMLAttributes<HTMLErxQualityCheckElement>;
+            "erx-quantity-badge": LocalJSX.ErxQuantityBadge & JSXBase.HTMLAttributes<HTMLErxQuantityBadgeElement>;
             "erx-receipt": LocalJSX.ErxReceipt & JSXBase.HTMLAttributes<HTMLErxReceiptElement>;
             "erx-resizable-panels": LocalJSX.ErxResizablePanels & JSXBase.HTMLAttributes<HTMLErxResizablePanelsElement>;
             "erx-rich-text": LocalJSX.ErxRichText & JSXBase.HTMLAttributes<HTMLErxRichTextElement>;

@@ -72,6 +72,7 @@ import { ErxProgressCircle as ErxProgressCircleElement, defineCustomElement as d
 import { ErxProgressSteps as ErxProgressStepsElement, defineCustomElement as defineErxProgressSteps } from "@erplora/erx/dist/components/erx-progress-steps.js";
 import { ErxQrCode as ErxQrCodeElement, defineCustomElement as defineErxQrCode } from "@erplora/erx/dist/components/erx-qr-code.js";
 import { ErxQualityCheck as ErxQualityCheckElement, defineCustomElement as defineErxQualityCheck } from "@erplora/erx/dist/components/erx-quality-check.js";
+import { ErxQuantityBadge as ErxQuantityBadgeElement, defineCustomElement as defineErxQuantityBadge } from "@erplora/erx/dist/components/erx-quantity-badge.js";
 import { ErxReceipt as ErxReceiptElement, defineCustomElement as defineErxReceipt } from "@erplora/erx/dist/components/erx-receipt.js";
 import { ErxResizablePanels as ErxResizablePanelsElement, defineCustomElement as defineErxResizablePanels } from "@erplora/erx/dist/components/erx-resizable-panels.js";
 import { ErxRichText as ErxRichTextElement, defineCustomElement as defineErxRichText } from "@erplora/erx/dist/components/erx-rich-text.js";
@@ -1062,6 +1063,17 @@ export const ErxQualityCheck: StencilReactComponent<ErxQualityCheckElement, ErxQ
         onErxSelect: 'erxSelect'
     } as ErxQualityCheckEvents,
     defineCustomElement: defineErxQualityCheck
+});
+
+type ErxQuantityBadgeEvents = NonNullable<unknown>;
+
+export const ErxQuantityBadge: StencilReactComponent<ErxQuantityBadgeElement, ErxQuantityBadgeEvents> = /*@__PURE__*/ createComponent<ErxQuantityBadgeElement, ErxQuantityBadgeEvents>({
+    tagName: 'erx-quantity-badge',
+    elementClass: ErxQuantityBadgeElement,
+    // @ts-ignore - React type of Stencil Output Target may differ from the React version used in the Nuxt.js project, this can be ignored.
+    react: React,
+    events: {} as ErxQuantityBadgeEvents,
+    defineCustomElement: defineErxQuantityBadge
 });
 
 type ErxReceiptEvents = NonNullable<unknown>;
