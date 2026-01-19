@@ -1,0 +1,353 @@
+<!DOCTYPE html>
+<html lang="en" class="ios">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>ERX + Ionic Integration Demo</title>
+
+  <!-- Ionic Core (required) -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@ionic/core/css/ionic.bundle.css">
+  <script type="module" src="https://cdn.jsdelivr.net/npm/@ionic/core/dist/ionic/ionic.esm.js"></script>
+
+  <!-- ERX Components -->
+  <script type="module" src="../dist/erx/erx.esm.js"></script>
+
+  <!-- ERX Grid System -->
+  <link rel="stylesheet" href="../dist/erx/ionic-bootstrap-grid.css">
+
+  <style>
+    :root {
+      --ion-color-primary: #667eea;
+      --ion-color-success: #22c55e;
+      --ion-color-warning: #eab308;
+      --ion-color-danger: #ef4444;
+    }
+
+    body {
+      margin: 0;
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+    }
+
+    .demo-controls {
+      position: fixed;
+      top: 16px;
+      right: 16px;
+      z-index: 1000;
+      display: flex;
+      gap: 8px;
+      background: var(--ion-background-color, white);
+      padding: 12px;
+      border-radius: 12px;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+    }
+
+    .demo-controls button {
+      padding: 8px 16px;
+      border: 1px solid var(--ion-border-color, #e5e7eb);
+      border-radius: 8px;
+      background: var(--ion-background-color, white);
+      color: var(--ion-text-color, #111827);
+      cursor: pointer;
+      font-size: 14px;
+      font-weight: 500;
+      transition: all 0.2s;
+    }
+
+    .demo-controls button:hover {
+      background: var(--ion-color-primary, #667eea);
+      color: white;
+      border-color: var(--ion-color-primary, #667eea);
+    }
+
+    .demo-controls button.active {
+      background: var(--ion-color-primary, #667eea);
+      color: white;
+      border-color: var(--ion-color-primary, #667eea);
+    }
+
+    .mode-indicator {
+      position: fixed;
+      top: 80px;
+      right: 16px;
+      z-index: 1000;
+      background: var(--ion-color-primary, #667eea);
+      color: white;
+      padding: 8px 16px;
+      border-radius: 8px;
+      font-size: 12px;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+    }
+
+    .demo-section {
+      margin-bottom: 32px;
+    }
+
+    .demo-section h2 {
+      margin: 0 0 16px 0;
+      font-size: 20px;
+      font-weight: 600;
+    }
+
+    .demo-section p {
+      margin: 0 0 16px 0;
+      color: var(--ion-text-color-step-400, #6b7280);
+      font-size: 14px;
+    }
+  </style>
+</head>
+<body>
+  <!-- Mode Controls -->
+  <div class="demo-controls">
+    <button onclick="setMode('ios')" id="btn-ios" class="active">iOS Mode</button>
+    <button onclick="setMode('md')" id="btn-md">MD Mode</button>
+    <button onclick="toggleDark()" id="btn-dark">Toggle Dark</button>
+  </div>
+
+  <div class="mode-indicator" id="mode-indicator">iOS Mode</div>
+
+  <ion-app>
+    <!-- Header -->
+    <ion-header>
+      <ion-toolbar>
+        <ion-title>ERX + Ionic Integration Demo</ion-title>
+      </ion-toolbar>
+    </ion-header>
+
+    <!-- Content -->
+    <ion-content class="ion-padding">
+      <div class="container">
+        <!-- Intro -->
+        <div class="demo-section">
+          <h2>🎨 Platform-Specific Styling</h2>
+          <p>
+            ERX components automatically adapt to iOS and Material Design modes.
+            Toggle between modes using the controls above to see the differences.
+          </p>
+        </div>
+
+        <!-- Row 1: Cart + Product Card -->
+        <div class="row g-3">
+          <div class="col-12 col-md-6">
+            <ion-card>
+              <ion-card-header>
+                <ion-card-title>Shopping Cart (ERX Component)</ion-card-title>
+                <ion-card-subtitle>
+                  Notice how buttons, badges, and items adapt to the platform mode
+                </ion-card-subtitle>
+              </ion-card-header>
+              <ion-card-content>
+                <erx-cart id="cart"></erx-cart>
+              </ion-card-content>
+            </ion-card>
+          </div>
+
+          <div class="col-12 col-md-6">
+            <ion-card>
+              <ion-card-header>
+                <ion-card-title>Product Cards</ion-card-title>
+                <ion-card-subtitle>
+                  iOS: rounded corners, soft shadows | MD: sharp corners, elevation
+                </ion-card-subtitle>
+              </ion-card-header>
+              <ion-card-content>
+                <div class="row g-2">
+                  <div class="col-12">
+                    <erx-product-card id="product1"></erx-product-card>
+                  </div>
+                  <div class="col-12">
+                    <erx-product-card id="product2"></erx-product-card>
+                  </div>
+                </div>
+              </ion-card-content>
+            </ion-card>
+          </div>
+        </div>
+
+        <!-- Row 2: Comparison Table -->
+        <div class="row g-3">
+          <div class="col-12">
+            <ion-card>
+              <ion-card-header>
+                <ion-card-title>Platform Differences</ion-card-title>
+              </ion-card-header>
+              <ion-card-content>
+                <ion-list>
+                  <ion-item>
+                    <ion-label>
+                      <h3>Buttons</h3>
+                      <p>iOS: 44px height, rounded (10px), no uppercase</p>
+                      <p>MD: 36px height, less rounded (4px), UPPERCASE, elevation shadow</p>
+                    </ion-label>
+                  </ion-item>
+                  <ion-item>
+                    <ion-label>
+                      <h3>Cards</h3>
+                      <p>iOS: 12px border-radius, subtle shadow, 10px margin</p>
+                      <p>MD: 4px border-radius, pronounced shadow (elevation), 8px margin</p>
+                    </ion-label>
+                  </ion-item>
+                  <ion-item>
+                    <ion-label>
+                      <h3>List Items</h3>
+                      <p>iOS: No border on last item, smooth hover</p>
+                      <p>MD: Borders on all items, ripple effect on click</p>
+                    </ion-label>
+                  </ion-item>
+                  <ion-item>
+                    <ion-label>
+                      <h3>Badges</h3>
+                      <p>iOS: Very rounded (12px), generous padding</p>
+                      <p>MD: Less rounded (4px), compact, bold font</p>
+                    </ion-label>
+                  </ion-item>
+                  <ion-item>
+                    <ion-label>
+                      <h3>Inputs</h3>
+                      <p>iOS: Full border, rounded (10px), uniform padding</p>
+                      <p>MD: Underline only, minimal padding, focus underline thickens</p>
+                    </ion-label>
+                  </ion-item>
+                </ion-list>
+              </ion-card-content>
+            </ion-card>
+          </div>
+        </div>
+
+        <!-- Row 3: Rating Component -->
+        <div class="row g-3">
+          <div class="col-12 col-md-6">
+            <ion-card>
+              <ion-card-header>
+                <ion-card-title>Rating Component</ion-card-title>
+              </ion-card-header>
+              <ion-card-content>
+                <div style="display: flex; flex-direction: column; gap: 16px;">
+                  <div>
+                    <label style="display: block; margin-bottom: 8px; font-weight: 500;">Stars</label>
+                    <erx-rating value="4.5" allow-half="true"></erx-rating>
+                  </div>
+                  <div>
+                    <label style="display: block; margin-bottom: 8px; font-weight: 500;">Hearts</label>
+                    <erx-rating value="3" icon="heart" color="danger"></erx-rating>
+                  </div>
+                  <div>
+                    <label style="display: block; margin-bottom: 8px; font-weight: 500;">Large</label>
+                    <erx-rating value="5" size="lg"></erx-rating>
+                  </div>
+                </div>
+              </ion-card-content>
+            </ion-card>
+          </div>
+
+          <div class="col-12 col-md-6">
+            <ion-card>
+              <ion-card-header>
+                <ion-card-title>Quantity Badge</ion-card-title>
+              </ion-card-header>
+              <ion-card-content>
+                <div style="display: flex; flex-wrap: wrap; gap: 16px; align-items: center;">
+                  <erx-quantity-badge value="5"></erx-quantity-badge>
+                  <erx-quantity-badge value="15" color="success"></erx-quantity-badge>
+                  <erx-quantity-badge value="99+" color="danger"></erx-quantity-badge>
+                  <erx-quantity-badge value="3" size="lg" color="warning"></erx-quantity-badge>
+                </div>
+              </ion-card-content>
+            </ion-card>
+          </div>
+        </div>
+      </div>
+    </ion-content>
+  </ion-app>
+
+  <script>
+    // Initialize cart with sample data
+    const cart = document.getElementById('cart');
+    cart.items = [
+      {
+        id: '1',
+        productId: 'prod-1',
+        name: 'Wireless Mouse',
+        price: 29.99,
+        quantity: 2,
+        image: 'https://via.placeholder.com/60',
+        sku: 'WM-001'
+      },
+      {
+        id: '2',
+        productId: 'prod-2',
+        name: 'USB-C Cable',
+        price: 12.99,
+        quantity: 1,
+        discount: 10,
+        discountType: 'percent'
+      }
+    ];
+    cart.taxRate = 0.21;
+
+    // Initialize product cards
+    const product1 = document.getElementById('product1');
+    product1.product = {
+      id: 'p1',
+      name: 'Mechanical Keyboard',
+      price: 89.99,
+      originalPrice: 119.99,
+      stock: 15,
+      category: 'Peripherals',
+      image: 'https://via.placeholder.com/200',
+      badge: 'Sale',
+      badgeColor: 'danger'
+    };
+
+    const product2 = document.getElementById('product2');
+    product2.product = {
+      id: 'p2',
+      name: 'HD Webcam',
+      price: 59.99,
+      stock: 3,
+      category: 'Video',
+      image: 'https://via.placeholder.com/200'
+    };
+
+    // Mode switching
+    function setMode(mode) {
+      const html = document.documentElement;
+      html.classList.remove('ios', 'md');
+      html.classList.add(mode);
+
+      document.querySelectorAll('.demo-controls button').forEach(btn => {
+        btn.classList.remove('active');
+      });
+      document.getElementById(`btn-${mode}`).classList.add('active');
+
+      const indicator = document.getElementById('mode-indicator');
+      indicator.textContent = mode === 'ios' ? 'iOS Mode' : 'Material Design Mode';
+    }
+
+    // Dark mode toggle
+    let isDark = false;
+    function toggleDark() {
+      isDark = !isDark;
+      document.body.classList.toggle('dark', isDark);
+      document.getElementById('btn-dark').textContent = isDark ? 'Light Mode' : 'Dark Mode';
+    }
+
+    // Event listeners
+    cart.addEventListener('erxCheckout', (e) => {
+      console.log('Checkout clicked:', e.detail);
+      alert(`Checkout: $${e.detail.summary.total.toFixed(2)}`);
+    });
+
+    product1.addEventListener('erxAdd', (e) => {
+      console.log('Product added:', e.detail);
+      alert(`Added ${e.detail.quantity}x ${e.detail.product.name}`);
+    });
+
+    product2.addEventListener('erxAdd', (e) => {
+      console.log('Product added:', e.detail);
+      alert(`Added ${e.detail.quantity}x ${e.detail.product.name}`);
+    });
+  </script>
+</body>
+</html>

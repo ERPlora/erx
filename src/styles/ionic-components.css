@@ -1,0 +1,477 @@
+/**
+ * ERX - Ionic Component Styles
+ * Makes ERX components look like Ionic components
+ * Supports both iOS and MD modes
+ */
+
+/* ========================================
+   Button Styles (Ionic-compatible)
+======================================== */
+
+/* Base button styles */
+.erx-button,
+button[class*="erx-"][class*="btn"],
+button[class*="erx-"][class*="button"] {
+  /* Ionic button base */
+  --background: var(--ion-color-primary, #667eea);
+  --background-activated: var(--ion-color-primary-shade, #5a6fce);
+  --background-hover: var(--ion-color-primary-tint, #758bec);
+  --color: var(--ion-color-primary-contrast, #ffffff);
+  --border-radius: var(--ion-border-radius, 8px);
+  --padding-top: 0;
+  --padding-bottom: 0;
+  --padding-start: 16px;
+  --padding-end: 16px;
+  --transition: background-color 0.15s ease, box-shadow 0.15s ease;
+
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  height: var(--erx-touch-target, 44px);
+  font-family: var(--ion-font-family);
+  font-size: 16px;
+  font-weight: 500;
+  text-align: center;
+  text-decoration: none;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  cursor: pointer;
+  user-select: none;
+  vertical-align: middle;
+  overflow: hidden;
+
+  background: var(--background);
+  color: var(--color);
+  border: none;
+  border-radius: var(--border-radius);
+  padding: var(--padding-top) var(--padding-end) var(--padding-bottom) var(--padding-start);
+  transition: var(--transition);
+}
+
+button[class*="erx-"][class*="btn"]:hover:not(:disabled),
+button[class*="erx-"][class*="button"]:hover:not(:disabled) {
+  background: var(--background-hover);
+}
+
+button[class*="erx-"][class*="btn"]:active:not(:disabled),
+button[class*="erx-"][class*="button"]:active:not(:disabled) {
+  background: var(--background-activated);
+}
+
+button[class*="erx-"][class*="btn"]:disabled,
+button[class*="erx-"][class*="button"]:disabled {
+  opacity: 0.4;
+  cursor: not-allowed;
+}
+
+/* iOS Mode - Rounded buttons */
+.ios button[class*="erx-"][class*="btn"],
+.ios button[class*="erx-"][class*="button"],
+:host-context(.ios) button[class*="erx-"][class*="btn"],
+:host-context(.ios) button[class*="erx-"][class*="button"] {
+  --border-radius: 10px;
+  height: 44px;
+  font-weight: 400;
+  letter-spacing: -0.03em;
+}
+
+/* Material Design Mode - Less rounded */
+.md button[class*="erx-"][class*="btn"],
+.md button[class*="erx-"][class*="button"],
+:host-context(.md) button[class*="erx-"][class*="btn"],
+:host-context(.md) button[class*="erx-"][class*="button"] {
+  --border-radius: 4px;
+  height: 36px;
+  font-weight: 500;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  font-size: 14px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.14), 0 3px 4px rgba(0, 0, 0, 0.12), 0 1px 5px rgba(0, 0, 0, 0.2);
+}
+
+.md button[class*="erx-"][class*="btn"]:hover:not(:disabled),
+.md button[class*="erx-"][class*="button"]:hover:not(:disabled) {
+  box-shadow: 0 4px 5px rgba(0, 0, 0, 0.14), 0 1px 10px rgba(0, 0, 0, 0.12), 0 2px 4px rgba(0, 0, 0, 0.2);
+}
+
+/* ========================================
+   Card Styles (Ionic-compatible)
+======================================== */
+
+/* Base card styles */
+[class*="erx-"][class*="card"],
+[class*="erx-"][class*="__container"] {
+  --background: var(--ion-card-background, var(--ion-background-color, #ffffff));
+  --color: var(--ion-card-color, var(--ion-text-color, #111827));
+
+  display: block;
+  position: relative;
+  background: var(--background);
+  color: var(--color);
+  border-radius: var(--erx-border-radius, 8px);
+  overflow: hidden;
+}
+
+/* iOS Mode - Cards with shadow */
+.ios [class*="erx-"][class*="card"],
+.ios [class*="erx-"][class*="__container"],
+:host-context(.ios) [class*="erx-"][class*="card"] {
+  margin: 10px;
+  border-radius: 12px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1), 0 1px 3px rgba(0, 0, 0, 0.08);
+}
+
+/* Material Design Mode - Elevated cards */
+.md [class*="erx-"][class*="card"],
+.md [class*="erx-"][class*="__container"],
+:host-context(.md) [class*="erx-"][class*="card"] {
+  margin: 8px;
+  border-radius: 4px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.14), 0 3px 4px rgba(0, 0, 0, 0.12), 0 1px 5px rgba(0, 0, 0, 0.2);
+}
+
+/* ========================================
+   List Styles (Ionic-compatible)
+======================================== */
+
+/* List items */
+[class*="erx-"][class*="item"],
+[class*="erx-"][class*="__item"] {
+  --background: var(--ion-item-background, transparent);
+  --border-color: var(--ion-item-border-color, var(--ion-border-color, #e5e7eb));
+  --color: var(--ion-item-color, var(--ion-text-color, #111827));
+  --padding-start: 16px;
+  --padding-end: 16px;
+  --inner-padding-end: 16px;
+  --min-height: 44px;
+
+  display: flex;
+  align-items: center;
+  position: relative;
+  background: var(--background);
+  color: var(--color);
+  padding: 0 var(--padding-end) 0 var(--padding-start);
+  min-height: var(--min-height);
+  border-bottom: 1px solid var(--border-color);
+  transition: background-color 0.15s ease;
+}
+
+[class*="erx-"][class*="item"]:hover,
+[class*="erx-"][class*="__item"]:hover {
+  --background: var(--ion-color-step-50, #f9fafb);
+}
+
+/* iOS Mode - No border on last item */
+.ios [class*="erx-"][class*="item"]:last-child,
+:host-context(.ios) [class*="erx-"][class*="item"]:last-child {
+  border-bottom: none;
+}
+
+/* Material Design Mode - Ripple effect simulation */
+.md [class*="erx-"][class*="item"]:active,
+:host-context(.md) [class*="erx-"][class*="item"]:active {
+  --background: var(--ion-color-step-100, #f3f4f6);
+}
+
+/* ========================================
+   Input Styles (Ionic-compatible)
+======================================== */
+
+input[class*="erx-"],
+textarea[class*="erx-"],
+select[class*="erx-"] {
+  --background: var(--ion-item-background, transparent);
+  --color: var(--ion-text-color, #111827);
+  --placeholder-color: var(--ion-placeholder-color, #9ca3af);
+  --border-color: var(--ion-border-color, #e5e7eb);
+  --border-radius: var(--ion-border-radius, 8px);
+  --padding-top: 10px;
+  --padding-end: 16px;
+  --padding-bottom: 10px;
+  --padding-start: 16px;
+
+  display: block;
+  width: 100%;
+  font-family: var(--ion-font-family);
+  font-size: 16px;
+  background: var(--background);
+  color: var(--color);
+  border: 1px solid var(--border-color);
+  border-radius: var(--border-radius);
+  padding: var(--padding-top) var(--padding-end) var(--padding-bottom) var(--padding-start);
+  transition: border-color 0.15s ease;
+}
+
+input[class*="erx-"]::placeholder,
+textarea[class*="erx-"]::placeholder {
+  color: var(--placeholder-color);
+}
+
+input[class*="erx-"]:focus,
+textarea[class*="erx-"]:focus,
+select[class*="erx-"]:focus {
+  outline: none;
+  border-color: var(--ion-color-primary, #667eea);
+}
+
+/* iOS Mode - Rounded inputs */
+.ios input[class*="erx-"],
+.ios textarea[class*="erx-"],
+.ios select[class*="erx-"],
+:host-context(.ios) input[class*="erx-"],
+:host-context(.ios) textarea[class*="erx-"],
+:host-context(.ios) select[class*="erx-"] {
+  --border-radius: 10px;
+}
+
+/* Material Design Mode - Underline style */
+.md input[class*="erx-"],
+.md textarea[class*="erx-"],
+.md select[class*="erx-"],
+:host-context(.md) input[class*="erx-"],
+:host-context(.md) textarea[class*="erx-"],
+:host-context(.md) select[class*="erx-"] {
+  --border-radius: 4px 4px 0 0;
+  border: none;
+  border-bottom: 1px solid var(--border-color);
+  padding-left: 0;
+}
+
+.md input[class*="erx-"]:focus,
+.md textarea[class*="erx-"]:focus,
+.md select[class*="erx-"]:focus,
+:host-context(.md) input[class*="erx-"]:focus,
+:host-context(.md) textarea[class*="erx-"]:focus,
+:host-context(.md) select[class*="erx-"]:focus {
+  border-bottom-width: 2px;
+}
+
+/* ========================================
+   Badge Styles (Ionic-compatible)
+======================================== */
+
+[class*="erx-"][class*="badge"],
+[class*="erx-"][class*="__badge"] {
+  --background: var(--ion-color-primary, #667eea);
+  --color: var(--ion-color-primary-contrast, #ffffff);
+
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 3px 8px;
+  font-size: 12px;
+  font-weight: 500;
+  line-height: 1;
+  background: var(--background);
+  color: var(--color);
+  border-radius: 10px;
+  white-space: nowrap;
+}
+
+/* iOS Mode */
+.ios [class*="erx-"][class*="badge"],
+:host-context(.ios) [class*="erx-"][class*="badge"] {
+  border-radius: 12px;
+  padding: 4px 10px;
+  font-size: 11px;
+}
+
+/* Material Design Mode */
+.md [class*="erx-"][class*="badge"],
+:host-context(.md) [class*="erx-"][class*="badge"] {
+  border-radius: 4px;
+  padding: 2px 6px;
+  font-size: 12px;
+  font-weight: 700;
+}
+
+/* Badge color variants */
+[class*="badge--primary"] {
+  --background: var(--ion-color-primary, #667eea);
+  --color: var(--ion-color-primary-contrast, #ffffff);
+}
+
+[class*="badge--success"] {
+  --background: var(--ion-color-success, #22c55e);
+  --color: var(--ion-color-success-contrast, #ffffff);
+}
+
+[class*="badge--warning"] {
+  --background: var(--ion-color-warning, #eab308);
+  --color: var(--ion-color-warning-contrast, #000000);
+}
+
+[class*="badge--danger"] {
+  --background: var(--ion-color-danger, #ef4444);
+  --color: var(--ion-color-danger-contrast, #ffffff);
+}
+
+/* ========================================
+   Header/Toolbar Styles (Ionic-compatible)
+======================================== */
+
+[class*="erx-"][class*="header"],
+[class*="erx-"][class*="toolbar"],
+[class*="erx-"][class*="__header"] {
+  --background: var(--ion-toolbar-background, var(--ion-background-color, #ffffff));
+  --color: var(--ion-toolbar-color, var(--ion-text-color, #111827));
+  --border-color: var(--ion-toolbar-border-color, var(--ion-border-color, #e5e7eb));
+  --min-height: 56px;
+  --padding-start: 16px;
+  --padding-end: 16px;
+
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  position: relative;
+  min-height: var(--min-height);
+  padding: 0 var(--padding-end) 0 var(--padding-start);
+  background: var(--background);
+  color: var(--color);
+  border-bottom: 1px solid var(--border-color);
+}
+
+/* iOS Mode - Larger header */
+.ios [class*="erx-"][class*="header"],
+.ios [class*="erx-"][class*="toolbar"],
+:host-context(.ios) [class*="erx-"][class*="header"] {
+  --min-height: 44px;
+  border-bottom: 0.55px solid var(--border-color);
+}
+
+/* Material Design Mode - Elevated header */
+.md [class*="erx-"][class*="header"],
+.md [class*="erx-"][class*="toolbar"],
+:host-context(.md) [class*="erx-"][class*="header"] {
+  --min-height: 56px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.14), 0 3px 4px rgba(0, 0, 0, 0.12), 0 1px 5px rgba(0, 0, 0, 0.2);
+  border-bottom: none;
+}
+
+/* ========================================
+   Segment/Tab Styles (Ionic-compatible)
+======================================== */
+
+[class*="erx-"][class*="segment"],
+[class*="erx-"][class*="tabs"] {
+  --background: transparent;
+
+  display: flex;
+  align-items: center;
+  background: var(--background);
+  border-radius: var(--ion-border-radius, 8px);
+}
+
+[class*="erx-"][class*="segment"] button,
+[class*="erx-"][class*="tab"] {
+  flex: 1;
+  padding: 10px 16px;
+  font-size: 14px;
+  font-weight: 500;
+  background: transparent;
+  color: var(--ion-text-color, #111827);
+  border: none;
+  cursor: pointer;
+  transition: color 0.15s ease;
+}
+
+[class*="erx-"][class*="segment"] button:hover,
+[class*="erx-"][class*="tab"]:hover {
+  color: var(--ion-color-primary, #667eea);
+}
+
+[class*="erx-"][class*="segment"] button.active,
+[class*="erx-"][class*="tab"].active {
+  color: var(--ion-color-primary, #667eea);
+  border-bottom: 2px solid var(--ion-color-primary, #667eea);
+}
+
+/* iOS Mode - Pills style */
+.ios [class*="erx-"][class*="segment"],
+:host-context(.ios) [class*="erx-"][class*="segment"] {
+  --background: var(--ion-color-step-100, #f3f4f6);
+  padding: 2px;
+  border-radius: 10px;
+}
+
+.ios [class*="erx-"][class*="segment"] button,
+:host-context(.ios) [class*="erx-"][class*="segment"] button {
+  border-radius: 8px;
+}
+
+.ios [class*="erx-"][class*="segment"] button.active,
+:host-context(.ios) [class*="erx-"][class*="segment"] button.active {
+  background: var(--ion-background-color, #ffffff);
+  border-bottom: none;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.08);
+}
+
+/* Material Design Mode - Underline style */
+.md [class*="erx-"][class*="segment"] button.active,
+:host-context(.md) [class*="erx-"][class*="segment"] button.active {
+  border-bottom: 2px solid var(--ion-color-primary, #667eea);
+}
+
+/* ========================================
+   Toast/Alert Styles (Ionic-compatible)
+======================================== */
+
+[class*="erx-"][class*="toast"],
+[class*="erx-"][class*="alert"] {
+  --background: var(--ion-background-color, #ffffff);
+  --color: var(--ion-text-color, #111827);
+  --border-radius: 12px;
+
+  position: fixed;
+  display: flex;
+  align-items: center;
+  padding: 16px;
+  background: var(--background);
+  color: var(--color);
+  border-radius: var(--border-radius);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+  z-index: var(--erx-z-tooltip, 700);
+}
+
+/* iOS Mode - Rounded corners */
+.ios [class*="erx-"][class*="toast"],
+:host-context(.ios) [class*="erx-"][class*="toast"] {
+  --border-radius: 14px;
+}
+
+/* Material Design Mode - Less rounded */
+.md [class*="erx-"][class*="toast"],
+:host-context(.md) [class*="erx-"][class*="toast"] {
+  --border-radius: 4px;
+}
+
+/* ========================================
+   Dark Mode Support
+======================================== */
+
+@media (prefers-color-scheme: dark) {
+  button[class*="erx-"][class*="btn"],
+  button[class*="erx-"][class*="button"],
+  [class*="erx-"][class*="card"],
+  [class*="erx-"][class*="item"],
+  input[class*="erx-"],
+  textarea[class*="erx-"],
+  select[class*="erx-"] {
+    --background: var(--ion-background-color, #0f172a);
+    --color: var(--ion-text-color, #f1f5f9);
+    --border-color: var(--ion-border-color, #334155);
+  }
+}
+
+body.dark button[class*="erx-"][class*="btn"],
+body.dark button[class*="erx-"][class*="button"],
+body.dark [class*="erx-"][class*="card"],
+body.dark [class*="erx-"][class*="item"],
+body.dark input[class*="erx-"],
+body.dark textarea[class*="erx-"],
+body.dark select[class*="erx-"] {
+  --background: var(--ion-background-color, #0f172a);
+  --color: var(--ion-text-color, #f1f5f9);
+  --border-color: var(--ion-border-color, #334155);
+}

@@ -4,6 +4,8 @@
  */
 
 @import './variables.css';
+@import './ionic-variables.css';
+@import './ionic-components.css';
 @import './tailwind.css';
 
 /* Reset for Web Components */
