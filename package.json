@@ -67,5 +67,9 @@
   "license": "MIT",
   "publishConfig": {
     "access": "public"
+  },
+  "dependencies": {
+    "@ionic/core": "^8.7.17",
+    "bootstrap-grid-only-css": "^4.1.3"
   }
 }

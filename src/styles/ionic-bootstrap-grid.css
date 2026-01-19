@@ -1,0 +1,371 @@
+/**
+ * ERX - Bootstrap Grid + Ionic Integration
+ * Bootstrap Grid system with Ionic spacing, breakpoints, and design tokens
+ */
+
+/* ========================================
+   Import Bootstrap Grid CSS
+======================================== */
+@import 'bootstrap-grid-only-css/dist/css/bootstrap-grid.min.css';
+
+/* ========================================
+   Override Bootstrap Variables with Ionic Tokens
+======================================== */
+
+:root {
+  /* Ionic Breakpoints (same as Bootstrap but aligned) */
+  --ion-grid-breakpoint-xs: 0px;
+  --ion-grid-breakpoint-sm: 576px;
+  --ion-grid-breakpoint-md: 768px;
+  --ion-grid-breakpoint-lg: 992px;
+  --ion-grid-breakpoint-xl: 1200px;
+
+  /* Ionic Spacing (ERX uses Ionic's spacing system) */
+  --ion-padding: 16px;
+  --ion-margin: 16px;
+
+  /* Bootstrap Grid overrides */
+  --bs-gutter-x: var(--ion-padding);
+  --bs-gutter-y: var(--ion-margin);
+}
+
+/* ========================================
+   Container - Use Ionic padding
+======================================== */
+.container,
+.container-fluid,
+.container-sm,
+.container-md,
+.container-lg,
+.container-xl {
+  padding-right: var(--ion-padding);
+  padding-left: var(--ion-padding);
+  margin-right: auto;
+  margin-left: auto;
+}
+
+/* Container max-widths (same as Bootstrap) */
+@media (min-width: 576px) {
+  .container, .container-sm {
+    max-width: 540px;
+  }
+}
+
+@media (min-width: 768px) {
+  .container, .container-sm, .container-md {
+    max-width: 720px;
+  }
+}
+
+@media (min-width: 992px) {
+  .container, .container-sm, .container-md, .container-lg {
+    max-width: 960px;
+  }
+}
+
+@media (min-width: 1200px) {
+  .container, .container-sm, .container-md, .container-lg, .container-xl {
+    max-width: 1140px;
+  }
+}
+
+/* ========================================
+   Row - Use Ionic spacing for gutters
+======================================== */
+.row {
+  --bs-gutter-x: var(--ion-padding);
+  --bs-gutter-y: var(--ion-margin);
+  display: flex;
+  flex-wrap: wrap;
+  margin-top: calc(-1 * var(--bs-gutter-y));
+  margin-right: calc(-0.5 * var(--bs-gutter-x));
+  margin-left: calc(-0.5 * var(--bs-gutter-x));
+}
+
+.row > * {
+  padding-right: calc(var(--bs-gutter-x) * 0.5);
+  padding-left: calc(var(--bs-gutter-x) * 0.5);
+  margin-top: var(--bs-gutter-y);
+}
+
+/* ========================================
+   Gutter Classes - Ionic spacing scale
+   Ionic uses: 0, 4px, 8px, 16px, 24px, 32px
+======================================== */
+
+/* No gutters */
+.g-0,
+.gx-0 { --bs-gutter-x: 0; }
+.g-0,
+.gy-0 { --bs-gutter-y: 0; }
+
+/* 4px gutters */
+.g-1,
+.gx-1 { --bs-gutter-x: 4px; }
+.g-1,
+.gy-1 { --bs-gutter-y: 4px; }
+
+/* 8px gutters */
+.g-2,
+.gx-2 { --bs-gutter-x: 8px; }
+.g-2,
+.gy-2 { --bs-gutter-y: 8px; }
+
+/* 16px gutters (default - Ionic padding) */
+.g-3,
+.gx-3 { --bs-gutter-x: var(--ion-padding); }
+.g-3,
+.gy-3 { --bs-gutter-y: var(--ion-margin); }
+
+/* 24px gutters */
+.g-4,
+.gx-4 { --bs-gutter-x: 24px; }
+.g-4,
+.gy-4 { --bs-gutter-y: 24px; }
+
+/* 32px gutters */
+.g-5,
+.gx-5 { --bs-gutter-x: 32px; }
+.g-5,
+.gy-5 { --bs-gutter-y: 32px; }
+
+/* ========================================
+   Columns - Standard 12-column grid
+======================================== */
+.col {
+  flex: 1 0 0%;
+}
+
+/* Fixed width columns */
+.col-auto {
+  flex: 0 0 auto;
+  width: auto;
+}
+
+.col-1 { flex: 0 0 auto; width: 8.33333333%; }
+.col-2 { flex: 0 0 auto; width: 16.66666667%; }
+.col-3 { flex: 0 0 auto; width: 25%; }
+.col-4 { flex: 0 0 auto; width: 33.33333333%; }
+.col-5 { flex: 0 0 auto; width: 41.66666667%; }
+.col-6 { flex: 0 0 auto; width: 50%; }
+.col-7 { flex: 0 0 auto; width: 58.33333333%; }
+.col-8 { flex: 0 0 auto; width: 66.66666667%; }
+.col-9 { flex: 0 0 auto; width: 75%; }
+.col-10 { flex: 0 0 auto; width: 83.33333333%; }
+.col-11 { flex: 0 0 auto; width: 91.66666667%; }
+.col-12 { flex: 0 0 auto; width: 100%; }
+
+/* ========================================
+   Responsive Columns - Ionic breakpoints
+======================================== */
+
+/* SM: ≥576px */
+@media (min-width: 576px) {
+  .col-sm { flex: 1 0 0%; }
+  .col-sm-auto { flex: 0 0 auto; width: auto; }
+  .col-sm-1 { flex: 0 0 auto; width: 8.33333333%; }
+  .col-sm-2 { flex: 0 0 auto; width: 16.66666667%; }
+  .col-sm-3 { flex: 0 0 auto; width: 25%; }
+  .col-sm-4 { flex: 0 0 auto; width: 33.33333333%; }
+  .col-sm-5 { flex: 0 0 auto; width: 41.66666667%; }
+  .col-sm-6 { flex: 0 0 auto; width: 50%; }
+  .col-sm-7 { flex: 0 0 auto; width: 58.33333333%; }
+  .col-sm-8 { flex: 0 0 auto; width: 66.66666667%; }
+  .col-sm-9 { flex: 0 0 auto; width: 75%; }
+  .col-sm-10 { flex: 0 0 auto; width: 83.33333333%; }
+  .col-sm-11 { flex: 0 0 auto; width: 91.66666667%; }
+  .col-sm-12 { flex: 0 0 auto; width: 100%; }
+}
+
+/* MD: ≥768px */
+@media (min-width: 768px) {
+  .col-md { flex: 1 0 0%; }
+  .col-md-auto { flex: 0 0 auto; width: auto; }
+  .col-md-1 { flex: 0 0 auto; width: 8.33333333%; }
+  .col-md-2 { flex: 0 0 auto; width: 16.66666667%; }
+  .col-md-3 { flex: 0 0 auto; width: 25%; }
+  .col-md-4 { flex: 0 0 auto; width: 33.33333333%; }
+  .col-md-5 { flex: 0 0 auto; width: 41.66666667%; }
+  .col-md-6 { flex: 0 0 auto; width: 50%; }
+  .col-md-7 { flex: 0 0 auto; width: 58.33333333%; }
+  .col-md-8 { flex: 0 0 auto; width: 66.66666667%; }
+  .col-md-9 { flex: 0 0 auto; width: 75%; }
+  .col-md-10 { flex: 0 0 auto; width: 83.33333333%; }
+  .col-md-11 { flex: 0 0 auto; width: 91.66666667%; }
+  .col-md-12 { flex: 0 0 auto; width: 100%; }
+}
+
+/* LG: ≥992px */
+@media (min-width: 992px) {
+  .col-lg { flex: 1 0 0%; }
+  .col-lg-auto { flex: 0 0 auto; width: auto; }
+  .col-lg-1 { flex: 0 0 auto; width: 8.33333333%; }
+  .col-lg-2 { flex: 0 0 auto; width: 16.66666667%; }
+  .col-lg-3 { flex: 0 0 auto; width: 25%; }
+  .col-lg-4 { flex: 0 0 auto; width: 33.33333333%; }
+  .col-lg-5 { flex: 0 0 auto; width: 41.66666667%; }
+  .col-lg-6 { flex: 0 0 auto; width: 50%; }
+  .col-lg-7 { flex: 0 0 auto; width: 58.33333333%; }
+  .col-lg-8 { flex: 0 0 auto; width: 66.66666667%; }
+  .col-lg-9 { flex: 0 0 auto; width: 75%; }
+  .col-lg-10 { flex: 0 0 auto; width: 83.33333333%; }
+  .col-lg-11 { flex: 0 0 auto; width: 91.66666667%; }
+  .col-lg-12 { flex: 0 0 auto; width: 100%; }
+}
+
+/* XL: ≥1200px */
+@media (min-width: 1200px) {
+  .col-xl { flex: 1 0 0%; }
+  .col-xl-auto { flex: 0 0 auto; width: auto; }
+  .col-xl-1 { flex: 0 0 auto; width: 8.33333333%; }
+  .col-xl-2 { flex: 0 0 auto; width: 16.66666667%; }
+  .col-xl-3 { flex: 0 0 auto; width: 25%; }
+  .col-xl-4 { flex: 0 0 auto; width: 33.33333333%; }
+  .col-xl-5 { flex: 0 0 auto; width: 41.66666667%; }
+  .col-xl-6 { flex: 0 0 auto; width: 50%; }
+  .col-xl-7 { flex: 0 0 auto; width: 58.33333333%; }
+  .col-xl-8 { flex: 0 0 auto; width: 66.66666667%; }
+  .col-xl-9 { flex: 0 0 auto; width: 75%; }
+  .col-xl-10 { flex: 0 0 auto; width: 83.33333333%; }
+  .col-xl-11 { flex: 0 0 auto; width: 91.66666667%; }
+  .col-xl-12 { flex: 0 0 auto; width: 100%; }
+}
+
+/* ========================================
+   Offset Classes
+======================================== */
+.offset-1 { margin-left: 8.33333333%; }
+.offset-2 { margin-left: 16.66666667%; }
+.offset-3 { margin-left: 25%; }
+.offset-4 { margin-left: 33.33333333%; }
+.offset-5 { margin-left: 41.66666667%; }
+.offset-6 { margin-left: 50%; }
+.offset-7 { margin-left: 58.33333333%; }
+.offset-8 { margin-left: 66.66666667%; }
+.offset-9 { margin-left: 75%; }
+.offset-10 { margin-left: 83.33333333%; }
+.offset-11 { margin-left: 91.66666667%; }
+
+/* Responsive offsets */
+@media (min-width: 576px) {
+  .offset-sm-0 { margin-left: 0; }
+  .offset-sm-1 { margin-left: 8.33333333%; }
+  .offset-sm-2 { margin-left: 16.66666667%; }
+  .offset-sm-3 { margin-left: 25%; }
+  .offset-sm-4 { margin-left: 33.33333333%; }
+  .offset-sm-5 { margin-left: 41.66666667%; }
+  .offset-sm-6 { margin-left: 50%; }
+  .offset-sm-7 { margin-left: 58.33333333%; }
+  .offset-sm-8 { margin-left: 66.66666667%; }
+  .offset-sm-9 { margin-left: 75%; }
+  .offset-sm-10 { margin-left: 83.33333333%; }
+  .offset-sm-11 { margin-left: 91.66666667%; }
+}
+
+@media (min-width: 768px) {
+  .offset-md-0 { margin-left: 0; }
+  .offset-md-1 { margin-left: 8.33333333%; }
+  .offset-md-2 { margin-left: 16.66666667%; }
+  .offset-md-3 { margin-left: 25%; }
+  .offset-md-4 { margin-left: 33.33333333%; }
+  .offset-md-5 { margin-left: 41.66666667%; }
+  .offset-md-6 { margin-left: 50%; }
+  .offset-md-7 { margin-left: 58.33333333%; }
+  .offset-md-8 { margin-left: 66.66666667%; }
+  .offset-md-9 { margin-left: 75%; }
+  .offset-md-10 { margin-left: 83.33333333%; }
+  .offset-md-11 { margin-left: 91.66666667%; }
+}
+
+@media (min-width: 992px) {
+  .offset-lg-0 { margin-left: 0; }
+  .offset-lg-1 { margin-left: 8.33333333%; }
+  .offset-lg-2 { margin-left: 16.66666667%; }
+  .offset-lg-3 { margin-left: 25%; }
+  .offset-lg-4 { margin-left: 33.33333333%; }
+  .offset-lg-5 { margin-left: 41.66666667%; }
+  .offset-lg-6 { margin-left: 50%; }
+  .offset-lg-7 { margin-left: 58.33333333%; }
+  .offset-lg-8 { margin-left: 66.66666667%; }
+  .offset-lg-9 { margin-left: 75%; }
+  .offset-lg-10 { margin-left: 83.33333333%; }
+  .offset-lg-11 { margin-left: 91.66666667%; }
+}
+
+@media (min-width: 1200px) {
+  .offset-xl-0 { margin-left: 0; }
+  .offset-xl-1 { margin-left: 8.33333333%; }
+  .offset-xl-2 { margin-left: 16.66666667%; }
+  .offset-xl-3 { margin-left: 25%; }
+  .offset-xl-4 { margin-left: 33.33333333%; }
+  .offset-xl-5 { margin-left: 41.66666667%; }
+  .offset-xl-6 { margin-left: 50%; }
+  .offset-xl-7 { margin-left: 58.33333333%; }
+  .offset-xl-8 { margin-left: 66.66666667%; }
+  .offset-xl-9 { margin-left: 75%; }
+  .offset-xl-10 { margin-left: 83.33333333%; }
+  .offset-xl-11 { margin-left: 91.66666667%; }
+}
+
+/* ========================================
+   Flexbox Utilities (Ionic-compatible)
+======================================== */
+.d-flex { display: flex !important; }
+.d-inline-flex { display: inline-flex !important; }
+
+.flex-row { flex-direction: row !important; }
+.flex-column { flex-direction: column !important; }
+.flex-row-reverse { flex-direction: row-reverse !important; }
+.flex-column-reverse { flex-direction: column-reverse !important; }
+
+.flex-wrap { flex-wrap: wrap !important; }
+.flex-nowrap { flex-wrap: nowrap !important; }
+
+.justify-content-start { justify-content: flex-start !important; }
+.justify-content-end { justify-content: flex-end !important; }
+.justify-content-center { justify-content: center !important; }
+.justify-content-between { justify-content: space-between !important; }
+.justify-content-around { justify-content: space-around !important; }
+.justify-content-evenly { justify-content: space-evenly !important; }
+
+.align-items-start { align-items: flex-start !important; }
+.align-items-end { align-items: flex-end !important; }
+.align-items-center { align-items: center !important; }
+.align-items-baseline { align-items: baseline !important; }
+.align-items-stretch { align-items: stretch !important; }
+
+.align-self-start { align-self: flex-start !important; }
+.align-self-end { align-self: flex-end !important; }
+.align-self-center { align-self: center !important; }
+.align-self-baseline { align-self: baseline !important; }
+.align-self-stretch { align-self: stretch !important; }
+
+/* ========================================
+   Example Usage
+======================================== */
+/*
+  <div class="container">
+    <div class="row g-3">
+      <div class="col-12 col-md-6 col-lg-4">
+        <ion-card>
+          <ion-card-header>
+            <ion-card-title>Card 1</ion-card-title>
+          </ion-card-header>
+          <ion-card-content>
+            Uses Ionic card with Bootstrap grid
+          </ion-card-content>
+        </ion-card>
+      </div>
+      <div class="col-12 col-md-6 col-lg-4">
+        <ion-card>
+          <ion-card-header>
+            <ion-card-title>Card 2</ion-card-title>
+          </ion-card-header>
+          <ion-card-content>
+            Responsive layout with Ionic spacing
+          </ion-card-content>
+        </ion-card>
+      </div>
+    </div>
+  </div>
+*/
