@@ -1,0 +1,264 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>erx-context-menu - ERX Components</title>
+  <script type="module" src="https://unpkg.com/@erplora/erx/dist/erx/erx.esm.js"></script>
+  <script nomodule src="https://unpkg.com/@erplora/erx/dist/erx/erx.js"></script>
+  <link rel="stylesheet" href="../styles.css">
+</head>
+<body>
+  <div class="component-page" style="padding: 2rem;">
+    <a href="../index.html" class="back-link">&larr; Back to Components</a>
+
+    <div class="component-header">
+      <h1>erx-context-menu</h1>
+      <p>A context menu component triggered by right-click. Supports nested menus, icons, keyboard shortcuts, and separators.</p>
+    </div>
+
+    <div class="demo-section">
+      <h2>Basic Context Menu</h2>
+      <div class="demo-box">
+        <div id="basic-target" style="padding: 3rem; background: var(--bg); border: 2px dashed var(--border); border-radius: 8px; text-align: center; cursor: context-menu;">
+          Right-click here to open context menu
+        </div>
+        <erx-context-menu target="#basic-target" id="basic-menu"></erx-context-menu>
+      </div>
+    </div>
+
+    <div class="demo-section">
+      <h2>With Submenus</h2>
+      <div class="demo-box">
+        <div id="submenu-target" style="padding: 3rem; background: var(--bg); border: 2px dashed var(--border); border-radius: 8px; text-align: center; cursor: context-menu;">
+          Right-click here for menu with submenus
+        </div>
+        <erx-context-menu target="#submenu-target" id="submenu-menu"></erx-context-menu>
+      </div>
+    </div>
+
+    <div class="demo-section">
+      <h2>File Explorer Style</h2>
+      <div class="demo-box">
+        <div id="file-target" style="padding: 2rem; background: var(--bg); border-radius: 8px;">
+          <div style="display: grid; grid-template-columns: repeat(auto-fill, minmax(100px, 1fr)); gap: 1rem;">
+            <div class="file-item" style="padding: 1rem; background: var(--bg-secondary); border: 1px solid var(--border); border-radius: 8px; text-align: center; cursor: context-menu;">
+              <div style="font-size: 2rem; margin-bottom: 0.5rem;">📁</div>
+              <div style="font-size: 0.875rem;">Documents</div>
+            </div>
+            <div class="file-item" style="padding: 1rem; background: var(--bg-secondary); border: 1px solid var(--border); border-radius: 8px; text-align: center; cursor: context-menu;">
+              <div style="font-size: 2rem; margin-bottom: 0.5rem;">📁</div>
+              <div style="font-size: 0.875rem;">Downloads</div>
+            </div>
+            <div class="file-item" style="padding: 1rem; background: var(--bg-secondary); border: 1px solid var(--border); border-radius: 8px; text-align: center; cursor: context-menu;">
+              <div style="font-size: 2rem; margin-bottom: 0.5rem;">📄</div>
+              <div style="font-size: 0.875rem;">report.pdf</div>
+            </div>
+            <div class="file-item" style="padding: 1rem; background: var(--bg-secondary); border: 1px solid var(--border); border-radius: 8px; text-align: center; cursor: context-menu;">
+              <div style="font-size: 2rem; margin-bottom: 0.5rem;">🖼️</div>
+              <div style="font-size: 0.875rem;">photo.jpg</div>
+            </div>
+          </div>
+        </div>
+        <erx-context-menu target=".file-item" id="file-menu"></erx-context-menu>
+      </div>
+    </div>
+
+    <div class="demo-section">
+      <h2>Table Row Context Menu</h2>
+      <div class="demo-box">
+        <table style="width: 100%; border-collapse: collapse;">
+          <thead>
+            <tr style="border-bottom: 2px solid var(--border);">
+              <th style="text-align: left; padding: 0.75rem;">Name</th>
+              <th style="text-align: left; padding: 0.75rem;">Email</th>
+              <th style="text-align: left; padding: 0.75rem;">Status</th>
+            </tr>
+          </thead>
+          <tbody id="table-body">
+            <tr class="table-row" style="border-bottom: 1px solid var(--border); cursor: context-menu;">
+              <td style="padding: 0.75rem;">John Doe</td>
+              <td style="padding: 0.75rem;">john@example.com</td>
+              <td style="padding: 0.75rem;">Active</td>
+            </tr>
+            <tr class="table-row" style="border-bottom: 1px solid var(--border); cursor: context-menu;">
+              <td style="padding: 0.75rem;">Jane Smith</td>
+              <td style="padding: 0.75rem;">jane@example.com</td>
+              <td style="padding: 0.75rem;">Active</td>
+            </tr>
+            <tr class="table-row" style="border-bottom: 1px solid var(--border); cursor: context-menu;">
+              <td style="padding: 0.75rem;">Bob Wilson</td>
+              <td style="padding: 0.75rem;">bob@example.com</td>
+              <td style="padding: 0.75rem;">Inactive</td>
+            </tr>
+          </tbody>
+        </table>
+        <p style="margin-top: 1rem; color: var(--text-muted);">Right-click on a table row to see the context menu.</p>
+        <erx-context-menu target=".table-row" id="table-menu"></erx-context-menu>
+      </div>
+    </div>
+
+    <div class="demo-section">
+      <h2>Static Preview</h2>
+      <div class="demo-box">
+        <div style="display: inline-block; background: var(--bg-secondary); border: 1px solid var(--border); border-radius: 8px; box-shadow: 0 10px 25px rgba(0,0,0,0.15); min-width: 200px;">
+          <div style="padding: 0.5rem 1rem; display: flex; align-items: center; gap: 0.75rem; cursor: pointer; border-radius: 6px; margin: 0.25rem;" onmouseover="this.style.background='var(--primary)'; this.style.color='white'" onmouseout="this.style.background='transparent'; this.style.color='inherit'">
+            <span style="width: 1rem; text-align: center;">C</span>
+            <span style="flex: 1;">Cut</span>
+            <span style="font-size: 0.75rem; color: var(--text-muted);">Ctrl+X</span>
+          </div>
+          <div style="padding: 0.5rem 1rem; display: flex; align-items: center; gap: 0.75rem; cursor: pointer; border-radius: 6px; margin: 0.25rem;" onmouseover="this.style.background='var(--primary)'; this.style.color='white'" onmouseout="this.style.background='transparent'; this.style.color='inherit'">
+            <span style="width: 1rem; text-align: center;">C</span>
+            <span style="flex: 1;">Copy</span>
+            <span style="font-size: 0.75rem; color: var(--text-muted);">Ctrl+C</span>
+          </div>
+          <div style="padding: 0.5rem 1rem; display: flex; align-items: center; gap: 0.75rem; cursor: pointer; border-radius: 6px; margin: 0.25rem;" onmouseover="this.style.background='var(--primary)'; this.style.color='white'" onmouseout="this.style.background='transparent'; this.style.color='inherit'">
+            <span style="width: 1rem; text-align: center;">P</span>
+            <span style="flex: 1;">Paste</span>
+            <span style="font-size: 0.75rem; color: var(--text-muted);">Ctrl+V</span>
+          </div>
+          <div style="border-top: 1px solid var(--border); margin: 0.25rem 0.5rem;"></div>
+          <div style="padding: 0.5rem 1rem; display: flex; align-items: center; gap: 0.75rem; cursor: pointer; border-radius: 6px; margin: 0.25rem; color: var(--error);" onmouseover="this.style.background='var(--error)'; this.style.color='white'" onmouseout="this.style.background='transparent'; this.style.color='var(--error)'">
+            <span style="width: 1rem; text-align: center;">D</span>
+            <span style="flex: 1;">Delete</span>
+            <span style="font-size: 0.75rem;">Del</span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="demo-section">
+      <h2>Props</h2>
+      <table style="width: 100%; border-collapse: collapse;">
+        <thead>
+          <tr style="border-bottom: 2px solid var(--border);">
+            <th style="text-align: left; padding: 0.5rem;">Prop</th>
+            <th style="text-align: left; padding: 0.5rem;">Type</th>
+            <th style="text-align: left; padding: 0.5rem;">Default</th>
+            <th style="text-align: left; padding: 0.5rem;">Description</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr style="border-bottom: 1px solid var(--border);">
+            <td style="padding: 0.5rem;"><code>target</code></td>
+            <td style="padding: 0.5rem;">string</td>
+            <td style="padding: 0.5rem;">-</td>
+            <td style="padding: 0.5rem;">CSS selector for target element(s)</td>
+          </tr>
+          <tr style="border-bottom: 1px solid var(--border);">
+            <td style="padding: 0.5rem;"><code>items</code></td>
+            <td style="padding: 0.5rem;">array</td>
+            <td style="padding: 0.5rem;">[]</td>
+            <td style="padding: 0.5rem;">Menu items array</td>
+          </tr>
+          <tr style="border-bottom: 1px solid var(--border);">
+            <td style="padding: 0.5rem;"><code>disabled</code></td>
+            <td style="padding: 0.5rem;">boolean</td>
+            <td style="padding: 0.5rem;">false</td>
+            <td style="padding: 0.5rem;">Disable context menu</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <div class="demo-section">
+      <h2>Events</h2>
+      <table style="width: 100%; border-collapse: collapse;">
+        <thead>
+          <tr style="border-bottom: 2px solid var(--border);">
+            <th style="text-align: left; padding: 0.5rem;">Event</th>
+            <th style="text-align: left; padding: 0.5rem;">Description</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr style="border-bottom: 1px solid var(--border);">
+            <td style="padding: 0.5rem;"><code>erxSelect</code></td>
+            <td style="padding: 0.5rem;">Emitted when a menu item is selected</td>
+          </tr>
+          <tr style="border-bottom: 1px solid var(--border);">
+            <td style="padding: 0.5rem;"><code>erxOpen</code></td>
+            <td style="padding: 0.5rem;">Emitted when context menu opens</td>
+          </tr>
+          <tr style="border-bottom: 1px solid var(--border);">
+            <td style="padding: 0.5rem;"><code>erxClose</code></td>
+            <td style="padding: 0.5rem;">Emitted when context menu closes</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+  <script>
+    // Basic menu items
+    const basicItems = [
+      { id: 'cut', label: 'Cut', icon: 'cut', shortcut: 'Ctrl+X' },
+      { id: 'copy', label: 'Copy', icon: 'copy', shortcut: 'Ctrl+C' },
+      { id: 'paste', label: 'Paste', icon: 'clipboard', shortcut: 'Ctrl+V' },
+      { type: 'separator' },
+      { id: 'select-all', label: 'Select All', shortcut: 'Ctrl+A' },
+      { type: 'separator' },
+      { id: 'delete', label: 'Delete', icon: 'trash', shortcut: 'Del', danger: true },
+    ];
+
+    // Menu with submenus
+    const submenuItems = [
+      { id: 'new', label: 'New', icon: 'add', children: [
+        { id: 'new-file', label: 'File', shortcut: 'Ctrl+N' },
+        { id: 'new-folder', label: 'Folder', shortcut: 'Ctrl+Shift+N' },
+        { id: 'new-project', label: 'Project' },
+      ]},
+      { id: 'open', label: 'Open', icon: 'folder-open', shortcut: 'Ctrl+O' },
+      { id: 'save', label: 'Save', icon: 'save', shortcut: 'Ctrl+S' },
+      { type: 'separator' },
+      { id: 'share', label: 'Share', icon: 'share', children: [
+        { id: 'share-email', label: 'Email' },
+        { id: 'share-link', label: 'Copy Link' },
+        { id: 'share-social', label: 'Social Media', children: [
+          { id: 'twitter', label: 'Twitter' },
+          { id: 'facebook', label: 'Facebook' },
+          { id: 'linkedin', label: 'LinkedIn' },
+        ]},
+      ]},
+    ];
+
+    // File menu items
+    const fileItems = [
+      { id: 'open', label: 'Open', icon: 'open', shortcut: 'Enter' },
+      { id: 'open-with', label: 'Open With...', icon: 'apps' },
+      { type: 'separator' },
+      { id: 'cut', label: 'Cut', icon: 'cut', shortcut: 'Ctrl+X' },
+      { id: 'copy', label: 'Copy', icon: 'copy', shortcut: 'Ctrl+C' },
+      { type: 'separator' },
+      { id: 'rename', label: 'Rename', icon: 'create', shortcut: 'F2' },
+      { id: 'delete', label: 'Move to Trash', icon: 'trash', danger: true },
+      { type: 'separator' },
+      { id: 'properties', label: 'Properties', icon: 'information-circle' },
+    ];
+
+    // Table menu items
+    const tableItems = [
+      { id: 'view', label: 'View Details', icon: 'eye' },
+      { id: 'edit', label: 'Edit', icon: 'create' },
+      { type: 'separator' },
+      { id: 'duplicate', label: 'Duplicate', icon: 'copy' },
+      { id: 'archive', label: 'Archive', icon: 'archive' },
+      { type: 'separator' },
+      { id: 'delete', label: 'Delete', icon: 'trash', danger: true },
+    ];
+
+    // Initialize menus
+    document.getElementById('basic-menu').items = basicItems;
+    document.getElementById('submenu-menu').items = submenuItems;
+    document.getElementById('file-menu').items = fileItems;
+    document.getElementById('table-menu').items = tableItems;
+
+    // Event listeners
+    document.querySelectorAll('erx-context-menu').forEach(menu => {
+      menu.addEventListener('erxSelect', (e) => {
+        console.log('Selected:', e.detail);
+        alert(`Selected: ${e.detail.item.label}`);
+      });
+    });
+  </script>
+</body>
+</html>

@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>erx-json-viewer - ERX Components</title>
+  <script type="module" src="https://unpkg.com/@erplora/erx/dist/erx/erx.esm.js"></script>
+  <script nomodule src="https://unpkg.com/@erplora/erx/dist/erx/erx.js"></script>
+  <link rel="stylesheet" href="../styles.css">
+</head>
+<body>
+  <div class="component-page" style="padding: 2rem;">
+    <a href="../index.html" class="back-link">&larr; Back to Components</a>
+    <div class="component-header">
+      <h1>erx-json-viewer</h1>
+      <p>Interactive JSON tree viewer with expand/collapse, search, copy functionality, and type indicators.</p>
+    </div>
+    <div class="demo-section">
+      <h2>Basic JSON Viewer</h2>
+      <div class="demo-box">
+        <erx-json-viewer id="basicJson"></erx-json-viewer>
+      </div>
+    </div>
+    <div class="demo-section">
+      <h2>JSON with Root Name & Types</h2>
+      <div class="demo-box">
+        <erx-json-viewer id="typedJson" root-name="response" show-types></erx-json-viewer>
+      </div>
+    </div>
+    <div class="demo-section">
+      <h2>Searchable JSON</h2>
+      <div class="demo-box">
+        <erx-json-viewer id="searchableJson" searchable></erx-json-viewer>
+      </div>
+    </div>
+    <div class="demo-section">
+      <h2>Collapsed by Default</h2>
+      <div class="demo-box">
+        <erx-json-viewer id="collapsedJson" collapsed></erx-json-viewer>
+      </div>
+    </div>
+    <div class="demo-section">
+      <h2>API Response Example</h2>
+      <div class="demo-box">
+        <erx-json-viewer id="apiJson" expand-depth="3" copyable></erx-json-viewer>
+      </div>
+    </div>
+  </div>
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      // Basic JSON
+      document.getElementById('basicJson').data = {
+        name: "John Smith",
+        age: 32,
+        email: "john@example.com",
+        active: true,
+        roles: ["admin", "user"],
+        address: {
+          street: "123 Main St",
+          city: "New York",
+          zip: "10001"
+        }
+      };
+
+      // JSON with Types
+      document.getElementById('typedJson').data = {
+        status: "success",
+        code: 200,
+        timestamp: "2024-01-15T10:30:00Z",
+        data: {
+          users: [
+            { id: 1, name: "Alice", verified: true },
+            { id: 2, name: "Bob", verified: false }
+          ],
+          total: 2,
+          hasMore: false
+        }
+      };
+
+      // Searchable JSON
+      document.getElementById('searchableJson').data = {
+        products: [
+          { id: "PROD-001", name: "Laptop Pro", price: 1299.99, category: "Electronics" },
+          { id: "PROD-002", name: "Wireless Mouse", price: 49.99, category: "Accessories" },
+          { id: "PROD-003", name: "USB-C Hub", price: 79.99, category: "Accessories" },
+          { id: "PROD-004", name: "Monitor 27\"", price: 399.99, category: "Electronics" }
+        ],
+        categories: ["Electronics", "Accessories", "Software"],
+        metadata: {
+          lastUpdated: "2024-01-15",
+          version: "2.1.0"
+        }
+      };
+
+      // Collapsed JSON
+      document.getElementById('collapsedJson').data = {
+        company: {
+          name: "Tech Corp",
+          founded: 2020,
+          departments: {
+            engineering: { headcount: 50, budget: 5000000 },
+            marketing: { headcount: 20, budget: 2000000 },
+            sales: { headcount: 30, budget: 3000000 }
+          }
+        },
+        locations: ["New York", "San Francisco", "London"]
+      };
+
+      // API Response Example
+      document.getElementById('apiJson').data = {
+        success: true,
+        statusCode: 200,
+        message: "Data retrieved successfully",
+        data: {
+          pagination: {
+            page: 1,
+            perPage: 10,
+            total: 156,
+            totalPages: 16
+          },
+          items: [
+            {
+              id: "ORD-001",
+              customer: {
+                id: "CUST-123",
+                name: "John Smith",
+                email: "john@example.com"
+              },
+              products: [
+                { sku: "PROD-001", name: "Laptop", quantity: 1, price: 1299.99 },
+                { sku: "PROD-002", name: "Mouse", quantity: 2, price: 49.99 }
+              ],
+              totals: {
+                subtotal: 1399.97,
+                tax: 112.00,
+                shipping: 15.00,
+                total: 1526.97
+              },
+              status: "completed",
+              createdAt: "2024-01-10T14:30:00Z",
+              updatedAt: "2024-01-12T09:15:00Z"
+            },
+            {
+              id: "ORD-002",
+              customer: {
+                id: "CUST-456",
+                name: "Sarah Johnson",
+                email: "sarah@example.com"
+              },
+              products: [
+                { sku: "PROD-003", name: "USB Hub", quantity: 1, price: 79.99 }
+              ],
+              totals: {
+                subtotal: 79.99,
+                tax: 6.40,
+                shipping: 5.00,
+                total: 91.39
+              },
+              status: "pending",
+              createdAt: "2024-01-14T16:45:00Z",
+              updatedAt: null
+            }
+          ]
+        },
+        meta: {
+          requestId: "req_abc123xyz",
+          responseTime: "45ms",
+          cached: false
+        }
+      };
+    });
+  </script>
+</body>
+</html>

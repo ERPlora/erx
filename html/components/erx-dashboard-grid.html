@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>erx-dashboard-grid - ERX Components</title>
+  <script type="module" src="https://unpkg.com/@erplora/erx/dist/erx/erx.esm.js"></script>
+  <script nomodule src="https://unpkg.com/@erplora/erx/dist/erx/erx.js"></script>
+  <link rel="stylesheet" href="../styles.css">
+</head>
+<body>
+  <div class="component-page" style="padding: 2rem;">
+    <a href="../index.html" class="back-link">&larr; Back to Components</a>
+    <div class="component-header">
+      <h1>erx-dashboard-grid</h1>
+      <p>Grid-based dashboard layout for positioning widgets. Supports draggable and resizable widgets with configurable columns and row height.</p>
+    </div>
+    <div class="demo-section">
+      <h2>Basic Dashboard Grid</h2>
+      <div class="demo-box" style="padding: 0; overflow: hidden;">
+        <erx-dashboard-grid id="dashboard-basic"></erx-dashboard-grid>
+      </div>
+    </div>
+    <div class="demo-section">
+      <h2>Draggable Widgets</h2>
+      <div class="demo-box" style="padding: 0; overflow: hidden;">
+        <erx-dashboard-grid id="dashboard-draggable"></erx-dashboard-grid>
+      </div>
+    </div>
+    <div class="demo-section">
+      <h2>Custom Configuration</h2>
+      <div class="demo-box" style="padding: 0; overflow: hidden;">
+        <erx-dashboard-grid id="dashboard-custom"></erx-dashboard-grid>
+      </div>
+    </div>
+  </div>
+  <script>
+    // Basic dashboard
+    const basicDash = document.getElementById('dashboard-basic');
+    basicDash.widgets = [
+      { id: 'widget1', title: 'Sales Overview', x: 0, y: 0, width: 6, height: 2 },
+      { id: 'widget2', title: 'Revenue', x: 6, y: 0, width: 3, height: 2 },
+      { id: 'widget3', title: 'Orders', x: 9, y: 0, width: 3, height: 2 },
+      { id: 'widget4', title: 'Recent Activity', x: 0, y: 2, width: 4, height: 2 },
+      { id: 'widget5', title: 'Top Products', x: 4, y: 2, width: 4, height: 2 },
+      { id: 'widget6', title: 'Analytics', x: 8, y: 2, width: 4, height: 2 },
+    ];
+    basicDash.config = { columns: 12, rowHeight: 80 };
+
+    // Draggable dashboard
+    const draggableDash = document.getElementById('dashboard-draggable');
+    draggableDash.widgets = [
+      { id: 'd-widget1', title: 'Drag Me!', x: 0, y: 0, width: 4, height: 2 },
+      { id: 'd-widget2', title: 'Also Draggable', x: 4, y: 0, width: 4, height: 2 },
+      { id: 'd-widget3', title: 'Locked Widget', x: 8, y: 0, width: 4, height: 2, locked: true },
+    ];
+    draggableDash.config = { columns: 12, rowHeight: 80, draggable: true };
+
+    // Custom config dashboard
+    const customDash = document.getElementById('dashboard-custom');
+    customDash.widgets = [
+      { id: 'c-widget1', title: 'Card 1', x: 0, y: 0, width: 2, height: 2 },
+      { id: 'c-widget2', title: 'Card 2', x: 2, y: 0, width: 2, height: 2 },
+      { id: 'c-widget3', title: 'Card 3', x: 4, y: 0, width: 2, height: 2 },
+      { id: 'c-widget4', title: 'Wide Card', x: 0, y: 2, width: 6, height: 1 },
+    ];
+    customDash.config = { columns: 6, rowHeight: 100, gap: 16, margin: 16, resizable: true };
+  </script>
+</body>
+</html>

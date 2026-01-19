@@ -1,0 +1,229 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>erx-date-range-picker - ERX Components</title>
+  <script type="module" src="https://unpkg.com/@erplora/erx/dist/erx/erx.esm.js"></script>
+  <script nomodule src="https://unpkg.com/@erplora/erx/dist/erx/erx.js"></script>
+  <link rel="stylesheet" href="../styles.css">
+</head>
+<body>
+  <div class="component-page" style="padding: 2rem;">
+    <a href="../index.html" class="back-link">&larr; Back to Components</a>
+    <div class="component-header">
+      <h1>erx-date-range-picker</h1>
+      <p>Date range picker with dual calendar view, preset ranges, and customizable options for selecting date periods.</p>
+    </div>
+    <div class="demo-section">
+      <h2>Basic Date Range Picker</h2>
+      <div class="demo-box">
+        <erx-date-range-picker
+          id="basic-drp"
+          label="Select date range"
+          placeholder="Choose dates...">
+        </erx-date-range-picker>
+      </div>
+    </div>
+
+    <div class="demo-section">
+      <h2>Single Calendar Mode</h2>
+      <div class="demo-box">
+        <erx-date-range-picker
+          id="single-drp"
+          label="Compact date range"
+          placeholder="Select range...">
+        </erx-date-range-picker>
+      </div>
+    </div>
+
+    <div class="demo-section">
+      <h2>Without Presets</h2>
+      <div class="demo-box">
+        <erx-date-range-picker
+          id="no-presets-drp"
+          label="Custom date range"
+          placeholder="Pick your dates...">
+        </erx-date-range-picker>
+      </div>
+    </div>
+
+    <div class="demo-section">
+      <h2>Custom Presets</h2>
+      <div class="demo-box">
+        <erx-date-range-picker
+          id="custom-presets-drp"
+          label="Report period"
+          placeholder="Select period...">
+        </erx-date-range-picker>
+      </div>
+    </div>
+
+    <div class="demo-section">
+      <h2>With Min/Max Dates</h2>
+      <div class="demo-box">
+        <erx-date-range-picker
+          id="minmax-drp"
+          label="Booking dates (next 30 days only)"
+          placeholder="Select booking dates...">
+        </erx-date-range-picker>
+        <p style="margin-top: 1rem; color: var(--text-muted); font-size: 0.875rem;">
+          Only dates within the next 30 days can be selected.
+        </p>
+      </div>
+    </div>
+
+    <div class="demo-section">
+      <h2>Different Locales</h2>
+      <div class="demo-box">
+        <div class="demo-row">
+          <div class="demo-col">
+            <span class="demo-label">Spanish (Monday start)</span>
+            <erx-date-range-picker
+              id="es-drp"
+              placeholder="Seleccionar fechas...">
+            </erx-date-range-picker>
+          </div>
+          <div class="demo-col">
+            <span class="demo-label">German</span>
+            <erx-date-range-picker
+              id="de-drp"
+              placeholder="Datum auswahlen...">
+            </erx-date-range-picker>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="demo-section">
+      <h2>Pre-selected Range</h2>
+      <div class="demo-box">
+        <erx-date-range-picker
+          id="preselected-drp"
+          label="Current selection">
+        </erx-date-range-picker>
+      </div>
+    </div>
+
+    <div class="demo-section">
+      <h2>Disabled State</h2>
+      <div class="demo-box">
+        <erx-date-range-picker
+          id="disabled-drp"
+          label="Cannot select (disabled)"
+          disabled>
+        </erx-date-range-picker>
+      </div>
+    </div>
+
+    <div class="demo-section">
+      <h2>Event Output</h2>
+      <div class="demo-box">
+        <div id="event-output" style="font-family: monospace; font-size: 0.875rem; color: var(--text-muted); white-space: pre-wrap;">
+          Select a date range to see the event details...
+        </div>
+      </div>
+    </div>
+  </div>
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      // Basic picker
+      const basicDrp = document.getElementById('basic-drp');
+
+      // Single calendar mode
+      const singleDrp = document.getElementById('single-drp');
+      singleDrp.config = { singleCalendar: true };
+
+      // Without presets
+      const noPresetsDrp = document.getElementById('no-presets-drp');
+      noPresetsDrp.config = { showPresets: false };
+
+      // Custom presets
+      const customPresetsDrp = document.getElementById('custom-presets-drp');
+      const today = new Date();
+      customPresetsDrp.config = {
+        presets: [
+          {
+            id: 'this-week',
+            label: 'This Week',
+            range: {
+              start: new Date(today.getFullYear(), today.getMonth(), today.getDate() - today.getDay()),
+              end: new Date(today.getFullYear(), today.getMonth(), today.getDate() - today.getDay() + 6)
+            }
+          },
+          {
+            id: 'this-month',
+            label: 'This Month',
+            range: {
+              start: new Date(today.getFullYear(), today.getMonth(), 1),
+              end: new Date(today.getFullYear(), today.getMonth() + 1, 0)
+            }
+          },
+          {
+            id: 'last-month',
+            label: 'Last Month',
+            range: {
+              start: new Date(today.getFullYear(), today.getMonth() - 1, 1),
+              end: new Date(today.getFullYear(), today.getMonth(), 0)
+            }
+          },
+          {
+            id: 'this-quarter',
+            label: 'This Quarter',
+            range: {
+              start: new Date(today.getFullYear(), Math.floor(today.getMonth() / 3) * 3, 1),
+              end: new Date(today.getFullYear(), Math.floor(today.getMonth() / 3) * 3 + 3, 0)
+            }
+          },
+          {
+            id: 'this-year',
+            label: 'This Year',
+            range: {
+              start: new Date(today.getFullYear(), 0, 1),
+              end: new Date(today.getFullYear(), 11, 31)
+            }
+          },
+        ]
+      };
+
+      // Min/Max dates
+      const minmaxDrp = document.getElementById('minmax-drp');
+      const minDate = new Date();
+      const maxDate = new Date();
+      maxDate.setDate(maxDate.getDate() + 30);
+      minmaxDrp.config = {
+        minDate: minDate.toISOString(),
+        maxDate: maxDate.toISOString(),
+        showPresets: false
+      };
+
+      // Spanish locale
+      const esDrp = document.getElementById('es-drp');
+      esDrp.config = { locale: 'es-ES', firstDayOfWeek: 1 };
+
+      // German locale
+      const deDrp = document.getElementById('de-drp');
+      deDrp.config = { locale: 'de-DE', firstDayOfWeek: 1 };
+
+      // Pre-selected range
+      const preselectedDrp = document.getElementById('preselected-drp');
+      const startDate = new Date();
+      startDate.setDate(startDate.getDate() - 7);
+      preselectedDrp.range = { start: startDate, end: new Date() };
+
+      // Event handling
+      const eventOutput = document.getElementById('event-output');
+      document.querySelectorAll('erx-date-range-picker').forEach(drp => {
+        drp.addEventListener('erxChange', (e) => {
+          const detail = {
+            start: e.detail.start?.toISOString() || null,
+            end: e.detail.end?.toISOString() || null,
+            preset: e.detail.preset?.label || null
+          };
+          eventOutput.innerHTML = `<strong>erxChange:</strong>\n${JSON.stringify(detail, null, 2)}`;
+        });
+      });
+    });
+  </script>
+</body>
+</html>

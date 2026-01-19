@@ -1,0 +1,237 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>erx-time-clock - ERX Components</title>
+  <script type="module" src="https://unpkg.com/@erplora/erx/dist/erx/erx.esm.js"></script>
+  <script nomodule src="https://unpkg.com/@erplora/erx/dist/erx/erx.js"></script>
+  <link rel="stylesheet" href="../styles.css">
+</head>
+<body>
+  <div class="component-page" style="padding: 2rem;">
+    <a href="../index.html" class="back-link">&larr; Back to Components</a>
+
+    <div class="component-header">
+      <h1>erx-time-clock</h1>
+      <p>Time clock widget for employee clock in/out functionality with real-time display, break tracking, and shift status.</p>
+    </div>
+
+    <div class="demo-section">
+      <h2>Basic Time Clock</h2>
+      <div class="demo-box">
+        <div style="max-width: 400px; margin: 0 auto;">
+          <erx-time-clock id="clock-basic"></erx-time-clock>
+        </div>
+      </div>
+      <div class="code-block">
+&lt;erx-time-clock
+  employee-id="EMP001"
+  employee-name="John Doe"
+&gt;&lt;/erx-time-clock&gt;
+
+&lt;script&gt;
+const clock = document.querySelector('erx-time-clock');
+clock.addEventListener('erxClockIn', (e) =&gt; {
+  console.log('Clocked in:', e.detail.timestamp);
+});
+clock.addEventListener('erxClockOut', (e) =&gt; {
+  console.log('Clocked out:', e.detail.timestamp);
+});
+&lt;/script&gt;
+      </div>
+    </div>
+
+    <div class="demo-section">
+      <h2>Clocked In State</h2>
+      <div class="demo-box">
+        <div style="max-width: 400px; margin: 0 auto;">
+          <erx-time-clock id="clock-in" status="clocked-in" clock-in-time="09:00"></erx-time-clock>
+        </div>
+      </div>
+    </div>
+
+    <div class="demo-section">
+      <h2>With Break Tracking</h2>
+      <div class="demo-box">
+        <div style="max-width: 400px; margin: 0 auto;">
+          <erx-time-clock id="clock-breaks" show-breaks status="clocked-in" clock-in-time="08:30"></erx-time-clock>
+        </div>
+      </div>
+    </div>
+
+    <div class="demo-section">
+      <h2>Compact Mode</h2>
+      <div class="demo-box">
+        <div class="demo-row">
+          <div class="demo-col">
+            <span class="demo-label">Clocked Out</span>
+            <erx-time-clock id="clock-compact-out" compact></erx-time-clock>
+          </div>
+          <div class="demo-col">
+            <span class="demo-label">Clocked In</span>
+            <erx-time-clock id="clock-compact-in" compact status="clocked-in" clock-in-time="09:15"></erx-time-clock>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="demo-section">
+      <h2>With Location Verification</h2>
+      <div class="demo-box">
+        <div style="max-width: 400px; margin: 0 auto;">
+          <erx-time-clock id="clock-location" require-location show-location></erx-time-clock>
+        </div>
+        <p id="location-output" style="margin-top: 1rem; color: var(--text-muted); text-align: center;"></p>
+      </div>
+    </div>
+
+    <div class="demo-section">
+      <h2>Props</h2>
+      <table style="width: 100%; border-collapse: collapse;">
+        <thead>
+          <tr style="border-bottom: 2px solid var(--border);">
+            <th style="text-align: left; padding: 0.5rem;">Prop</th>
+            <th style="text-align: left; padding: 0.5rem;">Type</th>
+            <th style="text-align: left; padding: 0.5rem;">Default</th>
+            <th style="text-align: left; padding: 0.5rem;">Description</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr style="border-bottom: 1px solid var(--border);">
+            <td style="padding: 0.5rem;"><code>employeeId</code></td>
+            <td style="padding: 0.5rem;">string</td>
+            <td style="padding: 0.5rem;">''</td>
+            <td style="padding: 0.5rem;">Employee identifier</td>
+          </tr>
+          <tr style="border-bottom: 1px solid var(--border);">
+            <td style="padding: 0.5rem;"><code>employeeName</code></td>
+            <td style="padding: 0.5rem;">string</td>
+            <td style="padding: 0.5rem;">''</td>
+            <td style="padding: 0.5rem;">Employee display name</td>
+          </tr>
+          <tr style="border-bottom: 1px solid var(--border);">
+            <td style="padding: 0.5rem;"><code>status</code></td>
+            <td style="padding: 0.5rem;">'clocked-out' | 'clocked-in' | 'on-break'</td>
+            <td style="padding: 0.5rem;">'clocked-out'</td>
+            <td style="padding: 0.5rem;">Current clock status</td>
+          </tr>
+          <tr style="border-bottom: 1px solid var(--border);">
+            <td style="padding: 0.5rem;"><code>clockInTime</code></td>
+            <td style="padding: 0.5rem;">string</td>
+            <td style="padding: 0.5rem;">null</td>
+            <td style="padding: 0.5rem;">Time of clock in (HH:mm format)</td>
+          </tr>
+          <tr style="border-bottom: 1px solid var(--border);">
+            <td style="padding: 0.5rem;"><code>showBreaks</code></td>
+            <td style="padding: 0.5rem;">boolean</td>
+            <td style="padding: 0.5rem;">false</td>
+            <td style="padding: 0.5rem;">Show break start/end buttons</td>
+          </tr>
+          <tr style="border-bottom: 1px solid var(--border);">
+            <td style="padding: 0.5rem;"><code>compact</code></td>
+            <td style="padding: 0.5rem;">boolean</td>
+            <td style="padding: 0.5rem;">false</td>
+            <td style="padding: 0.5rem;">Use compact display mode</td>
+          </tr>
+          <tr style="border-bottom: 1px solid var(--border);">
+            <td style="padding: 0.5rem;"><code>requireLocation</code></td>
+            <td style="padding: 0.5rem;">boolean</td>
+            <td style="padding: 0.5rem;">false</td>
+            <td style="padding: 0.5rem;">Require GPS location for clock in/out</td>
+          </tr>
+          <tr style="border-bottom: 1px solid var(--border);">
+            <td style="padding: 0.5rem;"><code>showLocation</code></td>
+            <td style="padding: 0.5rem;">boolean</td>
+            <td style="padding: 0.5rem;">false</td>
+            <td style="padding: 0.5rem;">Display current location</td>
+          </tr>
+          <tr style="border-bottom: 1px solid var(--border);">
+            <td style="padding: 0.5rem;"><code>disabled</code></td>
+            <td style="padding: 0.5rem;">boolean</td>
+            <td style="padding: 0.5rem;">false</td>
+            <td style="padding: 0.5rem;">Disable all interactions</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <div class="demo-section">
+      <h2>Events</h2>
+      <table style="width: 100%; border-collapse: collapse;">
+        <thead>
+          <tr style="border-bottom: 2px solid var(--border);">
+            <th style="text-align: left; padding: 0.5rem;">Event</th>
+            <th style="text-align: left; padding: 0.5rem;">Description</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr style="border-bottom: 1px solid var(--border);">
+            <td style="padding: 0.5rem;"><code>erxClockIn</code></td>
+            <td style="padding: 0.5rem;">Emitted when employee clocks in</td>
+          </tr>
+          <tr style="border-bottom: 1px solid var(--border);">
+            <td style="padding: 0.5rem;"><code>erxClockOut</code></td>
+            <td style="padding: 0.5rem;">Emitted when employee clocks out</td>
+          </tr>
+          <tr style="border-bottom: 1px solid var(--border);">
+            <td style="padding: 0.5rem;"><code>erxBreakStart</code></td>
+            <td style="padding: 0.5rem;">Emitted when break starts</td>
+          </tr>
+          <tr style="border-bottom: 1px solid var(--border);">
+            <td style="padding: 0.5rem;"><code>erxBreakEnd</code></td>
+            <td style="padding: 0.5rem;">Emitted when break ends</td>
+          </tr>
+          <tr style="border-bottom: 1px solid var(--border);">
+            <td style="padding: 0.5rem;"><code>erxLocationError</code></td>
+            <td style="padding: 0.5rem;">Emitted when location cannot be obtained</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+  <script>
+    // Basic clock
+    const clockBasic = document.getElementById('clock-basic');
+    clockBasic.employeeId = 'EMP001';
+    clockBasic.employeeName = 'John Doe';
+    clockBasic.addEventListener('erxClockIn', (e) => {
+      console.log('Clock in:', e.detail);
+    });
+    clockBasic.addEventListener('erxClockOut', (e) => {
+      console.log('Clock out:', e.detail);
+    });
+
+    // Clocked in state
+    const clockIn = document.getElementById('clock-in');
+    clockIn.employeeId = 'EMP002';
+    clockIn.employeeName = 'Jane Smith';
+
+    // With breaks
+    const clockBreaks = document.getElementById('clock-breaks');
+    clockBreaks.employeeId = 'EMP003';
+    clockBreaks.employeeName = 'Bob Johnson';
+
+    // Compact modes
+    const clockCompactOut = document.getElementById('clock-compact-out');
+    clockCompactOut.employeeId = 'EMP004';
+    clockCompactOut.employeeName = 'Alice Brown';
+
+    const clockCompactIn = document.getElementById('clock-compact-in');
+    clockCompactIn.employeeId = 'EMP005';
+    clockCompactIn.employeeName = 'Charlie Wilson';
+
+    // With location
+    const clockLocation = document.getElementById('clock-location');
+    clockLocation.employeeId = 'EMP006';
+    clockLocation.employeeName = 'Diana Lee';
+    clockLocation.addEventListener('erxClockIn', (e) => {
+      if (e.detail.location) {
+        document.getElementById('location-output').textContent =
+          `Clocked in at: ${e.detail.location.latitude}, ${e.detail.location.longitude}`;
+      }
+    });
+  </script>
+</body>
+</html>

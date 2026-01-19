@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>erx-timeline - ERX Components</title>
+  <script type="module" src="https://unpkg.com/@erplora/erx/dist/erx/erx.esm.js"></script>
+  <script nomodule src="https://unpkg.com/@erplora/erx/dist/erx/erx.js"></script>
+  <link rel="stylesheet" href="../styles.css">
+</head>
+<body>
+  <div class="component-page" style="padding: 2rem;">
+    <a href="../index.html" class="back-link">&larr; Back to Components</a>
+    <div class="component-header">
+      <h1>erx-timeline</h1>
+      <p>Activity timeline component with type-based styling, user avatars, timestamps, and action buttons.</p>
+    </div>
+    <div class="demo-section">
+      <h2>Basic Timeline</h2>
+      <div class="demo-box">
+        <erx-timeline id="basicTimeline"></erx-timeline>
+      </div>
+    </div>
+    <div class="demo-section">
+      <h2>Timeline with Users & Actions</h2>
+      <div class="demo-box">
+        <erx-timeline id="userTimeline"></erx-timeline>
+      </div>
+    </div>
+    <div class="demo-section">
+      <h2>Grouped Timeline (by Date)</h2>
+      <div class="demo-box">
+        <erx-timeline id="groupedTimeline"></erx-timeline>
+      </div>
+    </div>
+    <div class="demo-section">
+      <h2>Limited Timeline</h2>
+      <div class="demo-box">
+        <erx-timeline id="limitedTimeline"></erx-timeline>
+      </div>
+    </div>
+    <div class="demo-section">
+      <h2>Event Output</h2>
+      <div class="demo-box">
+        <div id="eventOutput" style="padding: 1rem; background: var(--bg); border-radius: 8px; font-family: monospace; font-size: 0.875rem;">
+          Click on a timeline item or action to see the output...
+        </div>
+      </div>
+    </div>
+  </div>
+  <script>
+    const now = new Date();
+    const minutesAgo = (mins) => new Date(now.getTime() - mins * 60000).toISOString();
+    const hoursAgo = (hrs) => new Date(now.getTime() - hrs * 3600000).toISOString();
+    const daysAgo = (days) => new Date(now.getTime() - days * 86400000).toISOString();
+
+    document.addEventListener('DOMContentLoaded', () => {
+      const eventOutput = document.getElementById('eventOutput');
+
+      // Basic Timeline
+      document.getElementById('basicTimeline').items = [
+        {
+          id: '1',
+          title: 'Order #1234 completed',
+          description: 'The order has been successfully delivered to the customer.',
+          timestamp: minutesAgo(5),
+          type: 'success',
+          icon: '✓'
+        },
+        {
+          id: '2',
+          title: 'Payment received',
+          description: 'Payment of $125.00 was processed via credit card.',
+          timestamp: minutesAgo(30),
+          type: 'info',
+          icon: '💳'
+        },
+        {
+          id: '3',
+          title: 'Stock warning',
+          description: 'Product SKU-5678 is running low on inventory (5 units remaining).',
+          timestamp: hoursAgo(2),
+          type: 'warning',
+          icon: '⚠'
+        },
+        {
+          id: '4',
+          title: 'Shipment delayed',
+          description: 'Order #1189 shipment has been delayed due to weather conditions.',
+          timestamp: hoursAgo(4),
+          type: 'error',
+          icon: '✕'
+        }
+      ];
+      document.getElementById('basicTimeline').config = { showTimestamps: true, showConnectors: true };
+
+      // Timeline with Users & Actions
+      document.getElementById('userTimeline').items = [
+        {
+          id: '1',
+          title: 'New feature deployed',
+          description: 'Version 2.1.0 has been deployed to production.',
+          timestamp: minutesAgo(15),
+          type: 'success',
+          user: { name: 'John Smith' },
+          actions: [
+            { label: 'View Changelog', action: 'view_changelog' },
+            { label: 'Rollback', action: 'rollback' }
+          ]
+        },
+        {
+          id: '2',
+          title: 'Pull request merged',
+          description: 'PR #456: Add new dashboard components',
+          timestamp: hoursAgo(1),
+          type: 'info',
+          user: { name: 'Sarah Johnson' },
+          actions: [
+            { label: 'View PR', action: 'view_pr' }
+          ]
+        },
+        {
+          id: '3',
+          title: 'Build failed',
+          description: 'CI build #789 failed on test step.',
+          timestamp: hoursAgo(3),
+          type: 'error',
+          user: { name: 'Mike Wilson' },
+          actions: [
+            { label: 'View Logs', action: 'view_logs' },
+            { label: 'Retry', action: 'retry' }
+          ]
+        }
+      ];
+      document.getElementById('userTimeline').config = { showTimestamps: true, showConnectors: true };
+
+      // Grouped Timeline
+      document.getElementById('groupedTimeline').items = [
+        { id: '1', title: 'Morning standup', timestamp: hoursAgo(2), type: 'info' },
+        { id: '2', title: 'Code review completed', timestamp: hoursAgo(4), type: 'success' },
+        { id: '3', title: 'Bug report submitted', timestamp: daysAgo(1), type: 'warning' },
+        { id: '4', title: 'Sprint planning', timestamp: daysAgo(1), type: 'info' },
+        { id: '5', title: 'Release v2.0', timestamp: daysAgo(2), type: 'success' },
+        { id: '6', title: 'Server maintenance', timestamp: daysAgo(3), type: 'info' }
+      ];
+      document.getElementById('groupedTimeline').config = { grouped: true, showTimestamps: true };
+
+      // Limited Timeline
+      document.getElementById('limitedTimeline').items = [
+        { id: '1', title: 'Item 1', timestamp: minutesAgo(10), type: 'info' },
+        { id: '2', title: 'Item 2', timestamp: minutesAgo(20), type: 'success' },
+        { id: '3', title: 'Item 3', timestamp: minutesAgo(30), type: 'warning' },
+        { id: '4', title: 'Item 4', timestamp: minutesAgo(40), type: 'error' },
+        { id: '5', title: 'Item 5', timestamp: minutesAgo(50), type: 'info' }
+      ];
+      document.getElementById('limitedTimeline').config = { maxItems: 3, showTimestamps: true };
+
+      // Event listeners
+      document.querySelectorAll('erx-timeline').forEach(timeline => {
+        timeline.addEventListener('erxSelect', (e) => {
+          eventOutput.innerHTML = `<strong>Item Selected:</strong> ${e.detail.item.title}<br><strong>Type:</strong> ${e.detail.item.type}`;
+        });
+
+        timeline.addEventListener('erxAction', (e) => {
+          eventOutput.innerHTML = `<strong>Action Clicked:</strong> ${e.detail.action}<br><strong>Item:</strong> ${e.detail.item.title}`;
+        });
+      });
+    });
+  </script>
+</body>
+</html>

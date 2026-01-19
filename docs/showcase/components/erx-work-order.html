@@ -1,0 +1,247 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>erx-work-order - ERX Components</title>
+  <script type="module" src="https://unpkg.com/@erplora/erx/dist/erx/erx.esm.js"></script>
+  <script nomodule src="https://unpkg.com/@erplora/erx/dist/erx/erx.js"></script>
+  <link rel="stylesheet" href="../styles.css">
+</head>
+<body>
+  <div class="component-page" style="padding: 2rem;">
+    <a href="../index.html" class="back-link">&larr; Back to Components</a>
+    <div class="component-header">
+      <h1>erx-work-order</h1>
+      <p>Work order display component for manufacturing. Shows order details, progress, materials, operations, and action buttons.</p>
+    </div>
+
+    <div class="demo-section">
+      <h2>In Progress Work Order</h2>
+      <div class="demo-box">
+        <erx-work-order id="wo1" show-materials show-operations></erx-work-order>
+      </div>
+    </div>
+
+    <div class="demo-section">
+      <h2>Pending Work Order (High Priority)</h2>
+      <div class="demo-box">
+        <erx-work-order id="wo2"></erx-work-order>
+      </div>
+    </div>
+
+    <div class="demo-section">
+      <h2>Completed Work Order</h2>
+      <div class="demo-box">
+        <erx-work-order id="wo3"></erx-work-order>
+      </div>
+    </div>
+
+    <div class="demo-section">
+      <h2>Compact Mode</h2>
+      <div class="demo-box">
+        <div class="demo-row">
+          <erx-work-order id="wo4" compact></erx-work-order>
+          <erx-work-order id="wo5" compact></erx-work-order>
+        </div>
+      </div>
+    </div>
+
+    <div class="demo-section">
+      <h2>Properties</h2>
+      <div class="demo-box">
+        <table style="width: 100%; border-collapse: collapse;">
+          <thead>
+            <tr style="border-bottom: 1px solid var(--border);">
+              <th style="text-align: left; padding: 0.5rem;">Property</th>
+              <th style="text-align: left; padding: 0.5rem;">Type</th>
+              <th style="text-align: left; padding: 0.5rem;">Default</th>
+              <th style="text-align: left; padding: 0.5rem;">Description</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr style="border-bottom: 1px solid var(--border);">
+              <td style="padding: 0.5rem;"><code>order</code></td>
+              <td style="padding: 0.5rem;">WorkOrder</td>
+              <td style="padding: 0.5rem;">-</td>
+              <td style="padding: 0.5rem;">Work order data object (required)</td>
+            </tr>
+            <tr style="border-bottom: 1px solid var(--border);">
+              <td style="padding: 0.5rem;"><code>show-materials</code></td>
+              <td style="padding: 0.5rem;">boolean</td>
+              <td style="padding: 0.5rem;">false</td>
+              <td style="padding: 0.5rem;">Show materials list with consumption progress</td>
+            </tr>
+            <tr style="border-bottom: 1px solid var(--border);">
+              <td style="padding: 0.5rem;"><code>show-operations</code></td>
+              <td style="padding: 0.5rem;">boolean</td>
+              <td style="padding: 0.5rem;">false</td>
+              <td style="padding: 0.5rem;">Show operations checklist</td>
+            </tr>
+            <tr style="border-bottom: 1px solid var(--border);">
+              <td style="padding: 0.5rem;"><code>show-actions</code></td>
+              <td style="padding: 0.5rem;">boolean</td>
+              <td style="padding: 0.5rem;">true</td>
+              <td style="padding: 0.5rem;">Show action buttons (Start, Pause, Complete)</td>
+            </tr>
+            <tr>
+              <td style="padding: 0.5rem;"><code>compact</code></td>
+              <td style="padding: 0.5rem;">boolean</td>
+              <td style="padding: 0.5rem;">false</td>
+              <td style="padding: 0.5rem;">Compact display mode</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+
+    <div class="demo-section">
+      <h2>Events</h2>
+      <div class="demo-box">
+        <table style="width: 100%; border-collapse: collapse;">
+          <thead>
+            <tr style="border-bottom: 1px solid var(--border);">
+              <th style="text-align: left; padding: 0.5rem;">Event</th>
+              <th style="text-align: left; padding: 0.5rem;">Detail</th>
+              <th style="text-align: left; padding: 0.5rem;">Description</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr style="border-bottom: 1px solid var(--border);">
+              <td style="padding: 0.5rem;"><code>erxAction</code></td>
+              <td style="padding: 0.5rem;">{ action, order }</td>
+              <td style="padding: 0.5rem;">Fired when action button is clicked (start, pause, complete)</td>
+            </tr>
+            <tr>
+              <td style="padding: 0.5rem;"><code>erxSelect</code></td>
+              <td style="padding: 0.5rem;">WorkOrder</td>
+              <td style="padding: 0.5rem;">Fired when work order card is clicked</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    // Sample work order data - In Progress
+    const workOrder1 = {
+      id: 'wo-001',
+      number: 'WO-2024-001',
+      product: {
+        id: 'prod-1',
+        name: 'Premium Widget Assembly',
+        sku: 'PWA-100',
+        image: 'https://via.placeholder.com/80x80/6366f1/ffffff?text=Widget'
+      },
+      quantity: 500,
+      quantityProduced: 325,
+      unit: 'units',
+      status: 'in-progress',
+      priority: 'high',
+      scheduledStart: '2024-01-15',
+      scheduledEnd: '2024-01-20',
+      assignee: {
+        id: 'user-1',
+        name: 'John Smith'
+      },
+      materials: [
+        { id: 'm1', name: 'Steel Frame', sku: 'SF-001', required: 500, consumed: 325, unit: 'pcs' },
+        { id: 'm2', name: 'Copper Wire', sku: 'CW-002', required: 1000, consumed: 650, unit: 'meters' },
+        { id: 'm3', name: 'Plastic Housing', sku: 'PH-003', required: 500, consumed: 300, unit: 'pcs' }
+      ],
+      operations: [
+        { id: 'op1', name: 'Cut frames', workCenter: 'Cutting Station', duration: 60, completed: true },
+        { id: 'op2', name: 'Weld components', workCenter: 'Welding Bay', duration: 120, completed: true },
+        { id: 'op3', name: 'Assembly', workCenter: 'Assembly Line A', duration: 90, completed: false },
+        { id: 'op4', name: 'Quality Check', workCenter: 'QC Station', duration: 30, completed: false }
+      ]
+    };
+
+    // Pending work order - High priority
+    const workOrder2 = {
+      id: 'wo-002',
+      number: 'WO-2024-002',
+      product: {
+        id: 'prod-2',
+        name: 'Circuit Board Type A',
+        sku: 'CB-A200'
+      },
+      quantity: 1000,
+      quantityProduced: 0,
+      unit: 'units',
+      status: 'pending',
+      priority: 'urgent',
+      scheduledStart: '2024-01-18',
+      scheduledEnd: '2024-01-25',
+      assignee: {
+        id: 'user-2',
+        name: 'Maria Garcia'
+      }
+    };
+
+    // Completed work order
+    const workOrder3 = {
+      id: 'wo-003',
+      number: 'WO-2024-003',
+      product: {
+        id: 'prod-3',
+        name: 'Motor Assembly M500',
+        sku: 'MA-500'
+      },
+      quantity: 200,
+      quantityProduced: 200,
+      unit: 'units',
+      status: 'completed',
+      priority: 'medium',
+      scheduledStart: '2024-01-10',
+      scheduledEnd: '2024-01-14',
+      assignee: {
+        id: 'user-3',
+        name: 'Robert Chen'
+      }
+    };
+
+    // Compact examples
+    const workOrder4 = {
+      id: 'wo-004',
+      number: 'WO-2024-004',
+      product: { id: 'p4', name: 'Gear Set GS-100', sku: 'GS-100' },
+      quantity: 300,
+      quantityProduced: 150,
+      unit: 'sets',
+      status: 'in-progress',
+      priority: 'medium'
+    };
+
+    const workOrder5 = {
+      id: 'wo-005',
+      number: 'WO-2024-005',
+      product: { id: 'p5', name: 'Bearing Pack BP-50', sku: 'BP-50' },
+      quantity: 500,
+      quantityProduced: 0,
+      unit: 'packs',
+      status: 'pending',
+      priority: 'low'
+    };
+
+    // Initialize components
+    document.getElementById('wo1').order = workOrder1;
+    document.getElementById('wo2').order = workOrder2;
+    document.getElementById('wo3').order = workOrder3;
+    document.getElementById('wo4').order = workOrder4;
+    document.getElementById('wo5').order = workOrder5;
+
+    // Event listeners
+    document.querySelectorAll('erx-work-order').forEach(el => {
+      el.addEventListener('erxAction', (e) => {
+        console.log('Action:', e.detail.action, 'Order:', e.detail.order.number);
+        alert(`Action: ${e.detail.action} on ${e.detail.order.number}`);
+      });
+      el.addEventListener('erxSelect', (e) => {
+        console.log('Selected order:', e.detail.number);
+      });
+    });
+  </script>
+</body>
+</html>

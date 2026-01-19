@@ -1,0 +1,260 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>erx-dropdown - ERX Components</title>
+  <script type="module" src="https://unpkg.com/@erplora/erx/dist/erx/erx.esm.js"></script>
+  <script nomodule src="https://unpkg.com/@erplora/erx/dist/erx/erx.js"></script>
+  <link rel="stylesheet" href="../styles.css">
+</head>
+<body>
+  <div class="component-page" style="padding: 2rem;">
+    <a href="../index.html" class="back-link">&larr; Back to Components</a>
+
+    <div class="component-header">
+      <h1>erx-dropdown</h1>
+      <p>A dropdown menu component for displaying a list of actions or options. Supports icons, nested menus, and various trigger modes.</p>
+    </div>
+
+    <div class="demo-section">
+      <h2>Basic Dropdown</h2>
+      <div class="demo-box">
+        <erx-dropdown id="basic-dropdown">
+          <button slot="trigger" style="padding: 0.5rem 1rem; background: var(--primary); color: white; border: none; border-radius: 6px; cursor: pointer; display: flex; align-items: center; gap: 0.5rem;">
+            Actions
+            <span style="font-size: 0.75rem;">&#9662;</span>
+          </button>
+        </erx-dropdown>
+      </div>
+    </div>
+
+    <div class="demo-section">
+      <h2>With Icons</h2>
+      <div class="demo-box">
+        <erx-dropdown id="icon-dropdown">
+          <button slot="trigger" style="padding: 0.5rem 1rem; background: var(--primary); color: white; border: none; border-radius: 6px; cursor: pointer; display: flex; align-items: center; gap: 0.5rem;">
+            File Menu
+            <span style="font-size: 0.75rem;">&#9662;</span>
+          </button>
+        </erx-dropdown>
+      </div>
+    </div>
+
+    <div class="demo-section">
+      <h2>User Menu Style</h2>
+      <div class="demo-box">
+        <erx-dropdown id="user-dropdown" placement="bottom-end">
+          <button slot="trigger" style="padding: 0.5rem; background: var(--bg); border: 1px solid var(--border); border-radius: 50%; cursor: pointer; width: 40px; height: 40px; display: flex; align-items: center; justify-content: center;">
+            <span style="font-size: 1.25rem;">J</span>
+          </button>
+        </erx-dropdown>
+      </div>
+    </div>
+
+    <div class="demo-section">
+      <h2>Different Placements</h2>
+      <div class="demo-box">
+        <div style="display: flex; gap: 1rem; flex-wrap: wrap; justify-content: center;">
+          <erx-dropdown id="dropdown-bottom" placement="bottom">
+            <button slot="trigger" style="padding: 0.5rem 1rem; background: var(--bg); border: 1px solid var(--border); border-radius: 6px; cursor: pointer;">
+              Bottom
+            </button>
+          </erx-dropdown>
+          <erx-dropdown id="dropdown-top" placement="top">
+            <button slot="trigger" style="padding: 0.5rem 1rem; background: var(--bg); border: 1px solid var(--border); border-radius: 6px; cursor: pointer;">
+              Top
+            </button>
+          </erx-dropdown>
+          <erx-dropdown id="dropdown-left" placement="left">
+            <button slot="trigger" style="padding: 0.5rem 1rem; background: var(--bg); border: 1px solid var(--border); border-radius: 6px; cursor: pointer;">
+              Left
+            </button>
+          </erx-dropdown>
+          <erx-dropdown id="dropdown-right" placement="right">
+            <button slot="trigger" style="padding: 0.5rem 1rem; background: var(--bg); border: 1px solid var(--border); border-radius: 6px; cursor: pointer;">
+              Right
+            </button>
+          </erx-dropdown>
+        </div>
+      </div>
+    </div>
+
+    <div class="demo-section">
+      <h2>Hover Trigger</h2>
+      <div class="demo-box">
+        <erx-dropdown id="hover-dropdown" trigger="hover">
+          <button slot="trigger" style="padding: 0.5rem 1rem; background: var(--primary); color: white; border: none; border-radius: 6px; cursor: pointer; display: flex; align-items: center; gap: 0.5rem;">
+            Hover Me
+            <span style="font-size: 0.75rem;">&#9662;</span>
+          </button>
+        </erx-dropdown>
+      </div>
+    </div>
+
+    <div class="demo-section">
+      <h2>With Checkable Items</h2>
+      <div class="demo-box">
+        <erx-dropdown id="check-dropdown">
+          <button slot="trigger" style="padding: 0.5rem 1rem; background: var(--primary); color: white; border: none; border-radius: 6px; cursor: pointer; display: flex; align-items: center; gap: 0.5rem;">
+            View Options
+            <span style="font-size: 0.75rem;">&#9662;</span>
+          </button>
+        </erx-dropdown>
+        <p id="check-output" style="margin-top: 1rem; color: var(--text-muted);"></p>
+      </div>
+    </div>
+
+    <div class="demo-section">
+      <h2>Disabled State</h2>
+      <div class="demo-box">
+        <erx-dropdown id="disabled-dropdown" disabled>
+          <button slot="trigger" style="padding: 0.5rem 1rem; background: var(--text-muted); color: white; border: none; border-radius: 6px; cursor: not-allowed; display: flex; align-items: center; gap: 0.5rem; opacity: 0.5;">
+            Disabled
+            <span style="font-size: 0.75rem;">&#9662;</span>
+          </button>
+        </erx-dropdown>
+      </div>
+    </div>
+
+    <div class="demo-section">
+      <h2>Props</h2>
+      <table style="width: 100%; border-collapse: collapse;">
+        <thead>
+          <tr style="border-bottom: 2px solid var(--border);">
+            <th style="text-align: left; padding: 0.5rem;">Prop</th>
+            <th style="text-align: left; padding: 0.5rem;">Type</th>
+            <th style="text-align: left; padding: 0.5rem;">Default</th>
+            <th style="text-align: left; padding: 0.5rem;">Description</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr style="border-bottom: 1px solid var(--border);">
+            <td style="padding: 0.5rem;"><code>items</code></td>
+            <td style="padding: 0.5rem;">array</td>
+            <td style="padding: 0.5rem;">[]</td>
+            <td style="padding: 0.5rem;">Menu items array</td>
+          </tr>
+          <tr style="border-bottom: 1px solid var(--border);">
+            <td style="padding: 0.5rem;"><code>placement</code></td>
+            <td style="padding: 0.5rem;">string</td>
+            <td style="padding: 0.5rem;">'bottom-start'</td>
+            <td style="padding: 0.5rem;">Menu placement position</td>
+          </tr>
+          <tr style="border-bottom: 1px solid var(--border);">
+            <td style="padding: 0.5rem;"><code>trigger</code></td>
+            <td style="padding: 0.5rem;">'click' | 'hover'</td>
+            <td style="padding: 0.5rem;">'click'</td>
+            <td style="padding: 0.5rem;">Trigger mode</td>
+          </tr>
+          <tr style="border-bottom: 1px solid var(--border);">
+            <td style="padding: 0.5rem;"><code>disabled</code></td>
+            <td style="padding: 0.5rem;">boolean</td>
+            <td style="padding: 0.5rem;">false</td>
+            <td style="padding: 0.5rem;">Disable dropdown</td>
+          </tr>
+          <tr style="border-bottom: 1px solid var(--border);">
+            <td style="padding: 0.5rem;"><code>close-on-select</code></td>
+            <td style="padding: 0.5rem;">boolean</td>
+            <td style="padding: 0.5rem;">true</td>
+            <td style="padding: 0.5rem;">Close menu after selection</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <div class="demo-section">
+      <h2>Events</h2>
+      <table style="width: 100%; border-collapse: collapse;">
+        <thead>
+          <tr style="border-bottom: 2px solid var(--border);">
+            <th style="text-align: left; padding: 0.5rem;">Event</th>
+            <th style="text-align: left; padding: 0.5rem;">Description</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr style="border-bottom: 1px solid var(--border);">
+            <td style="padding: 0.5rem;"><code>erxSelect</code></td>
+            <td style="padding: 0.5rem;">Emitted when an item is selected</td>
+          </tr>
+          <tr style="border-bottom: 1px solid var(--border);">
+            <td style="padding: 0.5rem;"><code>erxOpen</code></td>
+            <td style="padding: 0.5rem;">Emitted when dropdown opens</td>
+          </tr>
+          <tr style="border-bottom: 1px solid var(--border);">
+            <td style="padding: 0.5rem;"><code>erxClose</code></td>
+            <td style="padding: 0.5rem;">Emitted when dropdown closes</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+  <script>
+    // Basic dropdown items
+    const basicItems = [
+      { id: 'edit', label: 'Edit' },
+      { id: 'duplicate', label: 'Duplicate' },
+      { type: 'separator' },
+      { id: 'archive', label: 'Archive' },
+      { id: 'delete', label: 'Delete', danger: true },
+    ];
+
+    // Icon dropdown items
+    const iconItems = [
+      { id: 'new', label: 'New File', icon: 'document', shortcut: 'Ctrl+N' },
+      { id: 'open', label: 'Open', icon: 'folder-open', shortcut: 'Ctrl+O' },
+      { id: 'save', label: 'Save', icon: 'save', shortcut: 'Ctrl+S' },
+      { id: 'save-as', label: 'Save As...', icon: 'save-outline', shortcut: 'Ctrl+Shift+S' },
+      { type: 'separator' },
+      { id: 'export', label: 'Export', icon: 'download' },
+      { id: 'print', label: 'Print', icon: 'print', shortcut: 'Ctrl+P' },
+    ];
+
+    // User menu items
+    const userItems = [
+      { id: 'profile', label: 'Your Profile', icon: 'person' },
+      { id: 'settings', label: 'Settings', icon: 'settings' },
+      { id: 'billing', label: 'Billing', icon: 'card' },
+      { type: 'separator' },
+      { id: 'help', label: 'Help & Support', icon: 'help-circle' },
+      { id: 'docs', label: 'Documentation', icon: 'book' },
+      { type: 'separator' },
+      { id: 'logout', label: 'Sign Out', icon: 'log-out' },
+    ];
+
+    // Checkable items
+    const checkItems = [
+      { id: 'grid', label: 'Grid View', icon: 'grid', checked: true },
+      { id: 'list', label: 'List View', icon: 'list' },
+      { type: 'separator' },
+      { id: 'compact', label: 'Compact Mode', checked: false },
+      { id: 'details', label: 'Show Details', checked: true },
+    ];
+
+    // Initialize dropdowns
+    document.getElementById('basic-dropdown').items = basicItems;
+    document.getElementById('icon-dropdown').items = iconItems;
+    document.getElementById('user-dropdown').items = userItems;
+    document.getElementById('hover-dropdown').items = basicItems;
+    document.getElementById('check-dropdown').items = checkItems;
+
+    // Placement dropdowns
+    ['bottom', 'top', 'left', 'right'].forEach(placement => {
+      document.getElementById(`dropdown-${placement}`).items = basicItems;
+    });
+
+    // Event listeners
+    document.querySelectorAll('erx-dropdown').forEach(dropdown => {
+      dropdown.addEventListener('erxSelect', (e) => {
+        console.log('Selected:', e.detail);
+      });
+    });
+
+    // Check dropdown output
+    document.getElementById('check-dropdown').addEventListener('erxSelect', (e) => {
+      document.getElementById('check-output').textContent = `Selected: ${e.detail.item.label}`;
+    });
+  </script>
+</body>
+</html>

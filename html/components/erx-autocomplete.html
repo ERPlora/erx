@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>erx-autocomplete - ERX Components</title>
+  <script type="module" src="https://unpkg.com/@erplora/erx/dist/erx/erx.esm.js"></script>
+  <script nomodule src="https://unpkg.com/@erplora/erx/dist/erx/erx.js"></script>
+  <link rel="stylesheet" href="../styles.css">
+</head>
+<body>
+  <div class="component-page" style="padding: 2rem;">
+    <a href="../index.html" class="back-link">&larr; Back to Components</a>
+    <div class="component-header">
+      <h1>erx-autocomplete</h1>
+      <p>Autocomplete search input with dropdown suggestions, keyboard navigation, and async search support.</p>
+    </div>
+    <div class="demo-section">
+      <h2>Basic Autocomplete</h2>
+      <div class="demo-box">
+        <erx-autocomplete
+          id="basic-auto"
+          label="Select a fruit"
+          placeholder="Search fruits...">
+        </erx-autocomplete>
+      </div>
+    </div>
+
+    <div class="demo-section">
+      <h2>With Custom Options (Images &amp; Descriptions)</h2>
+      <div class="demo-box">
+        <erx-autocomplete
+          id="rich-auto"
+          label="Select a country"
+          placeholder="Search countries...">
+        </erx-autocomplete>
+      </div>
+    </div>
+
+    <div class="demo-section">
+      <h2>Allow Custom Values</h2>
+      <div class="demo-box">
+        <erx-autocomplete
+          id="custom-auto"
+          label="Add a tag"
+          placeholder="Type to search or create...">
+        </erx-autocomplete>
+        <p style="margin-top: 1rem; color: var(--text-muted); font-size: 0.875rem;">
+          Type something not in the list and press Enter to create a custom value.
+        </p>
+      </div>
+    </div>
+
+    <div class="demo-section">
+      <h2>With Highlight Matching</h2>
+      <div class="demo-box">
+        <erx-autocomplete
+          id="highlight-auto"
+          label="Search products"
+          placeholder="Start typing...">
+        </erx-autocomplete>
+      </div>
+    </div>
+
+    <div class="demo-section">
+      <h2>Disabled State</h2>
+      <div class="demo-box">
+        <erx-autocomplete
+          id="disabled-auto"
+          label="Disabled autocomplete"
+          placeholder="Cannot interact..."
+          disabled>
+        </erx-autocomplete>
+      </div>
+    </div>
+
+    <div class="demo-section">
+      <h2>Event Output</h2>
+      <div class="demo-box">
+        <div id="event-output" style="font-family: monospace; font-size: 0.875rem; color: var(--text-muted);">
+          Select an item to see the event details...
+        </div>
+      </div>
+    </div>
+  </div>
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      // Basic autocomplete with fruits
+      const basicAuto = document.getElementById('basic-auto');
+      basicAuto.options = [
+        { value: 'apple', label: 'Apple' },
+        { value: 'banana', label: 'Banana' },
+        { value: 'cherry', label: 'Cherry' },
+        { value: 'grape', label: 'Grape' },
+        { value: 'lemon', label: 'Lemon' },
+        { value: 'mango', label: 'Mango' },
+        { value: 'orange', label: 'Orange' },
+        { value: 'peach', label: 'Peach' },
+        { value: 'pear', label: 'Pear' },
+        { value: 'strawberry', label: 'Strawberry' },
+      ];
+
+      // Rich autocomplete with countries
+      const richAuto = document.getElementById('rich-auto');
+      richAuto.options = [
+        { value: 'us', label: 'United States', description: 'North America', icon: '🇺🇸' },
+        { value: 'uk', label: 'United Kingdom', description: 'Europe', icon: '🇬🇧' },
+        { value: 'es', label: 'Spain', description: 'Europe', icon: '🇪🇸' },
+        { value: 'fr', label: 'France', description: 'Europe', icon: '🇫🇷' },
+        { value: 'de', label: 'Germany', description: 'Europe', icon: '🇩🇪' },
+        { value: 'jp', label: 'Japan', description: 'Asia', icon: '🇯🇵' },
+        { value: 'cn', label: 'China', description: 'Asia', icon: '🇨🇳' },
+        { value: 'br', label: 'Brazil', description: 'South America', icon: '🇧🇷' },
+        { value: 'mx', label: 'Mexico', description: 'North America', icon: '🇲🇽' },
+        { value: 'au', label: 'Australia', description: 'Oceania', icon: '🇦🇺' },
+      ];
+
+      // Allow custom values
+      const customAuto = document.getElementById('custom-auto');
+      customAuto.options = [
+        { value: 'work', label: 'Work' },
+        { value: 'personal', label: 'Personal' },
+        { value: 'urgent', label: 'Urgent' },
+        { value: 'important', label: 'Important' },
+      ];
+      customAuto.config = { allowCustom: true };
+
+      // Highlight matching
+      const highlightAuto = document.getElementById('highlight-auto');
+      highlightAuto.options = [
+        { value: 'laptop', label: 'Laptop Computer', description: 'Electronics' },
+        { value: 'keyboard', label: 'Mechanical Keyboard', description: 'Accessories' },
+        { value: 'mouse', label: 'Wireless Mouse', description: 'Accessories' },
+        { value: 'monitor', label: 'LED Monitor 27"', description: 'Electronics' },
+        { value: 'headset', label: 'Gaming Headset', description: 'Audio' },
+        { value: 'webcam', label: 'HD Webcam', description: 'Video' },
+      ];
+      highlightAuto.config = { highlightMatch: true };
+
+      // Event handling
+      const eventOutput = document.getElementById('event-output');
+      document.querySelectorAll('erx-autocomplete').forEach(auto => {
+        auto.addEventListener('erxSelect', (e) => {
+          eventOutput.innerHTML = `<strong>erxSelect:</strong> ${JSON.stringify(e.detail, null, 2)}`;
+        });
+      });
+    });
+  </script>
+</body>
+</html>

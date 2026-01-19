@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>erx-masonry - ERX Components</title>
+  <script type="module" src="https://unpkg.com/@erplora/erx/dist/erx/erx.esm.js"></script>
+  <script nomodule src="https://unpkg.com/@erplora/erx/dist/erx/erx.js"></script>
+  <link rel="stylesheet" href="../styles.css">
+</head>
+<body>
+  <div class="component-page" style="padding: 2rem;">
+    <a href="../index.html" class="back-link">&larr; Back to Components</a>
+    <div class="component-header">
+      <h1>erx-masonry</h1>
+      <p>Pinterest-style masonry grid layout for displaying items with varying heights. Perfect for galleries, cards, and content feeds.</p>
+    </div>
+    <div class="demo-section">
+      <h2>Basic Masonry (3 Columns)</h2>
+      <div class="demo-box">
+        <erx-masonry columns="3" gap="16">
+          <div style="background: var(--bg); padding: 1rem; border-radius: 8px; border: 1px solid var(--border);">
+            <h4>Card 1</h4>
+            <p>Short content here.</p>
+          </div>
+          <div style="background: var(--bg); padding: 1rem; border-radius: 8px; border: 1px solid var(--border);">
+            <h4>Card 2</h4>
+            <p>This card has more content to demonstrate varying heights in the masonry layout. The layout automatically adjusts.</p>
+          </div>
+          <div style="background: var(--bg); padding: 1rem; border-radius: 8px; border: 1px solid var(--border);">
+            <h4>Card 3</h4>
+            <p>Medium content.</p>
+            <p>With multiple paragraphs.</p>
+          </div>
+          <div style="background: var(--bg); padding: 1rem; border-radius: 8px; border: 1px solid var(--border);">
+            <h4>Card 4</h4>
+            <p>Another short one.</p>
+          </div>
+          <div style="background: var(--bg); padding: 1rem; border-radius: 8px; border: 1px solid var(--border);">
+            <h4>Card 5</h4>
+            <p>This is a longer card with lots of text content to show how the masonry layout handles different content lengths.</p>
+            <p>Additional paragraph for extra height.</p>
+            <p>And one more for good measure.</p>
+          </div>
+          <div style="background: var(--bg); padding: 1rem; border-radius: 8px; border: 1px solid var(--border);">
+            <h4>Card 6</h4>
+            <p>Regular content.</p>
+          </div>
+        </erx-masonry>
+      </div>
+    </div>
+    <div class="demo-section">
+      <h2>Different Column Counts</h2>
+      <div class="demo-box">
+        <div style="margin-bottom: 1rem;">
+          <span class="demo-label">2 Columns</span>
+          <erx-masonry columns="2" gap="12">
+            <div style="background: #6366f1; color: white; padding: 1rem; border-radius: 8px;">Item A</div>
+            <div style="background: #8b5cf6; color: white; padding: 1.5rem; border-radius: 8px;">Item B - Taller</div>
+            <div style="background: #a855f7; color: white; padding: 1rem; border-radius: 8px;">Item C</div>
+            <div style="background: #d946ef; color: white; padding: 2rem; border-radius: 8px;">Item D - Tallest</div>
+          </erx-masonry>
+        </div>
+        <div style="margin-bottom: 1rem;">
+          <span class="demo-label">4 Columns</span>
+          <erx-masonry columns="4" gap="12">
+            <div style="background: #10b981; color: white; padding: 1rem; border-radius: 8px;">1</div>
+            <div style="background: #14b8a6; color: white; padding: 2rem; border-radius: 8px;">2</div>
+            <div style="background: #06b6d4; color: white; padding: 1rem; border-radius: 8px;">3</div>
+            <div style="background: #0ea5e9; color: white; padding: 1.5rem; border-radius: 8px;">4</div>
+            <div style="background: #3b82f6; color: white; padding: 1rem; border-radius: 8px;">5</div>
+            <div style="background: #6366f1; color: white; padding: 2.5rem; border-radius: 8px;">6</div>
+            <div style="background: #8b5cf6; color: white; padding: 1rem; border-radius: 8px;">7</div>
+            <div style="background: #a855f7; color: white; padding: 1rem; border-radius: 8px;">8</div>
+          </erx-masonry>
+        </div>
+      </div>
+    </div>
+    <div class="demo-section">
+      <h2>Image Gallery Style</h2>
+      <div class="demo-box">
+        <erx-masonry columns="3" gap="8">
+          <div style="background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); height: 150px; border-radius: 8px;"></div>
+          <div style="background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%); height: 200px; border-radius: 8px;"></div>
+          <div style="background: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%); height: 120px; border-radius: 8px;"></div>
+          <div style="background: linear-gradient(135deg, #43e97b 0%, #38f9d7 100%); height: 180px; border-radius: 8px;"></div>
+          <div style="background: linear-gradient(135deg, #fa709a 0%, #fee140 100%); height: 140px; border-radius: 8px;"></div>
+          <div style="background: linear-gradient(135deg, #a8edea 0%, #fed6e3 100%); height: 220px; border-radius: 8px;"></div>
+          <div style="background: linear-gradient(135deg, #5ee7df 0%, #b490ca 100%); height: 160px; border-radius: 8px;"></div>
+          <div style="background: linear-gradient(135deg, #d299c2 0%, #fef9d7 100%); height: 130px; border-radius: 8px;"></div>
+          <div style="background: linear-gradient(135deg, #ebc0fd 0%, #d9ded8 100%); height: 190px; border-radius: 8px;"></div>
+        </erx-masonry>
+      </div>
+    </div>
+    <div class="demo-section">
+      <h2>Auto Column Width</h2>
+      <div class="demo-box">
+        <p style="margin-bottom: 1rem; color: var(--text-muted);">Columns automatically fit based on minimum width (200px)</p>
+        <erx-masonry column-width="200" gap="16">
+          <div style="background: var(--bg); padding: 1rem; border-radius: 8px; border: 1px solid var(--border);">
+            <h4>Auto Card 1</h4>
+            <p>Content adapts to available space.</p>
+          </div>
+          <div style="background: var(--bg); padding: 1rem; border-radius: 8px; border: 1px solid var(--border);">
+            <h4>Auto Card 2</h4>
+            <p>Try resizing the window!</p>
+          </div>
+          <div style="background: var(--bg); padding: 1rem; border-radius: 8px; border: 1px solid var(--border);">
+            <h4>Auto Card 3</h4>
+            <p>The number of columns changes automatically based on container width.</p>
+          </div>
+          <div style="background: var(--bg); padding: 1rem; border-radius: 8px; border: 1px solid var(--border);">
+            <h4>Auto Card 4</h4>
+            <p>Responsive by design.</p>
+          </div>
+        </erx-masonry>
+      </div>
+    </div>
+  </div>
+</body>
+</html>

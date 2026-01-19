@@ -1,0 +1,415 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>erx-variant-selector - ERX Components</title>
+  <script type="module" src="https://unpkg.com/@erplora/erx/dist/erx/erx.esm.js"></script>
+  <script nomodule src="https://unpkg.com/@erplora/erx/dist/erx/erx.js"></script>
+  <link rel="stylesheet" href="../styles.css">
+  <style>
+    .product-card {
+      max-width: 400px;
+      background: var(--bg-secondary);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 1.5rem;
+    }
+    .product-card h3 {
+      margin-bottom: 0.5rem;
+    }
+    .product-price {
+      font-size: 1.5rem;
+      font-weight: 700;
+      color: var(--primary);
+      margin-bottom: 1rem;
+    }
+    .product-price .base-price {
+      color: var(--text-muted);
+      text-decoration: line-through;
+      font-size: 1rem;
+      margin-left: 0.5rem;
+    }
+    .selection-output {
+      margin-top: 1rem;
+      padding: 1rem;
+      background: var(--bg);
+      border-radius: 8px;
+      font-family: monospace;
+      font-size: 0.875rem;
+    }
+    .demo-variants {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 2rem;
+    }
+  </style>
+</head>
+<body>
+  <div class="component-page" style="padding: 2rem;">
+    <a href="../index.html" class="back-link">&larr; Back to Components</a>
+    <div class="component-header">
+      <h1>erx-variant-selector</h1>
+      <p>Product variant selector supporting sizes, colors, images, and dropdown options with price modifiers and stock tracking.</p>
+    </div>
+
+    <!-- Button Variants Demo -->
+    <div class="demo-section">
+      <h2>Size Selection (Buttons)</h2>
+      <div class="demo-box">
+        <span class="demo-label">T-Shirt size selection with price modifiers</span>
+        <div class="product-card">
+          <h3>Premium Cotton T-Shirt</h3>
+          <div class="product-price" id="tshirt-price">$29.99</div>
+          <erx-variant-selector id="size-selector"></erx-variant-selector>
+          <div class="selection-output" id="size-output">Select a size...</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Color Variants Demo -->
+    <div class="demo-section">
+      <h2>Color Selection</h2>
+      <div class="demo-box">
+        <span class="demo-label">Color swatches with availability</span>
+        <div class="product-card">
+          <h3>Leather Wallet</h3>
+          <div class="product-price">$59.99</div>
+          <erx-variant-selector id="color-selector"></erx-variant-selector>
+          <div class="selection-output" id="color-output">Select a color...</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Multiple Variant Groups Demo -->
+    <div class="demo-section">
+      <h2>Multiple Variant Groups</h2>
+      <div class="demo-box">
+        <span class="demo-label">Shoes with size and color selection</span>
+        <div class="product-card">
+          <h3>Running Sneakers Pro</h3>
+          <div class="product-price" id="shoes-price">$149.99</div>
+          <erx-variant-selector id="multi-selector"></erx-variant-selector>
+          <div class="selection-output" id="multi-output">Select size and color...</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Dropdown Variant Demo -->
+    <div class="demo-section">
+      <h2>Dropdown Selection</h2>
+      <div class="demo-box">
+        <span class="demo-label">Storage options as dropdown</span>
+        <div class="product-card">
+          <h3>Smartphone Pro Max</h3>
+          <div class="product-price" id="phone-price">$999.00</div>
+          <erx-variant-selector id="dropdown-selector"></erx-variant-selector>
+          <div class="selection-output" id="dropdown-output">Select storage option...</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Food/Restaurant Demo -->
+    <div class="demo-section">
+      <h2>Food Customization</h2>
+      <div class="demo-box">
+        <span class="demo-label">Pizza with size and crust options</span>
+        <div class="product-card">
+          <h3>Margherita Pizza</h3>
+          <div class="product-price" id="pizza-price">$12.99</div>
+          <erx-variant-selector id="food-selector"></erx-variant-selector>
+          <div class="selection-output" id="food-output">Select pizza options...</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Code Example -->
+    <div class="demo-section">
+      <h2>Usage</h2>
+      <pre class="code-block">&lt;erx-variant-selector
+  show-prices="true"
+  show-stock="true"
+  size="md"
+  currency="$"
+&gt;&lt;/erx-variant-selector&gt;
+
+&lt;script&gt;
+const selector = document.querySelector('erx-variant-selector');
+selector.groups = [
+  {
+    id: 'size',
+    name: 'Size',
+    type: 'button',
+    required: true,
+    options: [
+      { value: 'S', label: 'S', stock: 12 },
+      { value: 'M', label: 'M', stock: 8 },
+      { value: 'L', label: 'L', priceModifier: 2, stock: 3 },
+      { value: 'XL', label: 'XL', priceModifier: 4, available: false }
+    ]
+  },
+  {
+    id: 'color',
+    name: 'Color',
+    type: 'color',
+    required: true,
+    options: [
+      { value: 'black', label: 'Black', color: '#000000' },
+      { value: 'navy', label: 'Navy', color: '#1e3a5f' },
+      { value: 'white', label: 'White', color: '#ffffff' }
+    ]
+  }
+];
+
+selector.addEventListener('erxSelect', (e) => {
+  console.log('Selection:', e.detail.selection);
+  console.log('Complete:', e.detail.complete);
+});
+
+selector.addEventListener('erxComplete', (e) => {
+  console.log('All required options selected:', e.detail.selection);
+});
+&lt;/script&gt;</pre>
+    </div>
+  </div>
+
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      const basePrice = 29.99;
+
+      // Size selector (buttons)
+      const sizeSelector = document.getElementById('size-selector');
+      sizeSelector.groups = [
+        {
+          id: 'size',
+          name: 'Size',
+          type: 'button',
+          required: true,
+          options: [
+            { value: 'XS', label: 'XS', stock: 15 },
+            { value: 'S', label: 'S', stock: 28 },
+            { value: 'M', label: 'M', stock: 3 },
+            { value: 'L', label: 'L', priceModifier: 2, stock: 12 },
+            { value: 'XL', label: 'XL', priceModifier: 4, stock: 8 },
+            { value: 'XXL', label: 'XXL', priceModifier: 6, available: false }
+          ]
+        }
+      ];
+
+      sizeSelector.addEventListener('erxSelect', (e) => {
+        const { selection, option } = e.detail;
+        const priceEl = document.getElementById('tshirt-price');
+        const outputEl = document.getElementById('size-output');
+
+        const modifier = option.priceModifier || 0;
+        const newPrice = basePrice + modifier;
+        priceEl.innerHTML = `$${newPrice.toFixed(2)}${modifier > 0 ? `<span class="base-price">$${basePrice.toFixed(2)}</span>` : ''}`;
+        outputEl.textContent = `Selected: ${option.label} (${option.stock || 0} in stock)`;
+      });
+
+      // Color selector
+      const colorSelector = document.getElementById('color-selector');
+      colorSelector.groups = [
+        {
+          id: 'color',
+          name: 'Color',
+          type: 'color',
+          required: true,
+          options: [
+            { value: 'black', label: 'Black', color: '#1a1a1a', stock: 25 },
+            { value: 'brown', label: 'Brown', color: '#8B4513', stock: 18 },
+            { value: 'tan', label: 'Tan', color: '#D2B48C', stock: 12 },
+            { value: 'navy', label: 'Navy', color: '#1e3a5f', stock: 4 },
+            { value: 'burgundy', label: 'Burgundy', color: '#722F37', available: false }
+          ]
+        }
+      ];
+
+      colorSelector.addEventListener('erxSelect', (e) => {
+        const { option } = e.detail;
+        const outputEl = document.getElementById('color-output');
+        outputEl.textContent = `Selected: ${option.label}${option.stock <= 5 ? ` (Only ${option.stock} left!)` : ''}`;
+      });
+
+      // Multi-group selector (shoes)
+      const multiSelector = document.getElementById('multi-selector');
+      multiSelector.groups = [
+        {
+          id: 'size',
+          name: 'Size',
+          type: 'button',
+          required: true,
+          options: [
+            { value: '7', label: '7', stock: 8 },
+            { value: '8', label: '8', stock: 15 },
+            { value: '9', label: '9', stock: 22 },
+            { value: '10', label: '10', stock: 18 },
+            { value: '11', label: '11', stock: 2 },
+            { value: '12', label: '12', available: false },
+            { value: '13', label: '13', priceModifier: 10, stock: 5 }
+          ]
+        },
+        {
+          id: 'color',
+          name: 'Color',
+          type: 'color',
+          required: true,
+          options: [
+            { value: 'white', label: 'White/Gray', color: '#f5f5f5', stock: 30 },
+            { value: 'black', label: 'Black/Red', color: '#1a1a1a', stock: 24 },
+            { value: 'blue', label: 'Blue/White', color: '#1e40af', stock: 18 },
+            { value: 'green', label: 'Green/Black', color: '#166534', stock: 8 }
+          ]
+        }
+      ];
+
+      let shoesBasePrice = 149.99;
+      multiSelector.addEventListener('erxSelect', (e) => {
+        const { selection, option, complete } = e.detail;
+        const priceEl = document.getElementById('shoes-price');
+        const outputEl = document.getElementById('multi-output');
+
+        // Calculate total price modifier
+        let totalModifier = 0;
+        Object.keys(selection).forEach(groupId => {
+          const group = multiSelector.groups.find(g => g.id === groupId);
+          const selectedOption = group?.options.find(o => o.value === selection[groupId]);
+          if (selectedOption?.priceModifier) {
+            totalModifier += selectedOption.priceModifier;
+          }
+        });
+
+        const newPrice = shoesBasePrice + totalModifier;
+        priceEl.innerHTML = `$${newPrice.toFixed(2)}${totalModifier > 0 ? `<span class="base-price">$${shoesBasePrice.toFixed(2)}</span>` : ''}`;
+
+        outputEl.textContent = complete
+          ? `Size: ${selection.size}, Color: ${selection.color} - Ready to add to cart!`
+          : `Selected so far: ${JSON.stringify(selection)}`;
+      });
+
+      // Dropdown selector (phone storage)
+      const dropdownSelector = document.getElementById('dropdown-selector');
+      dropdownSelector.groups = [
+        {
+          id: 'storage',
+          name: 'Storage',
+          type: 'dropdown',
+          required: true,
+          options: [
+            { value: '128', label: '128 GB', stock: 45 },
+            { value: '256', label: '256 GB', priceModifier: 100, stock: 32 },
+            { value: '512', label: '512 GB', priceModifier: 200, stock: 18 },
+            { value: '1tb', label: '1 TB', priceModifier: 400, stock: 5 }
+          ]
+        },
+        {
+          id: 'color',
+          name: 'Color',
+          type: 'color',
+          required: true,
+          options: [
+            { value: 'graphite', label: 'Graphite', color: '#41424C', stock: 50 },
+            { value: 'silver', label: 'Silver', color: '#E3E4E6', stock: 42 },
+            { value: 'gold', label: 'Gold', color: '#FAE7CF', stock: 28 },
+            { value: 'blue', label: 'Sierra Blue', color: '#A7C1D9', stock: 15 },
+            { value: 'purple', label: 'Deep Purple', color: '#594F63', stock: 3 }
+          ]
+        }
+      ];
+
+      let phoneBasePrice = 999.00;
+      dropdownSelector.addEventListener('erxSelect', (e) => {
+        const { selection, complete } = e.detail;
+        const priceEl = document.getElementById('phone-price');
+        const outputEl = document.getElementById('dropdown-output');
+
+        let totalModifier = 0;
+        Object.keys(selection).forEach(groupId => {
+          const group = dropdownSelector.groups.find(g => g.id === groupId);
+          const selectedOption = group?.options.find(o => o.value === selection[groupId]);
+          if (selectedOption?.priceModifier) {
+            totalModifier += selectedOption.priceModifier;
+          }
+        });
+
+        const newPrice = phoneBasePrice + totalModifier;
+        priceEl.innerHTML = `$${newPrice.toFixed(2)}${totalModifier > 0 ? `<span class="base-price">$${phoneBasePrice.toFixed(2)}</span>` : ''}`;
+
+        outputEl.textContent = complete
+          ? `Storage: ${selection.storage}GB, Color: ${selection.color} - Ready to order!`
+          : `Selected: ${JSON.stringify(selection)}`;
+      });
+
+      // Food selector (pizza)
+      const foodSelector = document.getElementById('food-selector');
+      foodSelector.groups = [
+        {
+          id: 'size',
+          name: 'Size',
+          type: 'button',
+          required: true,
+          options: [
+            { value: 'personal', label: 'Personal (8")', stock: 99 },
+            { value: 'medium', label: 'Medium (12")', priceModifier: 4, stock: 99 },
+            { value: 'large', label: 'Large (16")', priceModifier: 8, stock: 99 },
+            { value: 'family', label: 'Family (20")', priceModifier: 14, stock: 99 }
+          ]
+        },
+        {
+          id: 'crust',
+          name: 'Crust',
+          type: 'button',
+          required: true,
+          options: [
+            { value: 'thin', label: 'Thin', stock: 99 },
+            { value: 'regular', label: 'Regular', stock: 99 },
+            { value: 'thick', label: 'Thick', priceModifier: 1.50, stock: 99 },
+            { value: 'stuffed', label: 'Stuffed', priceModifier: 3, stock: 99 },
+            { value: 'gluten-free', label: 'Gluten-Free', priceModifier: 2, available: false }
+          ]
+        },
+        {
+          id: 'extras',
+          name: 'Extra Toppings',
+          type: 'button',
+          required: false,
+          options: [
+            { value: 'cheese', label: 'Extra Cheese', priceModifier: 2 },
+            { value: 'pepperoni', label: 'Pepperoni', priceModifier: 2.50 },
+            { value: 'mushrooms', label: 'Mushrooms', priceModifier: 1.50 },
+            { value: 'olives', label: 'Olives', priceModifier: 1.50 }
+          ]
+        }
+      ];
+
+      let pizzaBasePrice = 12.99;
+      foodSelector.addEventListener('erxSelect', (e) => {
+        const { selection, complete } = e.detail;
+        const priceEl = document.getElementById('pizza-price');
+        const outputEl = document.getElementById('food-output');
+
+        let totalModifier = 0;
+        Object.keys(selection).forEach(groupId => {
+          const group = foodSelector.groups.find(g => g.id === groupId);
+          const selectedOption = group?.options.find(o => o.value === selection[groupId]);
+          if (selectedOption?.priceModifier) {
+            totalModifier += selectedOption.priceModifier;
+          }
+        });
+
+        const newPrice = pizzaBasePrice + totalModifier;
+        priceEl.innerHTML = `$${newPrice.toFixed(2)}${totalModifier > 0 ? `<span class="base-price">$${pizzaBasePrice.toFixed(2)}</span>` : ''}`;
+
+        const parts = [];
+        if (selection.size) parts.push(selection.size);
+        if (selection.crust) parts.push(selection.crust + ' crust');
+        if (selection.extras) parts.push('+ ' + selection.extras);
+
+        outputEl.textContent = complete
+          ? `${parts.join(', ')} - Ready to order!`
+          : parts.length > 0 ? parts.join(', ') : 'Select pizza options...';
+      });
+    });
+  </script>
+</body>
+</html>

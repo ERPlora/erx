@@ -1,0 +1,241 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>erx-snackbar - ERX Components</title>
+  <script type="module" src="https://unpkg.com/@erplora/erx/dist/erx/erx.esm.js"></script>
+  <script nomodule src="https://unpkg.com/@erplora/erx/dist/erx/erx.js"></script>
+  <link rel="stylesheet" href="../styles.css">
+</head>
+<body>
+  <div class="component-page" style="padding: 2rem;">
+    <a href="../index.html" class="back-link">&larr; Back to Components</a>
+
+    <div class="component-header">
+      <h1>erx-snackbar</h1>
+      <p>A snackbar/toast notification component for displaying brief messages at the bottom of the screen. Auto-dismisses after a timeout with optional actions.</p>
+    </div>
+
+    <div class="demo-section">
+      <h2>Trigger Snackbars</h2>
+      <div class="demo-box">
+        <div style="display: flex; gap: 0.5rem; flex-wrap: wrap;">
+          <button onclick="showInfo()" style="padding: 0.5rem 1rem; background: var(--primary); color: white; border: none; border-radius: 6px; cursor: pointer;">Info Snackbar</button>
+          <button onclick="showSuccess()" style="padding: 0.5rem 1rem; background: var(--success); color: white; border: none; border-radius: 6px; cursor: pointer;">Success Snackbar</button>
+          <button onclick="showWarning()" style="padding: 0.5rem 1rem; background: var(--warning); color: white; border: none; border-radius: 6px; cursor: pointer;">Warning Snackbar</button>
+          <button onclick="showError()" style="padding: 0.5rem 1rem; background: var(--error); color: white; border: none; border-radius: 6px; cursor: pointer;">Error Snackbar</button>
+        </div>
+      </div>
+    </div>
+
+    <div class="demo-section">
+      <h2>With Actions</h2>
+      <div class="demo-box">
+        <div style="display: flex; gap: 0.5rem; flex-wrap: wrap;">
+          <button onclick="showWithUndo()" style="padding: 0.5rem 1rem; background: var(--text); color: white; border: none; border-radius: 6px; cursor: pointer;">With Undo Action</button>
+          <button onclick="showWithRetry()" style="padding: 0.5rem 1rem; background: var(--error); color: white; border: none; border-radius: 6px; cursor: pointer;">With Retry Action</button>
+        </div>
+      </div>
+    </div>
+
+    <div class="demo-section">
+      <h2>Different Positions</h2>
+      <div class="demo-box">
+        <div style="display: flex; gap: 0.5rem; flex-wrap: wrap;">
+          <button onclick="showPosition('bottom-center')" style="padding: 0.5rem 1rem; background: var(--primary); color: white; border: none; border-radius: 6px; cursor: pointer;">Bottom Center</button>
+          <button onclick="showPosition('bottom-left')" style="padding: 0.5rem 1rem; background: var(--primary); color: white; border: none; border-radius: 6px; cursor: pointer;">Bottom Left</button>
+          <button onclick="showPosition('bottom-right')" style="padding: 0.5rem 1rem; background: var(--primary); color: white; border: none; border-radius: 6px; cursor: pointer;">Bottom Right</button>
+          <button onclick="showPosition('top-center')" style="padding: 0.5rem 1rem; background: var(--primary); color: white; border: none; border-radius: 6px; cursor: pointer;">Top Center</button>
+          <button onclick="showPosition('top-left')" style="padding: 0.5rem 1rem; background: var(--primary); color: white; border: none; border-radius: 6px; cursor: pointer;">Top Left</button>
+          <button onclick="showPosition('top-right')" style="padding: 0.5rem 1rem; background: var(--primary); color: white; border: none; border-radius: 6px; cursor: pointer;">Top Right</button>
+        </div>
+      </div>
+    </div>
+
+    <div class="demo-section">
+      <h2>Duration Options</h2>
+      <div class="demo-box">
+        <div style="display: flex; gap: 0.5rem; flex-wrap: wrap;">
+          <button onclick="showDuration(2000)" style="padding: 0.5rem 1rem; background: var(--primary); color: white; border: none; border-radius: 6px; cursor: pointer;">2 Seconds</button>
+          <button onclick="showDuration(5000)" style="padding: 0.5rem 1rem; background: var(--primary); color: white; border: none; border-radius: 6px; cursor: pointer;">5 Seconds</button>
+          <button onclick="showPersistent()" style="padding: 0.5rem 1rem; background: var(--primary); color: white; border: none; border-radius: 6px; cursor: pointer;">Persistent (Click to dismiss)</button>
+        </div>
+      </div>
+    </div>
+
+    <div class="demo-section">
+      <h2>Stacked Snackbars</h2>
+      <div class="demo-box">
+        <div style="display: flex; gap: 0.5rem; flex-wrap: wrap;">
+          <button onclick="showMultiple()" style="padding: 0.5rem 1rem; background: var(--primary); color: white; border: none; border-radius: 6px; cursor: pointer;">Show Multiple</button>
+          <button onclick="clearAll()" style="padding: 0.5rem 1rem; background: var(--text-muted); color: white; border: none; border-radius: 6px; cursor: pointer;">Clear All</button>
+        </div>
+      </div>
+    </div>
+
+    <div class="demo-section">
+      <h2>Props</h2>
+      <table style="width: 100%; border-collapse: collapse;">
+        <thead>
+          <tr style="border-bottom: 2px solid var(--border);">
+            <th style="text-align: left; padding: 0.5rem;">Prop</th>
+            <th style="text-align: left; padding: 0.5rem;">Type</th>
+            <th style="text-align: left; padding: 0.5rem;">Default</th>
+            <th style="text-align: left; padding: 0.5rem;">Description</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr style="border-bottom: 1px solid var(--border);">
+            <td style="padding: 0.5rem;"><code>message</code></td>
+            <td style="padding: 0.5rem;">string</td>
+            <td style="padding: 0.5rem;">-</td>
+            <td style="padding: 0.5rem;">Message to display</td>
+          </tr>
+          <tr style="border-bottom: 1px solid var(--border);">
+            <td style="padding: 0.5rem;"><code>type</code></td>
+            <td style="padding: 0.5rem;">'default' | 'info' | 'success' | 'warning' | 'error'</td>
+            <td style="padding: 0.5rem;">'default'</td>
+            <td style="padding: 0.5rem;">Snackbar type/color</td>
+          </tr>
+          <tr style="border-bottom: 1px solid var(--border);">
+            <td style="padding: 0.5rem;"><code>duration</code></td>
+            <td style="padding: 0.5rem;">number</td>
+            <td style="padding: 0.5rem;">3000</td>
+            <td style="padding: 0.5rem;">Auto-dismiss duration (ms)</td>
+          </tr>
+          <tr style="border-bottom: 1px solid var(--border);">
+            <td style="padding: 0.5rem;"><code>position</code></td>
+            <td style="padding: 0.5rem;">string</td>
+            <td style="padding: 0.5rem;">'bottom-center'</td>
+            <td style="padding: 0.5rem;">Position on screen</td>
+          </tr>
+          <tr style="border-bottom: 1px solid var(--border);">
+            <td style="padding: 0.5rem;"><code>action-text</code></td>
+            <td style="padding: 0.5rem;">string</td>
+            <td style="padding: 0.5rem;">-</td>
+            <td style="padding: 0.5rem;">Action button text</td>
+          </tr>
+          <tr style="border-bottom: 1px solid var(--border);">
+            <td style="padding: 0.5rem;"><code>dismissible</code></td>
+            <td style="padding: 0.5rem;">boolean</td>
+            <td style="padding: 0.5rem;">true</td>
+            <td style="padding: 0.5rem;">Show close button</td>
+          </tr>
+          <tr style="border-bottom: 1px solid var(--border);">
+            <td style="padding: 0.5rem;"><code>persistent</code></td>
+            <td style="padding: 0.5rem;">boolean</td>
+            <td style="padding: 0.5rem;">false</td>
+            <td style="padding: 0.5rem;">Disable auto-dismiss</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <div class="demo-section">
+      <h2>Events</h2>
+      <table style="width: 100%; border-collapse: collapse;">
+        <thead>
+          <tr style="border-bottom: 2px solid var(--border);">
+            <th style="text-align: left; padding: 0.5rem;">Event</th>
+            <th style="text-align: left; padding: 0.5rem;">Description</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr style="border-bottom: 1px solid var(--border);">
+            <td style="padding: 0.5rem;"><code>erxDismiss</code></td>
+            <td style="padding: 0.5rem;">Emitted when snackbar is dismissed</td>
+          </tr>
+          <tr style="border-bottom: 1px solid var(--border);">
+            <td style="padding: 0.5rem;"><code>erxAction</code></td>
+            <td style="padding: 0.5rem;">Emitted when action button is clicked</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <!-- Snackbar container -->
+    <erx-snackbar-container id="snackbar-container"></erx-snackbar-container>
+  </div>
+
+  <script>
+    const container = document.getElementById('snackbar-container');
+
+    function showSnackbar(options) {
+      const snackbar = document.createElement('erx-snackbar');
+      Object.keys(options).forEach(key => {
+        if (key === 'actionText') {
+          snackbar.setAttribute('action-text', options[key]);
+        } else {
+          snackbar.setAttribute(key, options[key]);
+        }
+      });
+      document.body.appendChild(snackbar);
+      snackbar.show();
+      return snackbar;
+    }
+
+    function showInfo() {
+      showSnackbar({ message: 'This is an informational message', type: 'info' });
+    }
+
+    function showSuccess() {
+      showSnackbar({ message: 'Operation completed successfully!', type: 'success' });
+    }
+
+    function showWarning() {
+      showSnackbar({ message: 'Please review your changes', type: 'warning' });
+    }
+
+    function showError() {
+      showSnackbar({ message: 'An error occurred', type: 'error' });
+    }
+
+    function showWithUndo() {
+      const snackbar = showSnackbar({
+        message: 'Item deleted',
+        type: 'default',
+        actionText: 'Undo'
+      });
+      snackbar.addEventListener('erxAction', () => {
+        console.log('Undo clicked!');
+        showSnackbar({ message: 'Action undone', type: 'success' });
+      });
+    }
+
+    function showWithRetry() {
+      const snackbar = showSnackbar({
+        message: 'Failed to save changes',
+        type: 'error',
+        actionText: 'Retry'
+      });
+      snackbar.addEventListener('erxAction', () => {
+        console.log('Retry clicked!');
+        showSnackbar({ message: 'Retrying...', type: 'info' });
+      });
+    }
+
+    function showPosition(position) {
+      showSnackbar({ message: `Position: ${position}`, type: 'info', position: position });
+    }
+
+    function showDuration(duration) {
+      showSnackbar({ message: `This will dismiss in ${duration / 1000} seconds`, type: 'info', duration: duration });
+    }
+
+    function showPersistent() {
+      showSnackbar({ message: 'This snackbar will stay until you dismiss it', type: 'warning', persistent: true });
+    }
+
+    function showMultiple() {
+      setTimeout(() => showSnackbar({ message: 'First notification', type: 'info' }), 0);
+      setTimeout(() => showSnackbar({ message: 'Second notification', type: 'success' }), 200);
+      setTimeout(() => showSnackbar({ message: 'Third notification', type: 'warning' }), 400);
+    }
+
+    function clearAll() {
+      document.querySelectorAll('erx-snackbar').forEach(s => s.dismiss());
+    }
+  </script>
+</body>
+</html>

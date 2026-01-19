@@ -1,0 +1,380 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>erx-stock-indicator - ERX Components</title>
+  <script type="module" src="https://unpkg.com/@erplora/erx/dist/erx/erx.esm.js"></script>
+  <script nomodule src="https://unpkg.com/@erplora/erx/dist/erx/erx.js"></script>
+  <link rel="stylesheet" href="../styles.css">
+  <style>
+    .stock-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+      gap: 1.5rem;
+    }
+    .stock-card {
+      background: var(--bg-secondary);
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      padding: 1rem;
+    }
+    .stock-card h4 {
+      margin-bottom: 0.75rem;
+      font-size: 0.875rem;
+      color: var(--text-muted);
+    }
+    .product-row {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 0.75rem 0;
+      border-bottom: 1px solid var(--border);
+    }
+    .product-row:last-child {
+      border-bottom: none;
+    }
+    .product-name {
+      font-weight: 500;
+    }
+    .product-sku {
+      font-size: 0.75rem;
+      color: var(--text-muted);
+    }
+    .variants-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 1rem;
+      margin-top: 1rem;
+    }
+    .variant-box {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 0.5rem;
+      padding: 0.75rem;
+      background: var(--bg);
+      border-radius: 6px;
+      min-width: 80px;
+    }
+    .variant-label {
+      font-size: 0.75rem;
+      color: var(--text-muted);
+    }
+    .size-demos {
+      display: flex;
+      align-items: center;
+      gap: 2rem;
+      flex-wrap: wrap;
+    }
+    .size-demo-item {
+      text-align: center;
+    }
+    .size-demo-item span {
+      display: block;
+      font-size: 0.75rem;
+      color: var(--text-muted);
+      margin-top: 0.5rem;
+    }
+  </style>
+</head>
+<body>
+  <div class="component-page" style="padding: 2rem;">
+    <a href="../index.html" class="back-link">&larr; Back to Components</a>
+    <div class="component-header">
+      <h1>erx-stock-indicator</h1>
+      <p>Stock level indicator showing in-stock, low stock, out of stock, and backorder states with multiple display variants.</p>
+    </div>
+
+    <!-- Stock Levels Demo -->
+    <div class="demo-section">
+      <h2>Stock Levels</h2>
+      <div class="demo-box">
+        <span class="demo-label">Different stock states</span>
+        <div class="stock-grid">
+          <div class="stock-card">
+            <h4>In Stock</h4>
+            <erx-stock-indicator quantity="150" low-threshold="10"></erx-stock-indicator>
+          </div>
+          <div class="stock-card">
+            <h4>Low Stock</h4>
+            <erx-stock-indicator quantity="4" low-threshold="10"></erx-stock-indicator>
+          </div>
+          <div class="stock-card">
+            <h4>Out of Stock</h4>
+            <erx-stock-indicator quantity="0"></erx-stock-indicator>
+          </div>
+          <div class="stock-card">
+            <h4>Backorder</h4>
+            <erx-stock-indicator quantity="-5" allow-backorder="true"></erx-stock-indicator>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Variant Styles Demo -->
+    <div class="demo-section">
+      <h2>Display Variants</h2>
+      <div class="demo-box">
+        <span class="demo-label">Dot, Badge, and Bar styles</span>
+        <div class="stock-grid">
+          <div class="stock-card">
+            <h4>Dot Style (Default)</h4>
+            <div style="display: flex; flex-direction: column; gap: 1rem;">
+              <erx-stock-indicator variant="dot" quantity="85"></erx-stock-indicator>
+              <erx-stock-indicator variant="dot" quantity="3" low-threshold="5"></erx-stock-indicator>
+              <erx-stock-indicator variant="dot" quantity="0"></erx-stock-indicator>
+            </div>
+          </div>
+          <div class="stock-card">
+            <h4>Badge Style</h4>
+            <div style="display: flex; flex-direction: column; gap: 1rem;">
+              <erx-stock-indicator variant="badge" quantity="85"></erx-stock-indicator>
+              <erx-stock-indicator variant="badge" quantity="3" low-threshold="5"></erx-stock-indicator>
+              <erx-stock-indicator variant="badge" quantity="0"></erx-stock-indicator>
+            </div>
+          </div>
+          <div class="stock-card">
+            <h4>Bar Style</h4>
+            <div style="display: flex; flex-direction: column; gap: 1rem;">
+              <erx-stock-indicator variant="bar" quantity="85" max-stock="100"></erx-stock-indicator>
+              <erx-stock-indicator variant="bar" quantity="15" max-stock="100" low-threshold="20"></erx-stock-indicator>
+              <erx-stock-indicator variant="bar" quantity="0" max-stock="100"></erx-stock-indicator>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Sizes Demo -->
+    <div class="demo-section">
+      <h2>Sizes</h2>
+      <div class="demo-box">
+        <span class="demo-label">Small, Medium, and Large</span>
+        <div class="size-demos">
+          <div class="size-demo-item">
+            <erx-stock-indicator size="sm" quantity="42"></erx-stock-indicator>
+            <span>Small</span>
+          </div>
+          <div class="size-demo-item">
+            <erx-stock-indicator size="md" quantity="42"></erx-stock-indicator>
+            <span>Medium</span>
+          </div>
+          <div class="size-demo-item">
+            <erx-stock-indicator size="lg" quantity="42"></erx-stock-indicator>
+            <span>Large</span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Product Inventory Demo -->
+    <div class="demo-section">
+      <h2>Product Inventory List</h2>
+      <div class="demo-box">
+        <span class="demo-label">Realistic inventory management view</span>
+        <div id="inventory-list">
+          <!-- Products will be inserted here -->
+        </div>
+      </div>
+    </div>
+
+    <!-- Product Variants Demo -->
+    <div class="demo-section">
+      <h2>Product Variants Stock</h2>
+      <div class="demo-box">
+        <span class="demo-label">Stock levels for different sizes/colors</span>
+        <div>
+          <h4 style="margin-bottom: 0.5rem;">Nike Air Max 90 - Stock by Size</h4>
+          <div class="variants-row" id="size-variants">
+            <!-- Size variants will be inserted here -->
+          </div>
+        </div>
+        <div style="margin-top: 2rem;">
+          <h4 style="margin-bottom: 0.5rem;">iPhone 15 Pro - Stock by Color</h4>
+          <div class="variants-row" id="color-variants">
+            <!-- Color variants will be inserted here -->
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Custom Labels Demo -->
+    <div class="demo-section">
+      <h2>Custom Labels</h2>
+      <div class="demo-box">
+        <span class="demo-label">Localized or custom status labels</span>
+        <div class="stock-grid">
+          <div class="stock-card">
+            <h4>Spanish</h4>
+            <erx-stock-indicator id="spanish-stock" quantity="25"></erx-stock-indicator>
+          </div>
+          <div class="stock-card">
+            <h4>French</h4>
+            <erx-stock-indicator id="french-stock" quantity="2" low-threshold="5"></erx-stock-indicator>
+          </div>
+          <div class="stock-card">
+            <h4>Custom Messages</h4>
+            <erx-stock-indicator id="custom-stock" quantity="0"></erx-stock-indicator>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Code Example -->
+    <div class="demo-section">
+      <h2>Usage</h2>
+      <pre class="code-block">&lt;!-- Basic usage --&gt;
+&lt;erx-stock-indicator
+  quantity="25"
+  low-threshold="10"
+  show-quantity="true"
+  show-label="true"
+&gt;&lt;/erx-stock-indicator&gt;
+
+&lt;!-- Badge variant --&gt;
+&lt;erx-stock-indicator
+  variant="badge"
+  quantity="5"
+  size="lg"
+&gt;&lt;/erx-stock-indicator&gt;
+
+&lt;!-- Bar variant for inventory view --&gt;
+&lt;erx-stock-indicator
+  variant="bar"
+  quantity="65"
+  max-stock="100"
+  low-threshold="20"
+&gt;&lt;/erx-stock-indicator&gt;
+
+&lt;!-- With custom labels --&gt;
+&lt;script&gt;
+const indicator = document.querySelector('erx-stock-indicator');
+indicator.labels = {
+  'in-stock': 'Available',
+  'low': 'Almost Gone',
+  'out': 'Sold Out',
+  'backorder': 'Pre-Order'
+};
+&lt;/script&gt;</pre>
+    </div>
+  </div>
+
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      // Product inventory list
+      const inventoryList = document.getElementById('inventory-list');
+      const products = [
+        { name: 'MacBook Pro 14"', sku: 'MBP-14-M3', quantity: 45 },
+        { name: 'iPad Air 11"', sku: 'IPA-11-M2', quantity: 8 },
+        { name: 'AirPods Pro 2', sku: 'APP-2-USBC', quantity: 3 },
+        { name: 'Apple Watch Ultra 2', sku: 'AWU-2-49MM', quantity: 0 },
+        { name: 'Magic Keyboard', sku: 'MK-TOUCH-ID', quantity: 128 },
+        { name: 'Studio Display', sku: 'SD-27-5K', quantity: -12 }
+      ];
+
+      products.forEach(product => {
+        const row = document.createElement('div');
+        row.className = 'product-row';
+        row.innerHTML = `
+          <div>
+            <div class="product-name">${product.name}</div>
+            <div class="product-sku">${product.sku}</div>
+          </div>
+        `;
+
+        const indicator = document.createElement('erx-stock-indicator');
+        indicator.quantity = product.quantity;
+        indicator.lowThreshold = 10;
+        indicator.allowBackorder = product.quantity < 0;
+        row.appendChild(indicator);
+
+        inventoryList.appendChild(row);
+      });
+
+      // Size variants
+      const sizeVariantsContainer = document.getElementById('size-variants');
+      const sizeVariants = [
+        { size: '7', quantity: 0 },
+        { size: '7.5', quantity: 2 },
+        { size: '8', quantity: 15 },
+        { size: '8.5', quantity: 28 },
+        { size: '9', quantity: 34 },
+        { size: '9.5', quantity: 12 },
+        { size: '10', quantity: 8 },
+        { size: '10.5', quantity: 3 },
+        { size: '11', quantity: 0 },
+        { size: '11.5', quantity: 5 },
+        { size: '12', quantity: 0 }
+      ];
+
+      sizeVariants.forEach(variant => {
+        const box = document.createElement('div');
+        box.className = 'variant-box';
+        box.innerHTML = `<span class="variant-label">Size ${variant.size}</span>`;
+
+        const indicator = document.createElement('erx-stock-indicator');
+        indicator.quantity = variant.quantity;
+        indicator.variant = 'badge';
+        indicator.size = 'sm';
+        indicator.showLabel = false;
+        indicator.lowThreshold = 5;
+        box.appendChild(indicator);
+
+        sizeVariantsContainer.appendChild(box);
+      });
+
+      // Color variants
+      const colorVariantsContainer = document.getElementById('color-variants');
+      const colorVariants = [
+        { color: 'Natural Titanium', quantity: 42 },
+        { color: 'Blue Titanium', quantity: 18 },
+        { color: 'White Titanium', quantity: 4 },
+        { color: 'Black Titanium', quantity: 0 }
+      ];
+
+      colorVariants.forEach(variant => {
+        const box = document.createElement('div');
+        box.className = 'variant-box';
+        box.innerHTML = `<span class="variant-label">${variant.color}</span>`;
+
+        const indicator = document.createElement('erx-stock-indicator');
+        indicator.quantity = variant.quantity;
+        indicator.variant = 'dot';
+        indicator.size = 'sm';
+        indicator.lowThreshold = 10;
+        box.appendChild(indicator);
+
+        colorVariantsContainer.appendChild(box);
+      });
+
+      // Custom labels - Spanish
+      const spanishStock = document.getElementById('spanish-stock');
+      spanishStock.labels = {
+        'in-stock': 'Disponible',
+        'low': 'Pocas unidades',
+        'out': 'Agotado',
+        'backorder': 'Pedido anticipado'
+      };
+
+      // Custom labels - French
+      const frenchStock = document.getElementById('french-stock');
+      frenchStock.labels = {
+        'in-stock': 'En stock',
+        'low': 'Stock faible',
+        'out': 'Rupture',
+        'backorder': 'Pre-commande'
+      };
+
+      // Custom labels - Marketing messages
+      const customStock = document.getElementById('custom-stock');
+      customStock.labels = {
+        'in-stock': 'Ships Today!',
+        'low': 'Hurry, Almost Gone!',
+        'out': 'Join Waitlist',
+        'backorder': 'Coming Soon'
+      };
+    });
+  </script>
+</body>
+</html>

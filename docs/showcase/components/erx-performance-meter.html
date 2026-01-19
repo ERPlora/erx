@@ -1,0 +1,252 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>erx-performance-meter - ERX Components</title>
+  <script type="module" src="https://unpkg.com/@erplora/erx/dist/erx/erx.esm.js"></script>
+  <script nomodule src="https://unpkg.com/@erplora/erx/dist/erx/erx.js"></script>
+  <link rel="stylesheet" href="../styles.css">
+</head>
+<body>
+  <div class="component-page" style="padding: 2rem;">
+    <a href="../index.html" class="back-link">&larr; Back to Components</a>
+
+    <div class="component-header">
+      <h1>erx-performance-meter</h1>
+      <p>Performance metrics display component for visualizing employee KPIs, goals, and achievement progress with various chart types.</p>
+    </div>
+
+    <div class="demo-section">
+      <h2>Radial Gauge</h2>
+      <div class="demo-box">
+        <div class="demo-row">
+          <div class="demo-col" style="text-align: center;">
+            <erx-performance-meter id="meter-radial" type="radial" value="78" label="Overall Score"></erx-performance-meter>
+          </div>
+          <div class="demo-col" style="text-align: center;">
+            <erx-performance-meter id="meter-radial-low" type="radial" value="45" label="Attendance" color="warning"></erx-performance-meter>
+          </div>
+          <div class="demo-col" style="text-align: center;">
+            <erx-performance-meter id="meter-radial-high" type="radial" value="92" label="Quality" color="success"></erx-performance-meter>
+          </div>
+        </div>
+      </div>
+      <div class="code-block">
+&lt;erx-performance-meter
+  type="radial"
+  value="78"
+  label="Overall Score"
+&gt;&lt;/erx-performance-meter&gt;
+      </div>
+    </div>
+
+    <div class="demo-section">
+      <h2>Linear Progress</h2>
+      <div class="demo-box">
+        <div style="display: flex; flex-direction: column; gap: 1.5rem;">
+          <erx-performance-meter type="linear" value="85" label="Sales Target" target="100" show-target></erx-performance-meter>
+          <erx-performance-meter type="linear" value="62" label="Customer Satisfaction" max="100" color="primary"></erx-performance-meter>
+          <erx-performance-meter type="linear" value="95" label="Response Time" color="success"></erx-performance-meter>
+        </div>
+      </div>
+    </div>
+
+    <div class="demo-section">
+      <h2>Multi-Metric Dashboard</h2>
+      <div class="demo-box">
+        <erx-performance-meter id="meter-dashboard" type="dashboard"></erx-performance-meter>
+      </div>
+    </div>
+
+    <div class="demo-section">
+      <h2>Comparison View</h2>
+      <div class="demo-box">
+        <erx-performance-meter id="meter-comparison" type="comparison" show-trend></erx-performance-meter>
+      </div>
+    </div>
+
+    <div class="demo-section">
+      <h2>Goal Tracker</h2>
+      <div class="demo-box">
+        <erx-performance-meter id="meter-goals" type="goals"></erx-performance-meter>
+      </div>
+    </div>
+
+    <div class="demo-section">
+      <h2>Sizes</h2>
+      <div class="demo-box">
+        <div class="demo-row" style="align-items: flex-end;">
+          <div class="demo-col" style="text-align: center;">
+            <span class="demo-label">Small</span>
+            <erx-performance-meter type="radial" value="75" size="small"></erx-performance-meter>
+          </div>
+          <div class="demo-col" style="text-align: center;">
+            <span class="demo-label">Medium (Default)</span>
+            <erx-performance-meter type="radial" value="75" size="medium"></erx-performance-meter>
+          </div>
+          <div class="demo-col" style="text-align: center;">
+            <span class="demo-label">Large</span>
+            <erx-performance-meter type="radial" value="75" size="large"></erx-performance-meter>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="demo-section">
+      <h2>Props</h2>
+      <table style="width: 100%; border-collapse: collapse;">
+        <thead>
+          <tr style="border-bottom: 2px solid var(--border);">
+            <th style="text-align: left; padding: 0.5rem;">Prop</th>
+            <th style="text-align: left; padding: 0.5rem;">Type</th>
+            <th style="text-align: left; padding: 0.5rem;">Default</th>
+            <th style="text-align: left; padding: 0.5rem;">Description</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr style="border-bottom: 1px solid var(--border);">
+            <td style="padding: 0.5rem;"><code>type</code></td>
+            <td style="padding: 0.5rem;">'radial' | 'linear' | 'dashboard' | 'comparison' | 'goals'</td>
+            <td style="padding: 0.5rem;">'radial'</td>
+            <td style="padding: 0.5rem;">Display type</td>
+          </tr>
+          <tr style="border-bottom: 1px solid var(--border);">
+            <td style="padding: 0.5rem;"><code>value</code></td>
+            <td style="padding: 0.5rem;">number</td>
+            <td style="padding: 0.5rem;">0</td>
+            <td style="padding: 0.5rem;">Current value</td>
+          </tr>
+          <tr style="border-bottom: 1px solid var(--border);">
+            <td style="padding: 0.5rem;"><code>max</code></td>
+            <td style="padding: 0.5rem;">number</td>
+            <td style="padding: 0.5rem;">100</td>
+            <td style="padding: 0.5rem;">Maximum value</td>
+          </tr>
+          <tr style="border-bottom: 1px solid var(--border);">
+            <td style="padding: 0.5rem;"><code>target</code></td>
+            <td style="padding: 0.5rem;">number</td>
+            <td style="padding: 0.5rem;">null</td>
+            <td style="padding: 0.5rem;">Target value</td>
+          </tr>
+          <tr style="border-bottom: 1px solid var(--border);">
+            <td style="padding: 0.5rem;"><code>label</code></td>
+            <td style="padding: 0.5rem;">string</td>
+            <td style="padding: 0.5rem;">''</td>
+            <td style="padding: 0.5rem;">Metric label</td>
+          </tr>
+          <tr style="border-bottom: 1px solid var(--border);">
+            <td style="padding: 0.5rem;"><code>color</code></td>
+            <td style="padding: 0.5rem;">'primary' | 'success' | 'warning' | 'error' | 'auto'</td>
+            <td style="padding: 0.5rem;">'auto'</td>
+            <td style="padding: 0.5rem;">Color scheme (auto = based on value)</td>
+          </tr>
+          <tr style="border-bottom: 1px solid var(--border);">
+            <td style="padding: 0.5rem;"><code>size</code></td>
+            <td style="padding: 0.5rem;">'small' | 'medium' | 'large'</td>
+            <td style="padding: 0.5rem;">'medium'</td>
+            <td style="padding: 0.5rem;">Component size</td>
+          </tr>
+          <tr style="border-bottom: 1px solid var(--border);">
+            <td style="padding: 0.5rem;"><code>metrics</code></td>
+            <td style="padding: 0.5rem;">Metric[]</td>
+            <td style="padding: 0.5rem;">[]</td>
+            <td style="padding: 0.5rem;">Metrics for dashboard/comparison</td>
+          </tr>
+          <tr style="border-bottom: 1px solid var(--border);">
+            <td style="padding: 0.5rem;"><code>goals</code></td>
+            <td style="padding: 0.5rem;">Goal[]</td>
+            <td style="padding: 0.5rem;">[]</td>
+            <td style="padding: 0.5rem;">Goals for goal tracker</td>
+          </tr>
+          <tr style="border-bottom: 1px solid var(--border);">
+            <td style="padding: 0.5rem;"><code>showTarget</code></td>
+            <td style="padding: 0.5rem;">boolean</td>
+            <td style="padding: 0.5rem;">false</td>
+            <td style="padding: 0.5rem;">Show target indicator</td>
+          </tr>
+          <tr style="border-bottom: 1px solid var(--border);">
+            <td style="padding: 0.5rem;"><code>showTrend</code></td>
+            <td style="padding: 0.5rem;">boolean</td>
+            <td style="padding: 0.5rem;">false</td>
+            <td style="padding: 0.5rem;">Show trend indicator</td>
+          </tr>
+          <tr style="border-bottom: 1px solid var(--border);">
+            <td style="padding: 0.5rem;"><code>animated</code></td>
+            <td style="padding: 0.5rem;">boolean</td>
+            <td style="padding: 0.5rem;">true</td>
+            <td style="padding: 0.5rem;">Enable animations</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <div class="demo-section">
+      <h2>Events</h2>
+      <table style="width: 100%; border-collapse: collapse;">
+        <thead>
+          <tr style="border-bottom: 2px solid var(--border);">
+            <th style="text-align: left; padding: 0.5rem;">Event</th>
+            <th style="text-align: left; padding: 0.5rem;">Description</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr style="border-bottom: 1px solid var(--border);">
+            <td style="padding: 0.5rem;"><code>erxMetricClick</code></td>
+            <td style="padding: 0.5rem;">Emitted when a metric is clicked</td>
+          </tr>
+          <tr style="border-bottom: 1px solid var(--border);">
+            <td style="padding: 0.5rem;"><code>erxGoalClick</code></td>
+            <td style="padding: 0.5rem;">Emitted when a goal is clicked</td>
+          </tr>
+          <tr style="border-bottom: 1px solid var(--border);">
+            <td style="padding: 0.5rem;"><code>erxTargetReached</code></td>
+            <td style="padding: 0.5rem;">Emitted when target is reached</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+  <script>
+    // Dashboard metrics
+    const dashboardMetrics = [
+      { id: 'productivity', label: 'Productivity', value: 87, target: 85, trend: 5, unit: '%' },
+      { id: 'quality', label: 'Quality Score', value: 92, target: 90, trend: 3, unit: '%' },
+      { id: 'attendance', label: 'Attendance', value: 96, target: 95, trend: 1, unit: '%' },
+      { id: 'collaboration', label: 'Collaboration', value: 78, target: 80, trend: -2, unit: '%' },
+      { id: 'learning', label: 'Learning Hours', value: 24, target: 20, trend: 8, unit: 'hrs' },
+      { id: 'feedback', label: 'Peer Feedback', value: 4.5, target: 4.0, trend: 0.3, unit: '/5' }
+    ];
+
+    // Comparison data
+    const comparisonMetrics = [
+      { id: 'sales', label: 'Sales', current: 125000, previous: 110000, target: 130000 },
+      { id: 'deals', label: 'Deals Closed', current: 28, previous: 24, target: 30 },
+      { id: 'calls', label: 'Calls Made', current: 450, previous: 420, target: 500 },
+      { id: 'meetings', label: 'Meetings', current: 35, previous: 30, target: 40 }
+    ];
+
+    // Goals
+    const goals = [
+      { id: 'goal-1', title: 'Complete Project Alpha', progress: 85, dueDate: '2025-02-15', status: 'on-track' },
+      { id: 'goal-2', title: 'Achieve Sales Target Q1', progress: 62, dueDate: '2025-03-31', status: 'at-risk' },
+      { id: 'goal-3', title: 'Complete Certification', progress: 100, dueDate: '2025-01-30', status: 'completed' },
+      { id: 'goal-4', title: 'Mentor 2 Junior Team Members', progress: 50, dueDate: '2025-06-30', status: 'on-track' },
+      { id: 'goal-5', title: 'Improve Customer Satisfaction', progress: 30, dueDate: '2025-12-31', status: 'on-track' }
+    ];
+
+    // Dashboard meter
+    const meterDashboard = document.getElementById('meter-dashboard');
+    meterDashboard.metrics = dashboardMetrics;
+
+    // Comparison meter
+    const meterComparison = document.getElementById('meter-comparison');
+    meterComparison.metrics = comparisonMetrics;
+
+    // Goals meter
+    const meterGoals = document.getElementById('meter-goals');
+    meterGoals.goals = goals;
+  </script>
+</body>
+</html>

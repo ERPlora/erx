@@ -1,0 +1,317 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>erx-pdf-viewer - ERX Components</title>
+  <script type="module" src="https://unpkg.com/@erplora/erx/dist/erx/erx.esm.js"></script>
+  <script nomodule src="https://unpkg.com/@erplora/erx/dist/erx/erx.js"></script>
+  <link rel="stylesheet" href="../styles.css">
+</head>
+<body>
+  <div class="component-page" style="padding: 2rem;">
+    <a href="../index.html" class="back-link">&larr; Back to Components</a>
+
+    <div class="component-header">
+      <h1>erx-pdf-viewer</h1>
+      <p>A PDF document viewer component with page navigation, zoom controls, search, and print functionality. Uses PDF.js for rendering.</p>
+    </div>
+
+    <div class="demo-section">
+      <h2>Basic PDF Viewer</h2>
+      <div class="demo-box" style="height: 600px;">
+        <erx-pdf-viewer
+          src="https://mozilla.github.io/pdf.js/web/compressed.tracemonkey-pldi-09.pdf">
+        </erx-pdf-viewer>
+      </div>
+    </div>
+
+    <div class="demo-section">
+      <h2>With Toolbar</h2>
+      <div class="demo-box" style="height: 600px;">
+        <erx-pdf-viewer
+          src="https://mozilla.github.io/pdf.js/web/compressed.tracemonkey-pldi-09.pdf"
+          show-toolbar
+          show-page-navigation
+          show-zoom-controls
+          show-download
+          show-print>
+        </erx-pdf-viewer>
+      </div>
+    </div>
+
+    <div class="demo-section">
+      <h2>With Thumbnails Sidebar</h2>
+      <div class="demo-box" style="height: 600px;">
+        <erx-pdf-viewer
+          src="https://mozilla.github.io/pdf.js/web/compressed.tracemonkey-pldi-09.pdf"
+          show-toolbar
+          show-thumbnails
+          thumbnail-position="left">
+        </erx-pdf-viewer>
+      </div>
+    </div>
+
+    <div class="demo-section">
+      <h2>With Outline/Bookmarks</h2>
+      <div class="demo-box" style="height: 600px;">
+        <erx-pdf-viewer
+          src="https://mozilla.github.io/pdf.js/web/compressed.tracemonkey-pldi-09.pdf"
+          show-toolbar
+          show-outline>
+        </erx-pdf-viewer>
+      </div>
+    </div>
+
+    <div class="demo-section">
+      <h2>Single Page Mode</h2>
+      <div class="demo-box" style="height: 600px;">
+        <erx-pdf-viewer
+          src="https://mozilla.github.io/pdf.js/web/compressed.tracemonkey-pldi-09.pdf"
+          show-toolbar
+          view-mode="single"
+          fit-mode="page-width">
+        </erx-pdf-viewer>
+      </div>
+    </div>
+
+    <div class="demo-section">
+      <h2>Two-Page Spread</h2>
+      <div class="demo-box" style="height: 600px;">
+        <erx-pdf-viewer
+          src="https://mozilla.github.io/pdf.js/web/compressed.tracemonkey-pldi-09.pdf"
+          show-toolbar
+          view-mode="spread">
+        </erx-pdf-viewer>
+      </div>
+    </div>
+
+    <div class="demo-section">
+      <h2>With Search</h2>
+      <div class="demo-box" style="height: 600px;">
+        <erx-pdf-viewer
+          src="https://mozilla.github.io/pdf.js/web/compressed.tracemonkey-pldi-09.pdf"
+          show-toolbar
+          show-search>
+        </erx-pdf-viewer>
+      </div>
+    </div>
+
+    <div class="demo-section">
+      <h2>Minimal Viewer</h2>
+      <div class="demo-box" style="height: 400px;">
+        <erx-pdf-viewer
+          src="https://mozilla.github.io/pdf.js/web/compressed.tracemonkey-pldi-09.pdf"
+          minimal>
+        </erx-pdf-viewer>
+      </div>
+    </div>
+
+    <div class="demo-section">
+      <h2>Load PDF from File</h2>
+      <div class="demo-box">
+        <input type="file" id="pdf-file-input" accept=".pdf" style="display: none;">
+        <button onclick="document.getElementById('pdf-file-input').click()" style="padding: 0.75rem 1.5rem; background: var(--primary); color: white; border: none; border-radius: 6px; cursor: pointer;">
+          Upload PDF
+        </button>
+        <p id="pdf-status" style="margin-top: 1rem; color: var(--text-muted);">No file selected</p>
+        <div id="upload-viewer-container" style="height: 500px; margin-top: 1rem; display: none;">
+          <erx-pdf-viewer id="upload-viewer" show-toolbar></erx-pdf-viewer>
+        </div>
+      </div>
+    </div>
+
+    <div class="demo-section">
+      <h2>Props</h2>
+      <table style="width: 100%; border-collapse: collapse;">
+        <thead>
+          <tr style="border-bottom: 2px solid var(--border);">
+            <th style="text-align: left; padding: 0.5rem;">Prop</th>
+            <th style="text-align: left; padding: 0.5rem;">Type</th>
+            <th style="text-align: left; padding: 0.5rem;">Default</th>
+            <th style="text-align: left; padding: 0.5rem;">Description</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr style="border-bottom: 1px solid var(--border);">
+            <td style="padding: 0.5rem;"><code>src</code></td>
+            <td style="padding: 0.5rem;">string</td>
+            <td style="padding: 0.5rem;">-</td>
+            <td style="padding: 0.5rem;">PDF file URL</td>
+          </tr>
+          <tr style="border-bottom: 1px solid var(--border);">
+            <td style="padding: 0.5rem;"><code>page</code></td>
+            <td style="padding: 0.5rem;">number</td>
+            <td style="padding: 0.5rem;">1</td>
+            <td style="padding: 0.5rem;">Current page number</td>
+          </tr>
+          <tr style="border-bottom: 1px solid var(--border);">
+            <td style="padding: 0.5rem;"><code>zoom</code></td>
+            <td style="padding: 0.5rem;">number</td>
+            <td style="padding: 0.5rem;">1</td>
+            <td style="padding: 0.5rem;">Zoom level (1 = 100%)</td>
+          </tr>
+          <tr style="border-bottom: 1px solid var(--border);">
+            <td style="padding: 0.5rem;"><code>view-mode</code></td>
+            <td style="padding: 0.5rem;">'continuous' | 'single' | 'spread'</td>
+            <td style="padding: 0.5rem;">'continuous'</td>
+            <td style="padding: 0.5rem;">Page viewing mode</td>
+          </tr>
+          <tr style="border-bottom: 1px solid var(--border);">
+            <td style="padding: 0.5rem;"><code>fit-mode</code></td>
+            <td style="padding: 0.5rem;">'auto' | 'page-width' | 'page-fit'</td>
+            <td style="padding: 0.5rem;">'auto'</td>
+            <td style="padding: 0.5rem;">Page fit mode</td>
+          </tr>
+          <tr style="border-bottom: 1px solid var(--border);">
+            <td style="padding: 0.5rem;"><code>show-toolbar</code></td>
+            <td style="padding: 0.5rem;">boolean</td>
+            <td style="padding: 0.5rem;">true</td>
+            <td style="padding: 0.5rem;">Show toolbar</td>
+          </tr>
+          <tr style="border-bottom: 1px solid var(--border);">
+            <td style="padding: 0.5rem;"><code>show-thumbnails</code></td>
+            <td style="padding: 0.5rem;">boolean</td>
+            <td style="padding: 0.5rem;">false</td>
+            <td style="padding: 0.5rem;">Show thumbnails sidebar</td>
+          </tr>
+          <tr style="border-bottom: 1px solid var(--border);">
+            <td style="padding: 0.5rem;"><code>show-outline</code></td>
+            <td style="padding: 0.5rem;">boolean</td>
+            <td style="padding: 0.5rem;">false</td>
+            <td style="padding: 0.5rem;">Show document outline</td>
+          </tr>
+          <tr style="border-bottom: 1px solid var(--border);">
+            <td style="padding: 0.5rem;"><code>show-search</code></td>
+            <td style="padding: 0.5rem;">boolean</td>
+            <td style="padding: 0.5rem;">false</td>
+            <td style="padding: 0.5rem;">Show search functionality</td>
+          </tr>
+          <tr style="border-bottom: 1px solid var(--border);">
+            <td style="padding: 0.5rem;"><code>show-download</code></td>
+            <td style="padding: 0.5rem;">boolean</td>
+            <td style="padding: 0.5rem;">false</td>
+            <td style="padding: 0.5rem;">Show download button</td>
+          </tr>
+          <tr style="border-bottom: 1px solid var(--border);">
+            <td style="padding: 0.5rem;"><code>show-print</code></td>
+            <td style="padding: 0.5rem;">boolean</td>
+            <td style="padding: 0.5rem;">false</td>
+            <td style="padding: 0.5rem;">Show print button</td>
+          </tr>
+          <tr style="border-bottom: 1px solid var(--border);">
+            <td style="padding: 0.5rem;"><code>minimal</code></td>
+            <td style="padding: 0.5rem;">boolean</td>
+            <td style="padding: 0.5rem;">false</td>
+            <td style="padding: 0.5rem;">Minimal display mode</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <div class="demo-section">
+      <h2>Events</h2>
+      <table style="width: 100%; border-collapse: collapse;">
+        <thead>
+          <tr style="border-bottom: 2px solid var(--border);">
+            <th style="text-align: left; padding: 0.5rem;">Event</th>
+            <th style="text-align: left; padding: 0.5rem;">Description</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr style="border-bottom: 1px solid var(--border);">
+            <td style="padding: 0.5rem;"><code>erxPageChange</code></td>
+            <td style="padding: 0.5rem;">Emitted when page changes</td>
+          </tr>
+          <tr style="border-bottom: 1px solid var(--border);">
+            <td style="padding: 0.5rem;"><code>erxZoomChange</code></td>
+            <td style="padding: 0.5rem;">Emitted when zoom changes</td>
+          </tr>
+          <tr style="border-bottom: 1px solid var(--border);">
+            <td style="padding: 0.5rem;"><code>erxDocumentLoad</code></td>
+            <td style="padding: 0.5rem;">Emitted when document loads</td>
+          </tr>
+          <tr style="border-bottom: 1px solid var(--border);">
+            <td style="padding: 0.5rem;"><code>erxError</code></td>
+            <td style="padding: 0.5rem;">Emitted on load error</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <div class="demo-section">
+      <h2>Methods</h2>
+      <table style="width: 100%; border-collapse: collapse;">
+        <thead>
+          <tr style="border-bottom: 2px solid var(--border);">
+            <th style="text-align: left; padding: 0.5rem;">Method</th>
+            <th style="text-align: left; padding: 0.5rem;">Description</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr style="border-bottom: 1px solid var(--border);">
+            <td style="padding: 0.5rem;"><code>goToPage(page)</code></td>
+            <td style="padding: 0.5rem;">Navigate to specific page</td>
+          </tr>
+          <tr style="border-bottom: 1px solid var(--border);">
+            <td style="padding: 0.5rem;"><code>nextPage()</code></td>
+            <td style="padding: 0.5rem;">Go to next page</td>
+          </tr>
+          <tr style="border-bottom: 1px solid var(--border);">
+            <td style="padding: 0.5rem;"><code>prevPage()</code></td>
+            <td style="padding: 0.5rem;">Go to previous page</td>
+          </tr>
+          <tr style="border-bottom: 1px solid var(--border);">
+            <td style="padding: 0.5rem;"><code>setZoom(level)</code></td>
+            <td style="padding: 0.5rem;">Set zoom level</td>
+          </tr>
+          <tr style="border-bottom: 1px solid var(--border);">
+            <td style="padding: 0.5rem;"><code>download()</code></td>
+            <td style="padding: 0.5rem;">Download PDF file</td>
+          </tr>
+          <tr style="border-bottom: 1px solid var(--border);">
+            <td style="padding: 0.5rem;"><code>print()</code></td>
+            <td style="padding: 0.5rem;">Print document</td>
+          </tr>
+          <tr style="border-bottom: 1px solid var(--border);">
+            <td style="padding: 0.5rem;"><code>search(query)</code></td>
+            <td style="padding: 0.5rem;">Search in document</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+  <script>
+    // File upload handler
+    document.getElementById('pdf-file-input').addEventListener('change', (e) => {
+      const file = e.target.files[0];
+      if (file && file.type === 'application/pdf') {
+        const reader = new FileReader();
+        reader.onload = (event) => {
+          const viewer = document.getElementById('upload-viewer');
+          viewer.src = event.target.result;
+          document.getElementById('upload-viewer-container').style.display = 'block';
+          document.getElementById('pdf-status').textContent = `Loaded: ${file.name}`;
+        };
+        reader.readAsDataURL(file);
+      } else {
+        document.getElementById('pdf-status').textContent = 'Please select a valid PDF file';
+      }
+    });
+
+    // Event listeners for all viewers
+    document.querySelectorAll('erx-pdf-viewer').forEach(viewer => {
+      viewer.addEventListener('erxPageChange', (e) => {
+        console.log('Page changed to:', e.detail.page);
+      });
+      viewer.addEventListener('erxDocumentLoad', (e) => {
+        console.log('Document loaded, total pages:', e.detail.totalPages);
+      });
+      viewer.addEventListener('erxError', (e) => {
+        console.error('PDF load error:', e.detail.error);
+      });
+    });
+  </script>
+</body>
+</html>

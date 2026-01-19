@@ -1,0 +1,412 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>erx-bom-tree - ERX Components</title>
+  <script type="module" src="https://unpkg.com/@erplora/erx/dist/erx/erx.esm.js"></script>
+  <script nomodule src="https://unpkg.com/@erplora/erx/dist/erx/erx.js"></script>
+  <link rel="stylesheet" href="../styles.css">
+</head>
+<body>
+  <div class="component-page" style="padding: 2rem;">
+    <a href="../index.html" class="back-link">&larr; Back to Components</a>
+    <div class="component-header">
+      <h1>erx-bom-tree</h1>
+      <p>Bill of Materials tree view with expandable hierarchy, cost rollup, and stock availability indicators.</p>
+    </div>
+
+    <div class="demo-section">
+      <h2>Full BOM with Costs</h2>
+      <div class="demo-box">
+        <erx-bom-tree id="bom1" expand-all></erx-bom-tree>
+      </div>
+    </div>
+
+    <div class="demo-section">
+      <h2>BOM with Stock Availability</h2>
+      <div class="demo-box">
+        <erx-bom-tree id="bom2" show-stock></erx-bom-tree>
+      </div>
+    </div>
+
+    <div class="demo-section">
+      <h2>Collapsed BOM (Click to expand)</h2>
+      <div class="demo-box">
+        <erx-bom-tree id="bom3"></erx-bom-tree>
+      </div>
+    </div>
+
+    <div class="demo-section">
+      <h2>Properties</h2>
+      <div class="demo-box">
+        <table style="width: 100%; border-collapse: collapse;">
+          <thead>
+            <tr style="border-bottom: 1px solid var(--border);">
+              <th style="text-align: left; padding: 0.5rem;">Property</th>
+              <th style="text-align: left; padding: 0.5rem;">Type</th>
+              <th style="text-align: left; padding: 0.5rem;">Default</th>
+              <th style="text-align: left; padding: 0.5rem;">Description</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr style="border-bottom: 1px solid var(--border);">
+              <td style="padding: 0.5rem;"><code>bom</code></td>
+              <td style="padding: 0.5rem;">Bom</td>
+              <td style="padding: 0.5rem;">-</td>
+              <td style="padding: 0.5rem;">Bill of Materials data object (required)</td>
+            </tr>
+            <tr style="border-bottom: 1px solid var(--border);">
+              <td style="padding: 0.5rem;"><code>show-costs</code></td>
+              <td style="padding: 0.5rem;">boolean</td>
+              <td style="padding: 0.5rem;">true</td>
+              <td style="padding: 0.5rem;">Show unit and total costs</td>
+            </tr>
+            <tr style="border-bottom: 1px solid var(--border);">
+              <td style="padding: 0.5rem;"><code>show-stock</code></td>
+              <td style="padding: 0.5rem;">boolean</td>
+              <td style="padding: 0.5rem;">false</td>
+              <td style="padding: 0.5rem;">Show stock availability</td>
+            </tr>
+            <tr style="border-bottom: 1px solid var(--border);">
+              <td style="padding: 0.5rem;"><code>expand-all</code></td>
+              <td style="padding: 0.5rem;">boolean</td>
+              <td style="padding: 0.5rem;">false</td>
+              <td style="padding: 0.5rem;">Start with all nodes expanded</td>
+            </tr>
+            <tr style="border-bottom: 1px solid var(--border);">
+              <td style="padding: 0.5rem;"><code>currency</code></td>
+              <td style="padding: 0.5rem;">string</td>
+              <td style="padding: 0.5rem;">'USD'</td>
+              <td style="padding: 0.5rem;">Currency code for cost display</td>
+            </tr>
+            <tr>
+              <td style="padding: 0.5rem;"><code>locale</code></td>
+              <td style="padding: 0.5rem;">string</td>
+              <td style="padding: 0.5rem;">'en-US'</td>
+              <td style="padding: 0.5rem;">Locale for number formatting</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+
+    <div class="demo-section">
+      <h2>Events</h2>
+      <div class="demo-box">
+        <table style="width: 100%; border-collapse: collapse;">
+          <thead>
+            <tr style="border-bottom: 1px solid var(--border);">
+              <th style="text-align: left; padding: 0.5rem;">Event</th>
+              <th style="text-align: left; padding: 0.5rem;">Detail</th>
+              <th style="text-align: left; padding: 0.5rem;">Description</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td style="padding: 0.5rem;"><code>erxSelect</code></td>
+              <td style="padding: 0.5rem;">{ item, path, level }</td>
+              <td style="padding: 0.5rem;">Fired when a BOM item is clicked</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    // Full BOM with costs
+    const bom1 = {
+      id: 'bom-001',
+      name: 'Premium Widget Assembly BOM',
+      product: {
+        id: 'prod-1',
+        name: 'Premium Widget Assembly',
+        sku: 'PWA-100',
+        image: 'https://via.placeholder.com/50x50/6366f1/ffffff?text=PWA'
+      },
+      version: '2.1',
+      status: 'active',
+      totalCost: 125.50,
+      items: [
+        {
+          id: 'item1',
+          name: 'Main Frame Assembly',
+          sku: 'MFA-001',
+          type: 'component',
+          quantity: 1,
+          unit: 'ea',
+          unitCost: 45.00,
+          totalCost: 45.00,
+          children: [
+            {
+              id: 'item1-1',
+              name: 'Steel Frame',
+              sku: 'SF-001',
+              type: 'raw-material',
+              quantity: 1,
+              unit: 'pc',
+              unitCost: 25.00,
+              totalCost: 25.00
+            },
+            {
+              id: 'item1-2',
+              name: 'Mounting Brackets',
+              sku: 'MB-002',
+              type: 'component',
+              quantity: 4,
+              unit: 'pcs',
+              unitCost: 5.00,
+              totalCost: 20.00
+            }
+          ]
+        },
+        {
+          id: 'item2',
+          name: 'Electronics Module',
+          sku: 'EM-001',
+          type: 'component',
+          quantity: 1,
+          unit: 'ea',
+          unitCost: 55.00,
+          totalCost: 55.00,
+          children: [
+            {
+              id: 'item2-1',
+              name: 'PCB Board',
+              sku: 'PCB-100',
+              type: 'component',
+              quantity: 1,
+              unit: 'pc',
+              unitCost: 35.00,
+              totalCost: 35.00,
+              children: [
+                { id: 'item2-1-1', name: 'Microcontroller', sku: 'MC-001', type: 'component', quantity: 1, unit: 'pc', unitCost: 15.00, totalCost: 15.00 },
+                { id: 'item2-1-2', name: 'Capacitors Pack', sku: 'CAP-SET', type: 'component', quantity: 1, unit: 'set', unitCost: 5.00, totalCost: 5.00 },
+                { id: 'item2-1-3', name: 'Resistors Pack', sku: 'RES-SET', type: 'component', quantity: 1, unit: 'set', unitCost: 3.00, totalCost: 3.00 }
+              ]
+            },
+            {
+              id: 'item2-2',
+              name: 'Wiring Harness',
+              sku: 'WH-050',
+              type: 'component',
+              quantity: 1,
+              unit: 'ea',
+              unitCost: 12.00,
+              totalCost: 12.00
+            },
+            {
+              id: 'item2-3',
+              name: 'Connectors',
+              sku: 'CON-MIX',
+              type: 'component',
+              quantity: 8,
+              unit: 'pcs',
+              unitCost: 1.00,
+              totalCost: 8.00
+            }
+          ]
+        },
+        {
+          id: 'item3',
+          name: 'Plastic Housing',
+          sku: 'PH-003',
+          type: 'component',
+          quantity: 1,
+          unit: 'ea',
+          unitCost: 15.50,
+          totalCost: 15.50
+        },
+        {
+          id: 'item4',
+          name: 'Fasteners Kit',
+          sku: 'FK-100',
+          type: 'consumable',
+          quantity: 1,
+          unit: 'kit',
+          unitCost: 8.00,
+          totalCost: 8.00,
+          children: [
+            { id: 'item4-1', name: 'M3 Screws', type: 'consumable', quantity: 12, unit: 'pcs', unitCost: 0.25, totalCost: 3.00 },
+            { id: 'item4-2', name: 'M4 Bolts', type: 'consumable', quantity: 8, unit: 'pcs', unitCost: 0.50, totalCost: 4.00 },
+            { id: 'item4-3', name: 'Washers', type: 'consumable', quantity: 20, unit: 'pcs', unitCost: 0.05, totalCost: 1.00 }
+          ]
+        },
+        {
+          id: 'item5',
+          name: 'Lubricant',
+          sku: 'LUB-001',
+          type: 'consumable',
+          quantity: 5,
+          unit: 'ml',
+          unitCost: 0.40,
+          totalCost: 2.00
+        }
+      ]
+    };
+
+    // BOM with stock availability
+    const bom2 = {
+      id: 'bom-002',
+      name: 'Motor Assembly M500 BOM',
+      product: {
+        id: 'prod-2',
+        name: 'Motor Assembly M500',
+        sku: 'MA-500'
+      },
+      version: '1.0',
+      status: 'active',
+      totalCost: 89.75,
+      items: [
+        {
+          id: 'b2-1',
+          name: 'Motor Core',
+          sku: 'MC-500',
+          type: 'component',
+          quantity: 1,
+          unit: 'ea',
+          unitCost: 35.00,
+          totalCost: 35.00,
+          available: 45
+        },
+        {
+          id: 'b2-2',
+          name: 'Copper Wire Coil',
+          sku: 'CWC-22AWG',
+          type: 'raw-material',
+          quantity: 50,
+          unit: 'meters',
+          unitCost: 0.50,
+          totalCost: 25.00,
+          available: 500
+        },
+        {
+          id: 'b2-3',
+          name: 'Magnets Set',
+          sku: 'MAG-N52',
+          type: 'component',
+          quantity: 4,
+          unit: 'pcs',
+          unitCost: 4.00,
+          totalCost: 16.00,
+          available: 2  // Low stock
+        },
+        {
+          id: 'b2-4',
+          name: 'Shaft',
+          sku: 'SH-8MM',
+          type: 'component',
+          quantity: 1,
+          unit: 'ea',
+          unitCost: 8.50,
+          totalCost: 8.50,
+          available: 100
+        },
+        {
+          id: 'b2-5',
+          name: 'Bearings',
+          sku: 'BRG-608',
+          type: 'component',
+          quantity: 2,
+          unit: 'pcs',
+          unitCost: 2.25,
+          totalCost: 4.50,
+          available: 1  // Low stock
+        },
+        {
+          id: 'b2-6',
+          name: 'Thermal Paste',
+          sku: 'TP-01',
+          type: 'consumable',
+          quantity: 2,
+          unit: 'g',
+          unitCost: 0.375,
+          totalCost: 0.75,
+          available: 100
+        }
+      ]
+    };
+
+    // Collapsed BOM
+    const bom3 = {
+      id: 'bom-003',
+      name: 'Circuit Board PCB-X1 BOM',
+      product: {
+        id: 'prod-3',
+        name: 'Circuit Board PCB-X1',
+        sku: 'PCB-X1'
+      },
+      version: '3.2',
+      status: 'active',
+      totalCost: 18.35,
+      items: [
+        {
+          id: 'c3-1',
+          name: 'PCB Blank',
+          sku: 'PCB-BLK-4L',
+          type: 'raw-material',
+          quantity: 1,
+          unit: 'ea',
+          unitCost: 5.00,
+          totalCost: 5.00
+        },
+        {
+          id: 'c3-2',
+          name: 'SMD Components',
+          sku: 'SMD-KIT-X1',
+          type: 'component',
+          quantity: 1,
+          unit: 'kit',
+          unitCost: 8.50,
+          totalCost: 8.50,
+          children: [
+            { id: 'c3-2-1', name: 'Resistors (0603)', type: 'component', quantity: 25, unit: 'pcs', unitCost: 0.02, totalCost: 0.50 },
+            { id: 'c3-2-2', name: 'Capacitors (0805)', type: 'component', quantity: 15, unit: 'pcs', unitCost: 0.05, totalCost: 0.75 },
+            { id: 'c3-2-3', name: 'ICs', type: 'component', quantity: 3, unit: 'pcs', unitCost: 2.00, totalCost: 6.00 },
+            { id: 'c3-2-4', name: 'LEDs', type: 'component', quantity: 5, unit: 'pcs', unitCost: 0.25, totalCost: 1.25 }
+          ]
+        },
+        {
+          id: 'c3-3',
+          name: 'Through-Hole Components',
+          sku: 'TH-KIT-X1',
+          type: 'component',
+          quantity: 1,
+          unit: 'kit',
+          unitCost: 3.85,
+          totalCost: 3.85,
+          children: [
+            { id: 'c3-3-1', name: 'Connectors', type: 'component', quantity: 2, unit: 'pcs', unitCost: 1.50, totalCost: 3.00 },
+            { id: 'c3-3-2', name: 'Crystal', type: 'component', quantity: 1, unit: 'pc', unitCost: 0.85, totalCost: 0.85 }
+          ]
+        },
+        {
+          id: 'c3-4',
+          name: 'Solder Paste',
+          sku: 'SP-LEAD-FREE',
+          type: 'consumable',
+          quantity: 0.5,
+          unit: 'g',
+          unitCost: 2.00,
+          totalCost: 1.00
+        }
+      ]
+    };
+
+    // Initialize components
+    document.getElementById('bom1').bom = bom1;
+    document.getElementById('bom2').bom = bom2;
+    document.getElementById('bom3').bom = bom3;
+
+    // Event listeners
+    document.querySelectorAll('erx-bom-tree').forEach(el => {
+      el.addEventListener('erxSelect', (e) => {
+        const path = e.detail.path.map(p => p.name).join(' > ');
+        console.log('BOM item selected:', e.detail.item.name, 'Path:', path, 'Level:', e.detail.level);
+        alert(`Selected: ${e.detail.item.name}\nPath: ${path}\nQuantity: ${e.detail.item.quantity} ${e.detail.item.unit}`);
+      });
+    });
+  </script>
+</body>
+</html>

@@ -1,0 +1,321 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>erx-image-crop - ERX Components</title>
+  <script type="module" src="https://unpkg.com/@erplora/erx/dist/erx/erx.esm.js"></script>
+  <script nomodule src="https://unpkg.com/@erplora/erx/dist/erx/erx.js"></script>
+  <link rel="stylesheet" href="../styles.css">
+</head>
+<body>
+  <div class="component-page" style="padding: 2rem;">
+    <a href="../index.html" class="back-link">&larr; Back to Components</a>
+
+    <div class="component-header">
+      <h1>erx-image-crop</h1>
+      <p>An image cropping tool component for selecting and cropping portions of images. Supports aspect ratios, zoom, rotation, and circular crops.</p>
+    </div>
+
+    <div class="demo-section">
+      <h2>Basic Image Crop</h2>
+      <div class="demo-box">
+        <erx-image-crop
+          id="basic-crop"
+          src="https://picsum.photos/800/600?random=40">
+        </erx-image-crop>
+        <div style="margin-top: 1rem; display: flex; gap: 0.5rem;">
+          <button onclick="getCropData('basic-crop')" style="padding: 0.5rem 1rem; background: var(--primary); color: white; border: none; border-radius: 6px; cursor: pointer;">Get Crop Data</button>
+        </div>
+      </div>
+    </div>
+
+    <div class="demo-section">
+      <h2>Fixed Aspect Ratio</h2>
+      <div class="demo-box">
+        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 1rem;">
+          <div>
+            <span class="demo-label">1:1 (Square)</span>
+            <erx-image-crop
+              src="https://picsum.photos/800/600?random=41"
+              aspect-ratio="1">
+            </erx-image-crop>
+          </div>
+          <div>
+            <span class="demo-label">16:9 (Widescreen)</span>
+            <erx-image-crop
+              src="https://picsum.photos/800/600?random=42"
+              aspect-ratio="1.778">
+            </erx-image-crop>
+          </div>
+          <div>
+            <span class="demo-label">4:3 (Standard)</span>
+            <erx-image-crop
+              src="https://picsum.photos/800/600?random=43"
+              aspect-ratio="1.333">
+            </erx-image-crop>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="demo-section">
+      <h2>Circular Crop (Avatar)</h2>
+      <div class="demo-box">
+        <div style="max-width: 400px; margin: 0 auto;">
+          <erx-image-crop
+            id="circular-crop"
+            src="https://picsum.photos/600/600?random=44"
+            aspect-ratio="1"
+            circular>
+          </erx-image-crop>
+          <div style="margin-top: 1rem; text-align: center;">
+            <button onclick="getCropData('circular-crop')" style="padding: 0.5rem 1rem; background: var(--primary); color: white; border: none; border-radius: 6px; cursor: pointer;">Preview Avatar</button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="demo-section">
+      <h2>With Zoom Control</h2>
+      <div class="demo-box">
+        <erx-image-crop
+          id="zoom-crop"
+          src="https://picsum.photos/800/600?random=45"
+          show-zoom
+          min-zoom="0.5"
+          max-zoom="3">
+        </erx-image-crop>
+      </div>
+    </div>
+
+    <div class="demo-section">
+      <h2>With Rotation</h2>
+      <div class="demo-box">
+        <erx-image-crop
+          id="rotate-crop"
+          src="https://picsum.photos/800/600?random=46"
+          show-rotation>
+        </erx-image-crop>
+      </div>
+    </div>
+
+    <div class="demo-section">
+      <h2>With Grid Overlay</h2>
+      <div class="demo-box">
+        <erx-image-crop
+          src="https://picsum.photos/800/600?random=47"
+          show-grid
+          grid-type="rule-of-thirds">
+        </erx-image-crop>
+      </div>
+    </div>
+
+    <div class="demo-section">
+      <h2>File Upload Integration</h2>
+      <div class="demo-box">
+        <div style="margin-bottom: 1rem;">
+          <input type="file" id="file-input" accept="image/*" style="display: none;">
+          <button onclick="document.getElementById('file-input').click()" style="padding: 0.75rem 1.5rem; background: var(--primary); color: white; border: none; border-radius: 6px; cursor: pointer;">
+            Upload Image
+          </button>
+        </div>
+        <erx-image-crop
+          id="upload-crop"
+          aspect-ratio="1"
+          show-zoom
+          show-rotation>
+        </erx-image-crop>
+        <p id="upload-status" style="margin-top: 1rem; color: var(--text-muted);">No image selected</p>
+      </div>
+    </div>
+
+    <div class="demo-section">
+      <h2>Output Preview</h2>
+      <div class="demo-box">
+        <div style="display: grid; grid-template-columns: 1fr 200px; gap: 2rem; align-items: start;">
+          <erx-image-crop
+            id="preview-crop"
+            src="https://picsum.photos/800/600?random=48"
+            aspect-ratio="1"
+            show-zoom>
+          </erx-image-crop>
+          <div>
+            <span class="demo-label">Preview</span>
+            <div id="preview-output" style="width: 200px; height: 200px; background: var(--bg); border: 1px solid var(--border); border-radius: 8px; display: flex; align-items: center; justify-content: center; overflow: hidden;">
+              <span style="color: var(--text-muted);">Crop preview</span>
+            </div>
+            <button onclick="updatePreview()" style="margin-top: 1rem; padding: 0.5rem 1rem; background: var(--primary); color: white; border: none; border-radius: 6px; cursor: pointer; width: 100%;">
+              Update Preview
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="demo-section">
+      <h2>Props</h2>
+      <table style="width: 100%; border-collapse: collapse;">
+        <thead>
+          <tr style="border-bottom: 2px solid var(--border);">
+            <th style="text-align: left; padding: 0.5rem;">Prop</th>
+            <th style="text-align: left; padding: 0.5rem;">Type</th>
+            <th style="text-align: left; padding: 0.5rem;">Default</th>
+            <th style="text-align: left; padding: 0.5rem;">Description</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr style="border-bottom: 1px solid var(--border);">
+            <td style="padding: 0.5rem;"><code>src</code></td>
+            <td style="padding: 0.5rem;">string</td>
+            <td style="padding: 0.5rem;">-</td>
+            <td style="padding: 0.5rem;">Image source URL</td>
+          </tr>
+          <tr style="border-bottom: 1px solid var(--border);">
+            <td style="padding: 0.5rem;"><code>aspect-ratio</code></td>
+            <td style="padding: 0.5rem;">number</td>
+            <td style="padding: 0.5rem;">-</td>
+            <td style="padding: 0.5rem;">Fixed aspect ratio (width/height)</td>
+          </tr>
+          <tr style="border-bottom: 1px solid var(--border);">
+            <td style="padding: 0.5rem;"><code>circular</code></td>
+            <td style="padding: 0.5rem;">boolean</td>
+            <td style="padding: 0.5rem;">false</td>
+            <td style="padding: 0.5rem;">Enable circular crop</td>
+          </tr>
+          <tr style="border-bottom: 1px solid var(--border);">
+            <td style="padding: 0.5rem;"><code>show-zoom</code></td>
+            <td style="padding: 0.5rem;">boolean</td>
+            <td style="padding: 0.5rem;">false</td>
+            <td style="padding: 0.5rem;">Show zoom slider</td>
+          </tr>
+          <tr style="border-bottom: 1px solid var(--border);">
+            <td style="padding: 0.5rem;"><code>show-rotation</code></td>
+            <td style="padding: 0.5rem;">boolean</td>
+            <td style="padding: 0.5rem;">false</td>
+            <td style="padding: 0.5rem;">Show rotation controls</td>
+          </tr>
+          <tr style="border-bottom: 1px solid var(--border);">
+            <td style="padding: 0.5rem;"><code>show-grid</code></td>
+            <td style="padding: 0.5rem;">boolean</td>
+            <td style="padding: 0.5rem;">false</td>
+            <td style="padding: 0.5rem;">Show grid overlay</td>
+          </tr>
+          <tr style="border-bottom: 1px solid var(--border);">
+            <td style="padding: 0.5rem;"><code>grid-type</code></td>
+            <td style="padding: 0.5rem;">'simple' | 'rule-of-thirds'</td>
+            <td style="padding: 0.5rem;">'simple'</td>
+            <td style="padding: 0.5rem;">Grid type</td>
+          </tr>
+          <tr style="border-bottom: 1px solid var(--border);">
+            <td style="padding: 0.5rem;"><code>min-zoom</code></td>
+            <td style="padding: 0.5rem;">number</td>
+            <td style="padding: 0.5rem;">1</td>
+            <td style="padding: 0.5rem;">Minimum zoom level</td>
+          </tr>
+          <tr style="border-bottom: 1px solid var(--border);">
+            <td style="padding: 0.5rem;"><code>max-zoom</code></td>
+            <td style="padding: 0.5rem;">number</td>
+            <td style="padding: 0.5rem;">3</td>
+            <td style="padding: 0.5rem;">Maximum zoom level</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <div class="demo-section">
+      <h2>Events</h2>
+      <table style="width: 100%; border-collapse: collapse;">
+        <thead>
+          <tr style="border-bottom: 2px solid var(--border);">
+            <th style="text-align: left; padding: 0.5rem;">Event</th>
+            <th style="text-align: left; padding: 0.5rem;">Description</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr style="border-bottom: 1px solid var(--border);">
+            <td style="padding: 0.5rem;"><code>erxCropChange</code></td>
+            <td style="padding: 0.5rem;">Emitted when crop area changes</td>
+          </tr>
+          <tr style="border-bottom: 1px solid var(--border);">
+            <td style="padding: 0.5rem;"><code>erxCropComplete</code></td>
+            <td style="padding: 0.5rem;">Emitted when crop is finalized</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <div class="demo-section">
+      <h2>Methods</h2>
+      <table style="width: 100%; border-collapse: collapse;">
+        <thead>
+          <tr style="border-bottom: 2px solid var(--border);">
+            <th style="text-align: left; padding: 0.5rem;">Method</th>
+            <th style="text-align: left; padding: 0.5rem;">Description</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr style="border-bottom: 1px solid var(--border);">
+            <td style="padding: 0.5rem;"><code>getCropData()</code></td>
+            <td style="padding: 0.5rem;">Returns current crop coordinates</td>
+          </tr>
+          <tr style="border-bottom: 1px solid var(--border);">
+            <td style="padding: 0.5rem;"><code>getCroppedCanvas()</code></td>
+            <td style="padding: 0.5rem;">Returns cropped image as canvas</td>
+          </tr>
+          <tr style="border-bottom: 1px solid var(--border);">
+            <td style="padding: 0.5rem;"><code>getCroppedBlob()</code></td>
+            <td style="padding: 0.5rem;">Returns cropped image as blob</td>
+          </tr>
+          <tr style="border-bottom: 1px solid var(--border);">
+            <td style="padding: 0.5rem;"><code>reset()</code></td>
+            <td style="padding: 0.5rem;">Reset crop to default</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+  <script>
+    async function getCropData(id) {
+      const cropper = document.getElementById(id);
+      const data = await cropper.getCropData();
+      console.log('Crop data:', data);
+      alert(`Crop Data:\nX: ${data.x}\nY: ${data.y}\nWidth: ${data.width}\nHeight: ${data.height}`);
+    }
+
+    // File upload handler
+    document.getElementById('file-input').addEventListener('change', (e) => {
+      const file = e.target.files[0];
+      if (file) {
+        const reader = new FileReader();
+        reader.onload = (event) => {
+          document.getElementById('upload-crop').src = event.target.result;
+          document.getElementById('upload-status').textContent = `Loaded: ${file.name}`;
+        };
+        reader.readAsDataURL(file);
+      }
+    });
+
+    // Preview update
+    async function updatePreview() {
+      const cropper = document.getElementById('preview-crop');
+      const preview = document.getElementById('preview-output');
+
+      try {
+        const canvas = await cropper.getCroppedCanvas();
+        if (canvas) {
+          preview.innerHTML = '';
+          canvas.style.maxWidth = '100%';
+          canvas.style.maxHeight = '100%';
+          preview.appendChild(canvas);
+        }
+      } catch (e) {
+        // Fallback for demo
+        const data = await cropper.getCropData();
+        preview.innerHTML = `<span style="color: var(--text-muted); text-align: center; padding: 1rem; font-size: 0.75rem;">Crop: ${Math.round(data?.width || 0)}x${Math.round(data?.height || 0)}</span>`;
+      }
+    }
+  </script>
+</body>
+</html>

@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>erx-virtual-list - ERX Components</title>
+  <script type="module" src="https://unpkg.com/@erplora/erx/dist/erx/erx.esm.js"></script>
+  <script nomodule src="https://unpkg.com/@erplora/erx/dist/erx/erx.js"></script>
+  <link rel="stylesheet" href="../styles.css">
+</head>
+<body>
+  <div class="component-page" style="padding: 2rem;">
+    <a href="../index.html" class="back-link">&larr; Back to Components</a>
+    <div class="component-header">
+      <h1>erx-virtual-list</h1>
+      <p>High-performance virtual scrolling list that efficiently renders large datasets by only rendering visible items.</p>
+    </div>
+    <div class="demo-section">
+      <h2>10,000 Items List</h2>
+      <div class="demo-box">
+        <div style="display: flex; gap: 1rem; margin-bottom: 1rem;">
+          <button onclick="scrollToTop()" style="padding: 0.5rem 1rem; cursor: pointer;">Scroll to Top</button>
+          <button onclick="scrollToMiddle()" style="padding: 0.5rem 1rem; cursor: pointer;">Scroll to Middle</button>
+          <button onclick="scrollToEnd()" style="padding: 0.5rem 1rem; cursor: pointer;">Scroll to End</button>
+        </div>
+        <div style="height: 400px; border: 1px solid var(--border); border-radius: 8px; overflow: hidden;">
+          <erx-virtual-list id="basicList"></erx-virtual-list>
+        </div>
+        <p style="margin-top: 0.5rem; font-size: 0.875rem; color: var(--text-muted);">
+          Rendering 10,000 items with virtual scrolling. Only visible items are in the DOM.
+        </p>
+      </div>
+    </div>
+    <div class="demo-section">
+      <h2>Custom Item Height</h2>
+      <div class="demo-box">
+        <div style="height: 350px; border: 1px solid var(--border); border-radius: 8px; overflow: hidden;">
+          <erx-virtual-list id="tallList"></erx-virtual-list>
+        </div>
+      </div>
+    </div>
+    <div class="demo-section">
+      <h2>Product List (5,000 Items)</h2>
+      <div class="demo-box">
+        <div style="height: 400px; border: 1px solid var(--border); border-radius: 8px; overflow: hidden;">
+          <erx-virtual-list id="productList"></erx-virtual-list>
+        </div>
+      </div>
+    </div>
+    <div class="demo-section">
+      <h2>Scroll Info</h2>
+      <div class="demo-box">
+        <div id="scrollInfo" style="padding: 1rem; background: var(--bg); border-radius: 8px; font-family: monospace; font-size: 0.875rem;">
+          Scroll the list to see scroll position info...
+        </div>
+      </div>
+    </div>
+  </div>
+  <script>
+    let basicList;
+
+    function scrollToTop() {
+      if (basicList) basicList.scrollToTop();
+    }
+
+    function scrollToMiddle() {
+      if (basicList) basicList.scrollToIndex(5000);
+    }
+
+    function scrollToEnd() {
+      if (basicList) basicList.scrollToIndex(9999);
+    }
+
+    document.addEventListener('DOMContentLoaded', () => {
+      const scrollInfo = document.getElementById('scrollInfo');
+
+      // Basic list with 10,000 items
+      basicList = document.getElementById('basicList');
+      const basicItems = [];
+      for (let i = 0; i < 10000; i++) {
+        basicItems.push({ id: `item-${i}` });
+      }
+      basicList.items = basicItems;
+      basicList.config = { itemHeight: 48 };
+
+      // Style the basic list items
+      const styleBasic = document.createElement('style');
+      styleBasic.textContent = `
+        erx-virtual-list#basicList::part(item) {
+          display: flex;
+          align-items: center;
+          padding: 0 1rem;
+          border-bottom: 1px solid var(--border, #e5e7eb);
+        }
+        erx-virtual-list#basicList::part(item):hover {
+          background: var(--bg, #f8fafc);
+        }
+      `;
+      document.head.appendChild(styleBasic);
+
+      // Tall items list
+      const tallList = document.getElementById('tallList');
+      const tallItems = [];
+      for (let i = 0; i < 1000; i++) {
+        tallItems.push({ id: `tall-${i}` });
+      }
+      tallList.items = tallItems;
+      tallList.config = { itemHeight: 80 };
+
+      // Product list
+      const productList = document.getElementById('productList');
+      const productItems = [];
+      const categories = ['Electronics', 'Clothing', 'Books', 'Home', 'Sports', 'Toys'];
+      for (let i = 0; i < 5000; i++) {
+        productItems.push({
+          id: `product-${i}`,
+          name: `Product ${i + 1}`,
+          category: categories[i % categories.length],
+          price: (Math.random() * 500 + 10).toFixed(2)
+        });
+      }
+      productList.items = productItems;
+      productList.config = { itemHeight: 60 };
+
+      // Scroll event listener
+      basicList.addEventListener('erxScroll', (e) => {
+        scrollInfo.innerHTML = `
+          <strong>Scroll Position:</strong> ${e.detail.scrollTop}px<br>
+          <strong>Visible Range:</strong> ${e.detail.startIndex} - ${e.detail.endIndex}<br>
+          <strong>Items Rendered:</strong> ${e.detail.endIndex - e.detail.startIndex} of 10,000
+        `;
+      });
+    });
+  </script>
+  <style>
+    erx-virtual-list {
+      display: block;
+      height: 100%;
+    }
+
+    erx-virtual-list::part(container) {
+      height: 100%;
+      overflow-y: auto;
+    }
+
+    erx-virtual-list::part(item) {
+      display: flex;
+      align-items: center;
+      padding: 0 1rem;
+      border-bottom: 1px solid var(--border, #e5e7eb);
+      box-sizing: border-box;
+    }
+
+    #basicList::part(item)::before {
+      content: 'Item ' attr(data-index);
+      font-size: 0.875rem;
+    }
+
+    #tallList::part(item) {
+      flex-direction: column;
+      justify-content: center;
+      align-items: flex-start;
+      background: linear-gradient(to right, var(--bg-secondary, #fff), var(--bg, #f8fafc));
+    }
+
+    #tallList::part(item)::before {
+      content: 'Large Item ' attr(data-index);
+      font-size: 1rem;
+      font-weight: 600;
+    }
+
+    #tallList::part(item)::after {
+      content: 'This is a taller item with more content area for display.';
+      font-size: 0.75rem;
+      color: var(--text-muted, #64748b);
+      margin-top: 0.25rem;
+    }
+
+    #productList::part(item) {
+      background: var(--bg-secondary, #fff);
+    }
+
+    #productList::part(item)::before {
+      content: 'Product #' attr(data-index) ' - Category: Various - $XX.XX';
+      font-size: 0.875rem;
+    }
+  </style>
+</body>
+</html>

@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>erx-calendar - ERX Components</title>
+  <script type="module" src="https://unpkg.com/@erplora/erx/dist/erx/erx.esm.js"></script>
+  <script nomodule src="https://unpkg.com/@erplora/erx/dist/erx/erx.js"></script>
+  <link rel="stylesheet" href="../styles.css">
+</head>
+<body>
+  <div class="component-page" style="padding: 2rem;">
+    <a href="../index.html" class="back-link">&larr; Back to Components</a>
+    <div class="component-header">
+      <h1>erx-calendar</h1>
+      <p>A full-featured calendar component with month/year views, event display, and date selection.</p>
+    </div>
+    <div class="demo-section">
+      <h2>Basic Calendar</h2>
+      <div class="demo-box">
+        <erx-calendar id="basicCalendar"></erx-calendar>
+      </div>
+    </div>
+    <div class="demo-section">
+      <h2>Calendar with Events</h2>
+      <div class="demo-box">
+        <erx-calendar id="eventCalendar"></erx-calendar>
+      </div>
+    </div>
+    <div class="demo-section">
+      <h2>Calendar with Configuration</h2>
+      <div class="demo-box">
+        <div class="demo-row">
+          <div class="demo-col">
+            <span class="demo-label">Custom First Day of Week (Monday)</span>
+            <erx-calendar id="configCalendar"></erx-calendar>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="demo-section">
+      <h2>Event Output</h2>
+      <div class="demo-box">
+        <div id="eventOutput" style="padding: 1rem; background: var(--bg); border-radius: 8px; font-family: monospace; font-size: 0.875rem;">
+          Click on a date to see the event output...
+        </div>
+      </div>
+    </div>
+  </div>
+  <script>
+    // Sample events data
+    const today = new Date();
+    const year = today.getFullYear();
+    const month = today.getMonth();
+
+    const sampleEvents = [
+      {
+        id: '1',
+        title: 'Team Meeting',
+        start: new Date(year, month, 15, 10, 0).toISOString(),
+        end: new Date(year, month, 15, 11, 0).toISOString(),
+        color: '#667eea'
+      },
+      {
+        id: '2',
+        title: 'Product Launch',
+        start: new Date(year, month, 18, 14, 0).toISOString(),
+        end: new Date(year, month, 18, 16, 0).toISOString(),
+        color: '#10b981'
+      },
+      {
+        id: '3',
+        title: 'Client Call',
+        start: new Date(year, month, 20, 9, 0).toISOString(),
+        color: '#f59e0b'
+      },
+      {
+        id: '4',
+        title: 'Sprint Review',
+        start: new Date(year, month, 22, 15, 0).toISOString(),
+        end: new Date(year, month, 22, 16, 30).toISOString(),
+        color: '#ef4444'
+      },
+      {
+        id: '5',
+        title: 'Training Session',
+        start: new Date(year, month, 25, 13, 0).toISOString(),
+        end: new Date(year, month, 25, 17, 0).toISOString(),
+        color: '#8b5cf6'
+      }
+    ];
+
+    document.addEventListener('DOMContentLoaded', () => {
+      // Calendar with events
+      const eventCalendar = document.getElementById('eventCalendar');
+      eventCalendar.events = sampleEvents;
+
+      // Calendar with custom config
+      const configCalendar = document.getElementById('configCalendar');
+      configCalendar.config = { view: 'month', firstDayOfWeek: 1 };
+      configCalendar.events = sampleEvents;
+
+      // Event listeners
+      const basicCalendar = document.getElementById('basicCalendar');
+      const eventOutput = document.getElementById('eventOutput');
+
+      basicCalendar.addEventListener('erxSelect', (e) => {
+        eventOutput.innerHTML = `<strong>Date Selected:</strong> ${e.detail.date.toDateString()}<br><strong>Events:</strong> ${e.detail.events.length}`;
+      });
+
+      eventCalendar.addEventListener('erxSelect', (e) => {
+        eventOutput.innerHTML = `<strong>Date Selected:</strong> ${e.detail.date.toDateString()}<br><strong>Events:</strong> ${JSON.stringify(e.detail.events.map(ev => ev.title), null, 2)}`;
+      });
+
+      eventCalendar.addEventListener('erxEventSelect', (e) => {
+        eventOutput.innerHTML = `<strong>Event Clicked:</strong> ${e.detail.event.title}<br><strong>Date:</strong> ${e.detail.date.toDateString()}`;
+      });
+    });
+  </script>
+</body>
+</html>

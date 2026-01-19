@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>erx-diff-viewer - ERX Components</title>
+  <script type="module" src="https://unpkg.com/@erplora/erx/dist/erx/erx.esm.js"></script>
+  <script nomodule src="https://unpkg.com/@erplora/erx/dist/erx/erx.js"></script>
+  <link rel="stylesheet" href="../styles.css">
+</head>
+<body>
+  <div class="component-page" style="padding: 2rem;">
+    <a href="../index.html" class="back-link">&larr; Back to Components</a>
+    <div class="component-header">
+      <h1>erx-diff-viewer</h1>
+      <p>Side-by-side or unified diff viewer for comparing text content with line-by-line highlighting.</p>
+    </div>
+    <div class="demo-section">
+      <h2>Split View (Side by Side)</h2>
+      <div class="demo-box">
+        <erx-diff-viewer id="splitDiff" mode="split"></erx-diff-viewer>
+      </div>
+    </div>
+    <div class="demo-section">
+      <h2>Unified View</h2>
+      <div class="demo-box">
+        <erx-diff-viewer id="unifiedDiff" mode="unified"></erx-diff-viewer>
+      </div>
+    </div>
+    <div class="demo-section">
+      <h2>Configuration Change</h2>
+      <div class="demo-box">
+        <erx-diff-viewer id="configDiff" mode="split" old-title="config.old.json" new-title="config.new.json"></erx-diff-viewer>
+      </div>
+    </div>
+    <div class="demo-section">
+      <h2>Without Line Numbers</h2>
+      <div class="demo-box">
+        <erx-diff-viewer id="noLinesDiff" mode="split" show-line-numbers="false"></erx-diff-viewer>
+      </div>
+    </div>
+  </div>
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      // Split View - Code comparison
+      const oldCode = `function calculateTotal(items) {
+  let total = 0;
+  for (let i = 0; i < items.length; i++) {
+    total += items[i].price;
+  }
+  return total;
+}
+
+function applyDiscount(total) {
+  return total * 0.9;
+}`;
+
+      const newCode = `function calculateTotal(items) {
+  let total = 0;
+  for (const item of items) {
+    total += item.price * item.quantity;
+  }
+  return total;
+}
+
+function applyDiscount(total, discountPercent = 10) {
+  return total * (1 - discountPercent / 100);
+}
+
+function calculateTax(total, taxRate = 0.08) {
+  return total * taxRate;
+}`;
+
+      document.getElementById('splitDiff').oldText = oldCode;
+      document.getElementById('splitDiff').newText = newCode;
+      document.getElementById('splitDiff').oldTitle = 'utils.js (original)';
+      document.getElementById('splitDiff').newTitle = 'utils.js (modified)';
+
+      // Unified View
+      document.getElementById('unifiedDiff').oldText = oldCode;
+      document.getElementById('unifiedDiff').newText = newCode;
+      document.getElementById('unifiedDiff').oldTitle = 'utils.js (before)';
+      document.getElementById('unifiedDiff').newTitle = 'utils.js (after)';
+
+      // Configuration change
+      const oldConfig = `{
+  "name": "my-app",
+  "version": "1.0.0",
+  "port": 3000,
+  "database": {
+    "host": "localhost",
+    "port": 5432,
+    "name": "myapp"
+  },
+  "cache": false
+}`;
+
+      const newConfig = `{
+  "name": "my-app",
+  "version": "1.1.0",
+  "port": 8080,
+  "database": {
+    "host": "db.example.com",
+    "port": 5432,
+    "name": "myapp_prod",
+    "ssl": true
+  },
+  "cache": true,
+  "redis": {
+    "host": "redis.example.com",
+    "port": 6379
+  }
+}`;
+
+      document.getElementById('configDiff').oldText = oldConfig;
+      document.getElementById('configDiff').newText = newConfig;
+
+      // Without line numbers
+      const oldText = `Welcome to our application.
+
+This is the main dashboard where you can view your stats.
+
+Click on any item to see more details.`;
+
+      const newText = `Welcome to our new application!
+
+This is the main dashboard where you can view your statistics and analytics.
+
+Click on any item to see more details.
+
+Need help? Contact support@example.com`;
+
+      document.getElementById('noLinesDiff').oldText = oldText;
+      document.getElementById('noLinesDiff').newText = newText;
+      document.getElementById('noLinesDiff').oldTitle = 'README (v1)';
+      document.getElementById('noLinesDiff').newTitle = 'README (v2)';
+    });
+  </script>
+</body>
+</html>

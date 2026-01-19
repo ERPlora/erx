@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>erx-drawer - ERX Components</title>
+  <script type="module" src="https://unpkg.com/@erplora/erx/dist/erx/erx.esm.js"></script>
+  <script nomodule src="https://unpkg.com/@erplora/erx/dist/erx/erx.js"></script>
+  <link rel="stylesheet" href="../styles.css">
+</head>
+<body>
+  <div class="component-page" style="padding: 2rem;">
+    <a href="../index.html" class="back-link">&larr; Back to Components</a>
+    <div class="component-header">
+      <h1>erx-drawer</h1>
+      <p>Slide-out side panel for navigation, forms, or additional content. Supports multiple positions, sizes, and backdrop options.</p>
+    </div>
+    <div class="demo-section">
+      <h2>Basic Drawer</h2>
+      <div class="demo-box">
+        <button onclick="document.getElementById('drawer-basic').open = true" style="padding: 0.75rem 1.5rem; background: var(--primary); color: white; border: none; border-radius: 8px; cursor: pointer;">
+          Open Right Drawer
+        </button>
+        <erx-drawer id="drawer-basic" header-title="Basic Drawer">
+          <p style="padding: 1rem;">This is a basic drawer that slides in from the right.</p>
+          <p style="padding: 0 1rem;">Press Escape or click the backdrop to close.</p>
+        </erx-drawer>
+      </div>
+    </div>
+    <div class="demo-section">
+      <h2>Drawer Positions</h2>
+      <div class="demo-box">
+        <div style="display: flex; gap: 1rem; flex-wrap: wrap;">
+          <button onclick="document.getElementById('drawer-left').open = true" style="padding: 0.75rem 1.5rem; background: var(--primary); color: white; border: none; border-radius: 8px; cursor: pointer;">
+            Left
+          </button>
+          <button onclick="document.getElementById('drawer-right').open = true" style="padding: 0.75rem 1.5rem; background: var(--primary); color: white; border: none; border-radius: 8px; cursor: pointer;">
+            Right
+          </button>
+        </div>
+        <erx-drawer id="drawer-left" position="left" header-title="Left Drawer">
+          <div style="padding: 1rem;">
+            <p>Navigation menu items:</p>
+            <ul style="margin-top: 1rem; padding-left: 1.5rem;">
+              <li>Dashboard</li>
+              <li>Products</li>
+              <li>Orders</li>
+              <li>Customers</li>
+              <li>Settings</li>
+            </ul>
+          </div>
+        </erx-drawer>
+        <erx-drawer id="drawer-right" position="right" header-title="Right Drawer">
+          <div style="padding: 1rem;">
+            <p>Detail panel content goes here.</p>
+          </div>
+        </erx-drawer>
+      </div>
+    </div>
+    <div class="demo-section">
+      <h2>Drawer Sizes</h2>
+      <div class="demo-box">
+        <div style="display: flex; gap: 1rem; flex-wrap: wrap;">
+          <button onclick="document.getElementById('drawer-sm').open = true" style="padding: 0.5rem 1rem; background: var(--bg); border: 1px solid var(--border); border-radius: 8px; cursor: pointer;">
+            Small (280px)
+          </button>
+          <button onclick="document.getElementById('drawer-md').open = true" style="padding: 0.5rem 1rem; background: var(--bg); border: 1px solid var(--border); border-radius: 8px; cursor: pointer;">
+            Medium (400px)
+          </button>
+          <button onclick="document.getElementById('drawer-lg').open = true" style="padding: 0.5rem 1rem; background: var(--bg); border: 1px solid var(--border); border-radius: 8px; cursor: pointer;">
+            Large (560px)
+          </button>
+          <button onclick="document.getElementById('drawer-xl').open = true" style="padding: 0.5rem 1rem; background: var(--bg); border: 1px solid var(--border); border-radius: 8px; cursor: pointer;">
+            XL (720px)
+          </button>
+          <button onclick="document.getElementById('drawer-full').open = true" style="padding: 0.5rem 1rem; background: var(--bg); border: 1px solid var(--border); border-radius: 8px; cursor: pointer;">
+            Full Width
+          </button>
+        </div>
+        <erx-drawer id="drawer-sm" size="sm" header-title="Small Drawer"><p style="padding: 1rem;">280px width</p></erx-drawer>
+        <erx-drawer id="drawer-md" size="md" header-title="Medium Drawer"><p style="padding: 1rem;">400px width</p></erx-drawer>
+        <erx-drawer id="drawer-lg" size="lg" header-title="Large Drawer"><p style="padding: 1rem;">560px width</p></erx-drawer>
+        <erx-drawer id="drawer-xl" size="xl" header-title="XL Drawer"><p style="padding: 1rem;">720px width</p></erx-drawer>
+        <erx-drawer id="drawer-full" size="full" header-title="Full Width Drawer"><p style="padding: 1rem;">100% width</p></erx-drawer>
+      </div>
+    </div>
+    <div class="demo-section">
+      <h2>Drawer with Footer</h2>
+      <div class="demo-box">
+        <button onclick="document.getElementById('drawer-footer').open = true" style="padding: 0.75rem 1.5rem; background: var(--primary); color: white; border: none; border-radius: 8px; cursor: pointer;">
+          Open Form Drawer
+        </button>
+        <erx-drawer id="drawer-footer" header-title="Edit Item" size="lg">
+          <div style="padding: 1rem;">
+            <label style="display: block; margin-bottom: 0.5rem; font-weight: 500;">Name</label>
+            <input type="text" placeholder="Enter name" style="width: 100%; padding: 0.75rem; border: 1px solid var(--border); border-radius: 8px; margin-bottom: 1rem;">
+            <label style="display: block; margin-bottom: 0.5rem; font-weight: 500;">Description</label>
+            <textarea placeholder="Enter description" rows="4" style="width: 100%; padding: 0.75rem; border: 1px solid var(--border); border-radius: 8px;"></textarea>
+          </div>
+          <div slot="footer" style="display: flex; gap: 1rem; justify-content: flex-end; padding: 1rem; border-top: 1px solid var(--border);">
+            <button onclick="document.getElementById('drawer-footer').open = false" style="padding: 0.75rem 1.5rem; background: var(--bg); border: 1px solid var(--border); border-radius: 8px; cursor: pointer;">
+              Cancel
+            </button>
+            <button style="padding: 0.75rem 1.5rem; background: var(--primary); color: white; border: none; border-radius: 8px; cursor: pointer;">
+              Save
+            </button>
+          </div>
+        </erx-drawer>
+      </div>
+    </div>
+  </div>
+</body>
+</html>

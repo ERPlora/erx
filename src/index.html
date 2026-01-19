@@ -1,203 +1,150 @@
 <!DOCTYPE html>
-<html lang="en">
+<html dir="ltr" lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>ERX - ERPlora eXtensions</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=5.0">
+  <title>ERX Component Demo</title>
   <script type="module" src="/build/erx.esm.js"></script>
   <script nomodule src="/build/erx.js"></script>
   <style>
-    * {
-      box-sizing: border-box;
+    :root {
+      --erx-color-primary: #667eea;
+      --erx-surface: #ffffff;
+      --erx-text: #1f2937;
+      --erx-border-color: #e5e7eb;
     }
-
+    * { box-sizing: border-box; }
     body {
-      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
-      margin: 0;
-      padding: 20px;
-      background: #f3f4f6;
-      min-height: 100vh;
-    }
-
-    .dark body {
-      background: #111827;
-      color: #f9fafb;
-    }
-
-    h1 {
-      color: #667eea;
-      margin-bottom: 8px;
-    }
-
-    .subtitle {
-      color: #6b7280;
-      margin-bottom: 32px;
-    }
-
-    .theme-toggle {
-      position: fixed;
-      top: 20px;
-      right: 20px;
-      padding: 8px 16px;
-      border: none;
-      border-radius: 8px;
-      background: #667eea;
-      color: white;
-      cursor: pointer;
-    }
-
-    .demo-section {
-      margin-bottom: 48px;
-    }
-
-    .demo-section h2 {
-      color: #374151;
-      border-bottom: 2px solid #e5e7eb;
-      padding-bottom: 8px;
-      margin-bottom: 16px;
-    }
-
-    .dark .demo-section h2 {
-      color: #d1d5db;
-      border-color: #374151;
-    }
-
-    .demo-grid {
-      height: 400px;
-    }
-
-    .demo-split {
-      height: 300px;
-      border: 1px solid #e5e7eb;
-      border-radius: 8px;
-      overflow: hidden;
-    }
-
-    .dark .demo-split {
-      border-color: #374151;
-    }
-
-    .demo-pane {
-      padding: 16px;
-      background: white;
-      height: 100%;
-    }
-
-    .dark .demo-pane {
-      background: #1f2937;
-    }
-
-    .demo-pin {
-      max-width: 320px;
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Arial, sans-serif;
+      padding: 2rem;
+      max-width: 1200px;
       margin: 0 auto;
+      background: #f9fafb;
     }
+    h1 { color: var(--erx-color-primary); margin-bottom: 2rem; }
+    h2 { margin-top: 3rem; margin-bottom: 1rem; border-bottom: 2px solid var(--erx-border-color); padding-bottom: 0.5rem; }
+    .demo-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 2rem;
+    }
+    .demo-card {
+      background: white;
+      padding: 1.5rem;
+      border-radius: 12px;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+    }
+    .demo-card h3 { margin-bottom: 1rem; color: #374151; }
   </style>
 </head>
 <body>
-  <button class="theme-toggle" onclick="toggleTheme()">Toggle Dark Mode</button>
-
-  <h1>ERX - ERPlora eXtensions</h1>
-  <p class="subtitle">Web Components for ERP Desktop/Web</p>
-
-  <!-- DataGrid Demo -->
-  <section class="demo-section">
-    <h2>DataGrid</h2>
-    <erx-data-grid
-      id="demoGrid"
-      class="demo-grid"
-      sortable
-      filterable
-      striped
-      hover
-      paginate
-      page-size="10"
-    ></erx-data-grid>
-  </section>
-
-  <!-- SplitPane Demo -->
-  <section class="demo-section">
-    <h2>SplitPane</h2>
-    <erx-split-pane class="demo-split" collapsible primary-size="30%">
-      <div slot="primary" class="demo-pane">
-        <h3>Primary Pane</h3>
-        <p>This is the primary pane. Drag the divider to resize.</p>
-        <p>Double-click to reset. Use collapse buttons to hide panes.</p>
-      </div>
-      <div slot="secondary" class="demo-pane">
-        <h3>Secondary Pane</h3>
-        <p>This is the secondary pane. It takes the remaining space.</p>
-      </div>
-    </erx-split-pane>
-  </section>
-
-  <!-- PinPad Demo -->
-  <section class="demo-section">
-    <h2>PinPad</h2>
-    <div class="demo-pin">
-      <erx-pin-pad
-        id="demoPinPad"
-        label="Enter PIN"
-        max-length="4"
-        masked
-        show-submit
-      ></erx-pin-pad>
+  <h1>ERX Component Demo</h1>
+  
+  <h2>Gauge & Progress</h2>
+  <div class="demo-grid">
+    <div class="demo-card">
+      <h3>erx-gauge</h3>
+      <erx-gauge value="75" max="100" label="Performance" should-animate="true"></erx-gauge>
     </div>
-  </section>
+    <div class="demo-card">
+      <h3>erx-progress-circle</h3>
+      <erx-progress-circle value="65" size="120" label="Loading" should-animate="true"></erx-progress-circle>
+    </div>
+    <div class="demo-card">
+      <h3>erx-sparkline</h3>
+      <erx-sparkline data="[10,25,15,30,20,45,35,50,40,55]" width="200" height="50"></erx-sparkline>
+    </div>
+  </div>
 
-  <script>
-    // Theme toggle
-    function toggleTheme() {
-      document.documentElement.classList.toggle('dark');
-    }
+  <h2>Buttons & Controls</h2>
+  <div class="demo-grid">
+    <div class="demo-card">
+      <h3>erx-button-group</h3>
+      <erx-button-group></erx-button-group>
+    </div>
+    <div class="demo-card">
+      <h3>erx-split-button</h3>
+      <erx-split-button label="Actions"></erx-split-button>
+    </div>
+  </div>
 
-    // DataGrid setup
-    const grid = document.getElementById('demoGrid');
-    grid.columns = [
-      { field: 'id', header: 'ID', width: 60, sortable: true },
-      { field: 'name', header: 'Product Name', sortable: true, filterable: true, editable: true },
-      { field: 'category', header: 'Category', sortable: true, filterable: true },
-      { field: 'price', header: 'Price', type: 'currency', align: 'right', sortable: true },
-      { field: 'stock', header: 'Stock', type: 'number', align: 'center', sortable: true },
-      { field: 'active', header: 'Active', type: 'boolean', align: 'center', editable: true },
-    ];
+  <h2>Feedback</h2>
+  <div class="demo-grid">
+    <div class="demo-card">
+      <h3>erx-callout</h3>
+      <erx-callout type="info" title="Information">This is an informational callout message.</erx-callout>
+    </div>
+    <div class="demo-card">
+      <h3>erx-banner</h3>
+      <erx-banner type="warning" message="This is a warning banner"></erx-banner>
+    </div>
+    <div class="demo-card">
+      <h3>erx-status-indicator</h3>
+      <erx-status-indicator status="online" label="Server Status"></erx-status-indicator>
+    </div>
+  </div>
 
-    grid.data = [
-      { id: 1, name: 'MacBook Pro 14"', category: 'Laptops', price: 1999.00, stock: 15, active: true },
-      { id: 2, name: 'iPhone 15 Pro', category: 'Phones', price: 1199.00, stock: 42, active: true },
-      { id: 3, name: 'iPad Air', category: 'Tablets', price: 599.00, stock: 28, active: true },
-      { id: 4, name: 'AirPods Pro', category: 'Audio', price: 249.00, stock: 103, active: true },
-      { id: 5, name: 'Apple Watch Ultra', category: 'Wearables', price: 799.00, stock: 8, active: true },
-      { id: 6, name: 'Magic Keyboard', category: 'Accessories', price: 299.00, stock: 45, active: true },
-      { id: 7, name: 'Studio Display', category: 'Monitors', price: 1599.00, stock: 5, active: false },
-      { id: 8, name: 'Mac Mini M2', category: 'Desktops', price: 599.00, stock: 22, active: true },
-      { id: 9, name: 'HomePod Mini', category: 'Audio', price: 99.00, stock: 67, active: true },
-      { id: 10, name: 'Apple TV 4K', category: 'Streaming', price: 129.00, stock: 33, active: true },
-      { id: 11, name: 'MagSafe Charger', category: 'Accessories', price: 39.00, stock: 156, active: true },
-      { id: 12, name: 'AirTag 4-Pack', category: 'Accessories', price: 99.00, stock: 89, active: true },
-    ];
+  <h2>Layout</h2>
+  <div class="demo-grid">
+    <div class="demo-card">
+      <h3>erx-divider</h3>
+      <p>Content above</p>
+      <erx-divider></erx-divider>
+      <p>Content below</p>
+    </div>
+    <div class="demo-card">
+      <h3>erx-section</h3>
+      <erx-section title="Section Title" collapsible="true">
+        <p>Section content goes here</p>
+      </erx-section>
+    </div>
+    <div class="demo-card">
+      <h3>erx-panel</h3>
+      <erx-panel title="Panel Title">
+        <p>Panel content goes here</p>
+      </erx-panel>
+    </div>
+  </div>
 
-    grid.selectable = 'multiple';
+  <h2>Data Display</h2>
+  <div class="demo-grid">
+    <div class="demo-card">
+      <h3>erx-stats</h3>
+      <erx-stats></erx-stats>
+    </div>
+    <div class="demo-card">
+      <h3>erx-metric-card</h3>
+      <erx-metric-card title="Revenue" value="$12,450" change="+12.5%" trend="up"></erx-metric-card>
+    </div>
+    <div class="demo-card">
+      <h3>erx-timeline</h3>
+      <erx-timeline></erx-timeline>
+    </div>
+  </div>
 
-    grid.addEventListener('erxRowSelect', (e) => {
-      console.log('Selected rows:', e.detail.selectedRows);
-    });
+  <h2>Input</h2>
+  <div class="demo-grid">
+    <div class="demo-card">
+      <h3>erx-tag-input</h3>
+      <erx-tag-input placeholder="Add tags..."></erx-tag-input>
+    </div>
+    <div class="demo-card">
+      <h3>erx-color-picker</h3>
+      <erx-color-picker value="#667eea"></erx-color-picker>
+    </div>
+  </div>
 
-    grid.addEventListener('erxSort', (e) => {
-      console.log('Sort:', e.detail);
-    });
+  <h2>Keyboard</h2>
+  <div class="demo-card" style="max-width: 500px;">
+    <h3>erx-virtual-keyboard (numeric)</h3>
+    <erx-virtual-keyboard layout="numeric"></erx-virtual-keyboard>
+  </div>
 
-    grid.addEventListener('erxCellEdit', (e) => {
-      console.log('Cell edit:', e.detail);
-    });
+  <h2>Calculator</h2>
+  <div class="demo-card" style="max-width: 350px;">
+    <h3>erx-calculator</h3>
+    <erx-calculator></erx-calculator>
+  </div>
 
-    // PinPad setup
-    const pinPad = document.getElementById('demoPinPad');
-    pinPad.addEventListener('erxChange', (e) => {
-      console.log('PIN changed:', e.detail);
-    });
-    pinPad.addEventListener('erxSubmit', (e) => {
-      alert('PIN submitted: ' + e.detail.value);
-    });
-  </script>
 </body>
 </html>

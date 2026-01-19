@@ -1,0 +1,269 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>erx-currency-input - ERX Components</title>
+  <script type="module" src="https://unpkg.com/@erplora/erx/dist/erx/erx.esm.js"></script>
+  <script nomodule src="https://unpkg.com/@erplora/erx/dist/erx/erx.js"></script>
+  <link rel="stylesheet" href="../styles.css">
+</head>
+<body>
+  <div class="component-page" style="padding: 2rem;">
+    <a href="../index.html" class="back-link">&larr; Back to Components</a>
+    <div class="component-header">
+      <h1>erx-currency-input</h1>
+      <p>Currency input field with formatting, symbol display, min/max validation, and locale support.</p>
+    </div>
+    <div class="demo-section">
+      <h2>Basic Currency Input (USD)</h2>
+      <div class="demo-box">
+        <erx-currency-input
+          id="basic-currency"
+          label="Amount"
+          placeholder="0.00">
+        </erx-currency-input>
+      </div>
+    </div>
+
+    <div class="demo-section">
+      <h2>Different Currencies</h2>
+      <div class="demo-box">
+        <div class="demo-row">
+          <div class="demo-col">
+            <erx-currency-input
+              id="eur-currency"
+              label="Euro (EUR)"
+              placeholder="0.00">
+            </erx-currency-input>
+          </div>
+          <div class="demo-col">
+            <erx-currency-input
+              id="gbp-currency"
+              label="British Pound (GBP)"
+              placeholder="0.00">
+            </erx-currency-input>
+          </div>
+        </div>
+        <div class="demo-row" style="margin-top: 1rem;">
+          <div class="demo-col">
+            <erx-currency-input
+              id="jpy-currency"
+              label="Japanese Yen (JPY)"
+              placeholder="0">
+            </erx-currency-input>
+          </div>
+          <div class="demo-col">
+            <erx-currency-input
+              id="mxn-currency"
+              label="Mexican Peso (MXN)"
+              placeholder="0.00">
+            </erx-currency-input>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="demo-section">
+      <h2>Symbol Position</h2>
+      <div class="demo-box">
+        <div class="demo-row">
+          <div class="demo-col">
+            <span class="demo-label">Prefix (default)</span>
+            <erx-currency-input
+              id="prefix-currency"
+              placeholder="0.00">
+            </erx-currency-input>
+          </div>
+          <div class="demo-col">
+            <span class="demo-label">Suffix</span>
+            <erx-currency-input
+              id="suffix-currency"
+              placeholder="0.00">
+            </erx-currency-input>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="demo-section">
+      <h2>With Min/Max Limits</h2>
+      <div class="demo-box">
+        <erx-currency-input
+          id="limited-currency"
+          label="Price (Min: $10, Max: $1000)"
+          placeholder="0.00">
+        </erx-currency-input>
+        <p style="margin-top: 1rem; color: var(--text-muted); font-size: 0.875rem;">
+          Values are clamped between $10 and $1000 on blur.
+        </p>
+      </div>
+    </div>
+
+    <div class="demo-section">
+      <h2>Allow Negative Values</h2>
+      <div class="demo-box">
+        <erx-currency-input
+          id="negative-currency"
+          label="Adjustment (can be negative)"
+          placeholder="0.00">
+        </erx-currency-input>
+      </div>
+    </div>
+
+    <div class="demo-section">
+      <h2>Custom Step</h2>
+      <div class="demo-box">
+        <erx-currency-input
+          id="step-currency"
+          label="Quantity (use arrow keys, step: $5)"
+          placeholder="0.00">
+        </erx-currency-input>
+        <p style="margin-top: 1rem; color: var(--text-muted); font-size: 0.875rem;">
+          Use Up/Down arrow keys to increment/decrement by $5.
+        </p>
+      </div>
+    </div>
+
+    <div class="demo-section">
+      <h2>Different Precision</h2>
+      <div class="demo-box">
+        <div class="demo-row">
+          <div class="demo-col">
+            <erx-currency-input
+              id="no-decimal-currency"
+              label="No decimals"
+              placeholder="0">
+            </erx-currency-input>
+          </div>
+          <div class="demo-col">
+            <erx-currency-input
+              id="four-decimal-currency"
+              label="Four decimals"
+              placeholder="0.0000">
+            </erx-currency-input>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="demo-section">
+      <h2>Pre-filled Value</h2>
+      <div class="demo-box">
+        <erx-currency-input
+          id="prefilled-currency"
+          label="Total"
+          value="1234.56">
+        </erx-currency-input>
+      </div>
+    </div>
+
+    <div class="demo-section">
+      <h2>Read-only State</h2>
+      <div class="demo-box">
+        <erx-currency-input
+          id="readonly-currency"
+          label="Calculated Total (read-only)"
+          value="999.99"
+          readonly>
+        </erx-currency-input>
+      </div>
+    </div>
+
+    <div class="demo-section">
+      <h2>Disabled State</h2>
+      <div class="demo-box">
+        <erx-currency-input
+          id="disabled-currency"
+          label="Disabled input"
+          value="500.00"
+          disabled>
+        </erx-currency-input>
+      </div>
+    </div>
+
+    <div class="demo-section">
+      <h2>Event Output</h2>
+      <div class="demo-box">
+        <div id="event-output" style="font-family: monospace; font-size: 0.875rem; color: var(--text-muted); white-space: pre-wrap;">
+          Enter a value to see the event details...
+        </div>
+      </div>
+    </div>
+  </div>
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      // Basic USD
+      const basicCurrency = document.getElementById('basic-currency');
+      basicCurrency.config = { currency: 'USD' };
+
+      // Euro
+      const eurCurrency = document.getElementById('eur-currency');
+      eurCurrency.config = { currency: 'EUR', locale: 'de-DE' };
+
+      // GBP
+      const gbpCurrency = document.getElementById('gbp-currency');
+      gbpCurrency.config = { currency: 'GBP', locale: 'en-GB' };
+
+      // JPY (no decimals)
+      const jpyCurrency = document.getElementById('jpy-currency');
+      jpyCurrency.config = { currency: 'JPY', locale: 'ja-JP', precision: 0 };
+
+      // MXN
+      const mxnCurrency = document.getElementById('mxn-currency');
+      mxnCurrency.config = { currency: 'MXN', locale: 'es-MX' };
+
+      // Prefix
+      const prefixCurrency = document.getElementById('prefix-currency');
+      prefixCurrency.config = { currency: 'USD', symbolPosition: 'prefix' };
+
+      // Suffix
+      const suffixCurrency = document.getElementById('suffix-currency');
+      suffixCurrency.config = { currency: 'EUR', symbolPosition: 'suffix', locale: 'de-DE' };
+
+      // Limited
+      const limitedCurrency = document.getElementById('limited-currency');
+      limitedCurrency.config = { currency: 'USD', min: 10, max: 1000 };
+
+      // Negative
+      const negativeCurrency = document.getElementById('negative-currency');
+      negativeCurrency.config = { currency: 'USD', allowNegative: true };
+
+      // Step
+      const stepCurrency = document.getElementById('step-currency');
+      stepCurrency.config = { currency: 'USD', step: 5 };
+
+      // No decimals
+      const noDecimalCurrency = document.getElementById('no-decimal-currency');
+      noDecimalCurrency.config = { currency: 'USD', precision: 0 };
+
+      // Four decimals
+      const fourDecimalCurrency = document.getElementById('four-decimal-currency');
+      fourDecimalCurrency.config = { currency: 'USD', precision: 4 };
+
+      // Prefilled
+      const prefilledCurrency = document.getElementById('prefilled-currency');
+      prefilledCurrency.config = { currency: 'USD' };
+
+      // Readonly
+      const readonlyCurrency = document.getElementById('readonly-currency');
+      readonlyCurrency.config = { currency: 'USD' };
+
+      // Disabled
+      const disabledCurrency = document.getElementById('disabled-currency');
+      disabledCurrency.config = { currency: 'USD' };
+
+      // Event handling
+      const eventOutput = document.getElementById('event-output');
+      document.querySelectorAll('erx-currency-input').forEach(input => {
+        input.addEventListener('erxChange', (e) => {
+          eventOutput.innerHTML = `<strong>erxChange:</strong>\n${JSON.stringify(e.detail, null, 2)}`;
+        });
+        input.addEventListener('erxBlur', (e) => {
+          eventOutput.innerHTML = `<strong>erxBlur:</strong>\n${JSON.stringify(e.detail, null, 2)}`;
+        });
+      });
+    });
+  </script>
+</body>
+</html>

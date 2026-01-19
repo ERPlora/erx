@@ -1,0 +1,463 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>erx-form-wizard - ERX Components</title>
+  <script type="module" src="https://unpkg.com/@erplora/erx/dist/erx/erx.esm.js"></script>
+  <script nomodule src="https://unpkg.com/@erplora/erx/dist/erx/erx.js"></script>
+  <link rel="stylesheet" href="../styles.css">
+  <style>
+    .step-content {
+      padding: 2rem;
+      background: var(--bg);
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      margin-top: 1rem;
+    }
+    .step-content h3 {
+      margin-bottom: 1rem;
+      color: var(--primary);
+    }
+    .form-group {
+      margin-bottom: 1rem;
+    }
+    .form-group label {
+      display: block;
+      margin-bottom: 0.5rem;
+      font-size: 0.875rem;
+      color: var(--text-muted);
+    }
+    .form-group input,
+    .form-group select,
+    .form-group textarea {
+      width: 100%;
+      padding: 0.75rem;
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      font-size: 1rem;
+      background: var(--bg-secondary);
+      color: var(--text);
+    }
+    .form-group input:focus,
+    .form-group select:focus,
+    .form-group textarea:focus {
+      outline: none;
+      border-color: var(--primary);
+    }
+    .form-row {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 1rem;
+    }
+    @media (max-width: 600px) {
+      .form-row {
+        grid-template-columns: 1fr;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="component-page" style="padding: 2rem;">
+    <a href="../index.html" class="back-link">&larr; Back to Components</a>
+    <div class="component-header">
+      <h1>erx-form-wizard</h1>
+      <p>Multi-step form wizard with progress tracking, validation, and navigation controls.</p>
+    </div>
+    <div class="demo-section">
+      <h2>Basic Form Wizard</h2>
+      <div class="demo-box">
+        <erx-form-wizard id="basic-wizard"></erx-form-wizard>
+        <div id="basic-wizard-content">
+          <div class="step-content" data-step="0">
+            <h3>Personal Information</h3>
+            <div class="form-row">
+              <div class="form-group">
+                <label>First Name</label>
+                <input type="text" placeholder="Enter first name" />
+              </div>
+              <div class="form-group">
+                <label>Last Name</label>
+                <input type="text" placeholder="Enter last name" />
+              </div>
+            </div>
+            <div class="form-group">
+              <label>Email</label>
+              <input type="email" placeholder="Enter email address" />
+            </div>
+          </div>
+          <div class="step-content" data-step="1" style="display: none;">
+            <h3>Account Details</h3>
+            <div class="form-group">
+              <label>Username</label>
+              <input type="text" placeholder="Choose a username" />
+            </div>
+            <div class="form-row">
+              <div class="form-group">
+                <label>Password</label>
+                <input type="password" placeholder="Enter password" />
+              </div>
+              <div class="form-group">
+                <label>Confirm Password</label>
+                <input type="password" placeholder="Confirm password" />
+              </div>
+            </div>
+          </div>
+          <div class="step-content" data-step="2" style="display: none;">
+            <h3>Preferences</h3>
+            <div class="form-group">
+              <label>Language</label>
+              <select>
+                <option>English</option>
+                <option>Spanish</option>
+                <option>French</option>
+                <option>German</option>
+              </select>
+            </div>
+            <div class="form-group">
+              <label>Timezone</label>
+              <select>
+                <option>UTC-8 (Pacific)</option>
+                <option>UTC-5 (Eastern)</option>
+                <option>UTC+0 (GMT)</option>
+                <option>UTC+1 (CET)</option>
+              </select>
+            </div>
+          </div>
+          <div class="step-content" data-step="3" style="display: none;">
+            <h3>Review &amp; Confirm</h3>
+            <p style="color: var(--text-muted); margin-bottom: 1rem;">
+              Please review your information before completing the signup.
+            </p>
+            <div style="padding: 1rem; background: var(--bg-secondary); border-radius: 8px;">
+              <p><strong>Personal:</strong> John Doe (john@example.com)</p>
+              <p><strong>Username:</strong> johndoe</p>
+              <p><strong>Language:</strong> English</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="demo-section">
+      <h2>Vertical Orientation</h2>
+      <div class="demo-box">
+        <div style="display: grid; grid-template-columns: 250px 1fr; gap: 2rem;">
+          <erx-form-wizard id="vertical-wizard"></erx-form-wizard>
+          <div id="vertical-wizard-content">
+            <div class="step-content" data-step="0">
+              <h3>Step 1: Getting Started</h3>
+              <p>Welcome to the setup wizard. Click Next to continue.</p>
+            </div>
+            <div class="step-content" data-step="1" style="display: none;">
+              <h3>Step 2: Configuration</h3>
+              <div class="form-group">
+                <label>Setting Name</label>
+                <input type="text" placeholder="Enter setting" />
+              </div>
+            </div>
+            <div class="step-content" data-step="2" style="display: none;">
+              <h3>Step 3: Complete</h3>
+              <p style="color: var(--success);">Setup complete! Click Complete to finish.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="demo-section">
+      <h2>With Optional Steps</h2>
+      <div class="demo-box">
+        <erx-form-wizard id="optional-wizard"></erx-form-wizard>
+        <div id="optional-wizard-content">
+          <div class="step-content" data-step="0">
+            <h3>Required Step</h3>
+            <p>This step is required and must be completed.</p>
+          </div>
+          <div class="step-content" data-step="1" style="display: none;">
+            <h3>Optional Step</h3>
+            <p>This step is optional. You can skip it using the Skip button.</p>
+          </div>
+          <div class="step-content" data-step="2" style="display: none;">
+            <h3>Final Step</h3>
+            <p>You're almost done!</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="demo-section">
+      <h2>With Validation</h2>
+      <div class="demo-box">
+        <erx-form-wizard id="validation-wizard"></erx-form-wizard>
+        <div id="validation-wizard-content">
+          <div class="step-content" data-step="0">
+            <h3>Enter Your Email</h3>
+            <div class="form-group">
+              <label>Email Address (required)</label>
+              <input type="email" id="validation-email" placeholder="Enter a valid email" />
+              <p id="email-error" style="color: #ef4444; font-size: 0.875rem; margin-top: 0.5rem; display: none;">
+                Please enter a valid email address.
+              </p>
+            </div>
+          </div>
+          <div class="step-content" data-step="1" style="display: none;">
+            <h3>Verification</h3>
+            <p style="color: var(--success);">Email validated successfully! Continue to complete.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="demo-section">
+      <h2>Without Step Numbers</h2>
+      <div class="demo-box">
+        <erx-form-wizard id="no-numbers-wizard"></erx-form-wizard>
+        <div id="no-numbers-wizard-content">
+          <div class="step-content" data-step="0">
+            <h3>Welcome</h3>
+            <p>Step indicators show dots instead of numbers.</p>
+          </div>
+          <div class="step-content" data-step="1" style="display: none;">
+            <h3>Continue</h3>
+            <p>Cleaner look for simpler wizards.</p>
+          </div>
+          <div class="step-content" data-step="2" style="display: none;">
+            <h3>Finish</h3>
+            <p>All done!</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="demo-section">
+      <h2>With Icons</h2>
+      <div class="demo-box">
+        <erx-form-wizard id="icon-wizard"></erx-form-wizard>
+        <div id="icon-wizard-content">
+          <div class="step-content" data-step="0">
+            <h3>Cart Review</h3>
+            <p>Review your cart items before checkout.</p>
+          </div>
+          <div class="step-content" data-step="1" style="display: none;">
+            <h3>Shipping</h3>
+            <p>Enter your shipping details.</p>
+          </div>
+          <div class="step-content" data-step="2" style="display: none;">
+            <h3>Payment</h3>
+            <p>Complete your payment.</p>
+          </div>
+          <div class="step-content" data-step="3" style="display: none;">
+            <h3>Order Confirmed</h3>
+            <p style="color: var(--success);">Your order has been placed!</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="demo-section">
+      <h2>Linear Mode (No Skip)</h2>
+      <div class="demo-box">
+        <erx-form-wizard id="linear-wizard"></erx-form-wizard>
+        <div id="linear-wizard-content">
+          <div class="step-content" data-step="0">
+            <h3>Step 1</h3>
+            <p>You must complete steps in order. Cannot jump ahead.</p>
+          </div>
+          <div class="step-content" data-step="1" style="display: none;">
+            <h3>Step 2</h3>
+            <p>Complete this step to proceed.</p>
+          </div>
+          <div class="step-content" data-step="2" style="display: none;">
+            <h3>Step 3</h3>
+            <p>Final step!</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="demo-section">
+      <h2>Programmatic Control</h2>
+      <div class="demo-box">
+        <erx-form-wizard id="control-wizard"></erx-form-wizard>
+        <div id="control-wizard-content">
+          <div class="step-content" data-step="0">
+            <h3>Step 1</h3>
+            <p>Use the buttons below to control the wizard programmatically.</p>
+          </div>
+          <div class="step-content" data-step="1" style="display: none;">
+            <h3>Step 2</h3>
+            <p>Navigate using custom controls.</p>
+          </div>
+          <div class="step-content" data-step="2" style="display: none;">
+            <h3>Step 3</h3>
+            <p>The last step!</p>
+          </div>
+        </div>
+        <div style="margin-top: 1rem; display: flex; gap: 0.5rem; flex-wrap: wrap;">
+          <button id="control-prev" style="padding: 0.5rem 1rem; background: var(--bg); border: 1px solid var(--border); border-radius: 6px; cursor: pointer;">
+            Prev
+          </button>
+          <button id="control-next" style="padding: 0.5rem 1rem; background: var(--primary); color: white; border: none; border-radius: 6px; cursor: pointer;">
+            Next
+          </button>
+          <button id="control-goto-1" style="padding: 0.5rem 1rem; background: var(--bg); border: 1px solid var(--border); border-radius: 6px; cursor: pointer;">
+            Go to Step 2
+          </button>
+          <button id="control-reset" style="padding: 0.5rem 1rem; background: #ef4444; color: white; border: none; border-radius: 6px; cursor: pointer;">
+            Reset
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <div class="demo-section">
+      <h2>Event Output</h2>
+      <div class="demo-box">
+        <div id="event-output" style="font-family: monospace; font-size: 0.875rem; color: var(--text-muted); white-space: pre-wrap;">
+          Navigate through any wizard to see the event details...
+        </div>
+      </div>
+    </div>
+  </div>
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      const eventOutput = document.getElementById('event-output');
+
+      // Helper to show/hide step content
+      function setupWizardContent(wizardId, contentId) {
+        const wizard = document.getElementById(wizardId);
+        const content = document.getElementById(contentId);
+
+        wizard.addEventListener('erxStepChange', (e) => {
+          content.querySelectorAll('[data-step]').forEach(el => {
+            el.style.display = el.dataset.step == e.detail.currentStep ? 'block' : 'none';
+          });
+          eventOutput.innerHTML = `<strong>erxStepChange (${wizardId}):</strong>\n${JSON.stringify({
+            currentStep: e.detail.currentStep,
+            previousStep: e.detail.previousStep,
+            direction: e.detail.direction,
+            stepTitle: e.detail.step.title
+          }, null, 2)}`;
+        });
+
+        wizard.addEventListener('erxComplete', (e) => {
+          eventOutput.innerHTML = `<strong>erxComplete (${wizardId}):</strong> Wizard completed with ${e.detail.steps.length} steps`;
+          alert('Wizard completed!');
+        });
+      }
+
+      // Basic wizard
+      const basicWizard = document.getElementById('basic-wizard');
+      basicWizard.config = {
+        steps: [
+          { id: 'personal', title: 'Personal Info', subtitle: 'Your details' },
+          { id: 'account', title: 'Account', subtitle: 'Login credentials' },
+          { id: 'preferences', title: 'Preferences', subtitle: 'Customize' },
+          { id: 'review', title: 'Review', subtitle: 'Confirm' },
+        ]
+      };
+      setupWizardContent('basic-wizard', 'basic-wizard-content');
+
+      // Vertical wizard
+      const verticalWizard = document.getElementById('vertical-wizard');
+      verticalWizard.config = {
+        steps: [
+          { id: 'start', title: 'Getting Started' },
+          { id: 'config', title: 'Configuration' },
+          { id: 'complete', title: 'Complete' },
+        ],
+        orientation: 'vertical'
+      };
+      setupWizardContent('vertical-wizard', 'vertical-wizard-content');
+
+      // Optional steps wizard
+      const optionalWizard = document.getElementById('optional-wizard');
+      optionalWizard.config = {
+        steps: [
+          { id: 'required', title: 'Required Step' },
+          { id: 'optional', title: 'Optional Step', optional: true },
+          { id: 'final', title: 'Final Step' },
+        ],
+        allowSkip: true
+      };
+      setupWizardContent('optional-wizard', 'optional-wizard-content');
+
+      // Validation wizard
+      const validationWizard = document.getElementById('validation-wizard');
+      const emailInput = document.getElementById('validation-email');
+      const emailError = document.getElementById('email-error');
+
+      validationWizard.config = {
+        steps: [
+          {
+            id: 'email',
+            title: 'Email',
+            validate: async () => {
+              const email = emailInput.value;
+              const isValid = /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
+              emailError.style.display = isValid ? 'none' : 'block';
+              return isValid;
+            }
+          },
+          { id: 'verify', title: 'Verification' },
+        ]
+      };
+      setupWizardContent('validation-wizard', 'validation-wizard-content');
+
+      // No numbers wizard
+      const noNumbersWizard = document.getElementById('no-numbers-wizard');
+      noNumbersWizard.config = {
+        steps: [
+          { id: 'welcome', title: 'Welcome' },
+          { id: 'continue', title: 'Continue' },
+          { id: 'finish', title: 'Finish' },
+        ],
+        showStepNumbers: false
+      };
+      setupWizardContent('no-numbers-wizard', 'no-numbers-wizard-content');
+
+      // Icon wizard
+      const iconWizard = document.getElementById('icon-wizard');
+      iconWizard.config = {
+        steps: [
+          { id: 'cart', title: 'Cart', icon: '🛒' },
+          { id: 'shipping', title: 'Shipping', icon: '📦' },
+          { id: 'payment', title: 'Payment', icon: '💳' },
+          { id: 'confirm', title: 'Confirm', icon: '✅' },
+        ]
+      };
+      setupWizardContent('icon-wizard', 'icon-wizard-content');
+
+      // Linear wizard
+      const linearWizard = document.getElementById('linear-wizard');
+      linearWizard.config = {
+        steps: [
+          { id: 'step1', title: 'Step 1' },
+          { id: 'step2', title: 'Step 2' },
+          { id: 'step3', title: 'Step 3' },
+        ],
+        linear: true
+      };
+      setupWizardContent('linear-wizard', 'linear-wizard-content');
+
+      // Control wizard
+      const controlWizard = document.getElementById('control-wizard');
+      controlWizard.config = {
+        steps: [
+          { id: 'step1', title: 'Step 1' },
+          { id: 'step2', title: 'Step 2' },
+          { id: 'step3', title: 'Step 3' },
+        ],
+        showNavigation: false
+      };
+      setupWizardContent('control-wizard', 'control-wizard-content');
+
+      document.getElementById('control-prev').addEventListener('click', () => controlWizard.prev());
+      document.getElementById('control-next').addEventListener('click', () => controlWizard.next());
+      document.getElementById('control-goto-1').addEventListener('click', () => controlWizard.goToStep(1));
+      document.getElementById('control-reset').addEventListener('click', () => controlWizard.reset());
+    });
+  </script>
+</body>
+</html>

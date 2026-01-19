@@ -1,0 +1,221 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>erx-notifications - ERX Components</title>
+  <script type="module" src="https://unpkg.com/@erplora/erx/dist/erx/erx.esm.js"></script>
+  <script nomodule src="https://unpkg.com/@erplora/erx/dist/erx/erx.js"></script>
+  <link rel="stylesheet" href="../styles.css">
+</head>
+<body>
+  <div class="component-page" style="padding: 2rem;">
+    <a href="../index.html" class="back-link">&larr; Back to Components</a>
+
+    <div class="component-header">
+      <h1>erx-notifications</h1>
+      <p>A notification center component for managing and displaying a list of notifications. Features unread counts, grouping, and notification actions.</p>
+    </div>
+
+    <div class="demo-section">
+      <h2>Notification Center</h2>
+      <div class="demo-box">
+        <erx-notifications id="notification-center"></erx-notifications>
+      </div>
+    </div>
+
+    <div class="demo-section">
+      <h2>With Badge Trigger</h2>
+      <div class="demo-box">
+        <p style="margin-bottom: 1rem; color: var(--text-muted);">Click the bell icon to open the notification panel.</p>
+        <erx-notifications id="notifications-badge" show-badge></erx-notifications>
+      </div>
+    </div>
+
+    <div class="demo-section">
+      <h2>Grouped Notifications</h2>
+      <div class="demo-box">
+        <erx-notifications id="notifications-grouped" grouped></erx-notifications>
+      </div>
+    </div>
+
+    <div class="demo-section">
+      <h2>Compact Mode</h2>
+      <div class="demo-box">
+        <erx-notifications id="notifications-compact" compact max-visible="5"></erx-notifications>
+      </div>
+    </div>
+
+    <div class="demo-section">
+      <h2>Add Notifications</h2>
+      <div class="demo-box">
+        <div style="display: flex; gap: 0.5rem; flex-wrap: wrap; margin-bottom: 1rem;">
+          <button onclick="addInfoNotification()" style="padding: 0.5rem 1rem; background: var(--primary); color: white; border: none; border-radius: 6px; cursor: pointer;">Add Info</button>
+          <button onclick="addSuccessNotification()" style="padding: 0.5rem 1rem; background: var(--success); color: white; border: none; border-radius: 6px; cursor: pointer;">Add Success</button>
+          <button onclick="addWarningNotification()" style="padding: 0.5rem 1rem; background: var(--warning); color: white; border: none; border-radius: 6px; cursor: pointer;">Add Warning</button>
+          <button onclick="addErrorNotification()" style="padding: 0.5rem 1rem; background: var(--error); color: white; border: none; border-radius: 6px; cursor: pointer;">Add Error</button>
+          <button onclick="clearAllNotifications()" style="padding: 0.5rem 1rem; background: var(--text-muted); color: white; border: none; border-radius: 6px; cursor: pointer;">Clear All</button>
+          <button onclick="markAllRead()" style="padding: 0.5rem 1rem; background: transparent; color: var(--text); border: 1px solid var(--border); border-radius: 6px; cursor: pointer;">Mark All Read</button>
+        </div>
+        <erx-notifications id="notifications-interactive"></erx-notifications>
+      </div>
+    </div>
+
+    <div class="demo-section">
+      <h2>Props</h2>
+      <table style="width: 100%; border-collapse: collapse;">
+        <thead>
+          <tr style="border-bottom: 2px solid var(--border);">
+            <th style="text-align: left; padding: 0.5rem;">Prop</th>
+            <th style="text-align: left; padding: 0.5rem;">Type</th>
+            <th style="text-align: left; padding: 0.5rem;">Default</th>
+            <th style="text-align: left; padding: 0.5rem;">Description</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr style="border-bottom: 1px solid var(--border);">
+            <td style="padding: 0.5rem;"><code>notifications</code></td>
+            <td style="padding: 0.5rem;">array</td>
+            <td style="padding: 0.5rem;">[]</td>
+            <td style="padding: 0.5rem;">Array of notification objects</td>
+          </tr>
+          <tr style="border-bottom: 1px solid var(--border);">
+            <td style="padding: 0.5rem;"><code>show-badge</code></td>
+            <td style="padding: 0.5rem;">boolean</td>
+            <td style="padding: 0.5rem;">false</td>
+            <td style="padding: 0.5rem;">Show notification badge with count</td>
+          </tr>
+          <tr style="border-bottom: 1px solid var(--border);">
+            <td style="padding: 0.5rem;"><code>grouped</code></td>
+            <td style="padding: 0.5rem;">boolean</td>
+            <td style="padding: 0.5rem;">false</td>
+            <td style="padding: 0.5rem;">Group notifications by date</td>
+          </tr>
+          <tr style="border-bottom: 1px solid var(--border);">
+            <td style="padding: 0.5rem;"><code>compact</code></td>
+            <td style="padding: 0.5rem;">boolean</td>
+            <td style="padding: 0.5rem;">false</td>
+            <td style="padding: 0.5rem;">Use compact display mode</td>
+          </tr>
+          <tr style="border-bottom: 1px solid var(--border);">
+            <td style="padding: 0.5rem;"><code>max-visible</code></td>
+            <td style="padding: 0.5rem;">number</td>
+            <td style="padding: 0.5rem;">10</td>
+            <td style="padding: 0.5rem;">Maximum notifications to display</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <div class="demo-section">
+      <h2>Events</h2>
+      <table style="width: 100%; border-collapse: collapse;">
+        <thead>
+          <tr style="border-bottom: 2px solid var(--border);">
+            <th style="text-align: left; padding: 0.5rem;">Event</th>
+            <th style="text-align: left; padding: 0.5rem;">Description</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr style="border-bottom: 1px solid var(--border);">
+            <td style="padding: 0.5rem;"><code>erxNotificationClick</code></td>
+            <td style="padding: 0.5rem;">Emitted when a notification is clicked</td>
+          </tr>
+          <tr style="border-bottom: 1px solid var(--border);">
+            <td style="padding: 0.5rem;"><code>erxNotificationDismiss</code></td>
+            <td style="padding: 0.5rem;">Emitted when a notification is dismissed</td>
+          </tr>
+          <tr style="border-bottom: 1px solid var(--border);">
+            <td style="padding: 0.5rem;"><code>erxMarkAllRead</code></td>
+            <td style="padding: 0.5rem;">Emitted when mark all read is triggered</td>
+          </tr>
+          <tr style="border-bottom: 1px solid var(--border);">
+            <td style="padding: 0.5rem;"><code>erxClearAll</code></td>
+            <td style="padding: 0.5rem;">Emitted when clear all is triggered</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+  <script>
+    const sampleNotifications = [
+      { id: 1, type: 'info', title: 'New update available', message: 'Version 2.0 is now available with new features.', timestamp: new Date(Date.now() - 300000), unread: true },
+      { id: 2, type: 'success', title: 'Order completed', message: 'Order #12345 has been successfully processed.', timestamp: new Date(Date.now() - 3600000), unread: true },
+      { id: 3, type: 'warning', title: 'Low inventory', message: 'Product "Widget A" is running low on stock.', timestamp: new Date(Date.now() - 7200000), unread: false },
+      { id: 4, type: 'error', title: 'Payment failed', message: 'Unable to process payment for invoice #789.', timestamp: new Date(Date.now() - 86400000), unread: true },
+      { id: 5, type: 'info', title: 'New message', message: 'You have a new message from John Doe.', timestamp: new Date(Date.now() - 172800000), unread: false },
+    ];
+
+    // Initialize notification centers
+    document.getElementById('notification-center').notifications = sampleNotifications;
+    document.getElementById('notifications-badge').notifications = sampleNotifications;
+    document.getElementById('notifications-grouped').notifications = sampleNotifications;
+    document.getElementById('notifications-compact').notifications = sampleNotifications;
+    document.getElementById('notifications-interactive').notifications = [...sampleNotifications];
+
+    let notificationId = 100;
+    const interactive = document.getElementById('notifications-interactive');
+
+    function addInfoNotification() {
+      const notifications = [...interactive.notifications];
+      notifications.unshift({
+        id: notificationId++,
+        type: 'info',
+        title: 'New notification',
+        message: 'This is a new info notification.',
+        timestamp: new Date(),
+        unread: true
+      });
+      interactive.notifications = notifications;
+    }
+
+    function addSuccessNotification() {
+      const notifications = [...interactive.notifications];
+      notifications.unshift({
+        id: notificationId++,
+        type: 'success',
+        title: 'Action successful',
+        message: 'Your action was completed successfully.',
+        timestamp: new Date(),
+        unread: true
+      });
+      interactive.notifications = notifications;
+    }
+
+    function addWarningNotification() {
+      const notifications = [...interactive.notifications];
+      notifications.unshift({
+        id: notificationId++,
+        type: 'warning',
+        title: 'Warning',
+        message: 'Please review this warning notification.',
+        timestamp: new Date(),
+        unread: true
+      });
+      interactive.notifications = notifications;
+    }
+
+    function addErrorNotification() {
+      const notifications = [...interactive.notifications];
+      notifications.unshift({
+        id: notificationId++,
+        type: 'error',
+        title: 'Error occurred',
+        message: 'An error has occurred. Please try again.',
+        timestamp: new Date(),
+        unread: true
+      });
+      interactive.notifications = notifications;
+    }
+
+    function clearAllNotifications() {
+      interactive.notifications = [];
+    }
+
+    function markAllRead() {
+      interactive.notifications = interactive.notifications.map(n => ({ ...n, unread: false }));
+    }
+  </script>
+</body>
+</html>

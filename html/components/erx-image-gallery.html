@@ -1,0 +1,218 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>erx-image-gallery - ERX Components</title>
+  <script type="module" src="https://unpkg.com/@erplora/erx/dist/erx/erx.esm.js"></script>
+  <script nomodule src="https://unpkg.com/@erplora/erx/dist/erx/erx.js"></script>
+  <link rel="stylesheet" href="../styles.css">
+</head>
+<body>
+  <div class="component-page" style="padding: 2rem;">
+    <a href="../index.html" class="back-link">&larr; Back to Components</a>
+
+    <div class="component-header">
+      <h1>erx-image-gallery</h1>
+      <p>An image gallery component for displaying collections of images in various layouts. Supports grid, masonry, and justified layouts with lightbox integration.</p>
+    </div>
+
+    <div class="demo-section">
+      <h2>Grid Layout</h2>
+      <div class="demo-box">
+        <erx-image-gallery id="grid-gallery" layout="grid" columns="4" gap="8"></erx-image-gallery>
+      </div>
+    </div>
+
+    <div class="demo-section">
+      <h2>Masonry Layout</h2>
+      <div class="demo-box">
+        <erx-image-gallery id="masonry-gallery" layout="masonry" columns="3" gap="12"></erx-image-gallery>
+      </div>
+    </div>
+
+    <div class="demo-section">
+      <h2>Justified Layout</h2>
+      <div class="demo-box">
+        <erx-image-gallery id="justified-gallery" layout="justified" row-height="200" gap="8"></erx-image-gallery>
+      </div>
+    </div>
+
+    <div class="demo-section">
+      <h2>With Lightbox</h2>
+      <div class="demo-box">
+        <p style="margin-bottom: 1rem; color: var(--text-muted);">Click any image to open it in a lightbox.</p>
+        <erx-image-gallery id="lightbox-gallery" layout="grid" columns="4" gap="8" enable-lightbox></erx-image-gallery>
+      </div>
+    </div>
+
+    <div class="demo-section">
+      <h2>With Hover Effects</h2>
+      <div class="demo-box">
+        <erx-image-gallery id="hover-gallery" layout="grid" columns="3" gap="12" hover-effect="zoom"></erx-image-gallery>
+      </div>
+    </div>
+
+    <div class="demo-section">
+      <h2>With Captions</h2>
+      <div class="demo-box">
+        <erx-image-gallery id="caption-gallery" layout="grid" columns="3" gap="12" show-captions></erx-image-gallery>
+      </div>
+    </div>
+
+    <div class="demo-section">
+      <h2>Selectable Gallery</h2>
+      <div class="demo-box">
+        <erx-image-gallery id="selectable-gallery" layout="grid" columns="4" gap="8" selectable></erx-image-gallery>
+        <p id="selection-output" style="margin-top: 1rem; color: var(--text-muted);">Selected: 0 images</p>
+      </div>
+    </div>
+
+    <div class="demo-section">
+      <h2>Responsive Columns</h2>
+      <div class="demo-box">
+        <erx-image-gallery
+          id="responsive-gallery"
+          layout="grid"
+          columns="4"
+          gap="8"
+          responsive-columns='{"sm": 2, "md": 3, "lg": 4}'>
+        </erx-image-gallery>
+        <p style="margin-top: 1rem; color: var(--text-muted);">Resize the window to see columns adjust.</p>
+      </div>
+    </div>
+
+    <div class="demo-section">
+      <h2>Props</h2>
+      <table style="width: 100%; border-collapse: collapse;">
+        <thead>
+          <tr style="border-bottom: 2px solid var(--border);">
+            <th style="text-align: left; padding: 0.5rem;">Prop</th>
+            <th style="text-align: left; padding: 0.5rem;">Type</th>
+            <th style="text-align: left; padding: 0.5rem;">Default</th>
+            <th style="text-align: left; padding: 0.5rem;">Description</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr style="border-bottom: 1px solid var(--border);">
+            <td style="padding: 0.5rem;"><code>images</code></td>
+            <td style="padding: 0.5rem;">array</td>
+            <td style="padding: 0.5rem;">[]</td>
+            <td style="padding: 0.5rem;">Array of image objects</td>
+          </tr>
+          <tr style="border-bottom: 1px solid var(--border);">
+            <td style="padding: 0.5rem;"><code>layout</code></td>
+            <td style="padding: 0.5rem;">'grid' | 'masonry' | 'justified'</td>
+            <td style="padding: 0.5rem;">'grid'</td>
+            <td style="padding: 0.5rem;">Gallery layout type</td>
+          </tr>
+          <tr style="border-bottom: 1px solid var(--border);">
+            <td style="padding: 0.5rem;"><code>columns</code></td>
+            <td style="padding: 0.5rem;">number</td>
+            <td style="padding: 0.5rem;">3</td>
+            <td style="padding: 0.5rem;">Number of columns</td>
+          </tr>
+          <tr style="border-bottom: 1px solid var(--border);">
+            <td style="padding: 0.5rem;"><code>gap</code></td>
+            <td style="padding: 0.5rem;">number</td>
+            <td style="padding: 0.5rem;">8</td>
+            <td style="padding: 0.5rem;">Gap between images (px)</td>
+          </tr>
+          <tr style="border-bottom: 1px solid var(--border);">
+            <td style="padding: 0.5rem;"><code>row-height</code></td>
+            <td style="padding: 0.5rem;">number</td>
+            <td style="padding: 0.5rem;">200</td>
+            <td style="padding: 0.5rem;">Target row height (justified)</td>
+          </tr>
+          <tr style="border-bottom: 1px solid var(--border);">
+            <td style="padding: 0.5rem;"><code>enable-lightbox</code></td>
+            <td style="padding: 0.5rem;">boolean</td>
+            <td style="padding: 0.5rem;">false</td>
+            <td style="padding: 0.5rem;">Enable lightbox on click</td>
+          </tr>
+          <tr style="border-bottom: 1px solid var(--border);">
+            <td style="padding: 0.5rem;"><code>hover-effect</code></td>
+            <td style="padding: 0.5rem;">'none' | 'zoom' | 'fade' | 'slide'</td>
+            <td style="padding: 0.5rem;">'none'</td>
+            <td style="padding: 0.5rem;">Hover effect type</td>
+          </tr>
+          <tr style="border-bottom: 1px solid var(--border);">
+            <td style="padding: 0.5rem;"><code>show-captions</code></td>
+            <td style="padding: 0.5rem;">boolean</td>
+            <td style="padding: 0.5rem;">false</td>
+            <td style="padding: 0.5rem;">Show image captions</td>
+          </tr>
+          <tr style="border-bottom: 1px solid var(--border);">
+            <td style="padding: 0.5rem;"><code>selectable</code></td>
+            <td style="padding: 0.5rem;">boolean</td>
+            <td style="padding: 0.5rem;">false</td>
+            <td style="padding: 0.5rem;">Enable image selection</td>
+          </tr>
+          <tr style="border-bottom: 1px solid var(--border);">
+            <td style="padding: 0.5rem;"><code>responsive-columns</code></td>
+            <td style="padding: 0.5rem;">object</td>
+            <td style="padding: 0.5rem;">-</td>
+            <td style="padding: 0.5rem;">Responsive column config</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <div class="demo-section">
+      <h2>Events</h2>
+      <table style="width: 100%; border-collapse: collapse;">
+        <thead>
+          <tr style="border-bottom: 2px solid var(--border);">
+            <th style="text-align: left; padding: 0.5rem;">Event</th>
+            <th style="text-align: left; padding: 0.5rem;">Description</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr style="border-bottom: 1px solid var(--border);">
+            <td style="padding: 0.5rem;"><code>erxImageClick</code></td>
+            <td style="padding: 0.5rem;">Emitted when an image is clicked</td>
+          </tr>
+          <tr style="border-bottom: 1px solid var(--border);">
+            <td style="padding: 0.5rem;"><code>erxSelectionChange</code></td>
+            <td style="padding: 0.5rem;">Emitted when selection changes</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+  <script>
+    // Sample images
+    const images = Array.from({ length: 12 }, (_, i) => ({
+      src: `https://picsum.photos/400/${300 + (i % 3) * 100}?random=${i + 30}`,
+      thumbnail: `https://picsum.photos/200/${150 + (i % 3) * 50}?random=${i + 30}`,
+      alt: `Image ${i + 1}`,
+      caption: `Photo ${i + 1} - Beautiful scenery`,
+      width: 400,
+      height: 300 + (i % 3) * 100
+    }));
+
+    // Initialize galleries
+    document.getElementById('grid-gallery').images = images;
+    document.getElementById('masonry-gallery').images = images;
+    document.getElementById('justified-gallery').images = images;
+    document.getElementById('lightbox-gallery').images = images;
+    document.getElementById('hover-gallery').images = images;
+    document.getElementById('caption-gallery').images = images;
+    document.getElementById('selectable-gallery').images = images;
+    document.getElementById('responsive-gallery').images = images;
+
+    // Selection output
+    document.getElementById('selectable-gallery').addEventListener('erxSelectionChange', (e) => {
+      document.getElementById('selection-output').textContent = `Selected: ${e.detail.selected.length} images`;
+    });
+
+    // Image click handler
+    document.querySelectorAll('erx-image-gallery').forEach(gallery => {
+      gallery.addEventListener('erxImageClick', (e) => {
+        console.log('Image clicked:', e.detail);
+      });
+    });
+  </script>
+</body>
+</html>

@@ -1,0 +1,209 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>erx-rich-text - ERX Components</title>
+  <script type="module" src="https://unpkg.com/@erplora/erx/dist/erx/erx.esm.js"></script>
+  <script nomodule src="https://unpkg.com/@erplora/erx/dist/erx/erx.js"></script>
+  <link rel="stylesheet" href="../styles.css">
+</head>
+<body>
+  <div class="component-page" style="padding: 2rem;">
+    <a href="../index.html" class="back-link">&larr; Back to Components</a>
+    <div class="component-header">
+      <h1>erx-rich-text</h1>
+      <p>Rich text editor with formatting toolbar, headings, lists, links, and more.</p>
+    </div>
+    <div class="demo-section">
+      <h2>Basic Rich Text Editor</h2>
+      <div class="demo-box">
+        <erx-rich-text
+          id="basic-rte"
+          placeholder="Start typing your content...">
+        </erx-rich-text>
+      </div>
+    </div>
+
+    <div class="demo-section">
+      <h2>Minimal Toolbar</h2>
+      <div class="demo-box">
+        <erx-rich-text
+          id="minimal-rte"
+          placeholder="Simple formatting only...">
+        </erx-rich-text>
+        <p style="margin-top: 1rem; color: var(--text-muted); font-size: 0.875rem;">
+          Only basic formatting tools: bold, italic, underline.
+        </p>
+      </div>
+    </div>
+
+    <div class="demo-section">
+      <h2>Extended Toolbar</h2>
+      <div class="demo-box">
+        <erx-rich-text
+          id="extended-rte"
+          placeholder="Full-featured editor...">
+        </erx-rich-text>
+      </div>
+    </div>
+
+    <div class="demo-section">
+      <h2>Custom Height</h2>
+      <div class="demo-box">
+        <erx-rich-text
+          id="tall-rte"
+          placeholder="Taller editor for longer content..."
+          min-height="300px"
+          max-height="600px">
+        </erx-rich-text>
+      </div>
+    </div>
+
+    <div class="demo-section">
+      <h2>Pre-filled Content</h2>
+      <div class="demo-box">
+        <erx-rich-text
+          id="prefilled-rte"
+          placeholder="Edit this content...">
+        </erx-rich-text>
+      </div>
+    </div>
+
+    <div class="demo-section">
+      <h2>Read-only Mode</h2>
+      <div class="demo-box">
+        <erx-rich-text
+          id="readonly-rte"
+          read-only>
+        </erx-rich-text>
+        <p style="margin-top: 1rem; color: var(--text-muted); font-size: 0.875rem;">
+          Content is displayed but cannot be edited. Toolbar is hidden.
+        </p>
+      </div>
+    </div>
+
+    <div class="demo-section">
+      <h2>Disabled State</h2>
+      <div class="demo-box">
+        <erx-rich-text
+          id="disabled-rte"
+          disabled>
+        </erx-rich-text>
+      </div>
+    </div>
+
+    <div class="demo-section">
+      <h2>Get Content</h2>
+      <div class="demo-box">
+        <erx-rich-text
+          id="export-rte"
+          placeholder="Type something and export...">
+        </erx-rich-text>
+        <div style="margin-top: 1rem;">
+          <button id="get-html-btn" style="padding: 0.5rem 1rem; background: var(--primary); color: white; border: none; border-radius: 6px; cursor: pointer; margin-right: 0.5rem;">
+            Get HTML
+          </button>
+          <button id="get-text-btn" style="padding: 0.5rem 1rem; background: var(--primary); color: white; border: none; border-radius: 6px; cursor: pointer;">
+            Get Plain Text
+          </button>
+        </div>
+        <div id="content-output" style="margin-top: 1rem; padding: 1rem; background: var(--bg); border: 1px solid var(--border); border-radius: 8px; font-family: monospace; font-size: 0.875rem; white-space: pre-wrap; display: none;">
+        </div>
+      </div>
+    </div>
+
+    <div class="demo-section">
+      <h2>Event Output</h2>
+      <div class="demo-box">
+        <div id="event-output" style="font-family: monospace; font-size: 0.875rem; color: var(--text-muted); white-space: pre-wrap;">
+          Edit content to see the event details...
+        </div>
+      </div>
+    </div>
+  </div>
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      // Basic RTE - uses default tools
+
+      // Minimal toolbar
+      const minimalRte = document.getElementById('minimal-rte');
+      minimalRte.tools = ['bold', 'italic', 'underline'];
+
+      // Extended toolbar
+      const extendedRte = document.getElementById('extended-rte');
+      extendedRte.tools = [
+        'bold', 'italic', 'underline', 'strike',
+        'heading1', 'heading2', 'heading3',
+        'bulletList', 'orderedList',
+        'blockquote', 'code', 'link',
+        'divider', 'undo', 'redo', 'clear'
+      ];
+
+      // Pre-filled content
+      const prefilledRte = document.getElementById('prefilled-rte');
+      prefilledRte.value = `
+        <h1>Welcome to ERX Rich Text</h1>
+        <p>This is a <strong>powerful</strong> rich text editor with many formatting options.</p>
+        <h2>Features</h2>
+        <ul>
+          <li>Bold, italic, underline, strikethrough</li>
+          <li>Multiple heading levels</li>
+          <li>Ordered and unordered lists</li>
+          <li>Block quotes and code blocks</li>
+        </ul>
+        <blockquote>This is a block quote example.</blockquote>
+        <p>Try editing this content!</p>
+      `;
+
+      // Read-only content
+      const readonlyRte = document.getElementById('readonly-rte');
+      readonlyRte.value = `
+        <h2>Read-Only Document</h2>
+        <p>This content is displayed in <em>read-only</em> mode. Users can view but not edit the content.</p>
+        <p>Perfect for displaying formatted content that shouldn't be modified.</p>
+      `;
+
+      // Disabled content
+      const disabledRte = document.getElementById('disabled-rte');
+      disabledRte.value = `<p>This editor is disabled and cannot be interacted with.</p>`;
+
+      // Export functionality
+      const exportRte = document.getElementById('export-rte');
+      const getHtmlBtn = document.getElementById('get-html-btn');
+      const getTextBtn = document.getElementById('get-text-btn');
+      const contentOutput = document.getElementById('content-output');
+
+      getHtmlBtn.addEventListener('click', async () => {
+        const content = await exportRte.getContent();
+        contentOutput.style.display = 'block';
+        contentOutput.innerHTML = `<strong>HTML Output:</strong>\n\n${escapeHtml(content.html)}`;
+      });
+
+      getTextBtn.addEventListener('click', async () => {
+        const content = await exportRte.getContent();
+        contentOutput.style.display = 'block';
+        contentOutput.innerHTML = `<strong>Plain Text Output:</strong>\n\n${content.text}`;
+      });
+
+      function escapeHtml(text) {
+        const div = document.createElement('div');
+        div.textContent = text;
+        return div.innerHTML;
+      }
+
+      // Event handling
+      const eventOutput = document.getElementById('event-output');
+      document.querySelectorAll('erx-rich-text').forEach(rte => {
+        rte.addEventListener('erxChange', (e) => {
+          const detail = {
+            length: e.detail.length,
+            textPreview: e.detail.text.substring(0, 100) + (e.detail.text.length > 100 ? '...' : '')
+          };
+          eventOutput.innerHTML = `<strong>erxChange:</strong>\n${JSON.stringify(detail, null, 2)}`;
+        });
+      });
+    });
+  </script>
+</body>
+</html>

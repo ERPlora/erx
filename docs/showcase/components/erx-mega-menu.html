@@ -1,0 +1,257 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>erx-mega-menu - ERX Components</title>
+  <script type="module" src="https://unpkg.com/@erplora/erx/dist/erx/erx.esm.js"></script>
+  <script nomodule src="https://unpkg.com/@erplora/erx/dist/erx/erx.js"></script>
+  <link rel="stylesheet" href="../styles.css">
+</head>
+<body>
+  <div class="component-page" style="padding: 2rem;">
+    <a href="../index.html" class="back-link">&larr; Back to Components</a>
+
+    <div class="component-header">
+      <h1>erx-mega-menu</h1>
+      <p>A mega menu navigation component for displaying large navigation menus with multiple columns, categories, and featured content.</p>
+    </div>
+
+    <div class="demo-section">
+      <h2>Basic Mega Menu</h2>
+      <div class="demo-box">
+        <nav style="background: var(--bg); border: 1px solid var(--border); border-radius: 8px; padding: 0 1rem;">
+          <erx-mega-menu id="basic-mega-menu"></erx-mega-menu>
+        </nav>
+      </div>
+    </div>
+
+    <div class="demo-section">
+      <h2>With Featured Content</h2>
+      <div class="demo-box">
+        <nav style="background: var(--bg); border: 1px solid var(--border); border-radius: 8px; padding: 0 1rem;">
+          <erx-mega-menu id="featured-mega-menu" show-featured></erx-mega-menu>
+        </nav>
+      </div>
+    </div>
+
+    <div class="demo-section">
+      <h2>Full Width</h2>
+      <div class="demo-box" style="padding: 0;">
+        <nav style="background: var(--bg-secondary); border-bottom: 1px solid var(--border);">
+          <erx-mega-menu id="fullwidth-mega-menu" full-width></erx-mega-menu>
+        </nav>
+      </div>
+    </div>
+
+    <div class="demo-section">
+      <h2>Static Preview</h2>
+      <div class="demo-box">
+        <div style="background: var(--bg-secondary); border: 1px solid var(--border); border-radius: 8px; padding: 1.5rem; box-shadow: 0 10px 25px rgba(0,0,0,0.1);">
+          <div style="display: grid; grid-template-columns: repeat(4, 1fr); gap: 2rem;">
+            <div>
+              <h3 style="font-size: 0.875rem; font-weight: 600; color: var(--primary); margin-bottom: 1rem;">Products</h3>
+              <ul style="list-style: none; display: flex; flex-direction: column; gap: 0.5rem;">
+                <li><a href="#" style="color: var(--text); text-decoration: none; font-size: 0.875rem;">All Products</a></li>
+                <li><a href="#" style="color: var(--text); text-decoration: none; font-size: 0.875rem;">New Arrivals</a></li>
+                <li><a href="#" style="color: var(--text); text-decoration: none; font-size: 0.875rem;">Best Sellers</a></li>
+                <li><a href="#" style="color: var(--text); text-decoration: none; font-size: 0.875rem;">On Sale</a></li>
+              </ul>
+            </div>
+            <div>
+              <h3 style="font-size: 0.875rem; font-weight: 600; color: var(--primary); margin-bottom: 1rem;">Categories</h3>
+              <ul style="list-style: none; display: flex; flex-direction: column; gap: 0.5rem;">
+                <li><a href="#" style="color: var(--text); text-decoration: none; font-size: 0.875rem;">Electronics</a></li>
+                <li><a href="#" style="color: var(--text); text-decoration: none; font-size: 0.875rem;">Clothing</a></li>
+                <li><a href="#" style="color: var(--text); text-decoration: none; font-size: 0.875rem;">Home & Garden</a></li>
+                <li><a href="#" style="color: var(--text); text-decoration: none; font-size: 0.875rem;">Sports</a></li>
+              </ul>
+            </div>
+            <div>
+              <h3 style="font-size: 0.875rem; font-weight: 600; color: var(--primary); margin-bottom: 1rem;">Support</h3>
+              <ul style="list-style: none; display: flex; flex-direction: column; gap: 0.5rem;">
+                <li><a href="#" style="color: var(--text); text-decoration: none; font-size: 0.875rem;">Help Center</a></li>
+                <li><a href="#" style="color: var(--text); text-decoration: none; font-size: 0.875rem;">Contact Us</a></li>
+                <li><a href="#" style="color: var(--text); text-decoration: none; font-size: 0.875rem;">Returns</a></li>
+                <li><a href="#" style="color: var(--text); text-decoration: none; font-size: 0.875rem;">Shipping Info</a></li>
+              </ul>
+            </div>
+            <div style="background: linear-gradient(135deg, var(--primary) 0%, #8b5cf6 100%); border-radius: 8px; padding: 1.5rem; color: white;">
+              <h3 style="font-size: 1rem; font-weight: 600; margin-bottom: 0.5rem;">Summer Sale</h3>
+              <p style="font-size: 0.875rem; opacity: 0.9; margin-bottom: 1rem;">Up to 50% off on selected items!</p>
+              <a href="#" style="color: white; font-size: 0.875rem; font-weight: 500;">Shop Now &rarr;</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="demo-section">
+      <h2>Props</h2>
+      <table style="width: 100%; border-collapse: collapse;">
+        <thead>
+          <tr style="border-bottom: 2px solid var(--border);">
+            <th style="text-align: left; padding: 0.5rem;">Prop</th>
+            <th style="text-align: left; padding: 0.5rem;">Type</th>
+            <th style="text-align: left; padding: 0.5rem;">Default</th>
+            <th style="text-align: left; padding: 0.5rem;">Description</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr style="border-bottom: 1px solid var(--border);">
+            <td style="padding: 0.5rem;"><code>items</code></td>
+            <td style="padding: 0.5rem;">array</td>
+            <td style="padding: 0.5rem;">[]</td>
+            <td style="padding: 0.5rem;">Navigation items with columns</td>
+          </tr>
+          <tr style="border-bottom: 1px solid var(--border);">
+            <td style="padding: 0.5rem;"><code>full-width</code></td>
+            <td style="padding: 0.5rem;">boolean</td>
+            <td style="padding: 0.5rem;">false</td>
+            <td style="padding: 0.5rem;">Expand menu to full width</td>
+          </tr>
+          <tr style="border-bottom: 1px solid var(--border);">
+            <td style="padding: 0.5rem;"><code>show-featured</code></td>
+            <td style="padding: 0.5rem;">boolean</td>
+            <td style="padding: 0.5rem;">false</td>
+            <td style="padding: 0.5rem;">Show featured content section</td>
+          </tr>
+          <tr style="border-bottom: 1px solid var(--border);">
+            <td style="padding: 0.5rem;"><code>trigger</code></td>
+            <td style="padding: 0.5rem;">'click' | 'hover'</td>
+            <td style="padding: 0.5rem;">'hover'</td>
+            <td style="padding: 0.5rem;">Menu trigger mode</td>
+          </tr>
+          <tr style="border-bottom: 1px solid var(--border);">
+            <td style="padding: 0.5rem;"><code>columns</code></td>
+            <td style="padding: 0.5rem;">number</td>
+            <td style="padding: 0.5rem;">4</td>
+            <td style="padding: 0.5rem;">Number of columns</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <div class="demo-section">
+      <h2>Events</h2>
+      <table style="width: 100%; border-collapse: collapse;">
+        <thead>
+          <tr style="border-bottom: 2px solid var(--border);">
+            <th style="text-align: left; padding: 0.5rem;">Event</th>
+            <th style="text-align: left; padding: 0.5rem;">Description</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr style="border-bottom: 1px solid var(--border);">
+            <td style="padding: 0.5rem;"><code>erxNavigate</code></td>
+            <td style="padding: 0.5rem;">Emitted when a menu item is clicked</td>
+          </tr>
+          <tr style="border-bottom: 1px solid var(--border);">
+            <td style="padding: 0.5rem;"><code>erxOpen</code></td>
+            <td style="padding: 0.5rem;">Emitted when mega menu opens</td>
+          </tr>
+          <tr style="border-bottom: 1px solid var(--border);">
+            <td style="padding: 0.5rem;"><code>erxClose</code></td>
+            <td style="padding: 0.5rem;">Emitted when mega menu closes</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+  <script>
+    const megaMenuItems = [
+      {
+        label: 'Products',
+        columns: [
+          {
+            title: 'Categories',
+            items: [
+              { label: 'Electronics', href: '#' },
+              { label: 'Clothing', href: '#' },
+              { label: 'Home & Garden', href: '#' },
+              { label: 'Sports & Outdoors', href: '#' },
+            ]
+          },
+          {
+            title: 'Featured',
+            items: [
+              { label: 'New Arrivals', href: '#', badge: 'New' },
+              { label: 'Best Sellers', href: '#' },
+              { label: 'On Sale', href: '#', badge: '-20%' },
+            ]
+          }
+        ]
+      },
+      {
+        label: 'Solutions',
+        columns: [
+          {
+            title: 'By Industry',
+            items: [
+              { label: 'Retail', href: '#' },
+              { label: 'Healthcare', href: '#' },
+              { label: 'Manufacturing', href: '#' },
+              { label: 'Finance', href: '#' },
+            ]
+          },
+          {
+            title: 'By Size',
+            items: [
+              { label: 'Startups', href: '#' },
+              { label: 'Small Business', href: '#' },
+              { label: 'Enterprise', href: '#' },
+            ]
+          }
+        ]
+      },
+      {
+        label: 'Resources',
+        columns: [
+          {
+            title: 'Learn',
+            items: [
+              { label: 'Documentation', href: '#' },
+              { label: 'Tutorials', href: '#' },
+              { label: 'Blog', href: '#' },
+              { label: 'Webinars', href: '#' },
+            ]
+          },
+          {
+            title: 'Support',
+            items: [
+              { label: 'Help Center', href: '#' },
+              { label: 'Community', href: '#' },
+              { label: 'Contact Us', href: '#' },
+            ]
+          }
+        ]
+      },
+      {
+        label: 'Pricing',
+        href: '#'
+      }
+    ];
+
+    const featuredContent = {
+      title: 'Summer Collection',
+      description: 'Discover our new summer collection with up to 40% off.',
+      image: 'https://picsum.photos/300/150',
+      cta: { label: 'Shop Now', href: '#' }
+    };
+
+    // Initialize mega menus
+    document.getElementById('basic-mega-menu').items = megaMenuItems;
+    document.getElementById('featured-mega-menu').items = megaMenuItems;
+    document.getElementById('featured-mega-menu').featured = featuredContent;
+    document.getElementById('fullwidth-mega-menu').items = megaMenuItems;
+
+    // Event listeners
+    document.querySelectorAll('erx-mega-menu').forEach(menu => {
+      menu.addEventListener('erxNavigate', (e) => {
+        console.log('Navigate to:', e.detail);
+      });
+    });
+  </script>
+</body>
+</html>

@@ -1,0 +1,223 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>erx-carousel - ERX Components</title>
+  <script type="module" src="https://unpkg.com/@erplora/erx/dist/erx/erx.esm.js"></script>
+  <script nomodule src="https://unpkg.com/@erplora/erx/dist/erx/erx.js"></script>
+  <link rel="stylesheet" href="../styles.css">
+</head>
+<body>
+  <div class="component-page" style="padding: 2rem;">
+    <a href="../index.html" class="back-link">&larr; Back to Components</a>
+
+    <div class="component-header">
+      <h1>erx-carousel</h1>
+      <p>An image carousel component with smooth transitions, autoplay, navigation controls, and responsive breakpoints.</p>
+    </div>
+
+    <div class="demo-section">
+      <h2>Basic Carousel</h2>
+      <div class="demo-box">
+        <erx-carousel id="basic-carousel"></erx-carousel>
+      </div>
+    </div>
+
+    <div class="demo-section">
+      <h2>With Autoplay</h2>
+      <div class="demo-box">
+        <erx-carousel id="autoplay-carousel" autoplay autoplay-interval="3000"></erx-carousel>
+      </div>
+    </div>
+
+    <div class="demo-section">
+      <h2>Multiple Slides Visible</h2>
+      <div class="demo-box">
+        <erx-carousel id="multi-carousel" slides-per-view="3" space-between="16"></erx-carousel>
+      </div>
+    </div>
+
+    <div class="demo-section">
+      <h2>With Thumbnails</h2>
+      <div class="demo-box">
+        <erx-carousel id="thumbnail-carousel" show-thumbnails></erx-carousel>
+      </div>
+    </div>
+
+    <div class="demo-section">
+      <h2>Loop Mode</h2>
+      <div class="demo-box">
+        <erx-carousel id="loop-carousel" loop></erx-carousel>
+      </div>
+    </div>
+
+    <div class="demo-section">
+      <h2>Fade Effect</h2>
+      <div class="demo-box">
+        <erx-carousel id="fade-carousel" effect="fade"></erx-carousel>
+      </div>
+    </div>
+
+    <div class="demo-section">
+      <h2>Centered Slides</h2>
+      <div class="demo-box">
+        <erx-carousel id="centered-carousel" slides-per-view="1.5" centered space-between="20"></erx-carousel>
+      </div>
+    </div>
+
+    <div class="demo-section">
+      <h2>Without Navigation</h2>
+      <div class="demo-box">
+        <erx-carousel id="no-nav-carousel" show-arrows="false" show-pagination></erx-carousel>
+      </div>
+    </div>
+
+    <div class="demo-section">
+      <h2>With Captions</h2>
+      <div class="demo-box">
+        <erx-carousel id="caption-carousel" show-captions></erx-carousel>
+      </div>
+    </div>
+
+    <div class="demo-section">
+      <h2>Props</h2>
+      <table style="width: 100%; border-collapse: collapse;">
+        <thead>
+          <tr style="border-bottom: 2px solid var(--border);">
+            <th style="text-align: left; padding: 0.5rem;">Prop</th>
+            <th style="text-align: left; padding: 0.5rem;">Type</th>
+            <th style="text-align: left; padding: 0.5rem;">Default</th>
+            <th style="text-align: left; padding: 0.5rem;">Description</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr style="border-bottom: 1px solid var(--border);">
+            <td style="padding: 0.5rem;"><code>slides</code></td>
+            <td style="padding: 0.5rem;">array</td>
+            <td style="padding: 0.5rem;">[]</td>
+            <td style="padding: 0.5rem;">Array of slide objects</td>
+          </tr>
+          <tr style="border-bottom: 1px solid var(--border);">
+            <td style="padding: 0.5rem;"><code>slides-per-view</code></td>
+            <td style="padding: 0.5rem;">number</td>
+            <td style="padding: 0.5rem;">1</td>
+            <td style="padding: 0.5rem;">Visible slides count</td>
+          </tr>
+          <tr style="border-bottom: 1px solid var(--border);">
+            <td style="padding: 0.5rem;"><code>space-between</code></td>
+            <td style="padding: 0.5rem;">number</td>
+            <td style="padding: 0.5rem;">0</td>
+            <td style="padding: 0.5rem;">Space between slides (px)</td>
+          </tr>
+          <tr style="border-bottom: 1px solid var(--border);">
+            <td style="padding: 0.5rem;"><code>autoplay</code></td>
+            <td style="padding: 0.5rem;">boolean</td>
+            <td style="padding: 0.5rem;">false</td>
+            <td style="padding: 0.5rem;">Enable autoplay</td>
+          </tr>
+          <tr style="border-bottom: 1px solid var(--border);">
+            <td style="padding: 0.5rem;"><code>autoplay-interval</code></td>
+            <td style="padding: 0.5rem;">number</td>
+            <td style="padding: 0.5rem;">5000</td>
+            <td style="padding: 0.5rem;">Autoplay interval (ms)</td>
+          </tr>
+          <tr style="border-bottom: 1px solid var(--border);">
+            <td style="padding: 0.5rem;"><code>loop</code></td>
+            <td style="padding: 0.5rem;">boolean</td>
+            <td style="padding: 0.5rem;">false</td>
+            <td style="padding: 0.5rem;">Enable infinite loop</td>
+          </tr>
+          <tr style="border-bottom: 1px solid var(--border);">
+            <td style="padding: 0.5rem;"><code>effect</code></td>
+            <td style="padding: 0.5rem;">'slide' | 'fade'</td>
+            <td style="padding: 0.5rem;">'slide'</td>
+            <td style="padding: 0.5rem;">Transition effect</td>
+          </tr>
+          <tr style="border-bottom: 1px solid var(--border);">
+            <td style="padding: 0.5rem;"><code>centered</code></td>
+            <td style="padding: 0.5rem;">boolean</td>
+            <td style="padding: 0.5rem;">false</td>
+            <td style="padding: 0.5rem;">Center active slide</td>
+          </tr>
+          <tr style="border-bottom: 1px solid var(--border);">
+            <td style="padding: 0.5rem;"><code>show-arrows</code></td>
+            <td style="padding: 0.5rem;">boolean</td>
+            <td style="padding: 0.5rem;">true</td>
+            <td style="padding: 0.5rem;">Show navigation arrows</td>
+          </tr>
+          <tr style="border-bottom: 1px solid var(--border);">
+            <td style="padding: 0.5rem;"><code>show-pagination</code></td>
+            <td style="padding: 0.5rem;">boolean</td>
+            <td style="padding: 0.5rem;">true</td>
+            <td style="padding: 0.5rem;">Show pagination dots</td>
+          </tr>
+          <tr style="border-bottom: 1px solid var(--border);">
+            <td style="padding: 0.5rem;"><code>show-thumbnails</code></td>
+            <td style="padding: 0.5rem;">boolean</td>
+            <td style="padding: 0.5rem;">false</td>
+            <td style="padding: 0.5rem;">Show thumbnail navigation</td>
+          </tr>
+          <tr style="border-bottom: 1px solid var(--border);">
+            <td style="padding: 0.5rem;"><code>show-captions</code></td>
+            <td style="padding: 0.5rem;">boolean</td>
+            <td style="padding: 0.5rem;">false</td>
+            <td style="padding: 0.5rem;">Show slide captions</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <div class="demo-section">
+      <h2>Events</h2>
+      <table style="width: 100%; border-collapse: collapse;">
+        <thead>
+          <tr style="border-bottom: 2px solid var(--border);">
+            <th style="text-align: left; padding: 0.5rem;">Event</th>
+            <th style="text-align: left; padding: 0.5rem;">Description</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr style="border-bottom: 1px solid var(--border);">
+            <td style="padding: 0.5rem;"><code>erxSlideChange</code></td>
+            <td style="padding: 0.5rem;">Emitted when active slide changes</td>
+          </tr>
+          <tr style="border-bottom: 1px solid var(--border);">
+            <td style="padding: 0.5rem;"><code>erxSlideClick</code></td>
+            <td style="padding: 0.5rem;">Emitted when a slide is clicked</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+  <script>
+    // Sample slides data
+    const slides = [
+      { src: 'https://picsum.photos/800/400?random=20', alt: 'Slide 1', caption: 'Beautiful Landscape' },
+      { src: 'https://picsum.photos/800/400?random=21', alt: 'Slide 2', caption: 'Mountain View' },
+      { src: 'https://picsum.photos/800/400?random=22', alt: 'Slide 3', caption: 'Ocean Sunset' },
+      { src: 'https://picsum.photos/800/400?random=23', alt: 'Slide 4', caption: 'City Lights' },
+      { src: 'https://picsum.photos/800/400?random=24', alt: 'Slide 5', caption: 'Forest Path' },
+    ];
+
+    // Initialize all carousels
+    document.getElementById('basic-carousel').slides = slides;
+    document.getElementById('autoplay-carousel').slides = slides;
+    document.getElementById('multi-carousel').slides = slides;
+    document.getElementById('thumbnail-carousel').slides = slides;
+    document.getElementById('loop-carousel').slides = slides;
+    document.getElementById('fade-carousel').slides = slides;
+    document.getElementById('centered-carousel').slides = slides;
+    document.getElementById('no-nav-carousel').slides = slides;
+    document.getElementById('caption-carousel').slides = slides;
+
+    // Event listeners
+    document.querySelectorAll('erx-carousel').forEach(carousel => {
+      carousel.addEventListener('erxSlideChange', (e) => {
+        console.log('Slide changed to:', e.detail.index);
+      });
+    });
+  </script>
+</body>
+</html>

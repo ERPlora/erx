@@ -1,0 +1,215 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>erx-sheet - ERX Components</title>
+  <script type="module" src="https://unpkg.com/@erplora/erx/dist/erx/erx.esm.js"></script>
+  <script nomodule src="https://unpkg.com/@erplora/erx/dist/erx/erx.js"></script>
+  <link rel="stylesheet" href="../styles.css">
+</head>
+<body>
+  <div class="component-page" style="padding: 2rem;">
+    <a href="../index.html" class="back-link">&larr; Back to Components</a>
+    <div class="component-header">
+      <h1>erx-sheet</h1>
+      <p>Slide-up bottom sheet panel with drag-to-dismiss support. Ideal for mobile-style actions, menus, and supplementary content.</p>
+    </div>
+    <div class="demo-section">
+      <h2>Basic Bottom Sheet</h2>
+      <div class="demo-box">
+        <button onclick="document.getElementById('sheet-basic').present()" style="padding: 0.75rem 1.5rem; background: var(--primary); color: white; border: none; border-radius: 8px; cursor: pointer;">
+          Open Bottom Sheet
+        </button>
+        <erx-sheet id="sheet-basic">
+          <div style="padding: 1.5rem;">
+            <h3 style="margin-bottom: 1rem;">Bottom Sheet</h3>
+            <p style="color: var(--text-muted);">Swipe down or click the backdrop to dismiss.</p>
+          </div>
+        </erx-sheet>
+      </div>
+    </div>
+    <div class="demo-section">
+      <h2>Sheet Positions</h2>
+      <div class="demo-box">
+        <div style="display: flex; gap: 1rem; flex-wrap: wrap;">
+          <button onclick="document.getElementById('sheet-bottom').present()" style="padding: 0.75rem 1.5rem; background: var(--bg); border: 1px solid var(--border); border-radius: 8px; cursor: pointer;">
+            Bottom
+          </button>
+          <button onclick="document.getElementById('sheet-top').present()" style="padding: 0.75rem 1.5rem; background: var(--bg); border: 1px solid var(--border); border-radius: 8px; cursor: pointer;">
+            Top
+          </button>
+          <button onclick="document.getElementById('sheet-left').present()" style="padding: 0.75rem 1.5rem; background: var(--bg); border: 1px solid var(--border); border-radius: 8px; cursor: pointer;">
+            Left
+          </button>
+          <button onclick="document.getElementById('sheet-right').present()" style="padding: 0.75rem 1.5rem; background: var(--bg); border: 1px solid var(--border); border-radius: 8px; cursor: pointer;">
+            Right
+          </button>
+        </div>
+        <erx-sheet id="sheet-bottom" position="bottom">
+          <div style="padding: 1.5rem; text-align: center;">
+            <h3>Bottom Sheet</h3>
+            <p style="color: var(--text-muted);">Slides up from the bottom.</p>
+          </div>
+        </erx-sheet>
+        <erx-sheet id="sheet-top" position="top">
+          <div style="padding: 1.5rem; text-align: center;">
+            <h3>Top Sheet</h3>
+            <p style="color: var(--text-muted);">Slides down from the top.</p>
+          </div>
+        </erx-sheet>
+        <erx-sheet id="sheet-left" position="left">
+          <div style="padding: 1.5rem;">
+            <h3>Left Sheet</h3>
+            <p style="color: var(--text-muted);">Slides in from the left.</p>
+          </div>
+        </erx-sheet>
+        <erx-sheet id="sheet-right" position="right">
+          <div style="padding: 1.5rem;">
+            <h3>Right Sheet</h3>
+            <p style="color: var(--text-muted);">Slides in from the right.</p>
+          </div>
+        </erx-sheet>
+      </div>
+    </div>
+    <div class="demo-section">
+      <h2>Sheet Sizes</h2>
+      <div class="demo-box">
+        <div style="display: flex; gap: 1rem; flex-wrap: wrap;">
+          <button onclick="document.getElementById('sheet-sm').present()" style="padding: 0.5rem 1rem; background: var(--bg); border: 1px solid var(--border); border-radius: 8px; cursor: pointer;">
+            Small (25%)
+          </button>
+          <button onclick="document.getElementById('sheet-md').present()" style="padding: 0.5rem 1rem; background: var(--bg); border: 1px solid var(--border); border-radius: 8px; cursor: pointer;">
+            Medium (50%)
+          </button>
+          <button onclick="document.getElementById('sheet-lg').present()" style="padding: 0.5rem 1rem; background: var(--bg); border: 1px solid var(--border); border-radius: 8px; cursor: pointer;">
+            Large (75%)
+          </button>
+          <button onclick="document.getElementById('sheet-xl').present()" style="padding: 0.5rem 1rem; background: var(--bg); border: 1px solid var(--border); border-radius: 8px; cursor: pointer;">
+            XL (90%)
+          </button>
+          <button onclick="document.getElementById('sheet-full').present()" style="padding: 0.5rem 1rem; background: var(--bg); border: 1px solid var(--border); border-radius: 8px; cursor: pointer;">
+            Full (100%)
+          </button>
+        </div>
+        <erx-sheet id="sheet-sm" size="sm"><div style="padding: 1.5rem; text-align: center;"><h3>Small</h3><p style="color: var(--text-muted);">25% height</p></div></erx-sheet>
+        <erx-sheet id="sheet-md" size="md"><div style="padding: 1.5rem; text-align: center;"><h3>Medium</h3><p style="color: var(--text-muted);">50% height</p></div></erx-sheet>
+        <erx-sheet id="sheet-lg" size="lg"><div style="padding: 1.5rem; text-align: center;"><h3>Large</h3><p style="color: var(--text-muted);">75% height</p></div></erx-sheet>
+        <erx-sheet id="sheet-xl" size="xl"><div style="padding: 1.5rem; text-align: center;"><h3>Extra Large</h3><p style="color: var(--text-muted);">90% height</p></div></erx-sheet>
+        <erx-sheet id="sheet-full" size="full"><div style="padding: 1.5rem; text-align: center;"><h3>Full</h3><p style="color: var(--text-muted);">100% height</p></div></erx-sheet>
+      </div>
+    </div>
+    <div class="demo-section">
+      <h2>Action Sheet Example</h2>
+      <div class="demo-box">
+        <button onclick="document.getElementById('sheet-actions').present()" style="padding: 0.75rem 1.5rem; background: var(--primary); color: white; border: none; border-radius: 8px; cursor: pointer;">
+          Show Actions
+        </button>
+        <erx-sheet id="sheet-actions" size="sm">
+          <div style="padding: 1rem;">
+            <div style="text-align: center; padding: 0.5rem; color: var(--text-muted); font-size: 0.875rem; border-bottom: 1px solid var(--border); margin-bottom: 0.5rem;">
+              Choose an action
+            </div>
+            <button onclick="document.getElementById('sheet-actions').dismiss()" style="width: 100%; padding: 1rem; background: none; border: none; text-align: center; cursor: pointer; border-radius: 8px; font-size: 1rem;">
+              Share
+            </button>
+            <button onclick="document.getElementById('sheet-actions').dismiss()" style="width: 100%; padding: 1rem; background: none; border: none; text-align: center; cursor: pointer; border-radius: 8px; font-size: 1rem;">
+              Copy Link
+            </button>
+            <button onclick="document.getElementById('sheet-actions').dismiss()" style="width: 100%; padding: 1rem; background: none; border: none; text-align: center; cursor: pointer; border-radius: 8px; font-size: 1rem;">
+              Download
+            </button>
+            <button onclick="document.getElementById('sheet-actions').dismiss()" style="width: 100%; padding: 1rem; background: none; border: none; text-align: center; cursor: pointer; border-radius: 8px; font-size: 1rem; color: var(--error);">
+              Delete
+            </button>
+            <div style="border-top: 1px solid var(--border); margin-top: 0.5rem; padding-top: 0.5rem;">
+              <button onclick="document.getElementById('sheet-actions').dismiss()" style="width: 100%; padding: 1rem; background: none; border: none; text-align: center; cursor: pointer; border-radius: 8px; font-size: 1rem; font-weight: 500;">
+                Cancel
+              </button>
+            </div>
+          </div>
+        </erx-sheet>
+      </div>
+    </div>
+    <div class="demo-section">
+      <h2>Filter Sheet Example</h2>
+      <div class="demo-box">
+        <button onclick="document.getElementById('sheet-filter').present()" style="padding: 0.75rem 1.5rem; background: var(--primary); color: white; border: none; border-radius: 8px; cursor: pointer;">
+          Open Filters
+        </button>
+        <erx-sheet id="sheet-filter" size="lg">
+          <div style="padding: 1.5rem;">
+            <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 1.5rem;">
+              <h3>Filters</h3>
+              <button style="color: var(--primary); background: none; border: none; cursor: pointer;">Clear All</button>
+            </div>
+            <div style="margin-bottom: 1.5rem;">
+              <label style="display: block; font-weight: 500; margin-bottom: 0.5rem;">Category</label>
+              <select style="width: 100%; padding: 0.75rem; border: 1px solid var(--border); border-radius: 8px;">
+                <option>All Categories</option>
+                <option>Electronics</option>
+                <option>Clothing</option>
+                <option>Home & Garden</option>
+              </select>
+            </div>
+            <div style="margin-bottom: 1.5rem;">
+              <label style="display: block; font-weight: 500; margin-bottom: 0.5rem;">Price Range</label>
+              <div style="display: flex; gap: 1rem;">
+                <input type="number" placeholder="Min" style="flex: 1; padding: 0.75rem; border: 1px solid var(--border); border-radius: 8px;">
+                <input type="number" placeholder="Max" style="flex: 1; padding: 0.75rem; border: 1px solid var(--border); border-radius: 8px;">
+              </div>
+            </div>
+            <div style="margin-bottom: 1.5rem;">
+              <label style="display: block; font-weight: 500; margin-bottom: 0.5rem;">Rating</label>
+              <div style="display: flex; gap: 0.5rem;">
+                <button style="padding: 0.5rem 1rem; background: var(--bg); border: 1px solid var(--border); border-radius: 20px; cursor: pointer;">Any</button>
+                <button style="padding: 0.5rem 1rem; background: var(--primary); color: white; border: none; border-radius: 20px; cursor: pointer;">4+</button>
+                <button style="padding: 0.5rem 1rem; background: var(--bg); border: 1px solid var(--border); border-radius: 20px; cursor: pointer;">3+</button>
+              </div>
+            </div>
+            <div style="display: flex; gap: 1rem; margin-top: 2rem;">
+              <button onclick="document.getElementById('sheet-filter').dismiss()" style="flex: 1; padding: 0.75rem; background: var(--bg); border: 1px solid var(--border); border-radius: 8px; cursor: pointer;">
+                Cancel
+              </button>
+              <button onclick="document.getElementById('sheet-filter').dismiss()" style="flex: 1; padding: 0.75rem; background: var(--primary); color: white; border: none; border-radius: 8px; cursor: pointer;">
+                Apply Filters
+              </button>
+            </div>
+          </div>
+        </erx-sheet>
+      </div>
+    </div>
+    <div class="demo-section">
+      <h2>No Handle / No Swipe</h2>
+      <div class="demo-box">
+        <button onclick="document.getElementById('sheet-nohandle').present()" style="padding: 0.75rem 1.5rem; background: var(--bg); border: 1px solid var(--border); border-radius: 8px; cursor: pointer;">
+          Open Without Handle
+        </button>
+        <erx-sheet id="sheet-nohandle" show-handle="false" swipe-to-dismiss="false" size="sm">
+          <div style="padding: 1.5rem; text-align: center;">
+            <h3>Modal Sheet</h3>
+            <p style="color: var(--text-muted); margin: 1rem 0;">This sheet has no drag handle and cannot be swiped to dismiss.</p>
+            <button onclick="document.getElementById('sheet-nohandle').dismiss()" style="padding: 0.75rem 1.5rem; background: var(--primary); color: white; border: none; border-radius: 8px; cursor: pointer;">
+              Close
+            </button>
+          </div>
+        </erx-sheet>
+      </div>
+    </div>
+    <div class="demo-section">
+      <h2>Custom Size</h2>
+      <div class="demo-box">
+        <button onclick="document.getElementById('sheet-custom').present()" style="padding: 0.75rem 1.5rem; background: var(--primary); color: white; border: none; border-radius: 8px; cursor: pointer;">
+          Open 300px Sheet
+        </button>
+        <erx-sheet id="sheet-custom" custom-size="300px">
+          <div style="padding: 1.5rem; text-align: center;">
+            <h3>Fixed Height</h3>
+            <p style="color: var(--text-muted);">This sheet has a fixed 300px height.</p>
+          </div>
+        </erx-sheet>
+      </div>
+    </div>
+  </div>
+</body>
+</html>

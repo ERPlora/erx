@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>erx-table - ERX Components</title>
+  <script type="module" src="https://unpkg.com/@erplora/erx/dist/erx/erx.esm.js"></script>
+  <script nomodule src="https://unpkg.com/@erplora/erx/dist/erx/erx.js"></script>
+  <link rel="stylesheet" href="../styles.css">
+</head>
+<body>
+  <div class="component-page" style="padding: 2rem;">
+    <a href="../index.html" class="back-link">&larr; Back to Components</a>
+    <div class="component-header">
+      <h1>erx-table</h1>
+      <p>Simple data table component with sorting, formatting options, and customizable styling.</p>
+    </div>
+    <div class="demo-section">
+      <h2>Basic Table</h2>
+      <div class="demo-box">
+        <erx-table id="basicTable"></erx-table>
+      </div>
+    </div>
+    <div class="demo-section">
+      <h2>Sortable Table</h2>
+      <div class="demo-box">
+        <erx-table id="sortableTable"></erx-table>
+      </div>
+    </div>
+    <div class="demo-section">
+      <h2>Table with Formatting</h2>
+      <div class="demo-box">
+        <erx-table id="formattedTable"></erx-table>
+      </div>
+    </div>
+    <div class="demo-section">
+      <h2>Table Variants</h2>
+      <div class="demo-box">
+        <div style="margin-bottom: 1.5rem;">
+          <span class="demo-label">Striped</span>
+          <erx-table id="stripedTable" striped></erx-table>
+        </div>
+        <div style="margin-bottom: 1.5rem;">
+          <span class="demo-label">Bordered</span>
+          <erx-table id="borderedTable" bordered></erx-table>
+        </div>
+        <div>
+          <span class="demo-label">Compact</span>
+          <erx-table id="compactTable" compact></erx-table>
+        </div>
+      </div>
+    </div>
+    <div class="demo-section">
+      <h2>Event Output</h2>
+      <div class="demo-box">
+        <div id="eventOutput" style="padding: 1rem; background: var(--bg); border-radius: 8px; font-family: monospace; font-size: 0.875rem;">
+          Click on a row or sort a column to see the output...
+        </div>
+      </div>
+    </div>
+  </div>
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      const eventOutput = document.getElementById('eventOutput');
+
+      // Basic Table
+      document.getElementById('basicTable').columns = [
+        { key: 'name', label: 'Name' },
+        { key: 'email', label: 'Email' },
+        { key: 'department', label: 'Department' },
+        { key: 'status', label: 'Status' }
+      ];
+      document.getElementById('basicTable').data = [
+        { name: 'John Smith', email: 'john@example.com', department: 'Engineering', status: 'Active' },
+        { name: 'Sarah Johnson', email: 'sarah@example.com', department: 'Marketing', status: 'Active' },
+        { name: 'Mike Wilson', email: 'mike@example.com', department: 'Sales', status: 'Inactive' },
+        { name: 'Emily Davis', email: 'emily@example.com', department: 'Engineering', status: 'Active' }
+      ];
+
+      // Sortable Table
+      document.getElementById('sortableTable').columns = [
+        { key: 'product', label: 'Product', sortable: true },
+        { key: 'category', label: 'Category', sortable: true },
+        { key: 'price', label: 'Price', sortable: true, align: 'right' },
+        { key: 'stock', label: 'Stock', sortable: true, align: 'right' }
+      ];
+      document.getElementById('sortableTable').data = [
+        { product: 'Laptop Pro', category: 'Electronics', price: 1299.99, stock: 45 },
+        { product: 'Wireless Mouse', category: 'Accessories', price: 49.99, stock: 150 },
+        { product: 'USB-C Hub', category: 'Accessories', price: 79.99, stock: 80 },
+        { product: 'Monitor 27"', category: 'Electronics', price: 399.99, stock: 25 },
+        { product: 'Keyboard', category: 'Accessories', price: 129.99, stock: 100 }
+      ];
+
+      // Formatted Table
+      document.getElementById('formattedTable').columns = [
+        { key: 'item', label: 'Item' },
+        { key: 'quantity', label: 'Quantity', format: 'number', align: 'right' },
+        { key: 'price', label: 'Price', format: 'currency', align: 'right' },
+        { key: 'date', label: 'Date', format: 'date' },
+        { key: 'status', label: 'Status', format: 'badge' }
+      ];
+      document.getElementById('formattedTable').data = [
+        { item: 'Order #1001', quantity: 5, price: 249.95, date: new Date().toISOString(), status: 'Completed' },
+        { item: 'Order #1002', quantity: 12, price: 599.88, date: new Date(Date.now() - 86400000).toISOString(), status: 'Pending' },
+        { item: 'Order #1003', quantity: 3, price: 89.97, date: new Date(Date.now() - 172800000).toISOString(), status: 'Shipped' }
+      ];
+
+      // Table Variants
+      const variantColumns = [
+        { key: 'id', label: 'ID', width: '60px' },
+        { key: 'name', label: 'Name' },
+        { key: 'role', label: 'Role' }
+      ];
+      const variantData = [
+        { id: 1, name: 'Alice Brown', role: 'Developer' },
+        { id: 2, name: 'Bob Green', role: 'Designer' },
+        { id: 3, name: 'Carol White', role: 'Manager' }
+      ];
+
+      ['stripedTable', 'borderedTable', 'compactTable'].forEach(id => {
+        document.getElementById(id).columns = variantColumns;
+        document.getElementById(id).data = variantData;
+      });
+
+      // Event listeners
+      document.querySelectorAll('erx-table').forEach(table => {
+        table.addEventListener('erxRowClick', (e) => {
+          eventOutput.innerHTML = `<strong>Row Clicked:</strong><br>Index: ${e.detail.index}<br>Data: ${JSON.stringify(e.detail.row, null, 2)}`;
+        });
+
+        table.addEventListener('erxSort', (e) => {
+          eventOutput.innerHTML = `<strong>Sort Changed:</strong><br>Column: ${e.detail.column}<br>Direction: ${e.detail.direction}`;
+        });
+      });
+    });
+  </script>
+</body>
+</html>

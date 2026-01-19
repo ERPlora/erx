@@ -1,0 +1,262 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>erx-production-line - ERX Components</title>
+  <script type="module" src="https://unpkg.com/@erplora/erx/dist/erx/erx.esm.js"></script>
+  <script nomodule src="https://unpkg.com/@erplora/erx/dist/erx/erx.js"></script>
+  <link rel="stylesheet" href="../styles.css">
+</head>
+<body>
+  <div class="component-page" style="padding: 2rem;">
+    <a href="../index.html" class="back-link">&larr; Back to Components</a>
+    <div class="component-header">
+      <h1>erx-production-line</h1>
+      <p>Production line visualization showing station status, throughput metrics, and workflow progression.</p>
+    </div>
+
+    <div class="demo-section">
+      <h2>Running Production Line (Horizontal)</h2>
+      <div class="demo-box">
+        <erx-production-line id="line1"></erx-production-line>
+      </div>
+    </div>
+
+    <div class="demo-section">
+      <h2>Production Line with Issues</h2>
+      <div class="demo-box">
+        <erx-production-line id="line2"></erx-production-line>
+      </div>
+    </div>
+
+    <div class="demo-section">
+      <h2>Vertical Orientation</h2>
+      <div class="demo-box">
+        <erx-production-line id="line3" orientation="vertical"></erx-production-line>
+      </div>
+    </div>
+
+    <div class="demo-section">
+      <h2>Without Stats</h2>
+      <div class="demo-box">
+        <erx-production-line id="line4" show-stats="false"></erx-production-line>
+      </div>
+    </div>
+
+    <div class="demo-section">
+      <h2>Properties</h2>
+      <div class="demo-box">
+        <table style="width: 100%; border-collapse: collapse;">
+          <thead>
+            <tr style="border-bottom: 1px solid var(--border);">
+              <th style="text-align: left; padding: 0.5rem;">Property</th>
+              <th style="text-align: left; padding: 0.5rem;">Type</th>
+              <th style="text-align: left; padding: 0.5rem;">Default</th>
+              <th style="text-align: left; padding: 0.5rem;">Description</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr style="border-bottom: 1px solid var(--border);">
+              <td style="padding: 0.5rem;"><code>line</code></td>
+              <td style="padding: 0.5rem;">ProductionLine</td>
+              <td style="padding: 0.5rem;">-</td>
+              <td style="padding: 0.5rem;">Production line data object (required)</td>
+            </tr>
+            <tr style="border-bottom: 1px solid var(--border);">
+              <td style="padding: 0.5rem;"><code>show-stats</code></td>
+              <td style="padding: 0.5rem;">boolean</td>
+              <td style="padding: 0.5rem;">true</td>
+              <td style="padding: 0.5rem;">Show production statistics</td>
+            </tr>
+            <tr>
+              <td style="padding: 0.5rem;"><code>orientation</code></td>
+              <td style="padding: 0.5rem;">'horizontal' | 'vertical'</td>
+              <td style="padding: 0.5rem;">'horizontal'</td>
+              <td style="padding: 0.5rem;">Station flow direction</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+
+    <div class="demo-section">
+      <h2>Events</h2>
+      <div class="demo-box">
+        <table style="width: 100%; border-collapse: collapse;">
+          <thead>
+            <tr style="border-bottom: 1px solid var(--border);">
+              <th style="text-align: left; padding: 0.5rem;">Event</th>
+              <th style="text-align: left; padding: 0.5rem;">Detail</th>
+              <th style="text-align: left; padding: 0.5rem;">Description</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td style="padding: 0.5rem;"><code>erxSelect</code></td>
+              <td style="padding: 0.5rem;">{ station, line }</td>
+              <td style="padding: 0.5rem;">Fired when a station is clicked</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    // Running production line
+    const line1 = {
+      id: 'line-001',
+      name: 'Assembly Line A',
+      status: 'running',
+      currentProduct: {
+        id: 'prod-1',
+        name: 'Widget Pro X1',
+        image: 'https://via.placeholder.com/40x40/6366f1/ffffff?text=W'
+      },
+      target: 500,
+      produced: 347,
+      defects: 8,
+      efficiency: 94,
+      stations: [
+        {
+          id: 'st1',
+          name: 'Material Prep',
+          status: 'active',
+          currentItem: { id: 'i1', name: 'Batch #127', progress: 85 },
+          operator: { id: 'op1', name: 'Alice' },
+          cycleTime: 45,
+          throughput: 80
+        },
+        {
+          id: 'st2',
+          name: 'Assembly',
+          status: 'active',
+          currentItem: { id: 'i2', name: 'Batch #126', progress: 60 },
+          operator: { id: 'op2', name: 'Bob' },
+          cycleTime: 90,
+          throughput: 40
+        },
+        {
+          id: 'st3',
+          name: 'Welding',
+          status: 'active',
+          currentItem: { id: 'i3', name: 'Batch #125', progress: 35 },
+          operator: { id: 'op3', name: 'Carol' },
+          cycleTime: 120,
+          throughput: 30
+        },
+        {
+          id: 'st4',
+          name: 'Quality Check',
+          status: 'idle',
+          operator: { id: 'op4', name: 'David' },
+          cycleTime: 30,
+          throughput: 120
+        },
+        {
+          id: 'st5',
+          name: 'Packaging',
+          status: 'active',
+          currentItem: { id: 'i4', name: 'Batch #124', progress: 90 },
+          operator: { id: 'op5', name: 'Eve' },
+          cycleTime: 25,
+          throughput: 144
+        }
+      ]
+    };
+
+    // Production line with issues
+    const line2 = {
+      id: 'line-002',
+      name: 'Assembly Line B',
+      status: 'partial',
+      currentProduct: {
+        id: 'prod-2',
+        name: 'Component Z5'
+      },
+      target: 300,
+      produced: 89,
+      defects: 12,
+      efficiency: 72,
+      stations: [
+        {
+          id: 'st1',
+          name: 'Material Feed',
+          status: 'active',
+          currentItem: { id: 'i1', name: 'Part #445', progress: 70 },
+          cycleTime: 30,
+          throughput: 120
+        },
+        {
+          id: 'st2',
+          name: 'CNC Machining',
+          status: 'blocked',
+          cycleTime: 180,
+          throughput: 20
+        },
+        {
+          id: 'st3',
+          name: 'Deburring',
+          status: 'idle',
+          cycleTime: 45,
+          throughput: 80
+        },
+        {
+          id: 'st4',
+          name: 'Final Assembly',
+          status: 'error',
+          cycleTime: 60,
+          throughput: 60
+        }
+      ]
+    };
+
+    // Vertical layout line
+    const line3 = {
+      id: 'line-003',
+      name: 'Packaging Line',
+      status: 'running',
+      target: 1000,
+      produced: 756,
+      defects: 3,
+      efficiency: 98,
+      stations: [
+        { id: 'v1', name: 'Sorting', status: 'active', currentItem: { id: 'b1', name: 'Box #89', progress: 50 }, throughput: 200 },
+        { id: 'v2', name: 'Wrapping', status: 'active', currentItem: { id: 'b2', name: 'Box #88', progress: 75 }, throughput: 180 },
+        { id: 'v3', name: 'Labeling', status: 'active', currentItem: { id: 'b3', name: 'Box #87', progress: 90 }, throughput: 200 }
+      ]
+    };
+
+    // Simple line without stats
+    const line4 = {
+      id: 'line-004',
+      name: 'Test Line',
+      status: 'stopped',
+      target: 100,
+      produced: 0,
+      defects: 0,
+      efficiency: 0,
+      stations: [
+        { id: 't1', name: 'Station 1', status: 'idle' },
+        { id: 't2', name: 'Station 2', status: 'idle' },
+        { id: 't3', name: 'Station 3', status: 'idle' }
+      ]
+    };
+
+    // Initialize components
+    document.getElementById('line1').line = line1;
+    document.getElementById('line2').line = line2;
+    document.getElementById('line3').line = line3;
+    document.getElementById('line4').line = line4;
+
+    // Event listeners
+    document.querySelectorAll('erx-production-line').forEach(el => {
+      el.addEventListener('erxSelect', (e) => {
+        console.log('Station selected:', e.detail.station.name, 'on line:', e.detail.line.name);
+        alert(`Selected: ${e.detail.station.name} (${e.detail.station.status})`);
+      });
+    });
+  </script>
+</body>
+</html>

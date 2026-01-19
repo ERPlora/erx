@@ -3,766 +3,226 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>ERX Components - Demo</title>
-  <script type="module" src="https://unpkg.com/@erplora/erx/dist/erx/erx.esm.js"></script>
-  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap">
+  <title>ERX - ERPlora eXtensions</title>
+  <meta name="description" content="Stencil.js Web Components library for ERP desktop/web applications">
+  <script type="module" src="https://unpkg.com/@erplora/erx@latest/dist/erx/erx.esm.js"></script>
   <style>
     :root {
       --erx-color-primary: #667eea;
       --erx-color-primary-dark: #5a67d8;
-      --erx-color-primary-light: #eef2ff;
-      --erx-color-success: #10b981;
-      --erx-color-warning: #f59e0b;
-      --erx-color-danger: #ef4444;
       --erx-surface: #ffffff;
-      --erx-surface-secondary: #f9fafb;
-      --erx-text: #111827;
-      --erx-text-secondary: #6b7280;
-      --erx-text-tertiary: #9ca3af;
+      --erx-text: #1f2937;
+      --erx-text-muted: #6b7280;
       --erx-border-color: #e5e7eb;
     }
-
-    .dark {
-      --erx-surface: #1f2937;
-      --erx-surface-secondary: #374151;
-      --erx-text: #f9fafb;
-      --erx-text-secondary: #d1d5db;
-      --erx-text-tertiary: #9ca3af;
-      --erx-border-color: #4b5563;
-    }
-
-    * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-    }
-
+    * { box-sizing: border-box; margin: 0; padding: 0; }
     body {
-      font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
-      background: var(--erx-surface);
-      color: var(--erx-text);
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Arial, sans-serif;
       line-height: 1.6;
-    }
-
-    /* Header */
-    .header {
-      position: sticky;
-      top: 0;
-      z-index: 100;
-      background: var(--erx-surface);
-      border-bottom: 1px solid var(--erx-border-color);
-      padding: 16px 24px;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-    }
-
-    .logo {
-      display: flex;
-      align-items: center;
-      gap: 12px;
-      font-size: 24px;
-      font-weight: 700;
-      color: var(--erx-color-primary);
-      text-decoration: none;
-    }
-
-    .logo-badge {
-      font-size: 12px;
-      padding: 2px 8px;
-      background: var(--erx-color-primary-light);
-      color: var(--erx-color-primary);
-      border-radius: 4px;
-      font-weight: 600;
-    }
-
-    .header-actions {
-      display: flex;
-      align-items: center;
-      gap: 16px;
-    }
-
-    .btn {
-      display: inline-flex;
-      align-items: center;
-      gap: 8px;
-      padding: 8px 16px;
-      border-radius: 6px;
-      font-size: 14px;
-      font-weight: 500;
-      cursor: pointer;
-      transition: all 150ms ease;
-      text-decoration: none;
-    }
-
-    .btn-primary {
-      background: var(--erx-color-primary);
-      color: white;
-      border: none;
-    }
-
-    .btn-primary:hover {
-      background: var(--erx-color-primary-dark);
-    }
-
-    .btn-outline {
-      background: transparent;
       color: var(--erx-text);
-      border: 1px solid var(--erx-border-color);
+      background: #f9fafb;
     }
-
-    .btn-outline:hover {
-      background: var(--erx-surface-secondary);
-    }
-
-    .theme-toggle {
-      width: 40px;
-      height: 40px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      background: transparent;
-      border: 1px solid var(--erx-border-color);
-      border-radius: 8px;
-      cursor: pointer;
-      font-size: 18px;
-    }
-
-    /* Layout */
-    .container {
-      display: flex;
-      min-height: calc(100vh - 65px);
-    }
-
-    /* Sidebar */
-    .sidebar {
-      width: 280px;
-      flex-shrink: 0;
-      border-right: 1px solid var(--erx-border-color);
-      padding: 24px;
-      overflow-y: auto;
-      position: sticky;
-      top: 65px;
-      height: calc(100vh - 65px);
-    }
-
-    .sidebar-title {
-      font-size: 11px;
-      font-weight: 600;
-      text-transform: uppercase;
-      letter-spacing: 0.5px;
-      color: var(--erx-text-tertiary);
-      margin-bottom: 12px;
-      margin-top: 24px;
-    }
-
-    .sidebar-title:first-child {
-      margin-top: 0;
-    }
-
-    .sidebar-nav {
-      list-style: none;
-    }
-
-    .sidebar-nav a {
-      display: block;
-      padding: 8px 12px;
-      color: var(--erx-text-secondary);
-      text-decoration: none;
-      border-radius: 6px;
-      font-size: 14px;
-      transition: all 150ms ease;
-    }
-
-    .sidebar-nav a:hover {
-      background: var(--erx-surface-secondary);
-      color: var(--erx-text);
-    }
-
-    .sidebar-nav a.active {
-      background: var(--erx-color-primary-light);
-      color: var(--erx-color-primary);
-    }
-
-    /* Main content */
-    .main {
-      flex: 1;
-      padding: 32px 48px;
-      max-width: 1200px;
-    }
-
-    /* Hero */
     .hero {
-      text-align: center;
-      padding: 64px 0;
-      border-bottom: 1px solid var(--erx-border-color);
-      margin-bottom: 48px;
-    }
-
-    .hero h1 {
-      font-size: 48px;
-      font-weight: 700;
-      margin-bottom: 16px;
-      background: linear-gradient(135deg, var(--erx-color-primary), #764ba2);
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
-      background-clip: text;
-    }
-
-    .hero p {
-      font-size: 20px;
-      color: var(--erx-text-secondary);
-      max-width: 600px;
-      margin: 0 auto 32px;
-    }
-
-    .hero-stats {
-      display: flex;
-      justify-content: center;
-      gap: 48px;
-      margin-top: 32px;
-    }
-
-    .hero-stat {
+      background: linear-gradient(135deg, var(--erx-color-primary) 0%, var(--erx-color-primary-dark) 100%);
+      color: white;
+      padding: 4rem 2rem;
       text-align: center;
     }
-
-    .hero-stat-value {
-      font-size: 36px;
-      font-weight: 700;
-      color: var(--erx-color-primary);
+    .hero h1 { font-size: 3rem; font-weight: 700; margin-bottom: 1rem; }
+    .hero p { font-size: 1.25rem; opacity: 0.9; max-width: 600px; margin: 0 auto 2rem; }
+    .hero-buttons { display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap; }
+    .btn {
+      display: inline-block;
+      padding: 0.75rem 1.5rem;
+      border-radius: 8px;
+      font-weight: 600;
+      text-decoration: none;
+      transition: all 0.2s;
     }
-
-    .hero-stat-label {
-      font-size: 14px;
-      color: var(--erx-text-secondary);
+    .btn-primary { background: white; color: var(--erx-color-primary); }
+    .btn-primary:hover { transform: translateY(-2px); box-shadow: 0 4px 12px rgba(0,0,0,0.15); }
+    .btn-secondary { background: transparent; color: white; border: 2px solid white; }
+    .btn-secondary:hover { background: rgba(255,255,255,0.1); }
+    .container { max-width: 1200px; margin: 0 auto; padding: 0 2rem; }
+    .section { padding: 4rem 0; }
+    .section-title { font-size: 2rem; font-weight: 700; text-align: center; margin-bottom: 3rem; }
+    .stats {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 2rem;
+      text-align: center;
     }
-
-    /* Section */
-    .section {
-      margin-bottom: 64px;
-    }
-
-    .section-title {
-      font-size: 28px;
-      font-weight: 700;
-      margin-bottom: 8px;
-    }
-
-    .section-description {
-      color: var(--erx-text-secondary);
-      margin-bottom: 24px;
-    }
-
-    /* Demo card */
-    .demo-card {
-      background: var(--erx-surface);
-      border: 1px solid var(--erx-border-color);
+    .stat-item {
+      background: white;
+      padding: 2rem;
       border-radius: 12px;
-      overflow: hidden;
-      margin-bottom: 24px;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.05);
     }
-
-    .demo-header {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      padding: 16px 20px;
-      background: var(--erx-surface-secondary);
-      border-bottom: 1px solid var(--erx-border-color);
+    .stat-number { font-size: 3rem; font-weight: 700; color: var(--erx-color-primary); }
+    .stat-label { color: var(--erx-text-muted); font-size: 0.875rem; text-transform: uppercase; letter-spacing: 0.05em; }
+    .components-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+      gap: 1.5rem;
     }
-
-    .demo-title {
-      font-size: 16px;
+    .component-card {
+      background: white;
+      padding: 1.5rem;
+      border-radius: 12px;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+      border: 1px solid var(--erx-border-color);
+    }
+    .component-card h3 { font-size: 1rem; margin-bottom: 0.5rem; color: var(--erx-color-primary); }
+    .component-card p { font-size: 0.875rem; color: var(--erx-text-muted); }
+    .install-section { background: #1f2937; color: white; padding: 4rem 0; }
+    .install-section .section-title { color: white; }
+    .code-block {
+      background: #111827;
+      border-radius: 8px;
+      padding: 1.5rem;
+      font-family: Monaco, Menlo, monospace;
+      font-size: 0.875rem;
+      overflow-x: auto;
+      max-width: 600px;
+      margin: 0 auto;
+    }
+    .code-block .comment { color: #6b7280; }
+    .code-block .command { color: #10b981; }
+    .categories { display: flex; flex-wrap: wrap; gap: 0.5rem; justify-content: center; margin-bottom: 2rem; }
+    .category-badge {
+      background: var(--erx-color-primary);
+      color: white;
+      padding: 0.5rem 1rem;
+      border-radius: 20px;
+      font-size: 0.75rem;
       font-weight: 600;
     }
-
-    .demo-tags {
-      display: flex;
-      gap: 8px;
-    }
-
-    .demo-tag {
-      font-size: 11px;
-      padding: 2px 8px;
-      background: var(--erx-color-primary-light);
-      color: var(--erx-color-primary);
-      border-radius: 4px;
-      font-weight: 500;
-    }
-
-    .demo-preview {
-      padding: 32px;
-      min-height: 200px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-    }
-
-    .demo-code {
-      background: #1e1e1e;
-      padding: 20px;
-      border-top: 1px solid var(--erx-border-color);
-      overflow-x: auto;
-    }
-
-    .demo-code pre {
-      margin: 0;
-      font-family: 'SF Mono', Monaco, monospace;
-      font-size: 13px;
-      line-height: 1.6;
-      color: #d4d4d4;
-    }
-
-    .demo-code .tag { color: #569cd6; }
-    .demo-code .attr { color: #9cdcfe; }
-    .demo-code .string { color: #ce9178; }
-    .demo-code .comment { color: #6a9955; }
-
-    /* Grid demos */
-    .demo-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-      gap: 24px;
-    }
-
-    /* Installation */
-    .install-tabs {
-      display: flex;
-      gap: 8px;
-      margin-bottom: 16px;
-    }
-
-    .install-tab {
-      padding: 8px 16px;
-      background: transparent;
-      border: 1px solid var(--erx-border-color);
-      border-radius: 6px;
-      cursor: pointer;
-      font-size: 14px;
-      color: var(--erx-text-secondary);
-    }
-
-    .install-tab.active {
-      background: var(--erx-color-primary);
-      border-color: var(--erx-color-primary);
-      color: white;
-    }
-
-    .install-code {
-      background: #1e1e1e;
-      padding: 20px;
-      border-radius: 8px;
-      font-family: 'SF Mono', Monaco, monospace;
-      font-size: 14px;
-      color: #d4d4d4;
-    }
-
-    /* Footer */
-    .footer {
-      text-align: center;
-      padding: 48px 24px;
-      border-top: 1px solid var(--erx-border-color);
-      color: var(--erx-text-secondary);
-    }
-
-    .footer a {
-      color: var(--erx-color-primary);
-    }
-
-    /* Responsive */
-    @media (max-width: 1024px) {
-      .sidebar {
-        display: none;
-      }
-    }
-
-    @media (max-width: 768px) {
-      .main {
-        padding: 24px;
-      }
-
-      .hero h1 {
-        font-size: 32px;
-      }
-
-      .hero-stats {
-        flex-direction: column;
-        gap: 24px;
-      }
-    }
+    footer { background: #1f2937; color: white; padding: 2rem; text-align: center; }
+    footer a { color: var(--erx-color-primary); }
   </style>
 </head>
 <body>
-  <header class="header">
-    <a href="#" class="logo">
-      ERX
-      <span class="logo-badge">84 Components</span>
-    </a>
-    <div class="header-actions">
-      <a href="https://github.com/ERPlora/erx" class="btn btn-outline" target="_blank">
-        GitHub
-      </a>
-      <a href="./API.md" class="btn btn-outline">
-        API Docs
-      </a>
-      <button class="theme-toggle" onclick="toggleTheme()">
-        🌙
-      </button>
+  <header class="hero">
+    <h1>ERX</h1>
+    <p>ERPlora eXtensions - A comprehensive Stencil.js Web Components library for ERP desktop/web applications</p>
+    <div class="hero-buttons">
+      <a href="showcase/index.html" class="btn btn-primary">View Showcase</a>
+      <a href="https://github.com/ERPlora/erx" class="btn btn-secondary">GitHub</a>
+      <a href="https://www.npmjs.com/package/@erplora/erx" class="btn btn-secondary">npm</a>
     </div>
   </header>
 
-  <div class="container">
-    <aside class="sidebar">
-      <div class="sidebar-title">Getting Started</div>
-      <ul class="sidebar-nav">
-        <li><a href="#installation">Installation</a></li>
-        <li><a href="#usage">Usage</a></li>
-        <li><a href="#theming">Theming</a></li>
-      </ul>
-
-      <div class="sidebar-title">Data Display</div>
-      <ul class="sidebar-nav">
-        <li><a href="#data-grid">Data Grid</a></li>
-        <li><a href="#tree">Tree</a></li>
-        <li><a href="#json-viewer">JSON Viewer</a></li>
-        <li><a href="#code-block">Code Block</a></li>
-        <li><a href="#diff-viewer">Diff Viewer</a></li>
-      </ul>
-
-      <div class="sidebar-title">Forms</div>
-      <ul class="sidebar-nav">
-        <li><a href="#form-builder">Form Builder</a></li>
-        <li><a href="#rich-text">Rich Text</a></li>
-        <li><a href="#color-picker">Color Picker</a></li>
-        <li><a href="#signature">Signature</a></li>
-      </ul>
-
-      <div class="sidebar-title">Layout</div>
-      <ul class="sidebar-nav">
-        <li><a href="#kanban">Kanban</a></li>
-        <li><a href="#shell">App Shell</a></li>
-        <li><a href="#resizable-panels">Resizable Panels</a></li>
-      </ul>
-
-      <div class="sidebar-title">Overlays</div>
-      <ul class="sidebar-nav">
-        <li><a href="#drawer">Drawer</a></li>
-        <li><a href="#lightbox">Lightbox</a></li>
-        <li><a href="#snackbar">Snackbar</a></li>
-      </ul>
-
-      <div class="sidebar-title">Feedback</div>
-      <ul class="sidebar-nav">
-        <li><a href="#state">State</a></li>
-        <li><a href="#banner">Banner</a></li>
-        <li><a href="#callout">Callout</a></li>
-      </ul>
-
-      <div class="sidebar-title">POS</div>
-      <ul class="sidebar-nav">
-        <li><a href="#pos-keypad">Keypad</a></li>
-        <li><a href="#pos-cart">Cart</a></li>
-        <li><a href="#pos-receipt">Receipt</a></li>
-      </ul>
-
-      <div class="sidebar-title">Multimedia</div>
-      <ul class="sidebar-nav">
-        <li><a href="#video-player">Video Player</a></li>
-        <li><a href="#audio-player">Audio Player</a></li>
-        <li><a href="#qr-code">QR Code</a></li>
-      </ul>
-    </aside>
-
-    <main class="main">
-      <section class="hero">
-        <h1>ERX Components</h1>
-        <p>A comprehensive Web Components library for enterprise ERP applications. Built with Stencil.js, works everywhere.</p>
-        <div style="display: flex; gap: 16px; justify-content: center;">
-          <a href="#installation" class="btn btn-primary">Get Started</a>
-          <a href="./API.md" class="btn btn-outline">View API</a>
+  <section class="section">
+    <div class="container">
+      <div class="stats">
+        <div class="stat-item">
+          <div class="stat-number">92</div>
+          <div class="stat-label">Components</div>
         </div>
-        <div class="hero-stats">
-          <div class="hero-stat">
-            <div class="hero-stat-value">84</div>
-            <div class="hero-stat-label">Components</div>
-          </div>
-          <div class="hero-stat">
-            <div class="hero-stat-value">12</div>
-            <div class="hero-stat-label">Categories</div>
-          </div>
-          <div class="hero-stat">
-            <div class="hero-stat-value">100%</div>
-            <div class="hero-stat-label">TypeScript</div>
-          </div>
+        <div class="stat-item">
+          <div class="stat-number">0</div>
+          <div class="stat-label">Dependencies</div>
         </div>
-      </section>
-
-      <!-- Installation -->
-      <section id="installation" class="section">
-        <h2 class="section-title">Installation</h2>
-        <p class="section-description">Install ERX using npm or include via CDN.</p>
-
-        <div class="install-tabs">
-          <button class="install-tab active" onclick="showInstall('npm')">NPM</button>
-          <button class="install-tab" onclick="showInstall('cdn')">CDN</button>
-          <button class="install-tab" onclick="showInstall('react')">React</button>
+        <div class="stat-item">
+          <div class="stat-number">~840KB</div>
+          <div class="stat-label">Package Size</div>
         </div>
-
-        <div id="install-npm" class="install-code">
-          npm install @erplora/erx
+        <div class="stat-item">
+          <div class="stat-number">MIT</div>
+          <div class="stat-label">License</div>
         </div>
-        <div id="install-cdn" class="install-code" style="display:none;">
-          &lt;script type="module" src="https://unpkg.com/@erplora/erx/dist/erx/erx.esm.js"&gt;&lt;/script&gt;
+      </div>
+    </div>
+  </section>
+
+  <section class="install-section">
+    <div class="container">
+      <h2 class="section-title">Installation</h2>
+      <div class="code-block">
+        <span class="comment"># npm</span><br>
+        <span class="command">npm install @erplora/erx</span><br><br>
+        <span class="comment"># yarn</span><br>
+        <span class="command">yarn add @erplora/erx</span><br><br>
+        <span class="comment"># pnpm</span><br>
+        <span class="command">pnpm add @erplora/erx</span>
+      </div>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container">
+      <h2 class="section-title">Component Categories</h2>
+      <div class="categories">
+        <span class="category-badge">Data Display</span>
+        <span class="category-badge">Forms & Input</span>
+        <span class="category-badge">Navigation</span>
+        <span class="category-badge">Layout</span>
+        <span class="category-badge">Feedback</span>
+        <span class="category-badge">POS/Retail</span>
+        <span class="category-badge">Manufacturing</span>
+        <span class="category-badge">HR/Workforce</span>
+        <span class="category-badge">Media</span>
+        <span class="category-badge">Charts</span>
+      </div>
+
+      <div class="components-grid">
+        <div class="component-card">
+          <h3>&lt;erx-data-grid&gt;</h3>
+          <p>Full-featured data grid with sorting, filtering, pagination, and selection</p>
         </div>
-        <div id="install-react" class="install-code" style="display:none;">
-          npm install @erplora/erx @erplora/erx-react
+        <div class="component-card">
+          <h3>&lt;erx-calendar&gt;</h3>
+          <p>Interactive calendar with events, multiple views, and date selection</p>
         </div>
-      </section>
-
-      <!-- Data Grid -->
-      <section id="data-grid" class="section">
-        <h2 class="section-title">Data Grid</h2>
-        <p class="section-description">Advanced data grid with sorting, filtering, pagination, and row selection.</p>
-
-        <div class="demo-card">
-          <div class="demo-header">
-            <span class="demo-title">erx-data-grid</span>
-            <div class="demo-tags">
-              <span class="demo-tag">Data Display</span>
-            </div>
-          </div>
-          <div class="demo-preview">
-            <erx-data-grid id="demo-grid" style="width: 100%;"></erx-data-grid>
-          </div>
-          <div class="demo-code">
-<pre><span class="tag">&lt;erx-data-grid</span>
-  <span class="attr">columns</span>=<span class="string">'[{"field":"name","header":"Name"},{"field":"email","header":"Email"}]'</span>
-  <span class="attr">data</span>=<span class="string">'[{"name":"John","email":"john@example.com"}]'</span>
-  <span class="attr">selectable</span>
-  <span class="attr">paginated</span>
-<span class="tag">&gt;&lt;/erx-data-grid&gt;</span></pre>
-          </div>
+        <div class="component-card">
+          <h3>&lt;erx-cart&gt;</h3>
+          <p>Shopping cart component for POS and e-commerce applications</p>
         </div>
-      </section>
-
-      <!-- Feedback Components -->
-      <section id="state" class="section">
-        <h2 class="section-title">State</h2>
-        <p class="section-description">Empty, error, and loading state displays.</p>
-
-        <div class="demo-grid">
-          <div class="demo-card">
-            <div class="demo-header">
-              <span class="demo-title">Empty State</span>
-            </div>
-            <div class="demo-preview">
-              <erx-state type="empty" state-title="No items found" description="Try adjusting your filters" action-text="Reset" compact></erx-state>
-            </div>
-          </div>
-
-          <div class="demo-card">
-            <div class="demo-header">
-              <span class="demo-title">Loading State</span>
-            </div>
-            <div class="demo-preview">
-              <erx-state type="loading" state-title="Loading data..." compact></erx-state>
-            </div>
-          </div>
-
-          <div class="demo-card">
-            <div class="demo-header">
-              <span class="demo-title">Error State</span>
-            </div>
-            <div class="demo-preview">
-              <erx-state type="error" state-title="Something went wrong" description="Please try again" action-text="Retry" compact></erx-state>
-            </div>
-          </div>
+        <div class="component-card">
+          <h3>&lt;erx-chart&gt;</h3>
+          <p>Versatile charting component supporting line, bar, pie, and more</p>
         </div>
-      </section>
-
-      <!-- Callout -->
-      <section id="callout" class="section">
-        <h2 class="section-title">Callout</h2>
-        <p class="section-description">Highlighted information boxes with different variants.</p>
-
-        <div class="demo-card">
-          <div class="demo-preview" style="flex-direction: column; gap: 16px; align-items: stretch;">
-            <erx-callout variant="info">This is an informational callout with some helpful content.</erx-callout>
-            <erx-callout variant="tip" callout-title="Pro Tip">You can use keyboard shortcuts to work faster.</erx-callout>
-            <erx-callout variant="warning">Be careful when deleting items. This action cannot be undone.</erx-callout>
-          </div>
+        <div class="component-card">
+          <h3>&lt;erx-kanban&gt;</h3>
+          <p>Drag-and-drop Kanban board for task management</p>
         </div>
-      </section>
-
-      <!-- Banner -->
-      <section id="banner" class="section">
-        <h2 class="section-title">Banner</h2>
-        <p class="section-description">Full-width notification banners.</p>
-
-        <div class="demo-card">
-          <div class="demo-preview" style="flex-direction: column; gap: 16px; align-items: stretch;">
-            <erx-banner variant="info" action-text="Learn More">New feature available! Check out the updated dashboard.</erx-banner>
-            <erx-banner variant="warning">Your subscription expires in 3 days.</erx-banner>
-          </div>
+        <div class="component-card">
+          <h3>&lt;erx-gantt&gt;</h3>
+          <p>Project timeline visualization with dependencies</p>
         </div>
-      </section>
-
-      <!-- Status Indicator -->
-      <section id="status" class="section">
-        <h2 class="section-title">Status Indicator</h2>
-        <p class="section-description">Visual status badges and dots.</p>
-
-        <div class="demo-card">
-          <div class="demo-preview" style="gap: 24px;">
-            <erx-status-indicator status="online" variant="pill"></erx-status-indicator>
-            <erx-status-indicator status="away" variant="pill"></erx-status-indicator>
-            <erx-status-indicator status="busy" variant="pill"></erx-status-indicator>
-            <erx-status-indicator status="offline" variant="pill"></erx-status-indicator>
-          </div>
+        <div class="component-card">
+          <h3>&lt;erx-payment&gt;</h3>
+          <p>Payment processing interface for multiple payment methods</p>
         </div>
-      </section>
-
-      <!-- Progress Circle -->
-      <section id="progress" class="section">
-        <h2 class="section-title">Progress Circle</h2>
-        <p class="section-description">Circular progress indicators.</p>
-
-        <div class="demo-card">
-          <div class="demo-preview" style="gap: 32px;">
-            <erx-progress-circle value="25" size="80"></erx-progress-circle>
-            <erx-progress-circle value="50" size="80"></erx-progress-circle>
-            <erx-progress-circle value="75" size="80"></erx-progress-circle>
-            <erx-progress-circle value="100" size="80"></erx-progress-circle>
-          </div>
+        <div class="component-card">
+          <h3>&lt;erx-receipt&gt;</h3>
+          <p>Printable receipt component with customizable layout</p>
         </div>
-      </section>
-
-      <!-- Snackbar -->
-      <section id="snackbar" class="section">
-        <h2 class="section-title">Snackbar</h2>
-        <p class="section-description">Brief notifications at the bottom of the screen.</p>
-
-        <div class="demo-card">
-          <div class="demo-preview">
-            <div style="display: flex; gap: 12px;">
-              <button class="btn btn-primary" onclick="showSnackbar('default')">Default</button>
-              <button class="btn btn-primary" style="background: var(--erx-color-success);" onclick="showSnackbar('success')">Success</button>
-              <button class="btn btn-primary" style="background: var(--erx-color-danger);" onclick="showSnackbar('error')">Error</button>
-              <button class="btn btn-primary" style="background: var(--erx-color-warning); color: #000;" onclick="showSnackbar('warning')">Warning</button>
-            </div>
-          </div>
+        <div class="component-card">
+          <h3>&lt;erx-barcode-scanner&gt;</h3>
+          <p>Camera-based barcode and QR code scanner</p>
         </div>
-        <erx-snackbar id="demo-snackbar" message="This is a snackbar message" action-text="Undo"></erx-snackbar>
-      </section>
-
-      <!-- Code Block -->
-      <section id="code-block" class="section">
-        <h2 class="section-title">Code Block</h2>
-        <p class="section-description">Syntax-highlighted code display with copy functionality.</p>
-
-        <div class="demo-card">
-          <div class="demo-preview" style="width: 100%;">
-            <erx-code-block
-              code="function greet(name) {
-  console.log('Hello, ' + name + '!');
-}
-
-greet('World');"
-              language="javascript"
-              file-name="greeting.js"
-              highlight-lines="2"
-              style="width: 100%;"
-            ></erx-code-block>
-          </div>
+        <div class="component-card">
+          <h3>&lt;erx-signature-pad&gt;</h3>
+          <p>Touch-enabled signature capture component</p>
         </div>
-      </section>
-
-      <!-- Divider -->
-      <section id="divider" class="section">
-        <h2 class="section-title">Divider</h2>
-        <p class="section-description">Divider lines with optional text.</p>
-
-        <div class="demo-card">
-          <div class="demo-preview" style="flex-direction: column; gap: 24px; width: 100%;">
-            <erx-divider></erx-divider>
-            <erx-divider text="OR"></erx-divider>
-            <erx-divider text="Continue with" dashed></erx-divider>
-          </div>
+        <div class="component-card">
+          <h3>&lt;erx-rich-text&gt;</h3>
+          <p>WYSIWYG rich text editor</p>
         </div>
-      </section>
-
-      <!-- QR Code -->
-      <section id="qr-code" class="section">
-        <h2 class="section-title">QR Code</h2>
-        <p class="section-description">Generate QR codes for any data.</p>
-
-        <div class="demo-card">
-          <div class="demo-preview" style="gap: 32px;">
-            <erx-qr-code value="https://erplora.com" size="150"></erx-qr-code>
-            <erx-qr-code value="Hello, World!" size="150" foreground="#667eea"></erx-qr-code>
-          </div>
+        <div class="component-card">
+          <h3>&lt;erx-virtual-keyboard&gt;</h3>
+          <p>On-screen keyboard for kiosk and touch applications</p>
         </div>
-      </section>
+      </div>
+    </div>
+  </section>
 
-      <footer class="footer">
-        <p>ERX Components &copy; 2024 ERPlora. MIT License.</p>
-        <p style="margin-top: 8px;">
-          <a href="https://github.com/ERPlora/erx">GitHub</a> &middot;
-          <a href="./API.md">API Documentation</a> &middot;
-          <a href="https://erplora.com">ERPlora</a>
-        </p>
-      </footer>
-    </main>
-  </div>
-
-  <script>
-    // Initialize demo grid
-    document.addEventListener('DOMContentLoaded', () => {
-      const grid = document.getElementById('demo-grid');
-      if (grid) {
-        grid.columns = [
-          { field: 'id', header: 'ID', width: '80px' },
-          { field: 'name', header: 'Name', sortable: true },
-          { field: 'email', header: 'Email' },
-          { field: 'role', header: 'Role' },
-          { field: 'status', header: 'Status', type: 'badge' }
-        ];
-        grid.data = [
-          { id: 1, name: 'John Doe', email: 'john@example.com', role: 'Admin', status: 'Active' },
-          { id: 2, name: 'Jane Smith', email: 'jane@example.com', role: 'Editor', status: 'Active' },
-          { id: 3, name: 'Bob Wilson', email: 'bob@example.com', role: 'Viewer', status: 'Inactive' },
-          { id: 4, name: 'Alice Brown', email: 'alice@example.com', role: 'Editor', status: 'Active' },
-          { id: 5, name: 'Charlie Davis', email: 'charlie@example.com', role: 'Admin', status: 'Active' }
-        ];
-        grid.selectable = true;
-        grid.paginated = true;
-        grid.pageSize = 5;
-      }
-    });
-
-    // Theme toggle
-    function toggleTheme() {
-      document.body.classList.toggle('dark');
-      const btn = document.querySelector('.theme-toggle');
-      btn.textContent = document.body.classList.contains('dark') ? '☀️' : '🌙';
-    }
-
-    // Installation tabs
-    function showInstall(type) {
-      document.querySelectorAll('.install-tab').forEach(t => t.classList.remove('active'));
-      document.querySelectorAll('[id^="install-"]').forEach(c => c.style.display = 'none');
-      document.querySelector(`.install-tab[onclick*="${type}"]`).classList.add('active');
-      document.getElementById(`install-${type}`).style.display = 'block';
-    }
-
-    // Snackbar demo
-    function showSnackbar(variant) {
-      const snackbar = document.getElementById('demo-snackbar');
-      snackbar.variant = variant;
-      snackbar.message = `This is a ${variant} snackbar message`;
-      snackbar.show();
-    }
-  </script>
+  <footer>
+    <p>
+      ERX is part of <a href="https://github.com/ERPlora">ERPlora</a> - Open Source ERP Solutions<br>
+      <small>MIT License © 2025 ERPlora Team</small>
+    </p>
+  </footer>
 </body>
 </html>

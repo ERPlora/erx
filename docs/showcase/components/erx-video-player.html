@@ -1,0 +1,273 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>erx-video-player - ERX Components</title>
+  <script type="module" src="https://unpkg.com/@erplora/erx/dist/erx/erx.esm.js"></script>
+  <script nomodule src="https://unpkg.com/@erplora/erx/dist/erx/erx.js"></script>
+  <link rel="stylesheet" href="../styles.css">
+</head>
+<body>
+  <div class="component-page" style="padding: 2rem;">
+    <a href="../index.html" class="back-link">&larr; Back to Components</a>
+
+    <div class="component-header">
+      <h1>erx-video-player</h1>
+      <p>A video player component with customizable controls, quality selection, fullscreen support, and picture-in-picture mode.</p>
+    </div>
+
+    <div class="demo-section">
+      <h2>Basic Video Player</h2>
+      <div class="demo-box">
+        <erx-video-player
+          src="https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/BigBuckBunny.mp4"
+          poster="https://picsum.photos/800/450?random=1"
+          title="Big Buck Bunny">
+        </erx-video-player>
+      </div>
+    </div>
+
+    <div class="demo-section">
+      <h2>With Controls Customization</h2>
+      <div class="demo-box">
+        <erx-video-player
+          src="https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ElephantsDream.mp4"
+          poster="https://picsum.photos/800/450?random=2"
+          title="Elephants Dream"
+          show-playback-speed
+          show-quality-selector
+          show-pip>
+        </erx-video-player>
+      </div>
+    </div>
+
+    <div class="demo-section">
+      <h2>Autoplay with Muted</h2>
+      <div class="demo-box">
+        <erx-video-player
+          src="https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ForBiggerBlazes.mp4"
+          poster="https://picsum.photos/800/450?random=3"
+          autoplay
+          muted
+          loop>
+        </erx-video-player>
+        <p style="margin-top: 1rem; color: var(--text-muted);">This video autoplays muted and loops continuously.</p>
+      </div>
+    </div>
+
+    <div class="demo-section">
+      <h2>With Chapters</h2>
+      <div class="demo-box">
+        <erx-video-player
+          id="chapters-player"
+          src="https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/BigBuckBunny.mp4"
+          poster="https://picsum.photos/800/450?random=4"
+          title="Video with Chapters"
+          show-chapters>
+        </erx-video-player>
+      </div>
+    </div>
+
+    <div class="demo-section">
+      <h2>Compact Controls</h2>
+      <div class="demo-box">
+        <div style="max-width: 400px;">
+          <erx-video-player
+            src="https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ForBiggerEscapes.mp4"
+            poster="https://picsum.photos/400/225?random=5"
+            compact>
+          </erx-video-player>
+        </div>
+      </div>
+    </div>
+
+    <div class="demo-section">
+      <h2>Minimal Controls</h2>
+      <div class="demo-box">
+        <erx-video-player
+          src="https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ForBiggerFun.mp4"
+          poster="https://picsum.photos/800/450?random=6"
+          minimal>
+        </erx-video-player>
+      </div>
+    </div>
+
+    <div class="demo-section">
+      <h2>With Thumbnail Preview</h2>
+      <div class="demo-box">
+        <erx-video-player
+          src="https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/BigBuckBunny.mp4"
+          poster="https://picsum.photos/800/450?random=7"
+          title="Thumbnail Preview Demo"
+          show-thumbnail-preview>
+        </erx-video-player>
+        <p style="margin-top: 1rem; color: var(--text-muted);">Hover over the progress bar to see thumbnail previews.</p>
+      </div>
+    </div>
+
+    <div class="demo-section">
+      <h2>Custom Accent Color</h2>
+      <div class="demo-box">
+        <erx-video-player
+          src="https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ForBiggerJoyrides.mp4"
+          poster="https://picsum.photos/800/450?random=8"
+          color="#10b981">
+        </erx-video-player>
+      </div>
+    </div>
+
+    <div class="demo-section">
+      <h2>Props</h2>
+      <table style="width: 100%; border-collapse: collapse;">
+        <thead>
+          <tr style="border-bottom: 2px solid var(--border);">
+            <th style="text-align: left; padding: 0.5rem;">Prop</th>
+            <th style="text-align: left; padding: 0.5rem;">Type</th>
+            <th style="text-align: left; padding: 0.5rem;">Default</th>
+            <th style="text-align: left; padding: 0.5rem;">Description</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr style="border-bottom: 1px solid var(--border);">
+            <td style="padding: 0.5rem;"><code>src</code></td>
+            <td style="padding: 0.5rem;">string</td>
+            <td style="padding: 0.5rem;">-</td>
+            <td style="padding: 0.5rem;">Video source URL</td>
+          </tr>
+          <tr style="border-bottom: 1px solid var(--border);">
+            <td style="padding: 0.5rem;"><code>poster</code></td>
+            <td style="padding: 0.5rem;">string</td>
+            <td style="padding: 0.5rem;">-</td>
+            <td style="padding: 0.5rem;">Poster image URL</td>
+          </tr>
+          <tr style="border-bottom: 1px solid var(--border);">
+            <td style="padding: 0.5rem;"><code>title</code></td>
+            <td style="padding: 0.5rem;">string</td>
+            <td style="padding: 0.5rem;">-</td>
+            <td style="padding: 0.5rem;">Video title</td>
+          </tr>
+          <tr style="border-bottom: 1px solid var(--border);">
+            <td style="padding: 0.5rem;"><code>autoplay</code></td>
+            <td style="padding: 0.5rem;">boolean</td>
+            <td style="padding: 0.5rem;">false</td>
+            <td style="padding: 0.5rem;">Auto-play on load</td>
+          </tr>
+          <tr style="border-bottom: 1px solid var(--border);">
+            <td style="padding: 0.5rem;"><code>muted</code></td>
+            <td style="padding: 0.5rem;">boolean</td>
+            <td style="padding: 0.5rem;">false</td>
+            <td style="padding: 0.5rem;">Start muted</td>
+          </tr>
+          <tr style="border-bottom: 1px solid var(--border);">
+            <td style="padding: 0.5rem;"><code>loop</code></td>
+            <td style="padding: 0.5rem;">boolean</td>
+            <td style="padding: 0.5rem;">false</td>
+            <td style="padding: 0.5rem;">Loop video</td>
+          </tr>
+          <tr style="border-bottom: 1px solid var(--border);">
+            <td style="padding: 0.5rem;"><code>show-playback-speed</code></td>
+            <td style="padding: 0.5rem;">boolean</td>
+            <td style="padding: 0.5rem;">false</td>
+            <td style="padding: 0.5rem;">Show speed selector</td>
+          </tr>
+          <tr style="border-bottom: 1px solid var(--border);">
+            <td style="padding: 0.5rem;"><code>show-quality-selector</code></td>
+            <td style="padding: 0.5rem;">boolean</td>
+            <td style="padding: 0.5rem;">false</td>
+            <td style="padding: 0.5rem;">Show quality options</td>
+          </tr>
+          <tr style="border-bottom: 1px solid var(--border);">
+            <td style="padding: 0.5rem;"><code>show-pip</code></td>
+            <td style="padding: 0.5rem;">boolean</td>
+            <td style="padding: 0.5rem;">false</td>
+            <td style="padding: 0.5rem;">Show PiP button</td>
+          </tr>
+          <tr style="border-bottom: 1px solid var(--border);">
+            <td style="padding: 0.5rem;"><code>show-chapters</code></td>
+            <td style="padding: 0.5rem;">boolean</td>
+            <td style="padding: 0.5rem;">false</td>
+            <td style="padding: 0.5rem;">Show chapters markers</td>
+          </tr>
+          <tr style="border-bottom: 1px solid var(--border);">
+            <td style="padding: 0.5rem;"><code>compact</code></td>
+            <td style="padding: 0.5rem;">boolean</td>
+            <td style="padding: 0.5rem;">false</td>
+            <td style="padding: 0.5rem;">Compact controls</td>
+          </tr>
+          <tr style="border-bottom: 1px solid var(--border);">
+            <td style="padding: 0.5rem;"><code>minimal</code></td>
+            <td style="padding: 0.5rem;">boolean</td>
+            <td style="padding: 0.5rem;">false</td>
+            <td style="padding: 0.5rem;">Minimal controls</td>
+          </tr>
+          <tr style="border-bottom: 1px solid var(--border);">
+            <td style="padding: 0.5rem;"><code>color</code></td>
+            <td style="padding: 0.5rem;">string</td>
+            <td style="padding: 0.5rem;">primary</td>
+            <td style="padding: 0.5rem;">Accent color</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <div class="demo-section">
+      <h2>Events</h2>
+      <table style="width: 100%; border-collapse: collapse;">
+        <thead>
+          <tr style="border-bottom: 2px solid var(--border);">
+            <th style="text-align: left; padding: 0.5rem;">Event</th>
+            <th style="text-align: left; padding: 0.5rem;">Description</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr style="border-bottom: 1px solid var(--border);">
+            <td style="padding: 0.5rem;"><code>erxPlay</code></td>
+            <td style="padding: 0.5rem;">Emitted when playback starts</td>
+          </tr>
+          <tr style="border-bottom: 1px solid var(--border);">
+            <td style="padding: 0.5rem;"><code>erxPause</code></td>
+            <td style="padding: 0.5rem;">Emitted when playback pauses</td>
+          </tr>
+          <tr style="border-bottom: 1px solid var(--border);">
+            <td style="padding: 0.5rem;"><code>erxEnded</code></td>
+            <td style="padding: 0.5rem;">Emitted when video ends</td>
+          </tr>
+          <tr style="border-bottom: 1px solid var(--border);">
+            <td style="padding: 0.5rem;"><code>erxTimeUpdate</code></td>
+            <td style="padding: 0.5rem;">Emitted on time updates</td>
+          </tr>
+          <tr style="border-bottom: 1px solid var(--border);">
+            <td style="padding: 0.5rem;"><code>erxFullscreenChange</code></td>
+            <td style="padding: 0.5rem;">Emitted on fullscreen toggle</td>
+          </tr>
+          <tr style="border-bottom: 1px solid var(--border);">
+            <td style="padding: 0.5rem;"><code>erxQualityChange</code></td>
+            <td style="padding: 0.5rem;">Emitted when quality changes</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+  <script>
+    // Initialize chapters player
+    const chaptersPlayer = document.getElementById('chapters-player');
+    chaptersPlayer.chapters = [
+      { time: 0, title: 'Introduction' },
+      { time: 30, title: 'Chapter 1: The Beginning' },
+      { time: 120, title: 'Chapter 2: Development' },
+      { time: 240, title: 'Chapter 3: Climax' },
+      { time: 360, title: 'Chapter 4: Resolution' },
+      { time: 480, title: 'Credits' }
+    ];
+
+    // Event listeners
+    document.querySelectorAll('erx-video-player').forEach(player => {
+      player.addEventListener('erxPlay', () => console.log('Video playing'));
+      player.addEventListener('erxPause', () => console.log('Video paused'));
+      player.addEventListener('erxEnded', () => console.log('Video ended'));
+    });
+  </script>
+</body>
+</html>

@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>erx-gauge - ERX Components</title>
+  <script type="module" src="https://unpkg.com/@erplora/erx/dist/erx/erx.esm.js"></script>
+  <script nomodule src="https://unpkg.com/@erplora/erx/dist/erx/erx.js"></script>
+  <link rel="stylesheet" href="../styles.css">
+</head>
+<body>
+  <div class="component-page" style="padding: 2rem;">
+    <a href="../index.html" class="back-link">&larr; Back to Components</a>
+    <div class="component-header">
+      <h1>erx-gauge</h1>
+      <p>Gauge/meter visualization with animated needle, segments/zones, customizable angles, and value display.</p>
+    </div>
+    <div class="demo-section">
+      <h2>Basic Gauges</h2>
+      <div class="demo-box">
+        <div class="demo-row" style="justify-content: center;">
+          <div class="demo-col" style="text-align: center; max-width: 200px;">
+            <span class="demo-label">CPU Usage</span>
+            <erx-gauge id="cpuGauge" value="65" label="CPU"></erx-gauge>
+          </div>
+          <div class="demo-col" style="text-align: center; max-width: 200px;">
+            <span class="demo-label">Memory</span>
+            <erx-gauge id="memoryGauge" value="78" label="Memory"></erx-gauge>
+          </div>
+          <div class="demo-col" style="text-align: center; max-width: 200px;">
+            <span class="demo-label">Disk</span>
+            <erx-gauge id="diskGauge" value="42" label="Disk"></erx-gauge>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="demo-section">
+      <h2>Gauge Sizes</h2>
+      <div class="demo-box">
+        <div class="demo-row" style="align-items: flex-end; justify-content: center;">
+          <div class="demo-col" style="text-align: center; max-width: 150px;">
+            <span class="demo-label">Small</span>
+            <erx-gauge size="sm" value="50"></erx-gauge>
+          </div>
+          <div class="demo-col" style="text-align: center; max-width: 200px;">
+            <span class="demo-label">Medium</span>
+            <erx-gauge size="md" value="50"></erx-gauge>
+          </div>
+          <div class="demo-col" style="text-align: center; max-width: 280px;">
+            <span class="demo-label">Large</span>
+            <erx-gauge size="lg" value="50"></erx-gauge>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="demo-section">
+      <h2>Gauges with Segments</h2>
+      <div class="demo-box">
+        <div class="demo-row" style="justify-content: center;">
+          <div class="demo-col" style="text-align: center; max-width: 250px;">
+            <span class="demo-label">Temperature (Good)</span>
+            <erx-gauge id="tempGood" value="35" min="0" max="100" unit="C" label="Temperature" size="lg"></erx-gauge>
+          </div>
+          <div class="demo-col" style="text-align: center; max-width: 250px;">
+            <span class="demo-label">Temperature (Warning)</span>
+            <erx-gauge id="tempWarning" value="65" min="0" max="100" unit="C" label="Temperature" size="lg"></erx-gauge>
+          </div>
+          <div class="demo-col" style="text-align: center; max-width: 250px;">
+            <span class="demo-label">Temperature (Critical)</span>
+            <erx-gauge id="tempCritical" value="85" min="0" max="100" unit="C" label="Temperature" size="lg"></erx-gauge>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="demo-section">
+      <h2>Speed Gauge</h2>
+      <div class="demo-box">
+        <div class="demo-row" style="justify-content: center;">
+          <div class="demo-col" style="text-align: center; max-width: 280px;">
+            <erx-gauge id="speedGauge" value="120" min="0" max="200" unit="km/h" label="Speed" size="lg"></erx-gauge>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="demo-section">
+      <h2>Interactive Demo</h2>
+      <div class="demo-box">
+        <div style="text-align: center;">
+          <erx-gauge id="interactiveGauge" value="50" label="Value" size="lg"></erx-gauge>
+          <div style="margin-top: 1rem;">
+            <input type="range" id="gaugeSlider" min="0" max="100" value="50" style="width: 200px;">
+            <span id="sliderValue" style="margin-left: 1rem;">50</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      // Segment configuration for temperature gauges
+      const tempSegments = [
+        { value: 50, color: '#10b981' },  // Good (green)
+        { value: 75, color: '#f59e0b' },  // Warning (yellow)
+        { value: 100, color: '#ef4444' }  // Critical (red)
+      ];
+
+      document.getElementById('tempGood').segments = tempSegments;
+      document.getElementById('tempWarning').segments = tempSegments;
+      document.getElementById('tempCritical').segments = tempSegments;
+
+      // Speed gauge segments
+      document.getElementById('speedGauge').segments = [
+        { value: 60, color: '#10b981' },
+        { value: 120, color: '#f59e0b' },
+        { value: 160, color: '#ef4444' },
+        { value: 200, color: '#dc2626' }
+      ];
+
+      // Interactive gauge
+      const interactiveGauge = document.getElementById('interactiveGauge');
+      const slider = document.getElementById('gaugeSlider');
+      const sliderValue = document.getElementById('sliderValue');
+
+      interactiveGauge.segments = [
+        { value: 30, color: '#ef4444' },
+        { value: 60, color: '#f59e0b' },
+        { value: 100, color: '#10b981' }
+      ];
+
+      slider.addEventListener('input', (e) => {
+        const value = parseInt(e.target.value);
+        interactiveGauge.value = value;
+        sliderValue.textContent = value;
+      });
+    });
+  </script>
+</body>
+</html>

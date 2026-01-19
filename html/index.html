@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>ERX Component Showcase</title>
+  <script type="module" src="https://unpkg.com/@erplora/erx/dist/erx/erx.esm.js"></script>
+  <script nomodule src="https://unpkg.com/@erplora/erx/dist/erx/erx.js"></script>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <div class="app">
+    <header class="header">
+      <h1>ERX Component Showcase</h1>
+      <p>92 Web Components for ERP Applications</p>
+      <div class="theme-toggle">
+        <button id="theme-light" class="theme-btn active">☀️ Light</button>
+        <button id="theme-dark" class="theme-btn">🌙 Dark</button>
+      </div>
+    </header>
+
+    <nav class="sidebar">
+      <div class="search-box">
+        <input type="text" id="search" placeholder="Search components...">
+      </div>
+      <div class="categories">
+        <button class="cat-btn active" data-cat="all">All (92)</button>
+        <button class="cat-btn" data-cat="data">Data Display</button>
+        <button class="cat-btn" data-cat="input">Forms & Input</button>
+        <button class="cat-btn" data-cat="layout">Layout</button>
+        <button class="cat-btn" data-cat="feedback">Feedback</button>
+        <button class="cat-btn" data-cat="pos">POS/Retail</button>
+        <button class="cat-btn" data-cat="manufacturing">Manufacturing</button>
+        <button class="cat-btn" data-cat="hr">HR/Workforce</button>
+        <button class="cat-btn" data-cat="media">Media</button>
+        <button class="cat-btn" data-cat="navigation">Navigation</button>
+      </div>
+      <ul class="component-list" id="component-list"></ul>
+    </nav>
+
+    <main class="main" id="main-content">
+      <div class="welcome">
+        <h2>Welcome to ERX Component Showcase</h2>
+        <p>Select a component from the sidebar to view its demo and documentation.</p>
+        <div class="stats-grid">
+          <div class="stat-card">
+            <span class="stat-num">92</span>
+            <span class="stat-label">Components</span>
+          </div>
+          <div class="stat-card">
+            <span class="stat-num">10</span>
+            <span class="stat-label">Categories</span>
+          </div>
+          <div class="stat-card">
+            <span class="stat-num">2</span>
+            <span class="stat-label">Themes</span>
+          </div>
+        </div>
+      </div>
+    </main>
+  </div>
+
+  <script>
+    const components = [
+      { name: 'erx-attendance-list', cat: 'hr', desc: 'Employee attendance tracking list' },
+      { name: 'erx-audio-player', cat: 'media', desc: 'Audio player with controls' },
+      { name: 'erx-autocomplete', cat: 'input', desc: 'Autocomplete search input' },
+      { name: 'erx-banner', cat: 'feedback', desc: 'Notification banner' },
+      { name: 'erx-barcode-scanner', cat: 'pos', desc: 'Camera barcode scanner' },
+      { name: 'erx-batch-tracker', cat: 'manufacturing', desc: 'Batch tracking component' },
+      { name: 'erx-bom-tree', cat: 'manufacturing', desc: 'Bill of Materials tree' },
+      { name: 'erx-button-group', cat: 'input', desc: 'Grouped buttons' },
+      { name: 'erx-calculator', cat: 'pos', desc: 'Calculator widget' },
+      { name: 'erx-calendar', cat: 'data', desc: 'Calendar component' },
+      { name: 'erx-calendar-views', cat: 'data', desc: 'Multiple calendar views' },
+      { name: 'erx-callout', cat: 'feedback', desc: 'Callout/alert messages' },
+      { name: 'erx-carousel', cat: 'media', desc: 'Image/content carousel' },
+      { name: 'erx-cart', cat: 'pos', desc: 'Shopping cart' },
+      { name: 'erx-category-tabs', cat: 'navigation', desc: 'Category tab navigation' },
+      { name: 'erx-chart', cat: 'data', desc: 'Chart visualization' },
+      { name: 'erx-code-block', cat: 'data', desc: 'Code syntax highlighting' },
+      { name: 'erx-color-picker', cat: 'input', desc: 'Color picker' },
+      { name: 'erx-command', cat: 'navigation', desc: 'Command palette' },
+      { name: 'erx-comparison', cat: 'data', desc: 'Comparison view' },
+      { name: 'erx-context-menu', cat: 'navigation', desc: 'Right-click context menu' },
+      { name: 'erx-currency-input', cat: 'input', desc: 'Currency input field' },
+      { name: 'erx-dashboard-grid', cat: 'layout', desc: 'Dashboard grid layout' },
+      { name: 'erx-data-grid', cat: 'data', desc: 'Data grid/table' },
+      { name: 'erx-date-range-picker', cat: 'input', desc: 'Date range picker' },
+      { name: 'erx-diff-viewer', cat: 'data', desc: 'Diff/compare viewer' },
+      { name: 'erx-divider', cat: 'layout', desc: 'Content divider' },
+      { name: 'erx-drawer', cat: 'layout', desc: 'Side drawer panel' },
+      { name: 'erx-dropdown', cat: 'navigation', desc: 'Dropdown menu' },
+      { name: 'erx-employee-card', cat: 'hr', desc: 'Employee info card' },
+      { name: 'erx-event-card', cat: 'data', desc: 'Event display card' },
+      { name: 'erx-form-wizard', cat: 'input', desc: 'Multi-step form wizard' },
+      { name: 'erx-fullscreen-modal', cat: 'layout', desc: 'Fullscreen modal dialog' },
+      { name: 'erx-gantt', cat: 'data', desc: 'Gantt chart' },
+      { name: 'erx-gauge', cat: 'data', desc: 'Gauge/meter visualization' },
+      { name: 'erx-image-crop', cat: 'media', desc: 'Image cropping tool' },
+      { name: 'erx-image-gallery', cat: 'media', desc: 'Image gallery' },
+      { name: 'erx-image-zoom', cat: 'media', desc: 'Image zoom viewer' },
+      { name: 'erx-json-viewer', cat: 'data', desc: 'JSON tree viewer' },
+      { name: 'erx-kanban', cat: 'data', desc: 'Kanban board' },
+      { name: 'erx-leave-request', cat: 'hr', desc: 'Leave request form' },
+      { name: 'erx-lightbox', cat: 'media', desc: 'Lightbox overlay' },
+      { name: 'erx-load-more', cat: 'navigation', desc: 'Load more button' },
+      { name: 'erx-machine-status', cat: 'manufacturing', desc: 'Machine status display' },
+      { name: 'erx-masonry', cat: 'layout', desc: 'Masonry grid layout' },
+      { name: 'erx-master-detail', cat: 'layout', desc: 'Master-detail view' },
+      { name: 'erx-mega-menu', cat: 'navigation', desc: 'Mega menu navigation' },
+      { name: 'erx-metric-card', cat: 'data', desc: 'Metric display card' },
+      { name: 'erx-notifications', cat: 'feedback', desc: 'Notification center' },
+      { name: 'erx-order-ticket', cat: 'pos', desc: 'Order ticket display' },
+      { name: 'erx-org-chart', cat: 'hr', desc: 'Organization chart' },
+      { name: 'erx-pagination', cat: 'navigation', desc: 'Pagination controls' },
+      { name: 'erx-panel', cat: 'layout', desc: 'Content panel' },
+      { name: 'erx-payment', cat: 'pos', desc: 'Payment interface' },
+      { name: 'erx-pdf-viewer', cat: 'media', desc: 'PDF document viewer' },
+      { name: 'erx-performance-meter', cat: 'data', desc: 'Performance meter' },
+      { name: 'erx-phone-input', cat: 'input', desc: 'Phone number input' },
+      { name: 'erx-pin-pad', cat: 'pos', desc: 'PIN entry pad' },
+      { name: 'erx-product-card', cat: 'pos', desc: 'Product display card' },
+      { name: 'erx-production-line', cat: 'manufacturing', desc: 'Production line status' },
+      { name: 'erx-progress-circle', cat: 'feedback', desc: 'Circular progress' },
+      { name: 'erx-progress-steps', cat: 'feedback', desc: 'Step progress indicator' },
+      { name: 'erx-qr-code', cat: 'pos', desc: 'QR code generator' },
+      { name: 'erx-quality-check', cat: 'manufacturing', desc: 'Quality check form' },
+      { name: 'erx-receipt', cat: 'pos', desc: 'Receipt display' },
+      { name: 'erx-resizable-panels', cat: 'layout', desc: 'Resizable panel layout' },
+      { name: 'erx-rich-text', cat: 'input', desc: 'Rich text editor' },
+      { name: 'erx-scheduler', cat: 'data', desc: 'Event scheduler' },
+      { name: 'erx-section', cat: 'layout', desc: 'Collapsible section' },
+      { name: 'erx-sheet', cat: 'layout', desc: 'Bottom sheet' },
+      { name: 'erx-shell', cat: 'layout', desc: 'App shell layout' },
+      { name: 'erx-shift-calendar', cat: 'hr', desc: 'Shift calendar' },
+      { name: 'erx-signature-pad', cat: 'input', desc: 'Signature capture' },
+      { name: 'erx-snackbar', cat: 'feedback', desc: 'Snackbar notifications' },
+      { name: 'erx-sparkline', cat: 'data', desc: 'Sparkline chart' },
+      { name: 'erx-split-button', cat: 'input', desc: 'Split button dropdown' },
+      { name: 'erx-split-pane', cat: 'layout', desc: 'Split pane layout' },
+      { name: 'erx-state', cat: 'feedback', desc: 'Empty/error states' },
+      { name: 'erx-stats', cat: 'data', desc: 'Statistics display' },
+      { name: 'erx-status-indicator', cat: 'feedback', desc: 'Status indicator' },
+      { name: 'erx-stock-indicator', cat: 'pos', desc: 'Stock level indicator' },
+      { name: 'erx-table', cat: 'data', desc: 'Simple data table' },
+      { name: 'erx-tag-input', cat: 'input', desc: 'Tag input field' },
+      { name: 'erx-time-clock', cat: 'hr', desc: 'Time clock widget' },
+      { name: 'erx-timeline', cat: 'data', desc: 'Timeline display' },
+      { name: 'erx-tree', cat: 'data', desc: 'Tree view' },
+      { name: 'erx-upload', cat: 'input', desc: 'File upload' },
+      { name: 'erx-variant-selector', cat: 'pos', desc: 'Product variant selector' },
+      { name: 'erx-video-player', cat: 'media', desc: 'Video player' },
+      { name: 'erx-virtual-keyboard', cat: 'input', desc: 'On-screen keyboard' },
+      { name: 'erx-virtual-list', cat: 'data', desc: 'Virtual scrolling list' },
+      { name: 'erx-work-order', cat: 'manufacturing', desc: 'Work order display' }
+    ];
+
+    // Populate component list
+    const list = document.getElementById('component-list');
+    function renderList(filter = '', category = 'all') {
+      list.innerHTML = '';
+      components
+        .filter(c => (category === 'all' || c.cat === category) && 
+                     (c.name.includes(filter) || c.desc.toLowerCase().includes(filter)))
+        .forEach(c => {
+          const li = document.createElement('li');
+          li.innerHTML = `<a href="components/${c.name}.html">${c.name}</a><small>${c.desc}</small>`;
+          list.appendChild(li);
+        });
+    }
+    renderList();
+
+    // Search
+    document.getElementById('search').addEventListener('input', e => {
+      renderList(e.target.value.toLowerCase(), document.querySelector('.cat-btn.active').dataset.cat);
+    });
+
+    // Category filter
+    document.querySelectorAll('.cat-btn').forEach(btn => {
+      btn.addEventListener('click', () => {
+        document.querySelectorAll('.cat-btn').forEach(b => b.classList.remove('active'));
+        btn.classList.add('active');
+        renderList(document.getElementById('search').value.toLowerCase(), btn.dataset.cat);
+      });
+    });
+
+    // Theme toggle
+    document.getElementById('theme-light').addEventListener('click', () => {
+      document.body.classList.remove('dark');
+      document.getElementById('theme-light').classList.add('active');
+      document.getElementById('theme-dark').classList.remove('active');
+    });
+    document.getElementById('theme-dark').addEventListener('click', () => {
+      document.body.classList.add('dark');
+      document.getElementById('theme-dark').classList.add('active');
+      document.getElementById('theme-light').classList.remove('active');
+    });
+  </script>
+</body>
+</html>

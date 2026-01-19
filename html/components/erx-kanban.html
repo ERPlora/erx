@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>erx-kanban - ERX Components</title>
+  <script type="module" src="https://unpkg.com/@erplora/erx/dist/erx/erx.esm.js"></script>
+  <script nomodule src="https://unpkg.com/@erplora/erx/dist/erx/erx.js"></script>
+  <link rel="stylesheet" href="../styles.css">
+</head>
+<body>
+  <div class="component-page" style="padding: 2rem;">
+    <a href="../index.html" class="back-link">&larr; Back to Components</a>
+    <div class="component-header">
+      <h1>erx-kanban</h1>
+      <p>Kanban board component with drag-and-drop support, WIP limits, collapsible columns, and priority indicators.</p>
+    </div>
+    <div class="demo-section">
+      <h2>Basic Kanban Board</h2>
+      <div class="demo-box" style="overflow-x: auto;">
+        <erx-kanban id="basicKanban"></erx-kanban>
+      </div>
+    </div>
+    <div class="demo-section">
+      <h2>Kanban with WIP Limits</h2>
+      <div class="demo-box" style="overflow-x: auto;">
+        <erx-kanban id="wipKanban"></erx-kanban>
+      </div>
+    </div>
+    <div class="demo-section">
+      <h2>Detailed Cards with Labels</h2>
+      <div class="demo-box" style="overflow-x: auto;">
+        <erx-kanban id="detailedKanban"></erx-kanban>
+      </div>
+    </div>
+    <div class="demo-section">
+      <h2>Event Output</h2>
+      <div class="demo-box">
+        <div id="eventOutput" style="padding: 1rem; background: var(--bg); border-radius: 8px; font-family: monospace; font-size: 0.875rem;">
+          Drag a card or click on it to see the output...
+        </div>
+      </div>
+    </div>
+  </div>
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      const eventOutput = document.getElementById('eventOutput');
+
+      // Basic Kanban
+      document.getElementById('basicKanban').config = {
+        columns: [
+          { id: 'backlog', title: 'Backlog', color: '#6b7280' },
+          { id: 'todo', title: 'To Do', color: '#3b82f6' },
+          { id: 'inprogress', title: 'In Progress', color: '#f59e0b' },
+          { id: 'done', title: 'Done', color: '#10b981' }
+        ],
+        draggable: true,
+        showCardCount: true
+      };
+      document.getElementById('basicKanban').cards = [
+        { id: '1', title: 'Research user needs', columnId: 'backlog', order: 0 },
+        { id: '2', title: 'Design mockups', columnId: 'backlog', order: 1 },
+        { id: '3', title: 'Setup project structure', columnId: 'todo', order: 0 },
+        { id: '4', title: 'Implement authentication', columnId: 'todo', order: 1 },
+        { id: '5', title: 'Build dashboard UI', columnId: 'inprogress', order: 0 },
+        { id: '6', title: 'API integration', columnId: 'inprogress', order: 1 },
+        { id: '7', title: 'Project kickoff', columnId: 'done', order: 0 }
+      ];
+
+      // Kanban with WIP Limits
+      document.getElementById('wipKanban').config = {
+        columns: [
+          { id: 'backlog', title: 'Backlog', color: '#6b7280' },
+          { id: 'todo', title: 'To Do', color: '#3b82f6', limit: 5 },
+          { id: 'inprogress', title: 'In Progress', color: '#f59e0b', limit: 3 },
+          { id: 'review', title: 'Review', color: '#8b5cf6', limit: 2 },
+          { id: 'done', title: 'Done', color: '#10b981' }
+        ],
+        draggable: true,
+        showCardCount: true,
+        showWipLimit: true
+      };
+      document.getElementById('wipKanban').cards = [
+        { id: '1', title: 'Feature A', columnId: 'backlog', order: 0 },
+        { id: '2', title: 'Feature B', columnId: 'backlog', order: 1 },
+        { id: '3', title: 'Bug fix #123', columnId: 'todo', order: 0 },
+        { id: '4', title: 'Documentation', columnId: 'todo', order: 1 },
+        { id: '5', title: 'Performance optimization', columnId: 'inprogress', order: 0 },
+        { id: '6', title: 'Security audit', columnId: 'inprogress', order: 1 },
+        { id: '7', title: 'Unit tests', columnId: 'inprogress', order: 2 },
+        { id: '8', title: 'Code review', columnId: 'review', order: 0 },
+        { id: '9', title: 'QA testing', columnId: 'review', order: 1 },
+        { id: '10', title: 'Release v1.0', columnId: 'done', order: 0 }
+      ];
+
+      // Detailed Kanban
+      document.getElementById('detailedKanban').config = {
+        columns: [
+          { id: 'todo', title: 'To Do', color: '#3b82f6' },
+          { id: 'inprogress', title: 'In Progress', color: '#f59e0b' },
+          { id: 'done', title: 'Done', color: '#10b981' }
+        ],
+        draggable: true,
+        showCardCount: true,
+        collapsible: true
+      };
+      document.getElementById('detailedKanban').cards = [
+        {
+          id: '1',
+          title: 'Implement user authentication',
+          description: 'Add OAuth2 login with Google and GitHub providers',
+          columnId: 'todo',
+          order: 0,
+          priority: 'high',
+          labels: [
+            { id: 'l1', color: '#ef4444' },
+            { id: 'l2', color: '#3b82f6' }
+          ],
+          assignee: { name: 'John Smith' },
+          dueDate: new Date(Date.now() + 7 * 86400000).toISOString(),
+          comments: 5,
+          attachments: 2
+        },
+        {
+          id: '2',
+          title: 'Design system documentation',
+          description: 'Create comprehensive docs for all components',
+          columnId: 'todo',
+          order: 1,
+          priority: 'medium',
+          labels: [{ id: 'l3', color: '#8b5cf6' }],
+          assignee: { name: 'Sarah Johnson' },
+          comments: 3
+        },
+        {
+          id: '3',
+          title: 'Fix mobile responsive issues',
+          columnId: 'inprogress',
+          order: 0,
+          priority: 'urgent',
+          labels: [{ id: 'l4', color: '#ef4444' }],
+          assignee: { name: 'Mike Wilson' },
+          dueDate: new Date(Date.now() + 2 * 86400000).toISOString()
+        },
+        {
+          id: '4',
+          title: 'API rate limiting',
+          description: 'Implement rate limiting for public endpoints',
+          columnId: 'inprogress',
+          order: 1,
+          priority: 'high',
+          assignee: { name: 'Emily Davis' }
+        },
+        {
+          id: '5',
+          title: 'Database optimization',
+          columnId: 'done',
+          order: 0,
+          priority: 'low',
+          assignee: { name: 'John Smith' },
+          comments: 8,
+          attachments: 1
+        }
+      ];
+
+      // Event listeners
+      document.querySelectorAll('erx-kanban').forEach(kanban => {
+        kanban.addEventListener('erxCardSelect', (e) => {
+          eventOutput.innerHTML = `<strong>Card Selected:</strong> ${e.detail.card.title}<br><strong>Column:</strong> ${e.detail.card.columnId}`;
+        });
+
+        kanban.addEventListener('erxCardMove', (e) => {
+          eventOutput.innerHTML = `<strong>Card Moved:</strong> ${e.detail.card.title}<br><strong>From:</strong> ${e.detail.fromColumn}<br><strong>To:</strong> ${e.detail.toColumn}`;
+        });
+
+        kanban.addEventListener('erxColumnCollapse', (e) => {
+          eventOutput.innerHTML = `<strong>Column ${e.detail.collapsed ? 'Collapsed' : 'Expanded'}:</strong> ${e.detail.column.title}`;
+        });
+      });
+    });
+  </script>
+</body>
+</html>

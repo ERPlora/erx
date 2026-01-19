@@ -1,0 +1,377 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>erx-category-tabs - ERX Components</title>
+  <script type="module" src="https://unpkg.com/@erplora/erx/dist/erx/erx.esm.js"></script>
+  <script nomodule src="https://unpkg.com/@erplora/erx/dist/erx/erx.js"></script>
+  <link rel="stylesheet" href="../styles.css">
+  <style>
+    .tabs-demo {
+      margin-bottom: 2rem;
+    }
+    .tabs-demo:last-child {
+      margin-bottom: 0;
+    }
+    .products-preview {
+      margin-top: 1rem;
+      padding: 1.5rem;
+      background: var(--bg);
+      border-radius: 8px;
+      min-height: 120px;
+    }
+    .products-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(120px, 1fr));
+      gap: 1rem;
+    }
+    .product-mini {
+      background: var(--bg-secondary);
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      padding: 1rem;
+      text-align: center;
+    }
+    .product-mini-icon {
+      font-size: 2rem;
+      margin-bottom: 0.5rem;
+    }
+    .product-mini-name {
+      font-size: 0.75rem;
+      color: var(--text-muted);
+    }
+    .event-log {
+      margin-top: 1rem;
+      padding: 0.75rem;
+      background: #1e293b;
+      color: #e2e8f0;
+      border-radius: 6px;
+      font-family: monospace;
+      font-size: 0.75rem;
+      max-height: 100px;
+      overflow-y: auto;
+    }
+    .sizes-demo {
+      display: flex;
+      flex-direction: column;
+      gap: 1.5rem;
+    }
+    .size-label {
+      font-size: 0.75rem;
+      color: var(--text-muted);
+      margin-bottom: 0.5rem;
+      text-transform: uppercase;
+    }
+  </style>
+</head>
+<body>
+  <div class="component-page" style="padding: 2rem;">
+    <a href="../index.html" class="back-link">&larr; Back to Components</a>
+    <div class="component-header">
+      <h1>erx-category-tabs</h1>
+      <p>Category tab navigation for products supporting pills, underline, and chip styles with icons, counts, and horizontal scrolling.</p>
+    </div>
+
+    <!-- POS Categories Demo -->
+    <div class="demo-section">
+      <h2>POS Product Categories</h2>
+      <div class="demo-box">
+        <span class="demo-label">Restaurant/cafe category navigation with icons</span>
+        <div class="tabs-demo">
+          <erx-category-tabs id="restaurant-tabs" variant="pills" show-icons="true"></erx-category-tabs>
+          <div class="products-preview" id="restaurant-products">
+            <p style="color: var(--text-muted); text-align: center;">Select a category to see products</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Tab Variants Demo -->
+    <div class="demo-section">
+      <h2>Tab Variants</h2>
+      <div class="demo-box">
+        <span class="demo-label">Pills, Underline, and Chips styles</span>
+        <div class="tabs-demo">
+          <div class="size-label">Pills (Default)</div>
+          <erx-category-tabs id="pills-tabs" variant="pills"></erx-category-tabs>
+        </div>
+        <div class="tabs-demo">
+          <div class="size-label">Underline</div>
+          <erx-category-tabs id="underline-tabs" variant="underline"></erx-category-tabs>
+        </div>
+        <div class="tabs-demo">
+          <div class="size-label">Chips</div>
+          <erx-category-tabs id="chips-tabs" variant="chips"></erx-category-tabs>
+        </div>
+      </div>
+    </div>
+
+    <!-- Sizes Demo -->
+    <div class="demo-section">
+      <h2>Sizes</h2>
+      <div class="demo-box">
+        <span class="demo-label">Small, Medium, and Large</span>
+        <div class="sizes-demo">
+          <div>
+            <div class="size-label">Small</div>
+            <erx-category-tabs id="size-sm" size="sm"></erx-category-tabs>
+          </div>
+          <div>
+            <div class="size-label">Medium (Default)</div>
+            <erx-category-tabs id="size-md" size="md"></erx-category-tabs>
+          </div>
+          <div>
+            <div class="size-label">Large</div>
+            <erx-category-tabs id="size-lg" size="lg"></erx-category-tabs>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- With Counts Demo -->
+    <div class="demo-section">
+      <h2>With Item Counts</h2>
+      <div class="demo-box">
+        <span class="demo-label">Display number of items per category</span>
+        <erx-category-tabs id="counts-tabs" show-counts="true" variant="chips"></erx-category-tabs>
+      </div>
+    </div>
+
+    <!-- Retail Categories Demo -->
+    <div class="demo-section">
+      <h2>Retail Store Categories</h2>
+      <div class="demo-box">
+        <span class="demo-label">Clothing store with many categories (scrollable)</span>
+        <erx-category-tabs id="retail-tabs" variant="pills" show-icons="true" scrollable="true" show-scroll-buttons="true"></erx-category-tabs>
+        <div class="event-log" id="retail-log">Event log...</div>
+      </div>
+    </div>
+
+    <!-- Custom All Label Demo -->
+    <div class="demo-section">
+      <h2>Custom "All" Label</h2>
+      <div class="demo-box">
+        <span class="demo-label">Customize or hide the "All" category</span>
+        <div class="tabs-demo">
+          <div class="size-label">Custom "All" Label</div>
+          <erx-category-tabs id="custom-all" all-label="View All Products"></erx-category-tabs>
+        </div>
+        <div class="tabs-demo">
+          <div class="size-label">Without "All" Category</div>
+          <erx-category-tabs id="no-all" show-all="false"></erx-category-tabs>
+        </div>
+      </div>
+    </div>
+
+    <!-- Disabled Demo -->
+    <div class="demo-section">
+      <h2>Disabled States</h2>
+      <div class="demo-box">
+        <span class="demo-label">Individual disabled categories and fully disabled component</span>
+        <div class="tabs-demo">
+          <div class="size-label">Some Categories Disabled</div>
+          <erx-category-tabs id="partial-disabled"></erx-category-tabs>
+        </div>
+        <div class="tabs-demo">
+          <div class="size-label">Fully Disabled</div>
+          <erx-category-tabs id="full-disabled" disabled="true"></erx-category-tabs>
+        </div>
+      </div>
+    </div>
+
+    <!-- Code Example -->
+    <div class="demo-section">
+      <h2>Usage</h2>
+      <pre class="code-block">&lt;erx-category-tabs
+  variant="pills"
+  size="md"
+  show-icons="true"
+  show-counts="true"
+  show-all="true"
+  all-label="All"
+  scrollable="true"
+  show-scroll-buttons="true"
+&gt;&lt;/erx-category-tabs&gt;
+
+&lt;script&gt;
+const tabs = document.querySelector('erx-category-tabs');
+tabs.categories = [
+  { id: 'drinks', name: 'Drinks', icon: '🍹', count: 24 },
+  { id: 'food', name: 'Food', icon: '🍔', count: 36 },
+  { id: 'desserts', name: 'Desserts', icon: '🍰', count: 12 },
+  { id: 'specials', name: 'Specials', icon: '⭐', count: 5, color: '#f59e0b' },
+  { id: 'seasonal', name: 'Seasonal', icon: '🎄', disabled: true }
+];
+
+tabs.addEventListener('erxSelect', (e) => {
+  console.log('Selected:', e.detail.category);
+  console.log('Previous:', e.detail.previousCategory);
+});
+
+// Programmatic selection
+tabs.select('food');
+&lt;/script&gt;</pre>
+    </div>
+  </div>
+
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      // Restaurant categories with interactive products
+      const restaurantTabs = document.getElementById('restaurant-tabs');
+      restaurantTabs.categories = [
+        { id: 'coffee', name: 'Coffee', icon: '☕' },
+        { id: 'tea', name: 'Tea', icon: '🍵' },
+        { id: 'pastries', name: 'Pastries', icon: '🥐' },
+        { id: 'sandwiches', name: 'Sandwiches', icon: '🥪' },
+        { id: 'salads', name: 'Salads', icon: '🥗' },
+        { id: 'desserts', name: 'Desserts', icon: '🍰' },
+        { id: 'drinks', name: 'Cold Drinks', icon: '🧊' }
+      ];
+
+      const productsByCategory = {
+        all: [
+          { icon: '☕', name: 'Latte' },
+          { icon: '🥐', name: 'Croissant' },
+          { icon: '🥪', name: 'Club Sandwich' },
+          { icon: '🍰', name: 'Cheesecake' },
+          { icon: '🧊', name: 'Iced Tea' },
+          { icon: '🥗', name: 'Caesar Salad' }
+        ],
+        coffee: [
+          { icon: '☕', name: 'Espresso' },
+          { icon: '☕', name: 'Americano' },
+          { icon: '☕', name: 'Latte' },
+          { icon: '☕', name: 'Cappuccino' },
+          { icon: '☕', name: 'Mocha' },
+          { icon: '☕', name: 'Macchiato' }
+        ],
+        tea: [
+          { icon: '🍵', name: 'Green Tea' },
+          { icon: '🍵', name: 'Earl Grey' },
+          { icon: '🍵', name: 'Chamomile' },
+          { icon: '🍵', name: 'Chai Latte' }
+        ],
+        pastries: [
+          { icon: '🥐', name: 'Croissant' },
+          { icon: '🧁', name: 'Muffin' },
+          { icon: '🍩', name: 'Donut' },
+          { icon: '🥧', name: 'Danish' }
+        ],
+        sandwiches: [
+          { icon: '🥪', name: 'Club' },
+          { icon: '🥪', name: 'BLT' },
+          { icon: '🥪', name: 'Turkey' },
+          { icon: '🥪', name: 'Veggie' }
+        ],
+        salads: [
+          { icon: '🥗', name: 'Caesar' },
+          { icon: '🥗', name: 'Greek' },
+          { icon: '🥗', name: 'Cobb' }
+        ],
+        desserts: [
+          { icon: '🍰', name: 'Cheesecake' },
+          { icon: '🍫', name: 'Brownie' },
+          { icon: '🍪', name: 'Cookie' },
+          { icon: '🧁', name: 'Cupcake' }
+        ],
+        drinks: [
+          { icon: '🧊', name: 'Iced Tea' },
+          { icon: '🧃', name: 'Lemonade' },
+          { icon: '🥤', name: 'Smoothie' },
+          { icon: '💧', name: 'Water' }
+        ]
+      };
+
+      const productsContainer = document.getElementById('restaurant-products');
+
+      function renderProducts(categoryId) {
+        const products = productsByCategory[categoryId] || productsByCategory.all;
+        productsContainer.innerHTML = `
+          <div class="products-grid">
+            ${products.map(p => `
+              <div class="product-mini">
+                <div class="product-mini-icon">${p.icon}</div>
+                <div class="product-mini-name">${p.name}</div>
+              </div>
+            `).join('')}
+          </div>
+        `;
+      }
+
+      restaurantTabs.addEventListener('erxSelect', (e) => {
+        const categoryId = e.detail.category.id;
+        renderProducts(categoryId);
+      });
+
+      renderProducts('all');
+
+      // Basic categories for variant demos
+      const basicCategories = [
+        { id: 'electronics', name: 'Electronics' },
+        { id: 'clothing', name: 'Clothing' },
+        { id: 'home', name: 'Home & Garden' },
+        { id: 'sports', name: 'Sports' },
+        { id: 'books', name: 'Books' }
+      ];
+
+      document.getElementById('pills-tabs').categories = basicCategories;
+      document.getElementById('underline-tabs').categories = basicCategories;
+      document.getElementById('chips-tabs').categories = basicCategories;
+
+      // Size demos
+      document.getElementById('size-sm').categories = basicCategories;
+      document.getElementById('size-md').categories = basicCategories;
+      document.getElementById('size-lg').categories = basicCategories;
+
+      // With counts
+      document.getElementById('counts-tabs').categories = [
+        { id: 'all-items', name: 'All Items', count: 156 },
+        { id: 'phones', name: 'Phones', count: 42 },
+        { id: 'tablets', name: 'Tablets', count: 28 },
+        { id: 'laptops', name: 'Laptops', count: 35 },
+        { id: 'accessories', name: 'Accessories', count: 51 }
+      ];
+
+      // Retail categories with many items (scrollable)
+      const retailTabs = document.getElementById('retail-tabs');
+      retailTabs.categories = [
+        { id: 'new', name: 'New Arrivals', icon: '✨', color: '#f59e0b' },
+        { id: 'women', name: 'Women', icon: '👗' },
+        { id: 'men', name: 'Men', icon: '👔' },
+        { id: 'kids', name: 'Kids', icon: '🧒' },
+        { id: 'shoes', name: 'Shoes', icon: '👟' },
+        { id: 'bags', name: 'Bags', icon: '👜' },
+        { id: 'accessories', name: 'Accessories', icon: '💍' },
+        { id: 'sports', name: 'Sportswear', icon: '🏃' },
+        { id: 'swimwear', name: 'Swimwear', icon: '🩱' },
+        { id: 'lingerie', name: 'Lingerie', icon: '👙' },
+        { id: 'sale', name: 'Sale', icon: '🏷️', color: '#ef4444' }
+      ];
+
+      const retailLog = document.getElementById('retail-log');
+      retailTabs.addEventListener('erxSelect', (e) => {
+        const { category, previousCategory } = e.detail;
+        const prev = previousCategory ? previousCategory.name : 'none';
+        const logEntry = `Selected: ${category.name} (from: ${prev})\n`;
+        retailLog.textContent = logEntry + retailLog.textContent;
+      });
+
+      // Custom all label
+      document.getElementById('custom-all').categories = basicCategories;
+      document.getElementById('no-all').categories = basicCategories;
+
+      // Disabled states
+      document.getElementById('partial-disabled').categories = [
+        { id: 'available', name: 'Available' },
+        { id: 'popular', name: 'Popular' },
+        { id: 'coming-soon', name: 'Coming Soon', disabled: true },
+        { id: 'featured', name: 'Featured' },
+        { id: 'archived', name: 'Archived', disabled: true }
+      ];
+
+      document.getElementById('full-disabled').categories = basicCategories;
+    });
+  </script>
+</body>
+</html>

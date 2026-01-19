@@ -1,0 +1,251 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>erx-shift-calendar - ERX Components</title>
+  <script type="module" src="https://unpkg.com/@erplora/erx/dist/erx/erx.esm.js"></script>
+  <script nomodule src="https://unpkg.com/@erplora/erx/dist/erx/erx.js"></script>
+  <link rel="stylesheet" href="../styles.css">
+</head>
+<body>
+  <div class="component-page" style="padding: 2rem;">
+    <a href="../index.html" class="back-link">&larr; Back to Components</a>
+
+    <div class="component-header">
+      <h1>erx-shift-calendar</h1>
+      <p>Shift calendar view for scheduling and visualizing employee work shifts with drag-and-drop support and conflict detection.</p>
+    </div>
+
+    <div class="demo-section">
+      <h2>Weekly View</h2>
+      <div class="demo-box">
+        <erx-shift-calendar id="calendar-weekly" view="week"></erx-shift-calendar>
+      </div>
+      <div class="code-block">
+&lt;erx-shift-calendar view="week"&gt;&lt;/erx-shift-calendar&gt;
+
+&lt;script&gt;
+const calendar = document.querySelector('erx-shift-calendar');
+calendar.shifts = [
+  {
+    id: 'shift-1',
+    employeeId: 'EMP001',
+    employeeName: 'John Doe',
+    date: '2025-01-20',
+    startTime: '09:00',
+    endTime: '17:00',
+    type: 'regular'
+  },
+  // ...
+];
+&lt;/script&gt;
+      </div>
+    </div>
+
+    <div class="demo-section">
+      <h2>Monthly View</h2>
+      <div class="demo-box">
+        <erx-shift-calendar id="calendar-monthly" view="month"></erx-shift-calendar>
+      </div>
+    </div>
+
+    <div class="demo-section">
+      <h2>With Drag and Drop</h2>
+      <div class="demo-box">
+        <erx-shift-calendar id="calendar-drag" view="week" draggable editable></erx-shift-calendar>
+        <p id="drag-output" style="margin-top: 1rem; color: var(--text-muted);"></p>
+      </div>
+    </div>
+
+    <div class="demo-section">
+      <h2>Team Schedule</h2>
+      <div class="demo-box">
+        <erx-shift-calendar id="calendar-team" view="week" layout="team" show-employee-column></erx-shift-calendar>
+      </div>
+    </div>
+
+    <div class="demo-section">
+      <h2>With Shift Types</h2>
+      <div class="demo-box">
+        <div style="margin-bottom: 1rem; display: flex; gap: 1rem; flex-wrap: wrap;">
+          <span style="display: flex; align-items: center; gap: 0.5rem;">
+            <span style="width: 12px; height: 12px; background: #10b981; border-radius: 2px;"></span> Morning
+          </span>
+          <span style="display: flex; align-items: center; gap: 0.5rem;">
+            <span style="width: 12px; height: 12px; background: #6366f1; border-radius: 2px;"></span> Afternoon
+          </span>
+          <span style="display: flex; align-items: center; gap: 0.5rem;">
+            <span style="width: 12px; height: 12px; background: #8b5cf6; border-radius: 2px;"></span> Night
+          </span>
+          <span style="display: flex; align-items: center; gap: 0.5rem;">
+            <span style="width: 12px; height: 12px; background: #f59e0b; border-radius: 2px;"></span> On-call
+          </span>
+        </div>
+        <erx-shift-calendar id="calendar-types" view="week" show-legend></erx-shift-calendar>
+      </div>
+    </div>
+
+    <div class="demo-section">
+      <h2>Props</h2>
+      <table style="width: 100%; border-collapse: collapse;">
+        <thead>
+          <tr style="border-bottom: 2px solid var(--border);">
+            <th style="text-align: left; padding: 0.5rem;">Prop</th>
+            <th style="text-align: left; padding: 0.5rem;">Type</th>
+            <th style="text-align: left; padding: 0.5rem;">Default</th>
+            <th style="text-align: left; padding: 0.5rem;">Description</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr style="border-bottom: 1px solid var(--border);">
+            <td style="padding: 0.5rem;"><code>shifts</code></td>
+            <td style="padding: 0.5rem;">Shift[]</td>
+            <td style="padding: 0.5rem;">[]</td>
+            <td style="padding: 0.5rem;">Array of shift objects</td>
+          </tr>
+          <tr style="border-bottom: 1px solid var(--border);">
+            <td style="padding: 0.5rem;"><code>view</code></td>
+            <td style="padding: 0.5rem;">'day' | 'week' | 'month'</td>
+            <td style="padding: 0.5rem;">'week'</td>
+            <td style="padding: 0.5rem;">Calendar view mode</td>
+          </tr>
+          <tr style="border-bottom: 1px solid var(--border);">
+            <td style="padding: 0.5rem;"><code>layout</code></td>
+            <td style="padding: 0.5rem;">'timeline' | 'team'</td>
+            <td style="padding: 0.5rem;">'timeline'</td>
+            <td style="padding: 0.5rem;">Layout style</td>
+          </tr>
+          <tr style="border-bottom: 1px solid var(--border);">
+            <td style="padding: 0.5rem;"><code>date</code></td>
+            <td style="padding: 0.5rem;">string</td>
+            <td style="padding: 0.5rem;">today</td>
+            <td style="padding: 0.5rem;">Current date (YYYY-MM-DD)</td>
+          </tr>
+          <tr style="border-bottom: 1px solid var(--border);">
+            <td style="padding: 0.5rem;"><code>draggable</code></td>
+            <td style="padding: 0.5rem;">boolean</td>
+            <td style="padding: 0.5rem;">false</td>
+            <td style="padding: 0.5rem;">Enable drag and drop</td>
+          </tr>
+          <tr style="border-bottom: 1px solid var(--border);">
+            <td style="padding: 0.5rem;"><code>editable</code></td>
+            <td style="padding: 0.5rem;">boolean</td>
+            <td style="padding: 0.5rem;">false</td>
+            <td style="padding: 0.5rem;">Enable shift editing</td>
+          </tr>
+          <tr style="border-bottom: 1px solid var(--border);">
+            <td style="padding: 0.5rem;"><code>showEmployeeColumn</code></td>
+            <td style="padding: 0.5rem;">boolean</td>
+            <td style="padding: 0.5rem;">false</td>
+            <td style="padding: 0.5rem;">Show employee names column</td>
+          </tr>
+          <tr style="border-bottom: 1px solid var(--border);">
+            <td style="padding: 0.5rem;"><code>showLegend</code></td>
+            <td style="padding: 0.5rem;">boolean</td>
+            <td style="padding: 0.5rem;">false</td>
+            <td style="padding: 0.5rem;">Show shift type legend</td>
+          </tr>
+          <tr style="border-bottom: 1px solid var(--border);">
+            <td style="padding: 0.5rem;"><code>startHour</code></td>
+            <td style="padding: 0.5rem;">number</td>
+            <td style="padding: 0.5rem;">6</td>
+            <td style="padding: 0.5rem;">First hour displayed</td>
+          </tr>
+          <tr style="border-bottom: 1px solid var(--border);">
+            <td style="padding: 0.5rem;"><code>endHour</code></td>
+            <td style="padding: 0.5rem;">number</td>
+            <td style="padding: 0.5rem;">22</td>
+            <td style="padding: 0.5rem;">Last hour displayed</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <div class="demo-section">
+      <h2>Events</h2>
+      <table style="width: 100%; border-collapse: collapse;">
+        <thead>
+          <tr style="border-bottom: 2px solid var(--border);">
+            <th style="text-align: left; padding: 0.5rem;">Event</th>
+            <th style="text-align: left; padding: 0.5rem;">Description</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr style="border-bottom: 1px solid var(--border);">
+            <td style="padding: 0.5rem;"><code>erxShiftClick</code></td>
+            <td style="padding: 0.5rem;">Emitted when a shift is clicked</td>
+          </tr>
+          <tr style="border-bottom: 1px solid var(--border);">
+            <td style="padding: 0.5rem;"><code>erxShiftCreate</code></td>
+            <td style="padding: 0.5rem;">Emitted when creating a new shift</td>
+          </tr>
+          <tr style="border-bottom: 1px solid var(--border);">
+            <td style="padding: 0.5rem;"><code>erxShiftUpdate</code></td>
+            <td style="padding: 0.5rem;">Emitted when a shift is updated</td>
+          </tr>
+          <tr style="border-bottom: 1px solid var(--border);">
+            <td style="padding: 0.5rem;"><code>erxShiftDelete</code></td>
+            <td style="padding: 0.5rem;">Emitted when a shift is deleted</td>
+          </tr>
+          <tr style="border-bottom: 1px solid var(--border);">
+            <td style="padding: 0.5rem;"><code>erxShiftDrop</code></td>
+            <td style="padding: 0.5rem;">Emitted when a shift is drag-dropped</td>
+          </tr>
+          <tr style="border-bottom: 1px solid var(--border);">
+            <td style="padding: 0.5rem;"><code>erxDateChange</code></td>
+            <td style="padding: 0.5rem;">Emitted when navigation date changes</td>
+          </tr>
+          <tr style="border-bottom: 1px solid var(--border);">
+            <td style="padding: 0.5rem;"><code>erxConflict</code></td>
+            <td style="padding: 0.5rem;">Emitted when shift conflict detected</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+  <script>
+    // Sample shifts data
+    const shiftsData = [
+      { id: 'shift-1', employeeId: 'EMP001', employeeName: 'John Doe', date: '2025-01-20', startTime: '09:00', endTime: '17:00', type: 'morning', color: '#10b981' },
+      { id: 'shift-2', employeeId: 'EMP002', employeeName: 'Jane Smith', date: '2025-01-20', startTime: '13:00', endTime: '21:00', type: 'afternoon', color: '#6366f1' },
+      { id: 'shift-3', employeeId: 'EMP003', employeeName: 'Bob Johnson', date: '2025-01-21', startTime: '22:00', endTime: '06:00', type: 'night', color: '#8b5cf6' },
+      { id: 'shift-4', employeeId: 'EMP004', employeeName: 'Alice Brown', date: '2025-01-21', startTime: '09:00', endTime: '17:00', type: 'morning', color: '#10b981' },
+      { id: 'shift-5', employeeId: 'EMP005', employeeName: 'Charlie Wilson', date: '2025-01-22', startTime: '00:00', endTime: '23:59', type: 'on-call', color: '#f59e0b' },
+      { id: 'shift-6', employeeId: 'EMP001', employeeName: 'John Doe', date: '2025-01-22', startTime: '13:00', endTime: '21:00', type: 'afternoon', color: '#6366f1' },
+      { id: 'shift-7', employeeId: 'EMP002', employeeName: 'Jane Smith', date: '2025-01-23', startTime: '09:00', endTime: '17:00', type: 'morning', color: '#10b981' },
+      { id: 'shift-8', employeeId: 'EMP003', employeeName: 'Bob Johnson', date: '2025-01-24', startTime: '13:00', endTime: '21:00', type: 'afternoon', color: '#6366f1' },
+    ];
+
+    // Weekly view
+    const calendarWeekly = document.getElementById('calendar-weekly');
+    calendarWeekly.shifts = shiftsData;
+    calendarWeekly.date = '2025-01-20';
+
+    // Monthly view
+    const calendarMonthly = document.getElementById('calendar-monthly');
+    calendarMonthly.shifts = shiftsData;
+    calendarMonthly.date = '2025-01-20';
+
+    // With drag and drop
+    const calendarDrag = document.getElementById('calendar-drag');
+    calendarDrag.shifts = shiftsData;
+    calendarDrag.date = '2025-01-20';
+    calendarDrag.addEventListener('erxShiftDrop', (e) => {
+      document.getElementById('drag-output').textContent =
+        `Shift moved: ${e.detail.shift.employeeName} to ${e.detail.newDate} at ${e.detail.newStartTime}`;
+    });
+
+    // Team schedule
+    const calendarTeam = document.getElementById('calendar-team');
+    calendarTeam.shifts = shiftsData;
+    calendarTeam.date = '2025-01-20';
+
+    // With shift types
+    const calendarTypes = document.getElementById('calendar-types');
+    calendarTypes.shifts = shiftsData;
+    calendarTypes.date = '2025-01-20';
+  </script>
+</body>
+</html>

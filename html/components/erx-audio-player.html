@@ -1,0 +1,279 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>erx-audio-player - ERX Components</title>
+  <script type="module" src="https://unpkg.com/@erplora/erx/dist/erx/erx.esm.js"></script>
+  <script nomodule src="https://unpkg.com/@erplora/erx/dist/erx/erx.js"></script>
+  <link rel="stylesheet" href="../styles.css">
+</head>
+<body>
+  <div class="component-page" style="padding: 2rem;">
+    <a href="../index.html" class="back-link">&larr; Back to Components</a>
+
+    <div class="component-header">
+      <h1>erx-audio-player</h1>
+      <p>An audio player component with playback controls, progress bar, volume control, and playlist support. Features a clean, customizable interface.</p>
+    </div>
+
+    <div class="demo-section">
+      <h2>Basic Audio Player</h2>
+      <div class="demo-box">
+        <erx-audio-player
+          src="https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3"
+          title="SoundHelix Song 1"
+          artist="SoundHelix">
+        </erx-audio-player>
+      </div>
+    </div>
+
+    <div class="demo-section">
+      <h2>With Album Art</h2>
+      <div class="demo-box">
+        <erx-audio-player
+          src="https://www.soundhelix.com/examples/mp3/SoundHelix-Song-2.mp3"
+          title="Summer Vibes"
+          artist="The Artists"
+          album="Greatest Hits"
+          artwork="https://picsum.photos/300/300?random=1">
+        </erx-audio-player>
+      </div>
+    </div>
+
+    <div class="demo-section">
+      <h2>Compact Mode</h2>
+      <div class="demo-box">
+        <erx-audio-player
+          src="https://www.soundhelix.com/examples/mp3/SoundHelix-Song-3.mp3"
+          title="Quick Track"
+          artist="Artist Name"
+          compact>
+        </erx-audio-player>
+      </div>
+    </div>
+
+    <div class="demo-section">
+      <h2>Minimal Mode</h2>
+      <div class="demo-box">
+        <erx-audio-player
+          src="https://www.soundhelix.com/examples/mp3/SoundHelix-Song-4.mp3"
+          minimal>
+        </erx-audio-player>
+      </div>
+    </div>
+
+    <div class="demo-section">
+      <h2>With Playlist</h2>
+      <div class="demo-box">
+        <erx-audio-player id="playlist-player" show-playlist></erx-audio-player>
+      </div>
+    </div>
+
+    <div class="demo-section">
+      <h2>With Waveform</h2>
+      <div class="demo-box">
+        <erx-audio-player
+          src="https://www.soundhelix.com/examples/mp3/SoundHelix-Song-5.mp3"
+          title="Waveform Demo"
+          artist="Demo Artist"
+          show-waveform>
+        </erx-audio-player>
+      </div>
+    </div>
+
+    <div class="demo-section">
+      <h2>Autoplay with Loop</h2>
+      <div class="demo-box">
+        <erx-audio-player
+          src="https://www.soundhelix.com/examples/mp3/SoundHelix-Song-6.mp3"
+          title="Background Music"
+          artist="Ambient Sounds"
+          loop
+          autoplay="false">
+        </erx-audio-player>
+        <p style="margin-top: 1rem; color: var(--text-muted);">This track will loop continuously when played.</p>
+      </div>
+    </div>
+
+    <div class="demo-section">
+      <h2>Custom Colors</h2>
+      <div class="demo-box">
+        <erx-audio-player
+          src="https://www.soundhelix.com/examples/mp3/SoundHelix-Song-7.mp3"
+          title="Custom Theme"
+          artist="Styled Player"
+          color="#8b5cf6"
+          artwork="https://picsum.photos/300/300?random=2">
+        </erx-audio-player>
+      </div>
+    </div>
+
+    <div class="demo-section">
+      <h2>Props</h2>
+      <table style="width: 100%; border-collapse: collapse;">
+        <thead>
+          <tr style="border-bottom: 2px solid var(--border);">
+            <th style="text-align: left; padding: 0.5rem;">Prop</th>
+            <th style="text-align: left; padding: 0.5rem;">Type</th>
+            <th style="text-align: left; padding: 0.5rem;">Default</th>
+            <th style="text-align: left; padding: 0.5rem;">Description</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr style="border-bottom: 1px solid var(--border);">
+            <td style="padding: 0.5rem;"><code>src</code></td>
+            <td style="padding: 0.5rem;">string</td>
+            <td style="padding: 0.5rem;">-</td>
+            <td style="padding: 0.5rem;">Audio source URL</td>
+          </tr>
+          <tr style="border-bottom: 1px solid var(--border);">
+            <td style="padding: 0.5rem;"><code>title</code></td>
+            <td style="padding: 0.5rem;">string</td>
+            <td style="padding: 0.5rem;">-</td>
+            <td style="padding: 0.5rem;">Track title</td>
+          </tr>
+          <tr style="border-bottom: 1px solid var(--border);">
+            <td style="padding: 0.5rem;"><code>artist</code></td>
+            <td style="padding: 0.5rem;">string</td>
+            <td style="padding: 0.5rem;">-</td>
+            <td style="padding: 0.5rem;">Artist name</td>
+          </tr>
+          <tr style="border-bottom: 1px solid var(--border);">
+            <td style="padding: 0.5rem;"><code>album</code></td>
+            <td style="padding: 0.5rem;">string</td>
+            <td style="padding: 0.5rem;">-</td>
+            <td style="padding: 0.5rem;">Album name</td>
+          </tr>
+          <tr style="border-bottom: 1px solid var(--border);">
+            <td style="padding: 0.5rem;"><code>artwork</code></td>
+            <td style="padding: 0.5rem;">string</td>
+            <td style="padding: 0.5rem;">-</td>
+            <td style="padding: 0.5rem;">Album artwork URL</td>
+          </tr>
+          <tr style="border-bottom: 1px solid var(--border);">
+            <td style="padding: 0.5rem;"><code>playlist</code></td>
+            <td style="padding: 0.5rem;">array</td>
+            <td style="padding: 0.5rem;">[]</td>
+            <td style="padding: 0.5rem;">Playlist tracks array</td>
+          </tr>
+          <tr style="border-bottom: 1px solid var(--border);">
+            <td style="padding: 0.5rem;"><code>autoplay</code></td>
+            <td style="padding: 0.5rem;">boolean</td>
+            <td style="padding: 0.5rem;">false</td>
+            <td style="padding: 0.5rem;">Auto-play on load</td>
+          </tr>
+          <tr style="border-bottom: 1px solid var(--border);">
+            <td style="padding: 0.5rem;"><code>loop</code></td>
+            <td style="padding: 0.5rem;">boolean</td>
+            <td style="padding: 0.5rem;">false</td>
+            <td style="padding: 0.5rem;">Loop track/playlist</td>
+          </tr>
+          <tr style="border-bottom: 1px solid var(--border);">
+            <td style="padding: 0.5rem;"><code>compact</code></td>
+            <td style="padding: 0.5rem;">boolean</td>
+            <td style="padding: 0.5rem;">false</td>
+            <td style="padding: 0.5rem;">Compact display mode</td>
+          </tr>
+          <tr style="border-bottom: 1px solid var(--border);">
+            <td style="padding: 0.5rem;"><code>minimal</code></td>
+            <td style="padding: 0.5rem;">boolean</td>
+            <td style="padding: 0.5rem;">false</td>
+            <td style="padding: 0.5rem;">Minimal display mode</td>
+          </tr>
+          <tr style="border-bottom: 1px solid var(--border);">
+            <td style="padding: 0.5rem;"><code>show-waveform</code></td>
+            <td style="padding: 0.5rem;">boolean</td>
+            <td style="padding: 0.5rem;">false</td>
+            <td style="padding: 0.5rem;">Show audio waveform</td>
+          </tr>
+          <tr style="border-bottom: 1px solid var(--border);">
+            <td style="padding: 0.5rem;"><code>show-playlist</code></td>
+            <td style="padding: 0.5rem;">boolean</td>
+            <td style="padding: 0.5rem;">false</td>
+            <td style="padding: 0.5rem;">Show playlist panel</td>
+          </tr>
+          <tr style="border-bottom: 1px solid var(--border);">
+            <td style="padding: 0.5rem;"><code>color</code></td>
+            <td style="padding: 0.5rem;">string</td>
+            <td style="padding: 0.5rem;">primary</td>
+            <td style="padding: 0.5rem;">Accent color</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <div class="demo-section">
+      <h2>Events</h2>
+      <table style="width: 100%; border-collapse: collapse;">
+        <thead>
+          <tr style="border-bottom: 2px solid var(--border);">
+            <th style="text-align: left; padding: 0.5rem;">Event</th>
+            <th style="text-align: left; padding: 0.5rem;">Description</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr style="border-bottom: 1px solid var(--border);">
+            <td style="padding: 0.5rem;"><code>erxPlay</code></td>
+            <td style="padding: 0.5rem;">Emitted when playback starts</td>
+          </tr>
+          <tr style="border-bottom: 1px solid var(--border);">
+            <td style="padding: 0.5rem;"><code>erxPause</code></td>
+            <td style="padding: 0.5rem;">Emitted when playback pauses</td>
+          </tr>
+          <tr style="border-bottom: 1px solid var(--border);">
+            <td style="padding: 0.5rem;"><code>erxEnded</code></td>
+            <td style="padding: 0.5rem;">Emitted when track ends</td>
+          </tr>
+          <tr style="border-bottom: 1px solid var(--border);">
+            <td style="padding: 0.5rem;"><code>erxTimeUpdate</code></td>
+            <td style="padding: 0.5rem;">Emitted on time updates</td>
+          </tr>
+          <tr style="border-bottom: 1px solid var(--border);">
+            <td style="padding: 0.5rem;"><code>erxTrackChange</code></td>
+            <td style="padding: 0.5rem;">Emitted when track changes (playlist)</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+  <script>
+    // Initialize playlist player
+    const playlistPlayer = document.getElementById('playlist-player');
+    playlistPlayer.playlist = [
+      {
+        src: 'https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3',
+        title: 'Song 1',
+        artist: 'SoundHelix',
+        artwork: 'https://picsum.photos/100/100?random=10'
+      },
+      {
+        src: 'https://www.soundhelix.com/examples/mp3/SoundHelix-Song-2.mp3',
+        title: 'Song 2',
+        artist: 'SoundHelix',
+        artwork: 'https://picsum.photos/100/100?random=11'
+      },
+      {
+        src: 'https://www.soundhelix.com/examples/mp3/SoundHelix-Song-3.mp3',
+        title: 'Song 3',
+        artist: 'SoundHelix',
+        artwork: 'https://picsum.photos/100/100?random=12'
+      },
+      {
+        src: 'https://www.soundhelix.com/examples/mp3/SoundHelix-Song-4.mp3',
+        title: 'Song 4',
+        artist: 'SoundHelix',
+        artwork: 'https://picsum.photos/100/100?random=13'
+      }
+    ];
+
+    // Event listeners
+    document.querySelectorAll('erx-audio-player').forEach(player => {
+      player.addEventListener('erxPlay', () => console.log('Playing'));
+      player.addEventListener('erxPause', () => console.log('Paused'));
+      player.addEventListener('erxEnded', () => console.log('Ended'));
+    });
+  </script>
+</body>
+</html>

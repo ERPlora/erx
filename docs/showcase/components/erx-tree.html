@@ -1,0 +1,225 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>erx-tree - ERX Components</title>
+  <script type="module" src="https://unpkg.com/@erplora/erx/dist/erx/erx.esm.js"></script>
+  <script nomodule src="https://unpkg.com/@erplora/erx/dist/erx/erx.js"></script>
+  <link rel="stylesheet" href="../styles.css">
+</head>
+<body>
+  <div class="component-page" style="padding: 2rem;">
+    <a href="../index.html" class="back-link">&larr; Back to Components</a>
+    <div class="component-header">
+      <h1>erx-tree</h1>
+      <p>Hierarchical tree view component with expand/collapse, selection, checkboxes, and icons support.</p>
+    </div>
+    <div class="demo-section">
+      <h2>File Browser</h2>
+      <div class="demo-box">
+        <erx-tree id="fileTree"></erx-tree>
+      </div>
+    </div>
+    <div class="demo-section">
+      <h2>Tree with Checkboxes</h2>
+      <div class="demo-box">
+        <erx-tree id="checkboxTree"></erx-tree>
+      </div>
+    </div>
+    <div class="demo-section">
+      <h2>Organization Structure</h2>
+      <div class="demo-box">
+        <erx-tree id="orgTree"></erx-tree>
+      </div>
+    </div>
+    <div class="demo-section">
+      <h2>Controls</h2>
+      <div class="demo-box">
+        <button onclick="expandAll()" style="padding: 0.5rem 1rem; margin-right: 0.5rem; cursor: pointer;">Expand All</button>
+        <button onclick="collapseAll()" style="padding: 0.5rem 1rem; cursor: pointer;">Collapse All</button>
+      </div>
+    </div>
+    <div class="demo-section">
+      <h2>Event Output</h2>
+      <div class="demo-box">
+        <div id="eventOutput" style="padding: 1rem; background: var(--bg); border-radius: 8px; font-family: monospace; font-size: 0.875rem;">
+          Click on a node to see the output...
+        </div>
+      </div>
+    </div>
+  </div>
+  <script>
+    let fileTree;
+
+    document.addEventListener('DOMContentLoaded', () => {
+      const eventOutput = document.getElementById('eventOutput');
+
+      // File Browser Tree
+      fileTree = document.getElementById('fileTree');
+      fileTree.nodes = [
+        {
+          id: 'src',
+          label: 'src',
+          icon: '📁',
+          expanded: true,
+          children: [
+            {
+              id: 'components',
+              label: 'components',
+              icon: '📁',
+              expanded: true,
+              children: [
+                { id: 'button', label: 'Button.tsx', icon: '📄' },
+                { id: 'input', label: 'Input.tsx', icon: '📄' },
+                { id: 'modal', label: 'Modal.tsx', icon: '📄' }
+              ]
+            },
+            {
+              id: 'utils',
+              label: 'utils',
+              icon: '📁',
+              children: [
+                { id: 'helpers', label: 'helpers.ts', icon: '📄' },
+                { id: 'constants', label: 'constants.ts', icon: '📄' }
+              ]
+            },
+            { id: 'app', label: 'App.tsx', icon: '📄' },
+            { id: 'index', label: 'index.tsx', icon: '📄' }
+          ]
+        },
+        {
+          id: 'public',
+          label: 'public',
+          icon: '📁',
+          children: [
+            { id: 'favicon', label: 'favicon.ico', icon: '🖼️' },
+            { id: 'indexhtml', label: 'index.html', icon: '📄' }
+          ]
+        },
+        { id: 'package', label: 'package.json', icon: '📦' },
+        { id: 'readme', label: 'README.md', icon: '📝' }
+      ];
+      fileTree.config = { showIcons: true, expandOnClick: true };
+
+      // Checkbox Tree
+      document.getElementById('checkboxTree').nodes = [
+        {
+          id: 'permissions',
+          label: 'Permissions',
+          expanded: true,
+          children: [
+            {
+              id: 'users',
+              label: 'Users',
+              children: [
+                { id: 'users-view', label: 'View Users' },
+                { id: 'users-create', label: 'Create Users' },
+                { id: 'users-edit', label: 'Edit Users' },
+                { id: 'users-delete', label: 'Delete Users' }
+              ]
+            },
+            {
+              id: 'products',
+              label: 'Products',
+              children: [
+                { id: 'products-view', label: 'View Products' },
+                { id: 'products-create', label: 'Create Products' },
+                { id: 'products-edit', label: 'Edit Products' },
+                { id: 'products-delete', label: 'Delete Products' }
+              ]
+            },
+            {
+              id: 'reports',
+              label: 'Reports',
+              children: [
+                { id: 'reports-view', label: 'View Reports' },
+                { id: 'reports-export', label: 'Export Reports' }
+              ]
+            }
+          ]
+        }
+      ];
+      document.getElementById('checkboxTree').config = {
+        showCheckboxes: true,
+        multiSelect: true,
+        showIcons: false
+      };
+
+      // Organization Tree
+      document.getElementById('orgTree').nodes = [
+        {
+          id: 'ceo',
+          label: 'CEO - John Smith',
+          icon: '👤',
+          expanded: true,
+          children: [
+            {
+              id: 'cto',
+              label: 'CTO - Sarah Johnson',
+              icon: '👤',
+              expanded: true,
+              children: [
+                {
+                  id: 'dev-lead',
+                  label: 'Dev Lead - Mike Wilson',
+                  icon: '👤',
+                  children: [
+                    { id: 'dev1', label: 'Developer - Alice Brown', icon: '👤' },
+                    { id: 'dev2', label: 'Developer - Bob Green', icon: '👤' }
+                  ]
+                },
+                {
+                  id: 'qa-lead',
+                  label: 'QA Lead - Emily Davis',
+                  icon: '👤',
+                  children: [
+                    { id: 'qa1', label: 'QA Engineer - Carol White', icon: '👤' }
+                  ]
+                }
+              ]
+            },
+            {
+              id: 'cfo',
+              label: 'CFO - David Lee',
+              icon: '👤',
+              children: [
+                { id: 'accountant', label: 'Accountant - Eva Martinez', icon: '👤' }
+              ]
+            },
+            {
+              id: 'cmo',
+              label: 'CMO - Frank Miller',
+              icon: '👤',
+              children: [
+                { id: 'marketing1', label: 'Marketing Manager - Grace Kim', icon: '👤' }
+              ]
+            }
+          ]
+        }
+      ];
+      document.getElementById('orgTree').config = { showIcons: true };
+
+      // Event listeners
+      document.querySelectorAll('erx-tree').forEach(tree => {
+        tree.addEventListener('erxSelect', (e) => {
+          const selected = e.detail.selected.map(n => n.label).join(', ');
+          eventOutput.innerHTML = `<strong>Node Selected:</strong> ${e.detail.node.label}<br><strong>All Selected:</strong> ${selected || 'None'}`;
+        });
+
+        tree.addEventListener('erxExpand', (e) => {
+          eventOutput.innerHTML = `<strong>Node ${e.detail.expanded ? 'Expanded' : 'Collapsed'}:</strong> ${e.detail.node.label}`;
+        });
+      });
+    });
+
+    function expandAll() {
+      if (fileTree) fileTree.expandAll();
+    }
+
+    function collapseAll() {
+      if (fileTree) fileTree.collapseAll();
+    }
+  </script>
+</body>
+</html>

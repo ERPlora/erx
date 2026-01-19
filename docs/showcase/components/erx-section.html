@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>erx-section - ERX Components</title>
+  <script type="module" src="https://unpkg.com/@erplora/erx/dist/erx/erx.esm.js"></script>
+  <script nomodule src="https://unpkg.com/@erplora/erx/dist/erx/erx.js"></script>
+  <link rel="stylesheet" href="../styles.css">
+</head>
+<body>
+  <div class="component-page" style="padding: 2rem;">
+    <a href="../index.html" class="back-link">&larr; Back to Components</a>
+    <div class="component-header">
+      <h1>erx-section</h1>
+      <p>Collapsible content section with title, subtitle, and optional divider. Perfect for organizing page content into logical groups.</p>
+    </div>
+    <div class="demo-section">
+      <h2>Basic Section</h2>
+      <div class="demo-box">
+        <erx-section section-title="Account Settings">
+          <p>Configure your account preferences and personal information.</p>
+          <div style="margin-top: 1rem; display: grid; gap: 0.75rem;">
+            <div>
+              <label style="display: block; font-size: 0.875rem; margin-bottom: 0.25rem;">Email</label>
+              <input type="email" value="user@example.com" style="width: 100%; padding: 0.5rem; border: 1px solid var(--border); border-radius: 4px;">
+            </div>
+            <div>
+              <label style="display: block; font-size: 0.875rem; margin-bottom: 0.25rem;">Display Name</label>
+              <input type="text" value="John Doe" style="width: 100%; padding: 0.5rem; border: 1px solid var(--border); border-radius: 4px;">
+            </div>
+          </div>
+        </erx-section>
+      </div>
+    </div>
+    <div class="demo-section">
+      <h2>Section with Subtitle</h2>
+      <div class="demo-box">
+        <erx-section section-title="Notifications" subtitle="Manage how you receive alerts and updates">
+          <div style="display: flex; flex-direction: column; gap: 1rem;">
+            <label style="display: flex; align-items: center; gap: 0.75rem; cursor: pointer;">
+              <input type="checkbox" checked>
+              <span>Email notifications</span>
+            </label>
+            <label style="display: flex; align-items: center; gap: 0.75rem; cursor: pointer;">
+              <input type="checkbox" checked>
+              <span>Push notifications</span>
+            </label>
+            <label style="display: flex; align-items: center; gap: 0.75rem; cursor: pointer;">
+              <input type="checkbox">
+              <span>SMS notifications</span>
+            </label>
+          </div>
+        </erx-section>
+      </div>
+    </div>
+    <div class="demo-section">
+      <h2>Collapsible Sections</h2>
+      <div class="demo-box">
+        <div style="display: flex; flex-direction: column; gap: 0.5rem;">
+          <erx-section section-title="General" subtitle="Basic application settings" collapsible>
+            <div style="display: grid; gap: 0.75rem;">
+              <label style="display: flex; align-items: center; gap: 0.75rem;">
+                <input type="checkbox" checked>
+                <span>Enable dark mode</span>
+              </label>
+              <label style="display: flex; align-items: center; gap: 0.75rem;">
+                <input type="checkbox" checked>
+                <span>Show tooltips</span>
+              </label>
+            </div>
+          </erx-section>
+          <erx-section section-title="Privacy" subtitle="Control your data and visibility" collapsible collapsed>
+            <div style="display: grid; gap: 0.75rem;">
+              <label style="display: flex; align-items: center; gap: 0.75rem;">
+                <input type="checkbox">
+                <span>Make profile public</span>
+              </label>
+              <label style="display: flex; align-items: center; gap: 0.75rem;">
+                <input type="checkbox" checked>
+                <span>Allow analytics</span>
+              </label>
+            </div>
+          </erx-section>
+          <erx-section section-title="Advanced" subtitle="Expert configuration options" collapsible collapsed>
+            <p style="color: var(--warning);">Warning: These settings are for advanced users only.</p>
+            <div style="margin-top: 1rem;">
+              <label style="display: block; font-size: 0.875rem; margin-bottom: 0.25rem;">API Endpoint</label>
+              <input type="text" value="https://api.example.com" style="width: 100%; padding: 0.5rem; border: 1px solid var(--border); border-radius: 4px; font-family: monospace;">
+            </div>
+          </erx-section>
+        </div>
+      </div>
+    </div>
+    <div class="demo-section">
+      <h2>With Divider</h2>
+      <div class="demo-box">
+        <erx-section section-title="Personal Information" divider>
+          <p>Your basic profile information.</p>
+        </erx-section>
+        <erx-section section-title="Security" divider>
+          <p>Password and two-factor authentication settings.</p>
+        </erx-section>
+        <erx-section section-title="Billing" divider>
+          <p>Payment methods and subscription details.</p>
+        </erx-section>
+      </div>
+    </div>
+    <div class="demo-section">
+      <h2>Padding Variants</h2>
+      <div class="demo-box">
+        <span class="demo-label">No Padding</span>
+        <erx-section section-title="Compact Section" padding="none" style="background: var(--bg); border-radius: 8px; margin-bottom: 1rem;">
+          <p>No internal padding.</p>
+        </erx-section>
+        <span class="demo-label">Small Padding</span>
+        <erx-section section-title="Small Section" padding="sm" style="background: var(--bg); border-radius: 8px; margin-bottom: 1rem;">
+          <p>Small padding for tight layouts.</p>
+        </erx-section>
+        <span class="demo-label">Medium Padding (Default)</span>
+        <erx-section section-title="Medium Section" padding="md" style="background: var(--bg); border-radius: 8px; margin-bottom: 1rem;">
+          <p>Default padding for most use cases.</p>
+        </erx-section>
+        <span class="demo-label">Large Padding</span>
+        <erx-section section-title="Large Section" padding="lg" style="background: var(--bg); border-radius: 8px;">
+          <p>Large padding for spacious layouts.</p>
+        </erx-section>
+      </div>
+    </div>
+    <div class="demo-section">
+      <h2>With Header Actions</h2>
+      <div class="demo-box">
+        <erx-section section-title="Team Members" subtitle="Manage your team">
+          <div slot="header-actions" style="display: flex; gap: 0.5rem;">
+            <button style="padding: 0.25rem 0.75rem; background: var(--primary); color: white; border: none; border-radius: 4px; font-size: 0.75rem; cursor: pointer;">
+              + Add Member
+            </button>
+          </div>
+          <table style="width: 100%; border-collapse: collapse;">
+            <thead>
+              <tr style="border-bottom: 1px solid var(--border);">
+                <th style="text-align: left; padding: 0.5rem 0; font-weight: 500;">Name</th>
+                <th style="text-align: left; padding: 0.5rem 0; font-weight: 500;">Role</th>
+                <th style="text-align: right; padding: 0.5rem 0; font-weight: 500;">Actions</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td style="padding: 0.5rem 0;">Alice Johnson</td>
+                <td style="padding: 0.5rem 0;">Admin</td>
+                <td style="padding: 0.5rem 0; text-align: right;"><a href="#" style="color: var(--primary);">Edit</a></td>
+              </tr>
+              <tr>
+                <td style="padding: 0.5rem 0;">Bob Smith</td>
+                <td style="padding: 0.5rem 0;">Editor</td>
+                <td style="padding: 0.5rem 0; text-align: right;"><a href="#" style="color: var(--primary);">Edit</a></td>
+              </tr>
+              <tr>
+                <td style="padding: 0.5rem 0;">Carol Davis</td>
+                <td style="padding: 0.5rem 0;">Viewer</td>
+                <td style="padding: 0.5rem 0; text-align: right;"><a href="#" style="color: var(--primary);">Edit</a></td>
+              </tr>
+            </tbody>
+          </table>
+        </erx-section>
+      </div>
+    </div>
+    <div class="demo-section">
+      <h2>FAQ Example</h2>
+      <div class="demo-box">
+        <h3 style="margin-bottom: 1rem;">Frequently Asked Questions</h3>
+        <div style="display: flex; flex-direction: column; gap: 0.25rem;">
+          <erx-section section-title="How do I reset my password?" collapsible collapsed divider>
+            <p style="color: var(--text-muted); line-height: 1.8;">To reset your password, click on the "Forgot Password" link on the login page. Enter your email address, and we'll send you instructions to create a new password.</p>
+          </erx-section>
+          <erx-section section-title="Can I change my subscription plan?" collapsible collapsed divider>
+            <p style="color: var(--text-muted); line-height: 1.8;">Yes, you can upgrade or downgrade your subscription at any time from your Account Settings. Changes take effect at the start of your next billing cycle.</p>
+          </erx-section>
+          <erx-section section-title="How do I contact support?" collapsible collapsed divider>
+            <p style="color: var(--text-muted); line-height: 1.8;">You can reach our support team via email at support@example.com or through the live chat feature available in the bottom-right corner of the application.</p>
+          </erx-section>
+          <erx-section section-title="Is my data secure?" collapsible collapsed divider>
+            <p style="color: var(--text-muted); line-height: 1.8;">We use industry-standard encryption and security practices to protect your data. All data is encrypted in transit and at rest, and we perform regular security audits.</p>
+          </erx-section>
+        </div>
+      </div>
+    </div>
+  </div>
+</body>
+</html>

@@ -1,0 +1,250 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>erx-quality-check - ERX Components</title>
+  <script type="module" src="https://unpkg.com/@erplora/erx/dist/erx/erx.esm.js"></script>
+  <script nomodule src="https://unpkg.com/@erplora/erx/dist/erx/erx.js"></script>
+  <link rel="stylesheet" href="../styles.css">
+</head>
+<body>
+  <div class="component-page" style="padding: 2rem;">
+    <a href="../index.html" class="back-link">&larr; Back to Components</a>
+    <div class="component-header">
+      <h1>erx-quality-check</h1>
+      <p>Quality inspection form with expandable check items, pass/fail tracking, and approval workflow.</p>
+    </div>
+
+    <div class="demo-section">
+      <h2>In Progress Quality Check</h2>
+      <div class="demo-box">
+        <erx-quality-check id="qc1"></erx-quality-check>
+      </div>
+    </div>
+
+    <div class="demo-section">
+      <h2>Completed Quality Check (Passed)</h2>
+      <div class="demo-box">
+        <erx-quality-check id="qc2" editable="false"></erx-quality-check>
+      </div>
+    </div>
+
+    <div class="demo-section">
+      <h2>Quality Check with Failures</h2>
+      <div class="demo-box">
+        <erx-quality-check id="qc3"></erx-quality-check>
+      </div>
+    </div>
+
+    <div class="demo-section">
+      <h2>Properties</h2>
+      <div class="demo-box">
+        <table style="width: 100%; border-collapse: collapse;">
+          <thead>
+            <tr style="border-bottom: 1px solid var(--border);">
+              <th style="text-align: left; padding: 0.5rem;">Property</th>
+              <th style="text-align: left; padding: 0.5rem;">Type</th>
+              <th style="text-align: left; padding: 0.5rem;">Default</th>
+              <th style="text-align: left; padding: 0.5rem;">Description</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr style="border-bottom: 1px solid var(--border);">
+              <td style="padding: 0.5rem;"><code>check</code></td>
+              <td style="padding: 0.5rem;">QualityCheck</td>
+              <td style="padding: 0.5rem;">-</td>
+              <td style="padding: 0.5rem;">Quality check data object (required)</td>
+            </tr>
+            <tr style="border-bottom: 1px solid var(--border);">
+              <td style="padding: 0.5rem;"><code>editable</code></td>
+              <td style="padding: 0.5rem;">boolean</td>
+              <td style="padding: 0.5rem;">true</td>
+              <td style="padding: 0.5rem;">Allow editing check results</td>
+            </tr>
+            <tr>
+              <td style="padding: 0.5rem;"><code>show-notes</code></td>
+              <td style="padding: 0.5rem;">boolean</td>
+              <td style="padding: 0.5rem;">true</td>
+              <td style="padding: 0.5rem;">Display notes section</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+
+    <div class="demo-section">
+      <h2>Events</h2>
+      <div class="demo-box">
+        <table style="width: 100%; border-collapse: collapse;">
+          <thead>
+            <tr style="border-bottom: 1px solid var(--border);">
+              <th style="text-align: left; padding: 0.5rem;">Event</th>
+              <th style="text-align: left; padding: 0.5rem;">Detail</th>
+              <th style="text-align: left; padding: 0.5rem;">Description</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr style="border-bottom: 1px solid var(--border);">
+              <td style="padding: 0.5rem;"><code>erxResult</code></td>
+              <td style="padding: 0.5rem;">{ item, result }</td>
+              <td style="padding: 0.5rem;">Fired when an item result is changed</td>
+            </tr>
+            <tr style="border-bottom: 1px solid var(--border);">
+              <td style="padding: 0.5rem;"><code>erxComplete</code></td>
+              <td style="padding: 0.5rem;">{ check, result }</td>
+              <td style="padding: 0.5rem;">Fired when check is approved or rejected</td>
+            </tr>
+            <tr>
+              <td style="padding: 0.5rem;"><code>erxSelect</code></td>
+              <td style="padding: 0.5rem;">QualityCheck</td>
+              <td style="padding: 0.5rem;">Fired when quality check card is clicked</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    // In progress quality check
+    const qc1 = {
+      id: 'qc-001',
+      number: 'QC-2024-0127',
+      type: 'final',
+      status: 'in-progress',
+      product: {
+        id: 'prod-1',
+        name: 'Premium Widget Assembly',
+        sku: 'PWA-100',
+        image: 'https://via.placeholder.com/60x60/6366f1/ffffff?text=PWA'
+      },
+      batch: 'BATCH-2024-0089',
+      createdAt: '2024-01-18T09:30:00Z',
+      inspector: {
+        id: 'insp-1',
+        name: 'Sarah Johnson'
+      },
+      items: [
+        {
+          id: 'item1',
+          name: 'Surface Finish',
+          description: 'Check for scratches, dents, or other surface defects',
+          type: 'visual',
+          result: 'pass'
+        },
+        {
+          id: 'item2',
+          name: 'Dimensional Check - Length',
+          description: 'Measure overall length using calibrated caliper',
+          type: 'measurement',
+          result: 'pass',
+          specification: '150mm +/- 0.5mm',
+          minValue: 149.5,
+          maxValue: 150.5,
+          unit: 'mm',
+          actualValue: 150.2
+        },
+        {
+          id: 'item3',
+          name: 'Dimensional Check - Width',
+          type: 'measurement',
+          result: 'pending',
+          specification: '75mm +/- 0.3mm',
+          minValue: 74.7,
+          maxValue: 75.3,
+          unit: 'mm'
+        },
+        {
+          id: 'item4',
+          name: 'Function Test - Button',
+          description: 'Test button actuation force and response',
+          type: 'functional',
+          result: 'pending'
+        },
+        {
+          id: 'item5',
+          name: 'Label Verification',
+          description: 'Verify serial number and batch label are correct',
+          type: 'documentation',
+          result: 'pass'
+        }
+      ],
+      notes: 'First inspection of new batch. Special attention to button mechanism per engineering request.'
+    };
+
+    // Completed quality check
+    const qc2 = {
+      id: 'qc-002',
+      number: 'QC-2024-0125',
+      type: 'final',
+      status: 'completed',
+      product: {
+        id: 'prod-2',
+        name: 'Motor Assembly M500',
+        sku: 'MA-500'
+      },
+      batch: 'BATCH-2024-0087',
+      createdAt: '2024-01-17T14:00:00Z',
+      completedAt: '2024-01-17T15:30:00Z',
+      inspector: {
+        id: 'insp-2',
+        name: 'Mike Chen'
+      },
+      items: [
+        { id: 'i1', name: 'Visual Inspection', type: 'visual', result: 'pass' },
+        { id: 'i2', name: 'Torque Test', type: 'measurement', result: 'pass', specification: '45 Nm', actualValue: 44.8, unit: 'Nm' },
+        { id: 'i3', name: 'Noise Level', type: 'measurement', result: 'pass', specification: '< 60dB', actualValue: 52, unit: 'dB' },
+        { id: 'i4', name: 'Vibration Test', type: 'functional', result: 'pass' },
+        { id: 'i5', name: 'Documentation Complete', type: 'documentation', result: 'pass' }
+      ],
+      overallResult: 'pass'
+    };
+
+    // Quality check with failures
+    const qc3 = {
+      id: 'qc-003',
+      number: 'QC-2024-0126',
+      type: 'in-process',
+      status: 'in-progress',
+      product: {
+        id: 'prod-3',
+        name: 'Circuit Board PCB-X1',
+        sku: 'PCB-X1'
+      },
+      workOrder: 'WO-2024-0045',
+      createdAt: '2024-01-18T08:00:00Z',
+      inspector: {
+        id: 'insp-3',
+        name: 'Anna Lee'
+      },
+      items: [
+        { id: 'c1', name: 'Solder Joint Visual', type: 'visual', result: 'pass', description: 'Check all solder joints for cold solder or bridges' },
+        { id: 'c2', name: 'Component Placement', type: 'visual', result: 'fail', description: 'Verify all components are correctly placed and oriented' },
+        { id: 'c3', name: 'Continuity Test', type: 'functional', result: 'pass' },
+        { id: 'c4', name: 'Resistance Check', type: 'measurement', result: 'fail', specification: '100 Ohm +/- 5%', minValue: 95, maxValue: 105, unit: 'Ohm', actualValue: 112 },
+        { id: 'c5', name: 'Voltage Test', type: 'measurement', result: 'pass', specification: '5V +/- 0.1V', actualValue: 5.02, unit: 'V' },
+        { id: 'c6', name: 'Firmware Version', type: 'documentation', result: 'na' }
+      ],
+      notes: 'Component U7 appears to be placed incorrectly. Resistance out of spec on R12.'
+    };
+
+    // Initialize components
+    document.getElementById('qc1').check = qc1;
+    document.getElementById('qc2').check = qc2;
+    document.getElementById('qc3').check = qc3;
+
+    // Event listeners
+    document.querySelectorAll('erx-quality-check').forEach(el => {
+      el.addEventListener('erxResult', (e) => {
+        console.log('Result changed:', e.detail.item.name, '->', e.detail.result);
+        alert(`${e.detail.item.name}: ${e.detail.result}`);
+      });
+      el.addEventListener('erxComplete', (e) => {
+        console.log('Check completed:', e.detail.check.number, 'Result:', e.detail.result);
+        alert(`Quality Check ${e.detail.check.number} ${e.detail.result === 'pass' ? 'APPROVED' : 'REJECTED'}`);
+      });
+    });
+  </script>
+</body>
+</html>

@@ -1,0 +1,241 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>erx-progress-steps - ERX Components</title>
+  <script type="module" src="https://unpkg.com/@erplora/erx/dist/erx/erx.esm.js"></script>
+  <script nomodule src="https://unpkg.com/@erplora/erx/dist/erx/erx.js"></script>
+  <link rel="stylesheet" href="../styles.css">
+</head>
+<body>
+  <div class="component-page" style="padding: 2rem;">
+    <a href="../index.html" class="back-link">&larr; Back to Components</a>
+
+    <div class="component-header">
+      <h1>erx-progress-steps</h1>
+      <p>A step progress indicator component for displaying multi-step workflows, wizards, or processes. Shows current progress and allows navigation between steps.</p>
+    </div>
+
+    <div class="demo-section">
+      <h2>Basic Progress Steps</h2>
+      <div class="demo-box">
+        <erx-progress-steps id="basic-steps" current="2"></erx-progress-steps>
+      </div>
+    </div>
+
+    <div class="demo-section">
+      <h2>With Descriptions</h2>
+      <div class="demo-box">
+        <erx-progress-steps id="steps-with-desc" current="1" show-description></erx-progress-steps>
+      </div>
+    </div>
+
+    <div class="demo-section">
+      <h2>Vertical Layout</h2>
+      <div class="demo-box">
+        <erx-progress-steps id="vertical-steps" current="2" direction="vertical"></erx-progress-steps>
+      </div>
+    </div>
+
+    <div class="demo-section">
+      <h2>Compact Mode</h2>
+      <div class="demo-box">
+        <erx-progress-steps id="compact-steps" current="3" compact></erx-progress-steps>
+      </div>
+    </div>
+
+    <div class="demo-section">
+      <h2>Clickable Steps</h2>
+      <div class="demo-box">
+        <p style="margin-bottom: 1rem; color: var(--text-muted);">Click on any completed or current step to navigate.</p>
+        <erx-progress-steps id="clickable-steps" current="2" clickable></erx-progress-steps>
+        <p id="click-output" style="margin-top: 1rem; color: var(--primary);"></p>
+      </div>
+    </div>
+
+    <div class="demo-section">
+      <h2>With Icons</h2>
+      <div class="demo-box">
+        <erx-progress-steps id="icon-steps" current="2" show-icons></erx-progress-steps>
+      </div>
+    </div>
+
+    <div class="demo-section">
+      <h2>Error State</h2>
+      <div class="demo-box">
+        <erx-progress-steps id="error-steps" current="2"></erx-progress-steps>
+      </div>
+    </div>
+
+    <div class="demo-section">
+      <h2>Interactive Demo</h2>
+      <div class="demo-box">
+        <erx-progress-steps id="interactive-steps" current="1"></erx-progress-steps>
+        <div style="display: flex; gap: 1rem; margin-top: 1.5rem; justify-content: center;">
+          <button onclick="prevStep()" style="padding: 0.5rem 1rem; background: var(--text-muted); color: white; border: none; border-radius: 6px; cursor: pointer;">Previous</button>
+          <button onclick="nextStep()" style="padding: 0.5rem 1rem; background: var(--primary); color: white; border: none; border-radius: 6px; cursor: pointer;">Next</button>
+        </div>
+      </div>
+    </div>
+
+    <div class="demo-section">
+      <h2>Props</h2>
+      <table style="width: 100%; border-collapse: collapse;">
+        <thead>
+          <tr style="border-bottom: 2px solid var(--border);">
+            <th style="text-align: left; padding: 0.5rem;">Prop</th>
+            <th style="text-align: left; padding: 0.5rem;">Type</th>
+            <th style="text-align: left; padding: 0.5rem;">Default</th>
+            <th style="text-align: left; padding: 0.5rem;">Description</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr style="border-bottom: 1px solid var(--border);">
+            <td style="padding: 0.5rem;"><code>steps</code></td>
+            <td style="padding: 0.5rem;">array</td>
+            <td style="padding: 0.5rem;">[]</td>
+            <td style="padding: 0.5rem;">Array of step objects</td>
+          </tr>
+          <tr style="border-bottom: 1px solid var(--border);">
+            <td style="padding: 0.5rem;"><code>current</code></td>
+            <td style="padding: 0.5rem;">number</td>
+            <td style="padding: 0.5rem;">1</td>
+            <td style="padding: 0.5rem;">Current step index (1-based)</td>
+          </tr>
+          <tr style="border-bottom: 1px solid var(--border);">
+            <td style="padding: 0.5rem;"><code>direction</code></td>
+            <td style="padding: 0.5rem;">'horizontal' | 'vertical'</td>
+            <td style="padding: 0.5rem;">'horizontal'</td>
+            <td style="padding: 0.5rem;">Layout direction</td>
+          </tr>
+          <tr style="border-bottom: 1px solid var(--border);">
+            <td style="padding: 0.5rem;"><code>show-description</code></td>
+            <td style="padding: 0.5rem;">boolean</td>
+            <td style="padding: 0.5rem;">false</td>
+            <td style="padding: 0.5rem;">Show step descriptions</td>
+          </tr>
+          <tr style="border-bottom: 1px solid var(--border);">
+            <td style="padding: 0.5rem;"><code>show-icons</code></td>
+            <td style="padding: 0.5rem;">boolean</td>
+            <td style="padding: 0.5rem;">false</td>
+            <td style="padding: 0.5rem;">Show step icons</td>
+          </tr>
+          <tr style="border-bottom: 1px solid var(--border);">
+            <td style="padding: 0.5rem;"><code>compact</code></td>
+            <td style="padding: 0.5rem;">boolean</td>
+            <td style="padding: 0.5rem;">false</td>
+            <td style="padding: 0.5rem;">Use compact display</td>
+          </tr>
+          <tr style="border-bottom: 1px solid var(--border);">
+            <td style="padding: 0.5rem;"><code>clickable</code></td>
+            <td style="padding: 0.5rem;">boolean</td>
+            <td style="padding: 0.5rem;">false</td>
+            <td style="padding: 0.5rem;">Allow clicking to navigate</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <div class="demo-section">
+      <h2>Events</h2>
+      <table style="width: 100%; border-collapse: collapse;">
+        <thead>
+          <tr style="border-bottom: 2px solid var(--border);">
+            <th style="text-align: left; padding: 0.5rem;">Event</th>
+            <th style="text-align: left; padding: 0.5rem;">Description</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr style="border-bottom: 1px solid var(--border);">
+            <td style="padding: 0.5rem;"><code>erxStepChange</code></td>
+            <td style="padding: 0.5rem;">Emitted when step changes</td>
+          </tr>
+          <tr style="border-bottom: 1px solid var(--border);">
+            <td style="padding: 0.5rem;"><code>erxStepClick</code></td>
+            <td style="padding: 0.5rem;">Emitted when a step is clicked</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+  <script>
+    const basicSteps = [
+      { label: 'Cart', status: 'completed' },
+      { label: 'Shipping', status: 'current' },
+      { label: 'Payment', status: 'pending' },
+      { label: 'Confirmation', status: 'pending' }
+    ];
+
+    const stepsWithDesc = [
+      { label: 'Account', description: 'Create your account', status: 'completed' },
+      { label: 'Profile', description: 'Set up your profile', status: 'current' },
+      { label: 'Preferences', description: 'Configure settings', status: 'pending' },
+      { label: 'Complete', description: 'Review and finish', status: 'pending' }
+    ];
+
+    const iconSteps = [
+      { label: 'Cart', icon: 'cart', status: 'completed' },
+      { label: 'Shipping', icon: 'location', status: 'current' },
+      { label: 'Payment', icon: 'card', status: 'pending' },
+      { label: 'Done', icon: 'checkmark-circle', status: 'pending' }
+    ];
+
+    const errorSteps = [
+      { label: 'Details', status: 'completed' },
+      { label: 'Validation', status: 'error' },
+      { label: 'Submit', status: 'pending' }
+    ];
+
+    const interactiveSteps = [
+      { label: 'Step 1', status: 'current' },
+      { label: 'Step 2', status: 'pending' },
+      { label: 'Step 3', status: 'pending' },
+      { label: 'Step 4', status: 'pending' }
+    ];
+
+    // Initialize all step components
+    document.getElementById('basic-steps').steps = basicSteps;
+    document.getElementById('steps-with-desc').steps = stepsWithDesc;
+    document.getElementById('vertical-steps').steps = basicSteps;
+    document.getElementById('compact-steps').steps = basicSteps;
+    document.getElementById('clickable-steps').steps = basicSteps;
+    document.getElementById('icon-steps').steps = iconSteps;
+    document.getElementById('error-steps').steps = errorSteps;
+    document.getElementById('interactive-steps').steps = interactiveSteps;
+
+    // Handle clickable steps
+    document.getElementById('clickable-steps').addEventListener('erxStepClick', (e) => {
+      document.getElementById('click-output').textContent = `Clicked step: ${e.detail.step.label} (index: ${e.detail.index})`;
+    });
+
+    // Interactive controls
+    let currentStep = 1;
+    const interactive = document.getElementById('interactive-steps');
+
+    function updateSteps() {
+      const steps = interactive.steps.map((step, index) => ({
+        ...step,
+        status: index < currentStep - 1 ? 'completed' : index === currentStep - 1 ? 'current' : 'pending'
+      }));
+      interactive.steps = steps;
+      interactive.current = currentStep;
+    }
+
+    function nextStep() {
+      if (currentStep < 4) {
+        currentStep++;
+        updateSteps();
+      }
+    }
+
+    function prevStep() {
+      if (currentStep > 1) {
+        currentStep--;
+        updateSteps();
+      }
+    }
+  </script>
+</body>
+</html>

@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>erx-fullscreen-modal - ERX Components</title>
+  <script type="module" src="https://unpkg.com/@erplora/erx/dist/erx/erx.esm.js"></script>
+  <script nomodule src="https://unpkg.com/@erplora/erx/dist/erx/erx.js"></script>
+  <link rel="stylesheet" href="../styles.css">
+</head>
+<body>
+  <div class="component-page" style="padding: 2rem;">
+    <a href="../index.html" class="back-link">&larr; Back to Components</a>
+    <div class="component-header">
+      <h1>erx-fullscreen-modal</h1>
+      <p>Full-screen modal dialog for immersive experiences like image galleries, video players, or detailed views. Supports multiple animation types.</p>
+    </div>
+    <div class="demo-section">
+      <h2>Basic Fullscreen Modal</h2>
+      <div class="demo-box">
+        <button onclick="document.getElementById('modal-basic').show()" style="padding: 0.75rem 1.5rem; background: var(--primary); color: white; border: none; border-radius: 8px; cursor: pointer;">
+          Open Fullscreen Modal
+        </button>
+        <erx-fullscreen-modal id="modal-basic" modal-title="Basic Fullscreen Modal">
+          <div style="max-width: 800px; margin: 2rem auto; padding: 0 1rem;">
+            <h2>Welcome to the Fullscreen Experience</h2>
+            <p style="margin-top: 1rem; color: var(--text-muted); line-height: 1.8;">
+              This modal takes over the entire screen, providing an immersive experience for your content.
+              Press Escape or click the X button to close.
+            </p>
+            <p style="margin-top: 1rem; color: var(--text-muted); line-height: 1.8;">
+              Fullscreen modals are perfect for:
+            </p>
+            <ul style="margin-top: 0.5rem; margin-left: 1.5rem; color: var(--text-muted); line-height: 1.8;">
+              <li>Image galleries and lightboxes</li>
+              <li>Video players</li>
+              <li>Complex forms that need focus</li>
+              <li>Document viewers</li>
+              <li>Detailed item views</li>
+            </ul>
+          </div>
+        </erx-fullscreen-modal>
+      </div>
+    </div>
+    <div class="demo-section">
+      <h2>Animation Types</h2>
+      <div class="demo-box">
+        <div style="display: flex; gap: 1rem; flex-wrap: wrap;">
+          <button onclick="document.getElementById('modal-fade').show()" style="padding: 0.75rem 1.5rem; background: var(--bg); border: 1px solid var(--border); border-radius: 8px; cursor: pointer;">
+            Fade
+          </button>
+          <button onclick="document.getElementById('modal-slide').show()" style="padding: 0.75rem 1.5rem; background: var(--bg); border: 1px solid var(--border); border-radius: 8px; cursor: pointer;">
+            Slide Up
+          </button>
+          <button onclick="document.getElementById('modal-zoom').show()" style="padding: 0.75rem 1.5rem; background: var(--bg); border: 1px solid var(--border); border-radius: 8px; cursor: pointer;">
+            Zoom
+          </button>
+        </div>
+        <erx-fullscreen-modal id="modal-fade" modal-title="Fade Animation" animation="fade">
+          <div style="display: flex; align-items: center; justify-content: center; height: 100%;">
+            <div style="text-align: center;">
+              <h2>Fade Animation</h2>
+              <p style="color: var(--text-muted);">Simple opacity transition</p>
+            </div>
+          </div>
+        </erx-fullscreen-modal>
+        <erx-fullscreen-modal id="modal-slide" modal-title="Slide Up Animation" animation="slide-up">
+          <div style="display: flex; align-items: center; justify-content: center; height: 100%;">
+            <div style="text-align: center;">
+              <h2>Slide Up Animation</h2>
+              <p style="color: var(--text-muted);">Content slides up from the bottom</p>
+            </div>
+          </div>
+        </erx-fullscreen-modal>
+        <erx-fullscreen-modal id="modal-zoom" modal-title="Zoom Animation" animation="zoom">
+          <div style="display: flex; align-items: center; justify-content: center; height: 100%;">
+            <div style="text-align: center;">
+              <h2>Zoom Animation</h2>
+              <p style="color: var(--text-muted);">Content zooms in from the center</p>
+            </div>
+          </div>
+        </erx-fullscreen-modal>
+      </div>
+    </div>
+    <div class="demo-section">
+      <h2>Image Gallery Example</h2>
+      <div class="demo-box">
+        <div style="display: flex; gap: 1rem; flex-wrap: wrap;">
+          <div onclick="document.getElementById('modal-gallery').show()" style="width: 150px; height: 100px; background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); border-radius: 8px; cursor: pointer; display: flex; align-items: center; justify-content: center; color: white;">
+            Click to view
+          </div>
+          <div onclick="document.getElementById('modal-gallery').show()" style="width: 150px; height: 100px; background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%); border-radius: 8px; cursor: pointer; display: flex; align-items: center; justify-content: center; color: white;">
+            Click to view
+          </div>
+          <div onclick="document.getElementById('modal-gallery').show()" style="width: 150px; height: 100px; background: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%); border-radius: 8px; cursor: pointer; display: flex; align-items: center; justify-content: center; color: white;">
+            Click to view
+          </div>
+        </div>
+        <erx-fullscreen-modal id="modal-gallery" modal-title="Image Gallery" animation="zoom" background="#000000">
+          <div style="display: flex; align-items: center; justify-content: center; height: 100%;">
+            <div style="width: 80%; max-width: 900px; aspect-ratio: 16/9; background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); border-radius: 12px; display: flex; align-items: center; justify-content: center; color: white; font-size: 1.5rem;">
+              Full Resolution Image
+            </div>
+          </div>
+          <div slot="footer" style="display: flex; justify-content: center; gap: 1rem; padding: 1rem;">
+            <button style="padding: 0.5rem 1rem; background: rgba(255,255,255,0.1); border: none; color: white; border-radius: 4px; cursor: pointer;">Previous</button>
+            <span style="color: rgba(255,255,255,0.6); display: flex; align-items: center;">1 / 3</span>
+            <button style="padding: 0.5rem 1rem; background: rgba(255,255,255,0.1); border: none; color: white; border-radius: 4px; cursor: pointer;">Next</button>
+          </div>
+        </erx-fullscreen-modal>
+      </div>
+    </div>
+    <div class="demo-section">
+      <h2>No Header Mode</h2>
+      <div class="demo-box">
+        <button onclick="document.getElementById('modal-noheader').show()" style="padding: 0.75rem 1.5rem; background: var(--primary); color: white; border: none; border-radius: 8px; cursor: pointer;">
+          Open Without Header
+        </button>
+        <erx-fullscreen-modal id="modal-noheader" show-header="false" animation="fade">
+          <div style="display: flex; align-items: center; justify-content: center; height: 100%;">
+            <div style="text-align: center; max-width: 600px; padding: 2rem;">
+              <h1 style="font-size: 3rem; margin-bottom: 1rem;">Clean View</h1>
+              <p style="color: var(--text-muted); font-size: 1.125rem; line-height: 1.8;">
+                This modal has no header bar, providing a cleaner look for content-focused presentations.
+                The close button floats in the top-right corner.
+              </p>
+            </div>
+          </div>
+        </erx-fullscreen-modal>
+      </div>
+    </div>
+    <div class="demo-section">
+      <h2>With Header Actions</h2>
+      <div class="demo-box">
+        <button onclick="document.getElementById('modal-actions').show()" style="padding: 0.75rem 1.5rem; background: var(--primary); color: white; border: none; border-radius: 8px; cursor: pointer;">
+          Open Document Viewer
+        </button>
+        <erx-fullscreen-modal id="modal-actions" modal-title="Invoice #12345">
+          <div slot="header-actions" style="display: flex; gap: 0.5rem; margin-right: 1rem;">
+            <button style="padding: 0.5rem 1rem; background: rgba(99,102,241,0.1); border: none; color: var(--primary); border-radius: 4px; cursor: pointer;">
+              Download
+            </button>
+            <button style="padding: 0.5rem 1rem; background: rgba(99,102,241,0.1); border: none; color: var(--primary); border-radius: 4px; cursor: pointer;">
+              Print
+            </button>
+            <button style="padding: 0.5rem 1rem; background: rgba(99,102,241,0.1); border: none; color: var(--primary); border-radius: 4px; cursor: pointer;">
+              Share
+            </button>
+          </div>
+          <div style="max-width: 800px; margin: 2rem auto; padding: 2rem; background: white; border-radius: 8px; box-shadow: 0 4px 20px rgba(0,0,0,0.1);">
+            <h2>Invoice</h2>
+            <p style="color: var(--text-muted); margin-top: 0.5rem;">Date: January 18, 2025</p>
+            <hr style="margin: 1.5rem 0; border: none; border-top: 1px solid var(--border);">
+            <div style="display: flex; justify-content: space-between; margin-bottom: 0.5rem;">
+              <span>Product A x 2</span>
+              <span>$49.98</span>
+            </div>
+            <div style="display: flex; justify-content: space-between; margin-bottom: 0.5rem;">
+              <span>Product B x 1</span>
+              <span>$29.99</span>
+            </div>
+            <hr style="margin: 1.5rem 0; border: none; border-top: 1px solid var(--border);">
+            <div style="display: flex; justify-content: space-between; font-size: 1.25rem; font-weight: bold;">
+              <span>Total</span>
+              <span>$79.97</span>
+            </div>
+          </div>
+        </erx-fullscreen-modal>
+      </div>
+    </div>
+  </div>
+</body>
+</html>

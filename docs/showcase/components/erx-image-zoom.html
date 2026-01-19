@@ -1,0 +1,269 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>erx-image-zoom - ERX Components</title>
+  <script type="module" src="https://unpkg.com/@erplora/erx/dist/erx/erx.esm.js"></script>
+  <script nomodule src="https://unpkg.com/@erplora/erx/dist/erx/erx.js"></script>
+  <link rel="stylesheet" href="../styles.css">
+</head>
+<body>
+  <div class="component-page" style="padding: 2rem;">
+    <a href="../index.html" class="back-link">&larr; Back to Components</a>
+
+    <div class="component-header">
+      <h1>erx-image-zoom</h1>
+      <p>An image zoom viewer component for displaying images with pan and zoom capabilities. Perfect for product images, maps, and detailed views.</p>
+    </div>
+
+    <div class="demo-section">
+      <h2>Hover Zoom</h2>
+      <div class="demo-box">
+        <p style="margin-bottom: 1rem; color: var(--text-muted);">Hover over the image to see a magnified view.</p>
+        <div style="max-width: 500px;">
+          <erx-image-zoom
+            src="https://picsum.photos/800/600?random=50"
+            zoom-src="https://picsum.photos/1600/1200?random=50"
+            mode="hover">
+          </erx-image-zoom>
+        </div>
+      </div>
+    </div>
+
+    <div class="demo-section">
+      <h2>Click to Zoom</h2>
+      <div class="demo-box">
+        <p style="margin-bottom: 1rem; color: var(--text-muted);">Click on the image to toggle zoom mode.</p>
+        <div style="max-width: 500px;">
+          <erx-image-zoom
+            src="https://picsum.photos/800/600?random=51"
+            zoom-src="https://picsum.photos/1600/1200?random=51"
+            mode="click">
+          </erx-image-zoom>
+        </div>
+      </div>
+    </div>
+
+    <div class="demo-section">
+      <h2>Magnifier Lens</h2>
+      <div class="demo-box">
+        <p style="margin-bottom: 1rem; color: var(--text-muted);">A circular magnifier follows your cursor.</p>
+        <div style="max-width: 500px;">
+          <erx-image-zoom
+            src="https://picsum.photos/800/600?random=52"
+            zoom-src="https://picsum.photos/1600/1200?random=52"
+            mode="lens"
+            lens-size="150">
+          </erx-image-zoom>
+        </div>
+      </div>
+    </div>
+
+    <div class="demo-section">
+      <h2>Side Panel Zoom</h2>
+      <div class="demo-box">
+        <p style="margin-bottom: 1rem; color: var(--text-muted);">Zoomed view appears in a side panel.</p>
+        <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; max-width: 800px;">
+          <erx-image-zoom
+            id="side-zoom"
+            src="https://picsum.photos/600/600?random=53"
+            zoom-src="https://picsum.photos/1200/1200?random=53"
+            mode="side"
+            side-panel-id="zoom-panel">
+          </erx-image-zoom>
+          <div id="zoom-panel" style="background: var(--bg); border: 1px solid var(--border); border-radius: 8px; overflow: hidden; aspect-ratio: 1;"></div>
+        </div>
+      </div>
+    </div>
+
+    <div class="demo-section">
+      <h2>Scroll Zoom</h2>
+      <div class="demo-box">
+        <p style="margin-bottom: 1rem; color: var(--text-muted);">Use mouse wheel to zoom in and out, drag to pan.</p>
+        <div style="max-width: 600px; height: 400px; overflow: hidden; border: 1px solid var(--border); border-radius: 8px;">
+          <erx-image-zoom
+            src="https://picsum.photos/1200/800?random=54"
+            mode="scroll"
+            min-zoom="1"
+            max-zoom="5"
+            show-controls>
+          </erx-image-zoom>
+        </div>
+      </div>
+    </div>
+
+    <div class="demo-section">
+      <h2>Different Zoom Levels</h2>
+      <div class="demo-box">
+        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 1rem;">
+          <div>
+            <span class="demo-label">2x Zoom</span>
+            <erx-image-zoom
+              src="https://picsum.photos/400/300?random=55"
+              zoom-src="https://picsum.photos/800/600?random=55"
+              mode="hover"
+              zoom-level="2">
+            </erx-image-zoom>
+          </div>
+          <div>
+            <span class="demo-label">3x Zoom</span>
+            <erx-image-zoom
+              src="https://picsum.photos/400/300?random=56"
+              zoom-src="https://picsum.photos/1200/900?random=56"
+              mode="hover"
+              zoom-level="3">
+            </erx-image-zoom>
+          </div>
+          <div>
+            <span class="demo-label">4x Zoom</span>
+            <erx-image-zoom
+              src="https://picsum.photos/400/300?random=57"
+              zoom-src="https://picsum.photos/1600/1200?random=57"
+              mode="hover"
+              zoom-level="4">
+            </erx-image-zoom>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="demo-section">
+      <h2>Product Image Example</h2>
+      <div class="demo-box">
+        <div style="display: grid; grid-template-columns: 80px 1fr 1fr; gap: 1rem; max-width: 800px;">
+          <div id="thumbnails" style="display: flex; flex-direction: column; gap: 0.5rem;">
+            <img src="https://picsum.photos/100/100?random=60" onclick="changeImage(0)" style="width: 80px; height: 80px; object-fit: cover; border-radius: 8px; cursor: pointer; border: 2px solid var(--primary);">
+            <img src="https://picsum.photos/100/100?random=61" onclick="changeImage(1)" style="width: 80px; height: 80px; object-fit: cover; border-radius: 8px; cursor: pointer; border: 2px solid transparent;">
+            <img src="https://picsum.photos/100/100?random=62" onclick="changeImage(2)" style="width: 80px; height: 80px; object-fit: cover; border-radius: 8px; cursor: pointer; border: 2px solid transparent;">
+          </div>
+          <erx-image-zoom
+            id="product-zoom"
+            src="https://picsum.photos/600/600?random=60"
+            zoom-src="https://picsum.photos/1200/1200?random=60"
+            mode="side"
+            side-panel-id="product-panel">
+          </erx-image-zoom>
+          <div id="product-panel" style="background: var(--bg); border: 1px solid var(--border); border-radius: 8px; overflow: hidden;"></div>
+        </div>
+      </div>
+    </div>
+
+    <div class="demo-section">
+      <h2>Props</h2>
+      <table style="width: 100%; border-collapse: collapse;">
+        <thead>
+          <tr style="border-bottom: 2px solid var(--border);">
+            <th style="text-align: left; padding: 0.5rem;">Prop</th>
+            <th style="text-align: left; padding: 0.5rem;">Type</th>
+            <th style="text-align: left; padding: 0.5rem;">Default</th>
+            <th style="text-align: left; padding: 0.5rem;">Description</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr style="border-bottom: 1px solid var(--border);">
+            <td style="padding: 0.5rem;"><code>src</code></td>
+            <td style="padding: 0.5rem;">string</td>
+            <td style="padding: 0.5rem;">-</td>
+            <td style="padding: 0.5rem;">Image source URL</td>
+          </tr>
+          <tr style="border-bottom: 1px solid var(--border);">
+            <td style="padding: 0.5rem;"><code>zoom-src</code></td>
+            <td style="padding: 0.5rem;">string</td>
+            <td style="padding: 0.5rem;">src</td>
+            <td style="padding: 0.5rem;">High-res image for zoom</td>
+          </tr>
+          <tr style="border-bottom: 1px solid var(--border);">
+            <td style="padding: 0.5rem;"><code>mode</code></td>
+            <td style="padding: 0.5rem;">'hover' | 'click' | 'lens' | 'side' | 'scroll'</td>
+            <td style="padding: 0.5rem;">'hover'</td>
+            <td style="padding: 0.5rem;">Zoom interaction mode</td>
+          </tr>
+          <tr style="border-bottom: 1px solid var(--border);">
+            <td style="padding: 0.5rem;"><code>zoom-level</code></td>
+            <td style="padding: 0.5rem;">number</td>
+            <td style="padding: 0.5rem;">2</td>
+            <td style="padding: 0.5rem;">Zoom magnification level</td>
+          </tr>
+          <tr style="border-bottom: 1px solid var(--border);">
+            <td style="padding: 0.5rem;"><code>lens-size</code></td>
+            <td style="padding: 0.5rem;">number</td>
+            <td style="padding: 0.5rem;">100</td>
+            <td style="padding: 0.5rem;">Lens diameter (lens mode)</td>
+          </tr>
+          <tr style="border-bottom: 1px solid var(--border);">
+            <td style="padding: 0.5rem;"><code>side-panel-id</code></td>
+            <td style="padding: 0.5rem;">string</td>
+            <td style="padding: 0.5rem;">-</td>
+            <td style="padding: 0.5rem;">ID of side panel element</td>
+          </tr>
+          <tr style="border-bottom: 1px solid var(--border);">
+            <td style="padding: 0.5rem;"><code>min-zoom</code></td>
+            <td style="padding: 0.5rem;">number</td>
+            <td style="padding: 0.5rem;">1</td>
+            <td style="padding: 0.5rem;">Minimum zoom level (scroll)</td>
+          </tr>
+          <tr style="border-bottom: 1px solid var(--border);">
+            <td style="padding: 0.5rem;"><code>max-zoom</code></td>
+            <td style="padding: 0.5rem;">number</td>
+            <td style="padding: 0.5rem;">4</td>
+            <td style="padding: 0.5rem;">Maximum zoom level (scroll)</td>
+          </tr>
+          <tr style="border-bottom: 1px solid var(--border);">
+            <td style="padding: 0.5rem;"><code>show-controls</code></td>
+            <td style="padding: 0.5rem;">boolean</td>
+            <td style="padding: 0.5rem;">false</td>
+            <td style="padding: 0.5rem;">Show zoom controls</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <div class="demo-section">
+      <h2>Events</h2>
+      <table style="width: 100%; border-collapse: collapse;">
+        <thead>
+          <tr style="border-bottom: 2px solid var(--border);">
+            <th style="text-align: left; padding: 0.5rem;">Event</th>
+            <th style="text-align: left; padding: 0.5rem;">Description</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr style="border-bottom: 1px solid var(--border);">
+            <td style="padding: 0.5rem;"><code>erxZoomChange</code></td>
+            <td style="padding: 0.5rem;">Emitted when zoom level changes</td>
+          </tr>
+          <tr style="border-bottom: 1px solid var(--border);">
+            <td style="padding: 0.5rem;"><code>erxZoomStart</code></td>
+            <td style="padding: 0.5rem;">Emitted when zoom starts</td>
+          </tr>
+          <tr style="border-bottom: 1px solid var(--border);">
+            <td style="padding: 0.5rem;"><code>erxZoomEnd</code></td>
+            <td style="padding: 0.5rem;">Emitted when zoom ends</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+  <script>
+    const productImages = [
+      { src: 'https://picsum.photos/600/600?random=60', zoomSrc: 'https://picsum.photos/1200/1200?random=60' },
+      { src: 'https://picsum.photos/600/600?random=61', zoomSrc: 'https://picsum.photos/1200/1200?random=61' },
+      { src: 'https://picsum.photos/600/600?random=62', zoomSrc: 'https://picsum.photos/1200/1200?random=62' },
+    ];
+
+    function changeImage(index) {
+      const zoom = document.getElementById('product-zoom');
+      zoom.src = productImages[index].src;
+      zoom.zoomSrc = productImages[index].zoomSrc;
+
+      // Update thumbnail borders
+      const thumbnails = document.querySelectorAll('#thumbnails img');
+      thumbnails.forEach((thumb, i) => {
+        thumb.style.borderColor = i === index ? 'var(--primary)' : 'transparent';
+      });
+    }
+  </script>
+</body>
+</html>

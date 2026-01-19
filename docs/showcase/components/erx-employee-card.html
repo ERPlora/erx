@@ -1,0 +1,354 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>erx-employee-card - ERX Components</title>
+  <script type="module" src="https://unpkg.com/@erplora/erx/dist/erx/erx.esm.js"></script>
+  <script nomodule src="https://unpkg.com/@erplora/erx/dist/erx/erx.js"></script>
+  <link rel="stylesheet" href="../styles.css">
+</head>
+<body>
+  <div class="component-page" style="padding: 2rem;">
+    <a href="../index.html" class="back-link">&larr; Back to Components</a>
+
+    <div class="component-header">
+      <h1>erx-employee-card</h1>
+      <p>Employee information card displaying profile details, contact information, and quick actions for HR and team management.</p>
+    </div>
+
+    <div class="demo-section">
+      <h2>Basic Employee Card</h2>
+      <div class="demo-box">
+        <div style="max-width: 350px;">
+          <erx-employee-card id="card-basic"></erx-employee-card>
+        </div>
+      </div>
+      <div class="code-block">
+&lt;erx-employee-card
+  employee-id="EMP001"
+  name="John Doe"
+  title="Senior Software Engineer"
+  department="Engineering"
+  email="john.doe@company.com"
+  phone="+1 (555) 123-4567"
+  avatar="https://example.com/avatar.jpg"
+&gt;&lt;/erx-employee-card&gt;
+      </div>
+    </div>
+
+    <div class="demo-section">
+      <h2>Card Variants</h2>
+      <div class="demo-box">
+        <div class="demo-row">
+          <div class="demo-col">
+            <span class="demo-label">Default</span>
+            <erx-employee-card id="card-default"></erx-employee-card>
+          </div>
+          <div class="demo-col">
+            <span class="demo-label">Compact</span>
+            <erx-employee-card id="card-compact" variant="compact"></erx-employee-card>
+          </div>
+          <div class="demo-col">
+            <span class="demo-label">Inline</span>
+            <erx-employee-card id="card-inline" variant="inline"></erx-employee-card>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="demo-section">
+      <h2>With Status Indicators</h2>
+      <div class="demo-box">
+        <div class="demo-row">
+          <div class="demo-col">
+            <span class="demo-label">Available</span>
+            <erx-employee-card id="card-available" status="available" show-status></erx-employee-card>
+          </div>
+          <div class="demo-col">
+            <span class="demo-label">Busy</span>
+            <erx-employee-card id="card-busy" status="busy" show-status></erx-employee-card>
+          </div>
+          <div class="demo-col">
+            <span class="demo-label">Away</span>
+            <erx-employee-card id="card-away" status="away" show-status></erx-employee-card>
+          </div>
+          <div class="demo-col">
+            <span class="demo-label">Offline</span>
+            <erx-employee-card id="card-offline" status="offline" show-status></erx-employee-card>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="demo-section">
+      <h2>With Quick Actions</h2>
+      <div class="demo-box">
+        <div style="max-width: 350px;">
+          <erx-employee-card id="card-actions" show-actions></erx-employee-card>
+        </div>
+        <p id="action-output" style="margin-top: 1rem; color: var(--text-muted);"></p>
+      </div>
+    </div>
+
+    <div class="demo-section">
+      <h2>Detailed View</h2>
+      <div class="demo-box">
+        <div style="max-width: 400px;">
+          <erx-employee-card id="card-detailed" show-details show-actions show-status></erx-employee-card>
+        </div>
+      </div>
+    </div>
+
+    <div class="demo-section">
+      <h2>Team Grid</h2>
+      <div class="demo-box">
+        <div style="display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 1rem;">
+          <erx-employee-card id="team-1"></erx-employee-card>
+          <erx-employee-card id="team-2"></erx-employee-card>
+          <erx-employee-card id="team-3"></erx-employee-card>
+          <erx-employee-card id="team-4"></erx-employee-card>
+        </div>
+      </div>
+    </div>
+
+    <div class="demo-section">
+      <h2>Props</h2>
+      <table style="width: 100%; border-collapse: collapse;">
+        <thead>
+          <tr style="border-bottom: 2px solid var(--border);">
+            <th style="text-align: left; padding: 0.5rem;">Prop</th>
+            <th style="text-align: left; padding: 0.5rem;">Type</th>
+            <th style="text-align: left; padding: 0.5rem;">Default</th>
+            <th style="text-align: left; padding: 0.5rem;">Description</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr style="border-bottom: 1px solid var(--border);">
+            <td style="padding: 0.5rem;"><code>employeeId</code></td>
+            <td style="padding: 0.5rem;">string</td>
+            <td style="padding: 0.5rem;">''</td>
+            <td style="padding: 0.5rem;">Employee identifier</td>
+          </tr>
+          <tr style="border-bottom: 1px solid var(--border);">
+            <td style="padding: 0.5rem;"><code>name</code></td>
+            <td style="padding: 0.5rem;">string</td>
+            <td style="padding: 0.5rem;">''</td>
+            <td style="padding: 0.5rem;">Employee full name</td>
+          </tr>
+          <tr style="border-bottom: 1px solid var(--border);">
+            <td style="padding: 0.5rem;"><code>title</code></td>
+            <td style="padding: 0.5rem;">string</td>
+            <td style="padding: 0.5rem;">''</td>
+            <td style="padding: 0.5rem;">Job title</td>
+          </tr>
+          <tr style="border-bottom: 1px solid var(--border);">
+            <td style="padding: 0.5rem;"><code>department</code></td>
+            <td style="padding: 0.5rem;">string</td>
+            <td style="padding: 0.5rem;">''</td>
+            <td style="padding: 0.5rem;">Department name</td>
+          </tr>
+          <tr style="border-bottom: 1px solid var(--border);">
+            <td style="padding: 0.5rem;"><code>email</code></td>
+            <td style="padding: 0.5rem;">string</td>
+            <td style="padding: 0.5rem;">''</td>
+            <td style="padding: 0.5rem;">Email address</td>
+          </tr>
+          <tr style="border-bottom: 1px solid var(--border);">
+            <td style="padding: 0.5rem;"><code>phone</code></td>
+            <td style="padding: 0.5rem;">string</td>
+            <td style="padding: 0.5rem;">''</td>
+            <td style="padding: 0.5rem;">Phone number</td>
+          </tr>
+          <tr style="border-bottom: 1px solid var(--border);">
+            <td style="padding: 0.5rem;"><code>avatar</code></td>
+            <td style="padding: 0.5rem;">string</td>
+            <td style="padding: 0.5rem;">''</td>
+            <td style="padding: 0.5rem;">Avatar image URL</td>
+          </tr>
+          <tr style="border-bottom: 1px solid var(--border);">
+            <td style="padding: 0.5rem;"><code>variant</code></td>
+            <td style="padding: 0.5rem;">'default' | 'compact' | 'inline'</td>
+            <td style="padding: 0.5rem;">'default'</td>
+            <td style="padding: 0.5rem;">Card layout variant</td>
+          </tr>
+          <tr style="border-bottom: 1px solid var(--border);">
+            <td style="padding: 0.5rem;"><code>status</code></td>
+            <td style="padding: 0.5rem;">'available' | 'busy' | 'away' | 'offline'</td>
+            <td style="padding: 0.5rem;">'offline'</td>
+            <td style="padding: 0.5rem;">Online status</td>
+          </tr>
+          <tr style="border-bottom: 1px solid var(--border);">
+            <td style="padding: 0.5rem;"><code>showStatus</code></td>
+            <td style="padding: 0.5rem;">boolean</td>
+            <td style="padding: 0.5rem;">false</td>
+            <td style="padding: 0.5rem;">Show status indicator</td>
+          </tr>
+          <tr style="border-bottom: 1px solid var(--border);">
+            <td style="padding: 0.5rem;"><code>showActions</code></td>
+            <td style="padding: 0.5rem;">boolean</td>
+            <td style="padding: 0.5rem;">false</td>
+            <td style="padding: 0.5rem;">Show quick action buttons</td>
+          </tr>
+          <tr style="border-bottom: 1px solid var(--border);">
+            <td style="padding: 0.5rem;"><code>showDetails</code></td>
+            <td style="padding: 0.5rem;">boolean</td>
+            <td style="padding: 0.5rem;">false</td>
+            <td style="padding: 0.5rem;">Show extended details</td>
+          </tr>
+          <tr style="border-bottom: 1px solid var(--border);">
+            <td style="padding: 0.5rem;"><code>clickable</code></td>
+            <td style="padding: 0.5rem;">boolean</td>
+            <td style="padding: 0.5rem;">false</td>
+            <td style="padding: 0.5rem;">Make card clickable</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <div class="demo-section">
+      <h2>Events</h2>
+      <table style="width: 100%; border-collapse: collapse;">
+        <thead>
+          <tr style="border-bottom: 2px solid var(--border);">
+            <th style="text-align: left; padding: 0.5rem;">Event</th>
+            <th style="text-align: left; padding: 0.5rem;">Description</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr style="border-bottom: 1px solid var(--border);">
+            <td style="padding: 0.5rem;"><code>erxClick</code></td>
+            <td style="padding: 0.5rem;">Emitted when card is clicked</td>
+          </tr>
+          <tr style="border-bottom: 1px solid var(--border);">
+            <td style="padding: 0.5rem;"><code>erxEmail</code></td>
+            <td style="padding: 0.5rem;">Emitted when email action clicked</td>
+          </tr>
+          <tr style="border-bottom: 1px solid var(--border);">
+            <td style="padding: 0.5rem;"><code>erxCall</code></td>
+            <td style="padding: 0.5rem;">Emitted when call action clicked</td>
+          </tr>
+          <tr style="border-bottom: 1px solid var(--border);">
+            <td style="padding: 0.5rem;"><code>erxMessage</code></td>
+            <td style="padding: 0.5rem;">Emitted when message action clicked</td>
+          </tr>
+          <tr style="border-bottom: 1px solid var(--border);">
+            <td style="padding: 0.5rem;"><code>erxSchedule</code></td>
+            <td style="padding: 0.5rem;">Emitted when schedule action clicked</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+  <script>
+    // Employee data
+    const employees = [
+      {
+        employeeId: 'EMP001',
+        name: 'John Doe',
+        title: 'Senior Software Engineer',
+        department: 'Engineering',
+        email: 'john.doe@company.com',
+        phone: '+1 (555) 123-4567',
+        avatar: '',
+        location: 'San Francisco, CA',
+        manager: 'Sarah Chen',
+        startDate: '2020-03-15',
+        status: 'available'
+      },
+      {
+        employeeId: 'EMP002',
+        name: 'Jane Smith',
+        title: 'Product Designer',
+        department: 'Design',
+        email: 'jane.smith@company.com',
+        phone: '+1 (555) 234-5678',
+        avatar: '',
+        location: 'New York, NY',
+        manager: 'Mike Johnson',
+        startDate: '2021-07-01',
+        status: 'busy'
+      },
+      {
+        employeeId: 'EMP003',
+        name: 'Bob Johnson',
+        title: 'Marketing Manager',
+        department: 'Marketing',
+        email: 'bob.johnson@company.com',
+        phone: '+1 (555) 345-6789',
+        avatar: '',
+        location: 'Chicago, IL',
+        manager: 'Lisa Wong',
+        startDate: '2019-11-20',
+        status: 'away'
+      },
+      {
+        employeeId: 'EMP004',
+        name: 'Alice Brown',
+        title: 'Data Analyst',
+        department: 'Analytics',
+        email: 'alice.brown@company.com',
+        phone: '+1 (555) 456-7890',
+        avatar: '',
+        location: 'Austin, TX',
+        manager: 'Tom Davis',
+        startDate: '2022-02-01',
+        status: 'offline'
+      }
+    ];
+
+    // Helper to set employee data
+    function setEmployeeData(element, employee) {
+      element.employeeId = employee.employeeId;
+      element.name = employee.name;
+      element.title = employee.title;
+      element.department = employee.department;
+      element.email = employee.email;
+      element.phone = employee.phone;
+      element.avatar = employee.avatar;
+      if (employee.location) element.location = employee.location;
+      if (employee.manager) element.manager = employee.manager;
+      if (employee.startDate) element.startDate = employee.startDate;
+      if (employee.status) element.status = employee.status;
+    }
+
+    // Basic card
+    setEmployeeData(document.getElementById('card-basic'), employees[0]);
+
+    // Variant cards
+    setEmployeeData(document.getElementById('card-default'), employees[0]);
+    setEmployeeData(document.getElementById('card-compact'), employees[1]);
+    setEmployeeData(document.getElementById('card-inline'), employees[2]);
+
+    // Status cards
+    setEmployeeData(document.getElementById('card-available'), employees[0]);
+    setEmployeeData(document.getElementById('card-busy'), employees[1]);
+    setEmployeeData(document.getElementById('card-away'), employees[2]);
+    setEmployeeData(document.getElementById('card-offline'), employees[3]);
+
+    // Actions card
+    const cardActions = document.getElementById('card-actions');
+    setEmployeeData(cardActions, employees[0]);
+    cardActions.addEventListener('erxEmail', (e) => {
+      document.getElementById('action-output').textContent = `Email: ${e.detail.email}`;
+    });
+    cardActions.addEventListener('erxCall', (e) => {
+      document.getElementById('action-output').textContent = `Call: ${e.detail.phone}`;
+    });
+    cardActions.addEventListener('erxMessage', (e) => {
+      document.getElementById('action-output').textContent = `Message: ${e.detail.employeeId}`;
+    });
+
+    // Detailed card
+    const cardDetailed = document.getElementById('card-detailed');
+    setEmployeeData(cardDetailed, employees[0]);
+
+    // Team grid
+    setEmployeeData(document.getElementById('team-1'), employees[0]);
+    setEmployeeData(document.getElementById('team-2'), employees[1]);
+    setEmployeeData(document.getElementById('team-3'), employees[2]);
+    setEmployeeData(document.getElementById('team-4'), employees[3]);
+  </script>
+</body>
+</html>
