@@ -14,7 +14,7 @@
       <h1>ERX Component Showcase</h1>
       <p>94 Web Components for ERP Applications</p>
       <div class="theme-toggle">
-        <button id="theme-light" class="theme-btn active">☀️ Light</button>
+        <button id="theme-light" class="theme-btn">☀️ Light</button>
         <button id="theme-dark" class="theme-btn">🌙 Dark</button>
       </div>
     </header>
@@ -158,20 +158,154 @@
       { name: 'erx-work-order', cat: 'manufacturing', desc: 'Work order display' }
     ];
 
+    // Theme management
+    const THEME_KEY = 'erx-showcase-theme';
+
+    function initTheme() {
+      const savedTheme = localStorage.getItem(THEME_KEY) || 'light';
+      applyTheme(savedTheme);
+    }
+
+    function applyTheme(theme) {
+      if (theme === 'dark') {
+        document.body.classList.add('dark');
+        document.getElementById('theme-dark').classList.add('active');
+        document.getElementById('theme-light').classList.remove('active');
+      } else {
+        document.body.classList.remove('dark');
+        document.getElementById('theme-light').classList.add('active');
+        document.getElementById('theme-dark').classList.remove('active');
+      }
+      localStorage.setItem(THEME_KEY, theme);
+    }
+
+    document.getElementById('theme-light').addEventListener('click', () => applyTheme('light'));
+    document.getElementById('theme-dark').addEventListener('click', () => applyTheme('dark'));
+
+    // SPA Navigation
+    async function loadComponent(componentName) {
+      const mainContent = document.getElementById('main-content');
+      mainContent.innerHTML = '<div class="loading">Loading...</div>';
+
+      try {
+        const response = await fetch(`components/${componentName}.html`);
+        if (!response.ok) throw new Error('Component not found');
+
+        const html = await response.text();
+
+        // Extract content between <body> tags
+        const parser = new DOMParser();
+        const doc = parser.parseFromString(html, 'text/html');
+        const componentPage = doc.querySelector('.component-page');
+
+        if (componentPage) {
+          // Remove back link and add home button instead
+          const backLink = componentPage.querySelector('.back-link');
+          if (backLink) {
+            backLink.href = '#';
+            backLink.textContent = '← Back to Home';
+            backLink.addEventListener('click', (e) => {
+              e.preventDefault();
+              window.location.hash = '';
+            });
+          }
+
+          mainContent.innerHTML = componentPage.outerHTML;
+
+          // Execute scripts from the loaded component
+          const scripts = doc.querySelectorAll('script');
+          scripts.forEach(script => {
+            if (script.textContent && !script.src) {
+              try {
+                eval(script.textContent);
+              } catch (e) {
+                console.error('Error executing script:', e);
+              }
+            }
+          });
+
+          // Update active state in sidebar
+          document.querySelectorAll('.component-list a').forEach(a => {
+            a.classList.toggle('active', a.getAttribute('href') === `#${componentName}`);
+          });
+        } else {
+          throw new Error('Invalid component page structure');
+        }
+      } catch (error) {
+        mainContent.innerHTML = `
+          <div class="error-state" style="padding: 4rem 2rem; text-align: center;">
+            <h2>Component Not Found</h2>
+            <p>Could not load ${componentName}</p>
+            <button onclick="window.location.hash=''" style="margin-top: 1rem; padding: 0.5rem 1rem; background: var(--primary); color: white; border: none; border-radius: 4px; cursor: pointer;">
+              Back to Home
+            </button>
+          </div>
+        `;
+      }
+    }
+
+    function showWelcome() {
+      const mainContent = document.getElementById('main-content');
+      mainContent.innerHTML = `
+        <div class="welcome">
+          <h2>Welcome to ERX Component Showcase</h2>
+          <p>Select a component from the sidebar to view its demo and documentation.</p>
+          <div class="stats-grid">
+            <div class="stat-card">
+              <span class="stat-num">94</span>
+              <span class="stat-label">Components</span>
+            </div>
+            <div class="stat-card">
+              <span class="stat-num">10</span>
+              <span class="stat-label">Categories</span>
+            </div>
+            <div class="stat-card">
+              <span class="stat-num">2</span>
+              <span class="stat-label">Themes</span>
+            </div>
+          </div>
+        </div>
+      `;
+
+      document.querySelectorAll('.component-list a').forEach(a => {
+        a.classList.remove('active');
+      });
+    }
+
+    // Handle hash changes
+    function handleRoute() {
+      const hash = window.location.hash.slice(1);
+      if (hash && components.find(c => c.name === hash)) {
+        loadComponent(hash);
+      } else {
+        showWelcome();
+      }
+    }
+
+    window.addEventListener('hashchange', handleRoute);
+
     // Populate component list
     const list = document.getElementById('component-list');
     function renderList(filter = '', category = 'all') {
       list.innerHTML = '';
       components
-        .filter(c => (category === 'all' || c.cat === category) && 
+        .filter(c => (category === 'all' || c.cat === category) &&
                      (c.name.includes(filter) || c.desc.toLowerCase().includes(filter)))
         .forEach(c => {
           const li = document.createElement('li');
-          li.innerHTML = `<a href="components/${c.name}.html">${c.name}</a><small>${c.desc}</small>`;
+          const a = document.createElement('a');
+          a.href = `#${c.name}`;
+          a.textContent = c.name;
+          a.classList.toggle('active', window.location.hash === `#${c.name}`);
+
+          const small = document.createElement('small');
+          small.textContent = c.desc;
+
+          li.appendChild(a);
+          li.appendChild(small);
           list.appendChild(li);
         });
     }
-    renderList();
 
     // Search
     document.getElementById('search').addEventListener('input', e => {
@@ -187,17 +321,10 @@
       });
     });
 
-    // Theme toggle
-    document.getElementById('theme-light').addEventListener('click', () => {
-      document.body.classList.remove('dark');
-      document.getElementById('theme-light').classList.add('active');
-      document.getElementById('theme-dark').classList.remove('active');
-    });
-    document.getElementById('theme-dark').addEventListener('click', () => {
-      document.body.classList.add('dark');
-      document.getElementById('theme-dark').classList.add('active');
-      document.getElementById('theme-light').classList.remove('active');
-    });
+    // Initialize
+    initTheme();
+    renderList();
+    handleRoute();
   </script>
 </body>
 </html>
