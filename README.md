@@ -23,11 +23,164 @@
 - **Accessible** - WCAG 2.1 compliant with ARIA support
 - **Touch Optimized** - 44px touch targets (iOS standard), gesture support
 
-## 🎮 Interactive Demos
+## 🎮 Live Demos & Examples
 
+### 🌟 Main Demos
+- **[Component Showcase](https://erplora.github.io/erx/showcase/)** - Browse all 94 components with live examples
 - **[Interactive Playground](https://erplora.github.io/erx/playground/)** - Test components with live JSON editing
-- **[Component Showcase](https://erplora.github.io/erx/showcase/)** - Browse all 94 components with examples
-- **[Documentation](https://erplora.github.io/erx/)** - Full API documentation
+- **[Full API Documentation](https://erplora.github.io/erx/)** - Complete technical reference
+
+### 🎨 Feature Demos
+- **[Ionic Integration Demo](./docs/ionic-demo.html)** - See iOS vs Material Design modes in action
+- **[Liquid Glass Demo](./docs/liquid-glass-demo.html)** - iOS 26 glassmorphism effects
+
+### 📸 Component Examples
+
+<details>
+<summary><strong>POS & Retail Components</strong> (12 components)</summary>
+
+| Component | Preview | Demo |
+|-----------|---------|------|
+| `<erx-cart>` | Shopping cart with items, totals, tax | [View Demo](./docs/showcase/#erx-cart) |
+| `<erx-product-card>` | Product cards with images, prices, badges | [View Demo](./docs/showcase/#erx-product-card) |
+| `<erx-calculator>` | POS calculator with operations | [View Demo](./docs/showcase/#erx-calculator) |
+| `<erx-payment>` | Payment methods selector | [View Demo](./docs/showcase/#erx-payment) |
+| `<erx-receipt>` | Digital receipt printer | [View Demo](./docs/showcase/#erx-receipt) |
+| `<erx-order-ticket>` | Kitchen/bar order tickets | [View Demo](./docs/showcase/#erx-order-ticket) |
+| `<erx-quantity-badge>` | Animated quantity indicators | [View Demo](./docs/showcase/#erx-quantity-badge) |
+| `<erx-barcode-scanner>` | Barcode/QR scanner | [View Demo](./docs/showcase/#erx-barcode-scanner) |
+| `<erx-cash-drawer>` | Cash drawer management | [View Demo](./docs/showcase/#erx-cash-drawer) |
+| `<erx-price-tag>` | Price display with formatting | [View Demo](./docs/showcase/#erx-price-tag) |
+| `<erx-discount-badge>` | Discount/sale badges | [View Demo](./docs/showcase/#erx-discount-badge) |
+| `<erx-loyalty-card>` | Customer loyalty cards | [View Demo](./docs/showcase/#erx-loyalty-card) |
+
+</details>
+
+<details>
+<summary><strong>Data Display Components</strong> (15 components)</summary>
+
+| Component | Preview | Demo |
+|-----------|---------|------|
+| `<erx-data-grid>` | Advanced data tables with sorting, filtering | [View Demo](./docs/showcase/#erx-data-grid) |
+| `<erx-tree>` | Hierarchical tree view | [View Demo](./docs/showcase/#erx-tree) |
+| `<erx-table>` | Responsive tables | [View Demo](./docs/showcase/#erx-table) |
+| `<erx-list>` | Virtual scrolling lists | [View Demo](./docs/showcase/#erx-list) |
+| `<erx-card-list>` | Card-based lists | [View Demo](./docs/showcase/#erx-card-list) |
+| `<erx-timeline>` | Event timelines | [View Demo](./docs/showcase/#erx-timeline) |
+| `<erx-stats-card>` | Statistics cards | [View Demo](./docs/showcase/#erx-stats-card) |
+| `<erx-metric-display>` | KPI metrics | [View Demo](./docs/showcase/#erx-metric-display) |
+| `<erx-progress-ring>` | Circular progress | [View Demo](./docs/showcase/#erx-progress-ring) |
+| `<erx-gauge>` | Gauge charts | [View Demo](./docs/showcase/#erx-gauge) |
+| `<erx-sparkline>` | Mini trend charts | [View Demo](./docs/showcase/#erx-sparkline) |
+| `<erx-json-viewer>` | JSON tree viewer | [View Demo](./docs/showcase/#erx-json-viewer) |
+| `<erx-diff-viewer>` | Text diff comparison | [View Demo](./docs/showcase/#erx-diff-viewer) |
+| `<erx-code-block>` | Syntax highlighted code | [View Demo](./docs/showcase/#erx-code-block) |
+| `<erx-badge>` | Status badges | [View Demo](./docs/showcase/#erx-badge) |
+
+</details>
+
+<details>
+<summary><strong>Form Components</strong> (10 components)</summary>
+
+| Component | Preview | Demo |
+|-----------|---------|------|
+| `<erx-rich-text>` | WYSIWYG editor | [View Demo](./docs/showcase/#erx-rich-text) |
+| `<erx-color-picker>` | Color selection | [View Demo](./docs/showcase/#erx-color-picker) |
+| `<erx-rating>` | Star ratings (with half-stars) | [View Demo](./docs/showcase/#erx-rating) |
+| `<erx-signature-pad>` | Digital signatures | [View Demo](./docs/showcase/#erx-signature-pad) |
+| `<erx-phone-input>` | International phone numbers | [View Demo](./docs/showcase/#erx-phone-input) |
+| `<erx-date-range>` | Date range picker | [View Demo](./docs/showcase/#erx-date-range) |
+| `<erx-file-upload>` | Drag & drop file uploads | [View Demo](./docs/showcase/#erx-file-upload) |
+| `<erx-slider>` | Range sliders | [View Demo](./docs/showcase/#erx-slider) |
+| `<erx-toggle-group>` | Toggle button groups | [View Demo](./docs/showcase/#erx-toggle-group) |
+| `<erx-search>` | Advanced search with filters | [View Demo](./docs/showcase/#erx-search) |
+
+</details>
+
+<details>
+<summary><strong>HR & Workforce Components</strong> (7 components)</summary>
+
+| Component | Preview | Demo |
+|-----------|---------|------|
+| `<erx-org-chart>` | Organization hierarchy | [View Demo](./docs/showcase/#erx-org-chart) |
+| `<erx-employee-card>` | Employee profiles | [View Demo](./docs/showcase/#erx-employee-card) |
+| `<erx-time-clock>` | Clock in/out widget | [View Demo](./docs/showcase/#erx-time-clock) |
+| `<erx-timesheet>` | Time tracking sheets | [View Demo](./docs/showcase/#erx-timesheet) |
+| `<erx-shift-calendar>` | Shift scheduling | [View Demo](./docs/showcase/#erx-shift-calendar) |
+| `<erx-leave-request>` | Leave/vacation requests | [View Demo](./docs/showcase/#erx-leave-request) |
+| `<erx-attendance>` | Attendance tracking | [View Demo](./docs/showcase/#erx-attendance) |
+
+</details>
+
+<details>
+<summary><strong>Manufacturing Components</strong> (7 components)</summary>
+
+| Component | Preview | Demo |
+|-----------|---------|------|
+| `<erx-bom-tree>` | Bill of Materials tree | [View Demo](./docs/showcase/#erx-bom-tree) |
+| `<erx-work-order>` | Work order cards | [View Demo](./docs/showcase/#erx-work-order) |
+| `<erx-production-line>` | Production line status | [View Demo](./docs/showcase/#erx-production-line) |
+| `<erx-quality-check>` | Quality inspection forms | [View Demo](./docs/showcase/#erx-quality-check) |
+| `<erx-batch-tracker>` | Batch/lot tracking | [View Demo](./docs/showcase/#erx-batch-tracker) |
+| `<erx-inventory-status>` | Inventory levels | [View Demo](./docs/showcase/#erx-inventory-status) |
+| `<erx-machine-status>` | Machine monitoring | [View Demo](./docs/showcase/#erx-machine-status) |
+
+</details>
+
+<details>
+<summary><strong>Layout Components</strong> (12 components)</summary>
+
+| Component | Preview | Demo |
+|-----------|---------|------|
+| `<erx-kanban>` | Kanban boards (drag & drop) | [View Demo](./docs/showcase/#erx-kanban) |
+| `<erx-dashboard-grid>` | Dashboard layouts | [View Demo](./docs/showcase/#erx-dashboard-grid) |
+| `<erx-master-detail>` | Master-detail views | [View Demo](./docs/showcase/#erx-master-detail) |
+| `<erx-split-pane>` | Resizable split views | [View Demo](./docs/showcase/#erx-split-pane) |
+| `<erx-tabs>` | Tab navigation | [View Demo](./docs/showcase/#erx-tabs) |
+| `<erx-accordion>` | Collapsible sections | [View Demo](./docs/showcase/#erx-accordion) |
+| `<erx-stepper>` | Multi-step forms | [View Demo](./docs/showcase/#erx-stepper) |
+| `<erx-sidebar>` | Collapsible sidebars | [View Demo](./docs/showcase/#erx-sidebar) |
+| `<erx-panel>` | Resizable panels | [View Demo](./docs/showcase/#erx-panel) |
+| `<erx-masonry>` | Masonry layouts | [View Demo](./docs/showcase/#erx-masonry) |
+| `<erx-card-stack>` | Stacked cards (swipeable) | [View Demo](./docs/showcase/#erx-card-stack) |
+| `<erx-carousel>` | Image carousels | [View Demo](./docs/showcase/#erx-carousel) |
+
+</details>
+
+<details>
+<summary><strong>Calendar & Scheduling</strong> (4 components)</summary>
+
+| Component | Preview | Demo |
+|-----------|---------|------|
+| `<erx-calendar>` | Full calendar view | [View Demo](./docs/showcase/#erx-calendar) |
+| `<erx-scheduler>` | Resource scheduler | [View Demo](./docs/showcase/#erx-scheduler) |
+| `<erx-gantt-chart>` | Gantt project timelines | [View Demo](./docs/showcase/#erx-gantt-chart) |
+| `<erx-date-picker>` | Date selection | [View Demo](./docs/showcase/#erx-date-picker) |
+
+</details>
+
+<details>
+<summary><strong>View All 94 Components</strong></summary>
+
+See the complete list with live demos in the [Component Showcase](https://erplora.github.io/erx/showcase/).
+
+**Categories:**
+- POS/Retail: 12 components
+- Data Display: 15 components
+- Forms (Advanced): 10 components
+- HR/Workforce: 7 components
+- Manufacturing: 7 components
+- Layout: 12 components
+- Media: 11 components
+- Navigation: 6 components
+- Calendar: 4 components
+- Feedback: 4 components
+- Overlays: 4 components
+- Others: 2 components
+
+**Total: 94 Components**
+
+</details>
 
 ---
 
@@ -54,7 +207,66 @@ npm install @erplora/erx @ionic/core
 
 ## 🚀 Quick Start
 
-### With Ionic + Bootstrap Grid
+### ⚡ One-Minute Examples
+
+**POS Shopping Cart:**
+```html
+<erx-cart id="cart"></erx-cart>
+
+<script>
+  cart.items = [
+    { id: '1', name: 'Laptop', price: 999, quantity: 1 },
+    { id: '2', name: 'Mouse', price: 29, quantity: 2 }
+  ];
+  cart.taxRate = 0.21; // 21% tax
+</script>
+```
+[Try it live →](./docs/showcase/#erx-cart)
+
+**Product Card with Liquid Glass:**
+```html
+<erx-product-card class="liquid-glass" id="product"></erx-product-card>
+
+<script>
+  product.product = {
+    name: 'iPhone 26 Pro',
+    price: 1299.99,
+    stock: 15,
+    image: 'product.jpg',
+    badge: 'New'
+  };
+</script>
+```
+[Try it live →](./docs/liquid-glass-demo.html)
+
+**Star Rating:**
+```html
+<!-- Simple -->
+<erx-rating value="4.5" allow-half="true"></erx-rating>
+
+<!-- With hearts -->
+<erx-rating value="5" icon="heart" color="danger"></erx-rating>
+```
+[Try it live →](./docs/showcase/#erx-rating)
+
+**Data Grid with Sorting:**
+```html
+<erx-data-grid id="grid"></erx-data-grid>
+
+<script>
+  grid.columns = [
+    { field: 'name', header: 'Product', sortable: true },
+    { field: 'price', header: 'Price', sortable: true }
+  ];
+  grid.data = [
+    { name: 'Laptop', price: '$999' },
+    { name: 'Mouse', price: '$29' }
+  ];
+</script>
+```
+[Try it live →](./docs/showcase/#erx-data-grid)
+
+### 🎨 With Ionic + Bootstrap Grid
 
 ERX components work perfectly inside Ionic layouts with Bootstrap Grid for responsive design:
 
