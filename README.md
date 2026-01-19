@@ -20,6 +20,12 @@
 - **Touch Optimized** - 44px touch targets, gesture support
 - **Ionic Compatible** - Matches Ionic's design system
 
+## 🎮 Interactive Demos
+
+- **[Interactive Playground](https://erplora.github.io/erx/playground/)** - Test components with live JSON editing and automated testing
+- **[Component Showcase](https://erplora.github.io/erx/showcase/)** - Browse all 92 components with examples
+- **[Documentation](https://erplora.github.io/erx/)** - Full API documentation
+
 ---
 
 ## Installation
