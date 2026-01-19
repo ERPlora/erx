@@ -14,6 +14,7 @@
 
 - **94 Enterprise Components** - POS, HR, Manufacturing, Data Grids, Scheduling, and more
 - **🎨 Ionic Design System** - Components inherit Ionic's look and feel automatically
+- **✨ iOS 26 Liquid Glass** - Glassmorphism effect with `.liquid-glass` class
 - **📱 Bootstrap Grid** - Responsive grid system with Ionic spacing
 - **🌓 iOS & Android Modes** - Platform-specific styling (rounded vs sharp corners, shadows, etc.)
 - **🌙 Dark Mode Support** - Follows Ionic's dark theme automatically
@@ -254,6 +255,53 @@ ERX components automatically inherit Ionic styles based on CSS class naming conv
 ```
 
 See [IONIC_MIGRATION.md](./IONIC_MIGRATION.md) for detailed technical documentation.
+
+### ✨ iOS 26 Liquid Glass Effect
+
+Add Apple's Vision Pro-inspired glassmorphism to any component with a simple class:
+
+```html
+<!-- Basic liquid glass -->
+<erx-cart class="liquid-glass"></erx-cart>
+
+<!-- Apply to any element -->
+<div class="liquid-glass">
+  <h2>Beautiful Glass Effect</h2>
+  <p>Works with backdrop-filter blur and vibrancy</p>
+</div>
+```
+
+**Variants:**
+
+| Class | Effect |
+|-------|--------|
+| `.liquid-glass` | Default glass effect (20px blur, 72% opacity) |
+| `.liquid-glass-subtle` | Lighter effect (12px blur, 60% opacity) |
+| `.liquid-glass-intense` | Maximum vibrancy (32px blur, 85% opacity) |
+| `.liquid-glass-frosted` | Classic frosted glass with brightness boost |
+| `.liquid-glass-tinted` | Colored glass with hue rotation |
+
+**Features:**
+- ✅ Automatic iOS/MD adaptation (iOS gets more blur)
+- ✅ Dark mode support
+- ✅ Hover/active states
+- ✅ GPU-accelerated (`will-change`, `transform3d`)
+- ✅ Fallback for unsupported browsers
+- ✅ Respects `prefers-reduced-motion`
+
+```html
+<!-- iOS mode: 24px blur, 16px border-radius -->
+<html class="ios">
+  <erx-product-card class="liquid-glass"></erx-product-card>
+</html>
+
+<!-- MD mode: 16px blur, 8px border-radius -->
+<html class="md">
+  <erx-product-card class="liquid-glass"></erx-product-card>
+</html>
+```
+
+See [Liquid Glass Demo](./docs/liquid-glass-demo.html) for live examples.
 
 ---
 

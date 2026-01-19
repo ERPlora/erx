@@ -1,0 +1,305 @@
+/**
+ * iOS 26 Liquid Glass Effect
+ * Modern glassmorphism effect for iOS components
+ * Based on Apple's Vision Pro and iOS 26 design language
+ */
+
+/* ========================================
+   Liquid Glass Base Class
+======================================== */
+
+.liquid-glass,
+.erx-liquid-glass,
+:host(.liquid-glass),
+:host-context(.liquid-glass) {
+  /* Backdrop filter for blur effect */
+  backdrop-filter: blur(var(--erx-glass-blur, 20px)) saturate(180%);
+  -webkit-backdrop-filter: blur(var(--erx-glass-blur, 20px)) saturate(180%);
+
+  /* Semi-transparent background with vibrancy */
+  background: var(--erx-glass-bg, rgba(255, 255, 255, 0.72)) !important;
+
+  /* Subtle border for depth */
+  border: 1px solid var(--erx-glass-border, rgba(255, 255, 255, 0.18)) !important;
+
+  /* Smooth transitions */
+  transition: all 0.3s var(--erx-ease, cubic-bezier(0.4, 0, 0.2, 1));
+
+  /* Enhanced shadow for floating effect */
+  box-shadow:
+    0 8px 32px rgba(0, 0, 0, 0.08),
+    0 2px 8px rgba(0, 0, 0, 0.04),
+    inset 0 1px 0 rgba(255, 255, 255, 0.3);
+}
+
+/* Hover state - slightly more opaque */
+.liquid-glass:hover,
+.erx-liquid-glass:hover {
+  background: rgba(255, 255, 255, 0.82) !important;
+  border-color: rgba(255, 255, 255, 0.25) !important;
+  box-shadow:
+    0 12px 40px rgba(0, 0, 0, 0.12),
+    0 4px 12px rgba(0, 0, 0, 0.06),
+    inset 0 1px 0 rgba(255, 255, 255, 0.4);
+}
+
+/* Active/Pressed state */
+.liquid-glass:active,
+.erx-liquid-glass:active {
+  background: rgba(255, 255, 255, 0.68) !important;
+  transform: scale(0.98);
+}
+
+/* ========================================
+   Dark Mode Liquid Glass
+======================================== */
+
+@media (prefers-color-scheme: dark) {
+  .liquid-glass,
+  .erx-liquid-glass,
+  :host(.liquid-glass),
+  :host-context(.liquid-glass) {
+    background: var(--erx-glass-bg, rgba(30, 30, 30, 0.72)) !important;
+    border-color: var(--erx-glass-border, rgba(255, 255, 255, 0.1)) !important;
+    box-shadow:
+      0 8px 32px rgba(0, 0, 0, 0.4),
+      0 2px 8px rgba(0, 0, 0, 0.2),
+      inset 0 1px 0 rgba(255, 255, 255, 0.08);
+  }
+
+  .liquid-glass:hover,
+  .erx-liquid-glass:hover {
+    background: rgba(40, 40, 40, 0.82) !important;
+    border-color: rgba(255, 255, 255, 0.15) !important;
+    box-shadow:
+      0 12px 40px rgba(0, 0, 0, 0.5),
+      0 4px 12px rgba(0, 0, 0, 0.3),
+      inset 0 1px 0 rgba(255, 255, 255, 0.12);
+  }
+
+  .liquid-glass:active,
+  .erx-liquid-glass:active {
+    background: rgba(25, 25, 25, 0.68) !important;
+  }
+}
+
+/* Manual dark mode class */
+body.dark .liquid-glass,
+body.dark .erx-liquid-glass,
+.dark .liquid-glass,
+.dark .erx-liquid-glass,
+:host-context(.dark) .liquid-glass {
+  background: var(--erx-glass-bg, rgba(30, 30, 30, 0.72)) !important;
+  border-color: var(--erx-glass-border, rgba(255, 255, 255, 0.1)) !important;
+  box-shadow:
+    0 8px 32px rgba(0, 0, 0, 0.4),
+    0 2px 8px rgba(0, 0, 0, 0.2),
+    inset 0 1px 0 rgba(255, 255, 255, 0.08);
+}
+
+body.dark .liquid-glass:hover,
+body.dark .erx-liquid-glass:hover,
+.dark .liquid-glass:hover,
+.dark .erx-liquid-glass:hover {
+  background: rgba(40, 40, 40, 0.82) !important;
+  border-color: rgba(255, 255, 255, 0.15) !important;
+}
+
+body.dark .liquid-glass:active,
+body.dark .erx-liquid-glass:active,
+.dark .liquid-glass:active,
+.dark .erx-liquid-glass:active {
+  background: rgba(25, 25, 25, 0.68) !important;
+}
+
+/* ========================================
+   iOS-Specific Enhancements
+======================================== */
+
+.ios .liquid-glass,
+.ios .erx-liquid-glass,
+:host-context(.ios) .liquid-glass {
+  /* More pronounced blur for iOS */
+  backdrop-filter: blur(24px) saturate(200%);
+  -webkit-backdrop-filter: blur(24px) saturate(200%);
+
+  /* Rounded corners typical of iOS */
+  border-radius: 16px !important;
+
+  /* Enhanced vibrancy effect */
+  box-shadow:
+    0 8px 32px rgba(0, 0, 0, 0.1),
+    0 2px 8px rgba(0, 0, 0, 0.05),
+    inset 0 1px 0 rgba(255, 255, 255, 0.4),
+    inset 0 -1px 0 rgba(0, 0, 0, 0.05);
+}
+
+.ios .liquid-glass:hover,
+.ios .erx-liquid-glass:hover {
+  box-shadow:
+    0 12px 40px rgba(0, 0, 0, 0.14),
+    0 4px 12px rgba(0, 0, 0, 0.08),
+    inset 0 1px 0 rgba(255, 255, 255, 0.5),
+    inset 0 -1px 0 rgba(0, 0, 0, 0.08);
+}
+
+/* ========================================
+   Material Design - Subtle Glass
+======================================== */
+
+.md .liquid-glass,
+.md .erx-liquid-glass,
+:host-context(.md) .liquid-glass {
+  /* Less blur for MD aesthetic */
+  backdrop-filter: blur(16px) saturate(150%);
+  -webkit-backdrop-filter: blur(16px) saturate(150%);
+
+  /* MD corners */
+  border-radius: 8px !important;
+
+  /* Material elevation instead of iOS shadow */
+  box-shadow:
+    0 6px 24px rgba(0, 0, 0, 0.12),
+    0 3px 6px rgba(0, 0, 0, 0.08),
+    inset 0 1px 0 rgba(255, 255, 255, 0.2);
+}
+
+.md .liquid-glass:hover,
+.md .erx-liquid-glass:hover {
+  box-shadow:
+    0 8px 32px rgba(0, 0, 0, 0.16),
+    0 4px 8px rgba(0, 0, 0, 0.12),
+    inset 0 1px 0 rgba(255, 255, 255, 0.25);
+}
+
+/* ========================================
+   Liquid Glass Variants
+======================================== */
+
+/* Subtle - Less pronounced effect */
+.liquid-glass-subtle,
+.erx-liquid-glass-subtle {
+  backdrop-filter: blur(12px) saturate(150%) !important;
+  -webkit-backdrop-filter: blur(12px) saturate(150%) !important;
+  background: rgba(255, 255, 255, 0.6) !important;
+  box-shadow:
+    0 4px 16px rgba(0, 0, 0, 0.06),
+    0 1px 4px rgba(0, 0, 0, 0.03);
+}
+
+/* Intense - Maximum blur and vibrancy */
+.liquid-glass-intense,
+.erx-liquid-glass-intense {
+  backdrop-filter: blur(32px) saturate(220%) !important;
+  -webkit-backdrop-filter: blur(32px) saturate(220%) !important;
+  background: rgba(255, 255, 255, 0.85) !important;
+  box-shadow:
+    0 12px 48px rgba(0, 0, 0, 0.12),
+    0 4px 16px rgba(0, 0, 0, 0.06),
+    inset 0 1px 0 rgba(255, 255, 255, 0.5);
+}
+
+/* Frosted - Classic frosted glass */
+.liquid-glass-frosted,
+.erx-liquid-glass-frosted {
+  backdrop-filter: blur(20px) saturate(100%) brightness(105%) !important;
+  -webkit-backdrop-filter: blur(20px) saturate(100%) brightness(105%) !important;
+  background: rgba(255, 255, 255, 0.65) !important;
+  border: 1px solid rgba(255, 255, 255, 0.3) !important;
+}
+
+/* Tinted - Colored glass effect */
+.liquid-glass-tinted,
+.erx-liquid-glass-tinted {
+  backdrop-filter: blur(20px) saturate(180%) hue-rotate(-10deg) !important;
+  -webkit-backdrop-filter: blur(20px) saturate(180%) hue-rotate(-10deg) !important;
+  background: linear-gradient(
+    135deg,
+    rgba(255, 255, 255, 0.75) 0%,
+    rgba(255, 255, 255, 0.68) 100%
+  ) !important;
+}
+
+/* ========================================
+   Component-Specific Liquid Glass
+======================================== */
+
+/* Cards with liquid glass */
+[class*="erx-"][class*="card"].liquid-glass,
+[class*="erx-"][class*="__container"].liquid-glass {
+  overflow: hidden; /* Prevent blur bleeding */
+}
+
+/* Buttons with liquid glass */
+button[class*="erx-"].liquid-glass {
+  font-weight: 600;
+  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.1);
+}
+
+/* Headers/Toolbars with liquid glass */
+[class*="erx-"][class*="header"].liquid-glass,
+[class*="erx-"][class*="toolbar"].liquid-glass {
+  border-bottom: 1px solid rgba(255, 255, 255, 0.2) !important;
+  backdrop-filter: blur(28px) saturate(180%);
+  -webkit-backdrop-filter: blur(28px) saturate(180%);
+}
+
+/* Badges with liquid glass */
+[class*="erx-"][class*="badge"].liquid-glass {
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  text-shadow: 0 1px 1px rgba(0, 0, 0, 0.15);
+}
+
+/* ========================================
+   Browser Compatibility Fallback
+======================================== */
+
+/* If backdrop-filter is not supported */
+@supports not (backdrop-filter: blur(20px)) {
+  .liquid-glass,
+  .erx-liquid-glass {
+    background: rgba(255, 255, 255, 0.95) !important;
+  }
+
+  @media (prefers-color-scheme: dark) {
+    .liquid-glass,
+    .erx-liquid-glass {
+      background: rgba(30, 30, 30, 0.95) !important;
+    }
+  }
+}
+
+/* ========================================
+   Accessibility - Respect Reduced Motion
+======================================== */
+
+@media (prefers-reduced-motion: reduce) {
+  .liquid-glass,
+  .erx-liquid-glass {
+    transition: none !important;
+  }
+
+  .liquid-glass:active,
+  .erx-liquid-glass:active {
+    transform: none !important;
+  }
+}
+
+/* ========================================
+   Performance Optimization
+======================================== */
+
+/* Use GPU acceleration */
+.liquid-glass,
+.erx-liquid-glass {
+  will-change: backdrop-filter, background, transform;
+  transform: translateZ(0);
+  backface-visibility: hidden;
+}
+
+/* Disable GPU acceleration after transition */
+.liquid-glass:not(:hover):not(:active),
+.erx-liquid-glass:not(:hover):not(:active) {
+  will-change: auto;
+}
