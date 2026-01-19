@@ -4,7 +4,7 @@ This document compares ERX (Stencil Web Components for ERPlora) with UX (Alpine.
 
 **Total Components:**
 - **UX Library:** 142 components
-- **ERX Library:** 93 components (92 documented + erx-quantity-badge)
+- **ERX Library:** 94 components
 
 ---
 
@@ -99,7 +99,7 @@ This document compares ERX (Stencil Web Components for ERPlora) with UX (Alpine.
 | Select | ✅ `ux-select` | ❌ | ⚠️ Not needed | Use native or Ionic |
 | Range | ✅ `ux-range` | ❌ | ⚠️ Not needed | Use native or Ionic |
 | Searchbar | ✅ `ux-searchbar` | ❌ | ⚠️ Not needed | Use Ionic ion-searchbar |
-| Rating | ✅ `ux-rating` | ❌ | ⚠️ Not needed | Use Ionic |
+| Rating | ✅ `ux-rating` | ✅ `erx-rating` | ✅ Complete | Stars, half-stars, multiple icons |
 
 **Basic Forms:** Not needed - Use Ionic or native HTML5
 
@@ -198,12 +198,12 @@ Missing enterprise components that would benefit ERX:
 
 ### Current Status
 
-**Total ERX Components:** 93 components
+**Total ERX Components:** 94 components
 - **POS/Retail:** 12 components ✅
 - **HR/Workforce:** 7 components ✅
 - **Manufacturing:** 7 components ✅
 - **Data Display:** 15 components ✅
-- **Forms (Advanced):** 9 components ⚠️
+- **Forms (Advanced):** 10 components ✅ (added erx-rating)
 - **Layout:** 12 components ✅
 - **Media:** 11 components ✅
 - **Others:** 20 components ✅

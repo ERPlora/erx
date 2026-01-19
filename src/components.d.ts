@@ -64,6 +64,7 @@ import { ErxProgressCircleSize } from "./components/erx-progress-circle/erx-prog
 import { ProgressStep, ProgressStepsConfig, ProgressStepSelectDetail } from "./components/erx-progress-steps/erx-progress-steps.types";
 import { ErxQrCodeErrorLevel } from "./components/erx-qr-code/erx-qr-code.types";
 import { QualityCheck, QualityCheckCompleteDetail, QualityCheckResultDetail } from "./components/erx-quality-check/erx-quality-check.types";
+import { RatingChangeEvent } from "./components/erx-rating/erx-rating.types";
 import { ErxReceiptData } from "./components/erx-receipt/erx-receipt.types";
 import { PanelCollapseDetail, PanelResizeDetail, ResizablePanelsConfig } from "./components/erx-resizable-panels/erx-resizable-panels.types";
 import { ErxRichTextChangeEvent, ErxRichTextTool } from "./components/erx-rich-text/erx-rich-text.types";
@@ -151,6 +152,7 @@ export { ErxProgressCircleSize } from "./components/erx-progress-circle/erx-prog
 export { ProgressStep, ProgressStepsConfig, ProgressStepSelectDetail } from "./components/erx-progress-steps/erx-progress-steps.types";
 export { ErxQrCodeErrorLevel } from "./components/erx-qr-code/erx-qr-code.types";
 export { QualityCheck, QualityCheckCompleteDetail, QualityCheckResultDetail } from "./components/erx-quality-check/erx-quality-check.types";
+export { RatingChangeEvent } from "./components/erx-rating/erx-rating.types";
 export { ErxReceiptData } from "./components/erx-receipt/erx-receipt.types";
 export { PanelCollapseDetail, PanelResizeDetail, ResizablePanelsConfig } from "./components/erx-resizable-panels/erx-resizable-panels.types";
 export { ErxRichTextChangeEvent, ErxRichTextTool } from "./components/erx-rich-text/erx-rich-text.types";
@@ -2584,6 +2586,73 @@ export namespace Components {
          */
         "value": number;
     }
+    /**
+     * @component erx-rating
+     * @description A flexible rating component with support for stars, half-stars, and custom icons.
+     * Perfect for product reviews, employee evaluations, and quality ratings.
+     */
+    interface ErxRating {
+        /**
+          * Allow half-star ratings
+          * @default false
+         */
+        "allowHalf": boolean;
+        /**
+          * Color theme
+          * @default 'warning'
+         */
+        "color": 'primary' | 'secondary' | 'warning' | 'success' | 'danger';
+        /**
+          * Disabled state
+          * @default false
+         */
+        "disabled": boolean;
+        /**
+          * Icon type
+          * @default 'star'
+         */
+        "icon": 'star' | 'heart' | 'circle' | 'thumb';
+        /**
+          * Custom label text (e.g., "4.5 out of 5")
+          * @default ''
+         */
+        "label": string;
+        /**
+          * Maximum rating value (number of stars/icons)
+          * @default 5
+         */
+        "max": number;
+        /**
+          * Read-only mode (no interaction)
+          * @default false
+         */
+        "readonly": boolean;
+        /**
+          * Number of reviews/ratings (displayed if showLabel is true)
+          * @default 0
+         */
+        "reviewCount": number;
+        /**
+          * Show rating count label
+          * @default false
+         */
+        "showLabel": boolean;
+        /**
+          * Show numeric value next to stars
+          * @default false
+         */
+        "showValue": boolean;
+        /**
+          * Size variant
+          * @default 'md'
+         */
+        "size": 'sm' | 'md' | 'lg';
+        /**
+          * Current rating value
+          * @default 0
+         */
+        "value": number;
+    }
     interface ErxReceipt {
         /**
           * Compact mode (less spacing)
@@ -3757,6 +3826,10 @@ export interface ErxQualityCheckCustomEvent<T> extends CustomEvent<T> {
     detail: T;
     target: HTMLErxQualityCheckElement;
 }
+export interface ErxRatingCustomEvent<T> extends CustomEvent<T> {
+    detail: T;
+    target: HTMLErxRatingElement;
+}
 export interface ErxResizablePanelsCustomEvent<T> extends CustomEvent<T> {
     detail: T;
     target: HTMLErxResizablePanelsElement;
@@ -4887,6 +4960,29 @@ declare global {
         prototype: HTMLErxQuantityBadgeElement;
         new (): HTMLErxQuantityBadgeElement;
     };
+    interface HTMLErxRatingElementEventMap {
+        "erxChange": RatingChangeEvent;
+        "erxHover": number;
+    }
+    /**
+     * @component erx-rating
+     * @description A flexible rating component with support for stars, half-stars, and custom icons.
+     * Perfect for product reviews, employee evaluations, and quality ratings.
+     */
+    interface HTMLErxRatingElement extends Components.ErxRating, HTMLStencilElement {
+        addEventListener<K extends keyof HTMLErxRatingElementEventMap>(type: K, listener: (this: HTMLErxRatingElement, ev: ErxRatingCustomEvent<HTMLErxRatingElementEventMap[K]>) => any, options?: boolean | AddEventListenerOptions): void;
+        addEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
+        addEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
+        addEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | AddEventListenerOptions): void;
+        removeEventListener<K extends keyof HTMLErxRatingElementEventMap>(type: K, listener: (this: HTMLErxRatingElement, ev: ErxRatingCustomEvent<HTMLErxRatingElementEventMap[K]>) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | EventListenerOptions): void;
+    }
+    var HTMLErxRatingElement: {
+        prototype: HTMLErxRatingElement;
+        new (): HTMLErxRatingElement;
+    };
     interface HTMLErxReceiptElement extends Omit<Components.ErxReceipt, "getHTML">, HTMLStencilElement {
         /**
           * Get receipt as HTML string
@@ -5417,6 +5513,7 @@ declare global {
         "erx-qr-code": HTMLErxQrCodeElement;
         "erx-quality-check": HTMLErxQualityCheckElement;
         "erx-quantity-badge": HTMLErxQuantityBadgeElement;
+        "erx-rating": HTMLErxRatingElement;
         "erx-receipt": HTMLErxReceiptElement;
         "erx-resizable-panels": HTMLErxResizablePanelsElement;
         "erx-rich-text": HTMLErxRichTextElement;
@@ -7995,6 +8092,81 @@ declare namespace LocalJSX {
          */
         "value"?: number;
     }
+    /**
+     * @component erx-rating
+     * @description A flexible rating component with support for stars, half-stars, and custom icons.
+     * Perfect for product reviews, employee evaluations, and quality ratings.
+     */
+    interface ErxRating {
+        /**
+          * Allow half-star ratings
+          * @default false
+         */
+        "allowHalf"?: boolean;
+        /**
+          * Color theme
+          * @default 'warning'
+         */
+        "color"?: 'primary' | 'secondary' | 'warning' | 'success' | 'danger';
+        /**
+          * Disabled state
+          * @default false
+         */
+        "disabled"?: boolean;
+        /**
+          * Icon type
+          * @default 'star'
+         */
+        "icon"?: 'star' | 'heart' | 'circle' | 'thumb';
+        /**
+          * Custom label text (e.g., "4.5 out of 5")
+          * @default ''
+         */
+        "label"?: string;
+        /**
+          * Maximum rating value (number of stars/icons)
+          * @default 5
+         */
+        "max"?: number;
+        /**
+          * Emitted when rating value changes
+         */
+        "onErxChange"?: (event: ErxRatingCustomEvent<RatingChangeEvent>) => void;
+        /**
+          * Emitted when user hovers over a rating
+         */
+        "onErxHover"?: (event: ErxRatingCustomEvent<number>) => void;
+        /**
+          * Read-only mode (no interaction)
+          * @default false
+         */
+        "readonly"?: boolean;
+        /**
+          * Number of reviews/ratings (displayed if showLabel is true)
+          * @default 0
+         */
+        "reviewCount"?: number;
+        /**
+          * Show rating count label
+          * @default false
+         */
+        "showLabel"?: boolean;
+        /**
+          * Show numeric value next to stars
+          * @default false
+         */
+        "showValue"?: boolean;
+        /**
+          * Size variant
+          * @default 'md'
+         */
+        "size"?: 'sm' | 'md' | 'lg';
+        /**
+          * Current rating value
+          * @default 0
+         */
+        "value"?: number;
+    }
     interface ErxReceipt {
         /**
           * Compact mode (less spacing)
@@ -9057,6 +9229,7 @@ declare namespace LocalJSX {
         "erx-qr-code": ErxQrCode;
         "erx-quality-check": ErxQualityCheck;
         "erx-quantity-badge": ErxQuantityBadge;
+        "erx-rating": ErxRating;
         "erx-receipt": ErxReceipt;
         "erx-resizable-panels": ErxResizablePanels;
         "erx-rich-text": ErxRichText;
@@ -9156,6 +9329,12 @@ declare module "@stencil/core" {
             "erx-qr-code": LocalJSX.ErxQrCode & JSXBase.HTMLAttributes<HTMLErxQrCodeElement>;
             "erx-quality-check": LocalJSX.ErxQualityCheck & JSXBase.HTMLAttributes<HTMLErxQualityCheckElement>;
             "erx-quantity-badge": LocalJSX.ErxQuantityBadge & JSXBase.HTMLAttributes<HTMLErxQuantityBadgeElement>;
+            /**
+             * @component erx-rating
+             * @description A flexible rating component with support for stars, half-stars, and custom icons.
+             * Perfect for product reviews, employee evaluations, and quality ratings.
+             */
+            "erx-rating": LocalJSX.ErxRating & JSXBase.HTMLAttributes<HTMLErxRatingElement>;
             "erx-receipt": LocalJSX.ErxReceipt & JSXBase.HTMLAttributes<HTMLErxReceiptElement>;
             "erx-resizable-panels": LocalJSX.ErxResizablePanels & JSXBase.HTMLAttributes<HTMLErxResizablePanelsElement>;
             "erx-rich-text": LocalJSX.ErxRichText & JSXBase.HTMLAttributes<HTMLErxRichTextElement>;

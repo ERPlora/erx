@@ -1,0 +1,473 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>erx-rating - ERX Components</title>
+  <script type="module" src="https://unpkg.com/@erplora/erx/dist/erx/erx.esm.js"></script>
+  <script nomodule src="https://unpkg.com/@erplora/erx/dist/erx/erx.js"></script>
+  <link rel="stylesheet" href="../styles.css">
+</head>
+<body>
+  <div class="component-page" style="padding: 2rem;">
+    <a href="../index.html" class="back-link">&larr; Back to Components</a>
+
+    <div class="component-header">
+      <h1>erx-rating</h1>
+      <p>A flexible rating component with support for stars, half-stars, and custom icons. Perfect for product reviews, employee evaluations, and quality ratings.</p>
+    </div>
+
+    <div class="demo-section">
+      <h2>Basic Rating</h2>
+      <div class="demo-box">
+        <div style="display: flex; gap: 2rem; align-items: center; flex-wrap: wrap;">
+          <div>
+            <span class="demo-label">Empty</span>
+            <erx-rating value="0"></erx-rating>
+          </div>
+          <div>
+            <span class="demo-label">Half filled</span>
+            <erx-rating value="2.5" allow-half></erx-rating>
+          </div>
+          <div>
+            <span class="demo-label">Full</span>
+            <erx-rating value="5"></erx-rating>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="demo-section">
+      <h2>Size Variants</h2>
+      <div class="demo-box">
+        <div style="display: flex; gap: 2rem; align-items: center; flex-wrap: wrap;">
+          <div>
+            <span class="demo-label">Small</span>
+            <erx-rating value="4" size="sm"></erx-rating>
+          </div>
+          <div>
+            <span class="demo-label">Medium (default)</span>
+            <erx-rating value="4" size="md"></erx-rating>
+          </div>
+          <div>
+            <span class="demo-label">Large</span>
+            <erx-rating value="4" size="lg"></erx-rating>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="demo-section">
+      <h2>Color Variants</h2>
+      <div class="demo-box">
+        <div style="display: flex; gap: 2rem; align-items: center; flex-wrap: wrap;">
+          <div>
+            <span class="demo-label">Primary</span>
+            <erx-rating value="4" color="primary"></erx-rating>
+          </div>
+          <div>
+            <span class="demo-label">Secondary</span>
+            <erx-rating value="4" color="secondary"></erx-rating>
+          </div>
+          <div>
+            <span class="demo-label">Warning (default)</span>
+            <erx-rating value="4" color="warning"></erx-rating>
+          </div>
+          <div>
+            <span class="demo-label">Success</span>
+            <erx-rating value="4" color="success"></erx-rating>
+          </div>
+          <div>
+            <span class="demo-label">Danger</span>
+            <erx-rating value="4" color="danger"></erx-rating>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="demo-section">
+      <h2>Icon Types</h2>
+      <div class="demo-box">
+        <div style="display: flex; gap: 2rem; align-items: center; flex-wrap: wrap;">
+          <div>
+            <span class="demo-label">Stars (default)</span>
+            <erx-rating value="4" icon="star"></erx-rating>
+          </div>
+          <div>
+            <span class="demo-label">Hearts</span>
+            <erx-rating value="4" icon="heart" color="danger"></erx-rating>
+          </div>
+          <div>
+            <span class="demo-label">Circles</span>
+            <erx-rating value="4" icon="circle" color="primary"></erx-rating>
+          </div>
+          <div>
+            <span class="demo-label">Thumbs Up</span>
+            <erx-rating value="4" icon="thumb" color="success"></erx-rating>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="demo-section">
+      <h2>Half Stars</h2>
+      <div class="demo-box">
+        <div style="display: flex; gap: 2rem; align-items: center; flex-wrap: wrap;">
+          <div>
+            <span class="demo-label">0.5 stars</span>
+            <erx-rating value="0.5" allow-half></erx-rating>
+          </div>
+          <div>
+            <span class="demo-label">1.5 stars</span>
+            <erx-rating value="1.5" allow-half></erx-rating>
+          </div>
+          <div>
+            <span class="demo-label">2.5 stars</span>
+            <erx-rating value="2.5" allow-half></erx-rating>
+          </div>
+          <div>
+            <span class="demo-label">3.5 stars</span>
+            <erx-rating value="3.5" allow-half></erx-rating>
+          </div>
+          <div>
+            <span class="demo-label">4.5 stars</span>
+            <erx-rating value="4.5" allow-half></erx-rating>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="demo-section">
+      <h2>With Labels</h2>
+      <div class="demo-box">
+        <div style="display: flex; flex-direction: column; gap: 1rem;">
+          <erx-rating value="4.5" allow-half show-value></erx-rating>
+          <erx-rating value="4.2" allow-half show-label review-count="256"></erx-rating>
+          <erx-rating value="5" label="Excellent!" color="success"></erx-rating>
+          <erx-rating value="3" label="Good" color="primary"></erx-rating>
+          <erx-rating value="1" label="Poor" color="danger"></erx-rating>
+        </div>
+      </div>
+    </div>
+
+    <div class="demo-section">
+      <h2>Max Value</h2>
+      <div class="demo-box">
+        <div style="display: flex; gap: 2rem; align-items: center; flex-wrap: wrap;">
+          <div>
+            <span class="demo-label">3 stars max</span>
+            <erx-rating value="2" max="3"></erx-rating>
+          </div>
+          <div>
+            <span class="demo-label">5 stars max (default)</span>
+            <erx-rating value="4" max="5"></erx-rating>
+          </div>
+          <div>
+            <span class="demo-label">10 stars max</span>
+            <erx-rating value="7" max="10" size="sm"></erx-rating>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="demo-section">
+      <h2>Read-only Mode</h2>
+      <div class="demo-box">
+        <div style="display: flex; gap: 2rem; align-items: center; flex-wrap: wrap;">
+          <div>
+            <span class="demo-label">Editable (click to rate)</span>
+            <erx-rating value="3"></erx-rating>
+          </div>
+          <div>
+            <span class="demo-label">Read-only</span>
+            <erx-rating value="4.5" allow-half readonly show-label review-count="1,234"></erx-rating>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="demo-section">
+      <h2>Disabled State</h2>
+      <div class="demo-box">
+        <div style="display: flex; gap: 2rem; align-items: center; flex-wrap: wrap;">
+          <erx-rating value="3" disabled></erx-rating>
+        </div>
+      </div>
+    </div>
+
+    <div class="demo-section">
+      <h2>Interactive Demo</h2>
+      <div class="demo-box">
+        <div style="display: flex; flex-direction: column; gap: 1.5rem; max-width: 400px;">
+          <div>
+            <h3 style="margin: 0 0 0.5rem 0; font-size: 1rem;">Rate this product:</h3>
+            <erx-rating
+              id="interactive-rating"
+              value="0"
+              allow-half
+              size="lg"
+              show-label
+              review-count="42"
+            ></erx-rating>
+          </div>
+          <div id="rating-feedback" style="padding: 1rem; background: #f3f4f6; border-radius: 8px; display: none;">
+            <p style="margin: 0; font-weight: 600;" id="feedback-text"></p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="demo-section">
+      <h2>Product Review Example</h2>
+      <div class="demo-box">
+        <div style="max-width: 600px;">
+          <div style="background: white; border: 1px solid #e5e7eb; border-radius: 8px; padding: 1.5rem;">
+            <div style="display: flex; gap: 1rem;">
+              <img src="https://picsum.photos/seed/product1/100/100" style="width: 100px; height: 100px; border-radius: 8px; object-fit: cover;" alt="Product">
+              <div style="flex: 1;">
+                <h3 style="margin: 0 0 0.5rem 0; font-size: 1.125rem;">Wireless Headphones</h3>
+                <erx-rating value="4.3" allow-half readonly show-label review-count="1,847"></erx-rating>
+                <p style="margin: 0.75rem 0 0 0; color: #6b7280; font-size: 0.875rem;">
+                  Premium sound quality with active noise cancellation. 30-hour battery life.
+                </p>
+                <div style="margin-top: 1rem; font-size: 1.5rem; font-weight: 700; color: #667eea;">
+                  $199.99
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="demo-section">
+      <h2>Employee Performance Example</h2>
+      <div class="demo-box">
+        <div style="max-width: 600px;">
+          <div style="background: white; border: 1px solid #e5e7eb; border-radius: 8px; padding: 1.5rem;">
+            <div style="display: flex; align-items: center; gap: 1rem; margin-bottom: 1.5rem;">
+              <div style="width: 60px; height: 60px; border-radius: 50%; background: linear-gradient(135deg, #667eea, #764ba2); display: flex; align-items: center; justify-content: center; color: white; font-weight: 700; font-size: 1.5rem;">
+                JD
+              </div>
+              <div>
+                <h3 style="margin: 0; font-size: 1.125rem;">John Doe</h3>
+                <p style="margin: 0; color: #6b7280; font-size: 0.875rem;">Senior Developer</p>
+              </div>
+            </div>
+            <div style="display: grid; gap: 1rem;">
+              <div style="display: flex; justify-content: space-between; align-items: center;">
+                <span style="font-size: 0.875rem; color: #6b7280;">Code Quality</span>
+                <erx-rating value="5" readonly size="sm" color="success"></erx-rating>
+              </div>
+              <div style="display: flex; justify-content: space-between; align-items: center;">
+                <span style="font-size: 0.875rem; color: #6b7280;">Team Collaboration</span>
+                <erx-rating value="4.5" allow-half readonly size="sm" color="success"></erx-rating>
+              </div>
+              <div style="display: flex; justify-content: space-between; align-items: center;">
+                <span style="font-size: 0.875rem; color: #6b7280;">Communication</span>
+                <erx-rating value="4" readonly size="sm" color="primary"></erx-rating>
+              </div>
+              <div style="display: flex; justify-content: space-between; align-items: center;">
+                <span style="font-size: 0.875rem; color: #6b7280;">Productivity</span>
+                <erx-rating value="5" readonly size="sm" color="success"></erx-rating>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="demo-section">
+      <h2>Props</h2>
+      <table style="width: 100%; border-collapse: collapse;">
+        <thead>
+          <tr style="border-bottom: 2px solid var(--border);">
+            <th style="text-align: left; padding: 0.5rem;">Prop</th>
+            <th style="text-align: left; padding: 0.5rem;">Type</th>
+            <th style="text-align: left; padding: 0.5rem;">Default</th>
+            <th style="text-align: left; padding: 0.5rem;">Description</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr style="border-bottom: 1px solid var(--border);">
+            <td style="padding: 0.5rem;"><code>value</code></td>
+            <td style="padding: 0.5rem;">number</td>
+            <td style="padding: 0.5rem;">0</td>
+            <td style="padding: 0.5rem;">Current rating value</td>
+          </tr>
+          <tr style="border-bottom: 1px solid var(--border);">
+            <td style="padding: 0.5rem;"><code>max</code></td>
+            <td style="padding: 0.5rem;">number</td>
+            <td style="padding: 0.5rem;">5</td>
+            <td style="padding: 0.5rem;">Maximum rating value (number of stars)</td>
+          </tr>
+          <tr style="border-bottom: 1px solid var(--border);">
+            <td style="padding: 0.5rem;"><code>allowHalf</code></td>
+            <td style="padding: 0.5rem;">boolean</td>
+            <td style="padding: 0.5rem;">false</td>
+            <td style="padding: 0.5rem;">Allow half-star ratings</td>
+          </tr>
+          <tr style="border-bottom: 1px solid var(--border);">
+            <td style="padding: 0.5rem;"><code>readonly</code></td>
+            <td style="padding: 0.5rem;">boolean</td>
+            <td style="padding: 0.5rem;">false</td>
+            <td style="padding: 0.5rem;">Read-only mode (no interaction)</td>
+          </tr>
+          <tr style="border-bottom: 1px solid var(--border);">
+            <td style="padding: 0.5rem;"><code>disabled</code></td>
+            <td style="padding: 0.5rem;">boolean</td>
+            <td style="padding: 0.5rem;">false</td>
+            <td style="padding: 0.5rem;">Disabled state</td>
+          </tr>
+          <tr style="border-bottom: 1px solid var(--border);">
+            <td style="padding: 0.5rem;"><code>size</code></td>
+            <td style="padding: 0.5rem;">'sm' | 'md' | 'lg'</td>
+            <td style="padding: 0.5rem;">'md'</td>
+            <td style="padding: 0.5rem;">Size variant</td>
+          </tr>
+          <tr style="border-bottom: 1px solid var(--border);">
+            <td style="padding: 0.5rem;"><code>color</code></td>
+            <td style="padding: 0.5rem;">'primary' | 'secondary' | 'warning' | 'success' | 'danger'</td>
+            <td style="padding: 0.5rem;">'warning'</td>
+            <td style="padding: 0.5rem;">Color theme</td>
+          </tr>
+          <tr style="border-bottom: 1px solid var(--border);">
+            <td style="padding: 0.5rem;"><code>showLabel</code></td>
+            <td style="padding: 0.5rem;">boolean</td>
+            <td style="padding: 0.5rem;">false</td>
+            <td style="padding: 0.5rem;">Show rating count label</td>
+          </tr>
+          <tr style="border-bottom: 1px solid var(--border);">
+            <td style="padding: 0.5rem;"><code>label</code></td>
+            <td style="padding: 0.5rem;">string</td>
+            <td style="padding: 0.5rem;">''</td>
+            <td style="padding: 0.5rem;">Custom label text</td>
+          </tr>
+          <tr style="border-bottom: 1px solid var(--border);">
+            <td style="padding: 0.5rem;"><code>showValue</code></td>
+            <td style="padding: 0.5rem;">boolean</td>
+            <td style="padding: 0.5rem;">false</td>
+            <td style="padding: 0.5rem;">Show numeric value next to stars</td>
+          </tr>
+          <tr style="border-bottom: 1px solid var(--border);">
+            <td style="padding: 0.5rem;"><code>reviewCount</code></td>
+            <td style="padding: 0.5rem;">number</td>
+            <td style="padding: 0.5rem;">0</td>
+            <td style="padding: 0.5rem;">Number of reviews (displayed if showLabel is true)</td>
+          </tr>
+          <tr style="border-bottom: 1px solid var(--border);">
+            <td style="padding: 0.5rem;"><code>icon</code></td>
+            <td style="padding: 0.5rem;">'star' | 'heart' | 'circle' | 'thumb'</td>
+            <td style="padding: 0.5rem;">'star'</td>
+            <td style="padding: 0.5rem;">Icon type</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <div class="demo-section">
+      <h2>Events</h2>
+      <table style="width: 100%; border-collapse: collapse;">
+        <thead>
+          <tr style="border-bottom: 2px solid var(--border);">
+            <th style="text-align: left; padding: 0.5rem;">Event</th>
+            <th style="text-align: left; padding: 0.5rem;">Description</th>
+            <th style="text-align: left; padding: 0.5rem;">Payload</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr style="border-bottom: 1px solid var(--border);">
+            <td style="padding: 0.5rem;"><code>erxChange</code></td>
+            <td style="padding: 0.5rem;">Emitted when rating value changes</td>
+            <td style="padding: 0.5rem;"><code>{ value: number, maxValue: number }</code></td>
+          </tr>
+          <tr style="border-bottom: 1px solid var(--border);">
+            <td style="padding: 0.5rem;"><code>erxHover</code></td>
+            <td style="padding: 0.5rem;">Emitted when user hovers over a rating</td>
+            <td style="padding: 0.5rem;"><code>number</code></td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <div class="demo-section">
+      <h2>Usage Examples</h2>
+      <div class="demo-box">
+        <pre style="background: #1f2937; color: #e5e7eb; padding: 1rem; border-radius: 8px; overflow-x: auto;"><code>&lt;!-- Basic rating --&gt;
+&lt;erx-rating value="4"&gt;&lt;/erx-rating&gt;
+
+&lt;!-- Half stars --&gt;
+&lt;erx-rating value="4.5" allow-half&gt;&lt;/erx-rating&gt;
+
+&lt;!-- With label and review count --&gt;
+&lt;erx-rating
+  value="4.2"
+  allow-half
+  readonly
+  show-label
+  review-count="256"&gt;
+&lt;/erx-rating&gt;
+
+&lt;!-- Different icon and color --&gt;
+&lt;erx-rating
+  value="5"
+  icon="heart"
+  color="danger"
+  size="lg"&gt;
+&lt;/erx-rating&gt;
+
+&lt;!-- Listen to changes --&gt;
+&lt;erx-rating
+  id="my-rating"
+  value="0"&gt;
+&lt;/erx-rating&gt;
+
+&lt;script&gt;
+  const rating = document.getElementById('my-rating');
+  rating.addEventListener('erxChange', (e) =&gt; {
+    console.log('New rating:', e.detail.value);
+  });
+&lt;/script&gt;</code></pre>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    const interactiveRating = document.getElementById('interactive-rating');
+    const feedbackDiv = document.getElementById('rating-feedback');
+    const feedbackText = document.getElementById('feedback-text');
+
+    const feedbackMessages = {
+      0: '',
+      0.5: 'Very Poor',
+      1: 'Very Poor',
+      1.5: 'Poor',
+      2: 'Poor',
+      2.5: 'Fair',
+      3: 'Fair',
+      3.5: 'Good',
+      4: 'Good',
+      4.5: 'Very Good',
+      5: 'Excellent!'
+    };
+
+    interactiveRating.addEventListener('erxChange', (e) => {
+      const value = e.detail.value;
+      if (value === 0) {
+        feedbackDiv.style.display = 'none';
+      } else {
+        feedbackDiv.style.display = 'block';
+        feedbackText.textContent = `You rated: ${value} stars - ${feedbackMessages[value]}`;
+      }
+    });
+
+    interactiveRating.addEventListener('erxHover', (e) => {
+      const value = e.detail;
+      if (value > 0 && feedbackMessages[value]) {
+        feedbackDiv.style.display = 'block';
+        feedbackText.textContent = `${value} stars - ${feedbackMessages[value]}`;
+      }
+    });
+  </script>
+</body>
+</html>
