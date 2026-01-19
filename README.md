@@ -31,6 +31,7 @@
 - **[Full API Documentation](https://erplora.github.io/erx/)** - Complete technical reference
 
 ### 🎨 Feature Demos
+- **[Ionic UX Theme Demo](./docs/ionic-ux-theme-demo.html)** - ERPlora brand colors with Ionic components
 - **[Ionic Integration Demo](./docs/ionic-demo.html)** - See iOS vs Material Design modes in action
 - **[Liquid Glass Demo](./docs/liquid-glass-demo.html)** - iOS 26 glassmorphism effects
 
