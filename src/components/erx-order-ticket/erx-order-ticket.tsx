@@ -108,6 +108,17 @@ export class ErxOrderTicket {
   render() {
     const { order } = this;
 
+    // Guard: don't render if no order data
+    if (!order) {
+      return (
+        <div class="erx-ticket erx-ticket--empty" part="container">
+          <div class="erx-ticket__empty-state">
+            <p>No order data</p>
+          </div>
+        </div>
+      );
+    }
+
     return (
       <div
         class={{

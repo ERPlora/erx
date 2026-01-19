@@ -305,3 +305,27 @@
 :host(.dark) .erx-ticket__actions {
   background: var(--erx-surface-secondary);
 }
+
+/* Empty state */
+.erx-ticket--empty {
+  min-height: 200px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: default;
+}
+
+.erx-ticket--empty:hover {
+  box-shadow: none;
+}
+
+.erx-ticket__empty-state {
+  text-align: center;
+  color: var(--erx-text-muted, #6b7280);
+  padding: 2rem;
+}
+
+.erx-ticket__empty-state p {
+  font-size: 0.875rem;
+  margin: 0;
+}
